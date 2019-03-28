@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodReady.WebUI", "Foodreadynet\FoodReady.WebUI.csproj", "{C096278E-8CF6-47BE-A160-AB6E357F4C3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FR.Domain.Model", "FR.Domain.Model\FR.Domain.Model.csproj", "{F329DC4D-FFED-4248-BEBA-1E83C38D64F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FR.Infrastructure", "FR.Infrastructure\FR.Infrastructure.csproj", "{EBB56586-03D4-494D-97F4-98B2F0E18A19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FR.Repository", "FR.Repository\FR.Repository.csproj", "{3B33B461-BB0B-429F-837E-54C1BC1BDB68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FR.Services", "FR.Services\FR.Services.csproj", "{3D702AE2-1A07-444E-8D2A-E17ADEBED3F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C096278E-8CF6-47BE-A160-AB6E357F4C3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C096278E-8CF6-47BE-A160-AB6E357F4C3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C096278E-8CF6-47BE-A160-AB6E357F4C3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C096278E-8CF6-47BE-A160-AB6E357F4C3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F329DC4D-FFED-4248-BEBA-1E83C38D64F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F329DC4D-FFED-4248-BEBA-1E83C38D64F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F329DC4D-FFED-4248-BEBA-1E83C38D64F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F329DC4D-FFED-4248-BEBA-1E83C38D64F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBB56586-03D4-494D-97F4-98B2F0E18A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBB56586-03D4-494D-97F4-98B2F0E18A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBB56586-03D4-494D-97F4-98B2F0E18A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBB56586-03D4-494D-97F4-98B2F0E18A19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B33B461-BB0B-429F-837E-54C1BC1BDB68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B33B461-BB0B-429F-837E-54C1BC1BDB68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B33B461-BB0B-429F-837E-54C1BC1BDB68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B33B461-BB0B-429F-837E-54C1BC1BDB68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D702AE2-1A07-444E-8D2A-E17ADEBED3F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D702AE2-1A07-444E-8D2A-E17ADEBED3F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D702AE2-1A07-444E-8D2A-E17ADEBED3F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D702AE2-1A07-444E-8D2A-E17ADEBED3F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3470DD97-D6B7-4A7F-85BA-54A60C24D687}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/baopingpeng
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Foodreadynet\\FoodReady.WebUI.csproj
+		SccProjectName1 = Foodreadynet
+		SccLocalPath1 = Foodreadynet
+		SccProjectUniqueName2 = FR.Domain.Model\\FR.Domain.Model.csproj
+		SccProjectName2 = FR.Domain.Model
+		SccLocalPath2 = FR.Domain.Model
+		SccProjectUniqueName3 = FR.Infrastructure\\FR.Infrastructure.csproj
+		SccProjectName3 = FR.Infrastructure
+		SccLocalPath3 = FR.Infrastructure
+		SccProjectUniqueName4 = FR.Repository\\FR.Repository.csproj
+		SccProjectName4 = FR.Repository
+		SccLocalPath4 = FR.Repository
+		SccProjectUniqueName5 = FR.Services\\FR.Services.csproj
+		SccProjectName5 = FR.Services
+		SccLocalPath5 = FR.Services
+	EndGlobalSection
+EndGlobal
