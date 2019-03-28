@@ -1,0 +1,7 @@
+﻿@model FoodReady.WebUI.Models.BizInfoModel
+@{
+    ViewBag.Title = "All Cuisines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_SearchCuisineDivPartial")
+@{Html.RenderAction("ShowAllCuisines", "AllCuisines");}

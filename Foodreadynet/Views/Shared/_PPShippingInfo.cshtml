@@ -1,0 +1,47 @@
+﻿@model FoodReady.WebUI.Models.CheckoutPayPalModel
+@using FR.Infrastructure.Helpers
+<p class="midTitle">
+    Address Info @if (Model.PPCart.IsDelivery)
+    {<span>(Deliver to)</span>}
+</p>
+<div id="ppshippingInfo">
+    <div class="form-group">
+        @Html.LabelFor(m => m.PPFirstName)
+        @Html.TextBoxFor(m => m.PPFirstName, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.PPFirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PPLastName)
+        @Html.TextBoxFor(m => m.PPLastName, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.PPLastName)
+    </div>
+    <div id="pproomnumer">
+        <h5 style="cursor:pointer;"><b>Room number?</b> Clich here if available.</h5>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PPRoomNumber)
+        @Html.TextBoxFor(m => m.PPRoomNumber, new { @class = "form-control boxShadow" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PPAddressLine)
+        @Html.TextBoxFor(m => m.PPAddressLine, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.PPAddressLine)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PPCity)
+        @Html.TextBoxFor(m => m.PPCity, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.PPCity)
+    </div>
+    <div class="=form-group">
+        @Html.LabelFor(m => m.PPState)
+        @Html.DropDownListFor(x => x.PPState, Helper.StateDropdownData(Model.PPState), "Choose a State", new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.PPState)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PPZipCode)
+        @Html.TextBoxFor(m => m.PPZipCode, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.PPZipCode)
+    </div>
+
+</div><hr />
+

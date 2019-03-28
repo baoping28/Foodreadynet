@@ -1,0 +1,113 @@
+﻿@model FR.Domain.Model.Entities.BizRVInfo
+@using FR.Infrastructure.Helpers
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/datepickerJQ.js")" type="text/javascript"></script>
+<div id="popupbody1">
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <img src="@Url.Content("~/Content/BizImages/" + ViewBag.imgUrl)" class="bizImg boxShadow boxCorner" /> <h4 id="poptitle1" class="modal-title" style="color:black;text-align:center;"> Reserve a table at @ViewBag.biztitle</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        @if (Model == null)
+        {
+            <div>Sorry, @ViewBag.biztitle does not accept online reservation.</div>
+        }
+        else
+        {
+            using (Ajax.BeginForm("FindTable", "Reservation", FormMethod.Post, new AjaxOptions
+            {
+                UpdateTargetId = "popupbody1",
+                OnBegin = "onPopup1Begin",
+                OnSuccess = "onPopup1Success",
+                OnFailure = "onPopup1Failed"
+            }, new { @id = "rsv-form" }))
+            {
+                @Html.Hidden("id", Model.BizInfoId)
+                <div class="row toppadding">
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <b>Date:</b><br />
+                            @Html.TextBox("rvDate", DateTime.Now.ToShortDateString(), new { @class = "form-control boxShadow", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <b>Time:</b><br />
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                                @Html.DropDownList("rvTime", Helper.RVTimeDropdown(Model.StartTime, Model.EndTime), new { @class = "form-control boxShadow" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <b>Party Size:</b><br />
+
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                                @Html.DropDownList("rvNum", Helper.NumOfPeopleDropdown(null), new { @class = "form-control boxShadow" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <div id="divreserve" style="padding-top:20px;">
+                                <button id="reserve" type="button" onclick="$('#rsv-form').submit();" class="btn btn-primary" title="Find a table">Find a table <i class="fa fa-glass"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><hr />
+            }
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <span class="midTitle">@ViewBag.biztitle details:</span>
+                    <ul>
+                        <li><b>Dining Style:</b> @Model.DiningStyle</li>
+                        <li><b>Address:</b> @Model.BizInfo.BizAddressString</li>
+                        <li><b>Phone:</b> @Helper.FormatPhoneNumber(Model.BizInfo.ContactInfo.Phone)</li>
+                        <li><b>Email:</b> @Model.BizInfo.ContactInfo.Email</li>
+                        <li><b>Reservation Time:</b> @Model.StartTime to @Model.EndTime</li>
+                        <li><b>Restaurant Price:</b> @Model.BizPrice</li>
+                        <li><b>Restaurant Standing Capacity:</b> @Model.StandingCapacity</li>
+                        <li><b>Restaurant Seated Capacity:</b> @Model.SeatedCapacity</li>
+                        <li><b>Payment Options:</b> @Model.PaymentOptions</li>
+
+                        @{var aw = @Model.AcceptWalkIn ? "Yes" : "No";}
+                        <li><b>Accepts Walk-Ins::</b> @aw</li>
+                        @if (string.IsNullOrEmpty(Model.ExecutiveChef) == false)
+                        {
+                            <li><b>Executive Chef:</b> @Model.ExecutiveChef</li>
+                        }
+                        @if (string.IsNullOrEmpty(Model.PrivatePartyFacilities) == false)
+                        {
+                            <li><b>Private Party Facilities:</b> @Model.PrivatePartyFacilities</li>
+                        }
+                        @if (string.IsNullOrEmpty(Model.SpecialEvents) == false)
+                        {
+                            <li><b>Special Events:</b> @Model.SpecialEvents</li>
+                        }
+                        @if (string.IsNullOrEmpty(Model.Parking) == false)
+                        {
+                            <li><b>Parking:</b> @Model.Parking</li>
+                        }
+                        @if (string.IsNullOrEmpty(Model.AdditionalDetails) == false)
+                        {
+                            <li><b>Additional Details:</b> @Model.AdditionalDetails</li>
+                        }
+                    </ul>
+                    <a class="Link12" onclick="@Url.Content("getDirections('" + ViewBag.maplink + "');return false;")" href="">
+                        GET DRIVING
+                        DIRECTIONS
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

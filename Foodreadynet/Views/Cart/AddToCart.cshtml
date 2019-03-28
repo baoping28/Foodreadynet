@@ -1,0 +1,319 @@
+﻿@model FoodReady.WebUI.Models.AddItemModel
+@using FR.Infrastructure.Helpers
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/RemainingCharacterCount.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/JHoverMenu.js")" type="text/javascript"></script>
+<div id="popupbody1">
+    <input id="maxnum" type="hidden" value="@Model.Product.MaxNumOfFreeTopping" />
+    <div class="modal-header divAddCart">
+        <h5 id="poptitle1" class="modal-title">
+            @if (Model.Product.MealSectionId == 3)
+            {
+                <span>@Model.Product.Title (Lunch) </span>
+            }
+            else
+            {
+                <span>@Model.Product.Title</span>
+            }
+        </h5>       
+         @if (Model.Product.FoodTypeName.ToLower() == "pizza" || Model.Product.IsFamilyDinner)
+        {
+            <div style="font-size:11px;font-weight:normal; text-align:left; padding:4px 20px 6px 20px;">@Helper.GetReview(Model.Product.Description, 200)</div>
+        }
+    </div>
+    <div class="modal-body">
+        @using (Ajax.BeginForm("UpdateCart", "Cart", FormMethod.Post, new AjaxOptions
+    {
+        UpdateTargetId = "CartContent",
+        OnBegin = "onPopupAddBegin",
+        OnSuccess = "onPopupAddSuccess",
+        OnFailure = "onPopupAddFailed"
+    }, new { @id = "addtocart-form" }))
+        {
+            var n = Model.Product.FinalUnitPrice * 2;
+            var colNum = 1;
+            @Html.HiddenFor(e => e.ProductID)
+            <div>
+                <div class="popbox1 boxShadow rowpadding">
+                    <div class="row textleft rowpadding">
+                        <div class="col-sm-4 col-md-4">
+                            <b>Price</b>
+                        </div>
+                        <div class="col-sm-8 col-md-8">
+                            @if (Model.SizeAssistances.Count > 0)
+                            {
+                                @Html.DropDownListFor(e => e.ProductSize, Model.SizeAssistances)
+                            }
+                            else if (Model.Product.IsFamilyDinner)
+                            {
+                                <span>
+                                    $@Model.Product.FinalUnitPrice.ToString("N2") <b>per person</b>, minimun order
+                                    for 2 persons
+                                </span>
+                            }
+                            else
+                            {
+                                <span>$@Model.Product.FinalUnitPrice.ToString("N2")</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="popbox1 boxShadow">
+                    <div class="row textleft rowpadding">
+                        <div class="col-sm-4 col-md-4">
+                            <b>Quantity</b>
+                        </div>
+                        <div class="col-sm-8 col-md-8">
+                            @if (Model.Product.IsFamilyDinner)
+                            {
+                                @Html.DropDownListFor(e => e.FamilyQty, Model.FamilyQtyDropdown(Model.Product.FamilyMeals.Where(e => e.Active == true).ToList()))
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(e => e.Quantity, Model.QtyList)
+                            }
+                        </div>
+                    </div>
+                    (quantity also applies to options selected if there is any)
+                </div>
+
+                @if (Model.Product.IsSpicy)
+                {
+                    <div class="popbox1 boxShadow">
+                        <div class="row textleft rowpadding">
+                            <div class="col-sm-4 col-md-4">
+                                <b>Spicy Choice</b>
+                            </div>
+                            <div class="col-sm-8 col-md-8">
+                                @Html.DropDownListFor(e => e.HowSpicy, Model.SpicyChoices, new { @class = "spicydropdown" })
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (Model.Product.FoodTypeName.ToLower() == "salad")
+                {
+                    <div class="popbox1 boxShadow">
+                        <div class="row textleft rowpadding">
+                            <div class="col-sm-4 col-md-4">
+                                <b>Choice of Dressing</b>
+                            </div>
+                            <div class="col-sm-8 col-md-8">
+                                @Html.DropDownListFor(e => e.DressingChoice, Model.DressingChoices(Model.Product.ProductDressings.Where(e => e.Active == true).ToList()))
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (Model.Product.HasSideChoice)
+                {
+                    <div class="popbox1 boxShadow">
+                        <div class="row textleft rowpadding">
+                            <div class="col-sm-4 col-md-4">
+                                <b>Choice of Side</b>
+                            </div>
+                            <div class="col-sm-8 col-md-8">
+                                @Html.DropDownListFor(e => e.SideChoice, Model.SideChoices(Model.Product.SideChoices.Where(e => e.Active == true).ToList()))
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (Model.Product.HasSauceChoice)
+                {
+                    <div class="popbox1 boxShadow">
+                        <div class="row textleft rowpadding">
+                            <div class="col-sm-4 col-md-4">
+                                <b>Choice of Sauce</b>
+                            </div>
+                            <div class="col-sm-8 col-md-8">
+                                @Html.DropDownListFor(e => e.SauceChoice, Model.SauceChoices(Model.Product.SauceChoices.Where(e => e.Active == true).ToList()))
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (Model.Product.HasCrustChoice)
+                {
+                    <div class="popbox1 boxShadow">
+                        <div class="row textleft rowpadding">
+                            <div class="col-sm-4 col-md-4">
+                                <b>Choice of Crust</b>
+                            </div>
+                            <div class="col-sm-8 col-md-8">
+                                @Html.DropDownListFor(e => e.CrustChoiceID, Model.CrustChoices(Model.Product.CrustChoices.Where(e => e.Active == true).ToList()))
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (Model.Product.HasCheeseChoice)
+                {
+                    <div class="popbox1 boxShadow">
+                        <div class="row textleft rowpadding">
+                            <div class="col-sm-4 col-md-4">
+                                <b>Choice of Cheese Amount</b>
+                            </div>
+                            <div class="col-sm-8 col-md-8">
+                                @Html.DropDownListFor(e => e.CheeseAmountID, Model.CheeseChoices(Model.Product.CheeseAmounts.Where(e => e.Active == true).ToList()))
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (string.IsNullOrEmpty(Model.Topping) == false)
+                {
+                    <div class="popbox1 boxShadow">
+                        <div class="row textleft rowpadding">
+                            <div class="col-sm-4 col-md-4">
+                                <b>Choice of Topping</b>
+                            </div>
+                            <div class="col-sm-8 col-md-8">
+                                @Html.DropDownListFor(e => e.Topping, Model.DefaultToppings, "Choose a Topping")
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (Model.FreeToppingAssistances.Count > 0 && Model.Product.MaxNumOfFreeTopping > 0)
+                {
+                    <div class="addTopping boxShadow">
+                        <div style="padding: 10px 10px 10px 0px; font-family: Miramonte, Century Gothic;
+                        font-size: 13px; font-weight: bold; color: #2e728b;">
+                            Select free toppings (select up to @Model.Product.MaxNumOfFreeTopping):
+                        </div>
+                        @for (int i = 0; i < Model.FreeToppingAssistances.Count; i++)
+                        {
+                            colNum++;
+
+                            <div style="float: left; text-align:left; width: 120px; height: 34px;">
+                                <ul id="nvgpop1">
+                                    <li class="dropdownpop">
+                                        <div style="float: left; width: 20px;">
+                                            @Html.HiddenFor(x => x.FreeToppingAssistances[i].BoxName)
+                                            @Html.CheckBoxFor(x => x.FreeToppingAssistances[i].Checked, new { @class = "cbtopping" })
+                                        </div>
+                                        <div style="float: left; width: 90px;">
+                                            @Html.LabelFor(x => x.FreeToppingAssistances[i].Checked, Model.FreeToppingAssistances[i].BoxName)
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            if (colNum > 4)
+                            {
+                                colNum = 1;
+                                <div style="clear: both;">
+                                </div>
+                            }
+                        }
+                        <br />
+                    </div>
+                }
+                @if (Model.ToppingAssistances.Count > 0)
+                {
+                    colNum = 1;
+                    <div class="addTopping boxShadow">
+                        <div style="padding: 10px 10px 10px 0px; font-family: Miramonte, Century Gothic;
+                        font-size: 13px; font-weight: bold; color: #2e728b;">
+                            Add Extra Toppings (select as many as you’d like - optional):
+                        </div>
+                        @for (int i = 0; i < Model.ToppingAssistances.Count; i++)
+                        {
+                            colNum++;
+
+                            <div style="float: left; width: 120px; height: 34px;">
+                                <ul id="nvgpop">
+                                    <li class="dropdownpop">
+                                        <div style="float: left; width: 20px;">
+                                            @Html.HiddenFor(x => x.ToppingAssistances[i].BoxName)
+                                            @Html.HiddenFor(x => x.ToppingAssistances[i].BoxPrice)
+                                            @Html.HiddenFor(x => x.ToppingAssistances[i].BoxIncrementValue)
+                                            @Html.CheckBoxFor(x => x.ToppingAssistances[i].Checked)
+                                        </div>
+                                        <div style="float: left; width: 90px;">
+                                            @Html.LabelFor(x => x.ToppingAssistances[i].Checked, Model.ToppingAssistances[i].BoxName)
+                                        </div>
+                                        <div class="sub_nvgpop boxShadow">
+                                            @{
+                            var delta = Model.ToppingAssistances[i].BoxIncrementValue;
+                            var small = @Model.ToppingAssistances[i].BoxPrice;
+                            var medium = small + delta;
+                            var large = medium + delta;
+                            var xlarge = large + delta;}
+                                            <b>@Model.ToppingAssistances[i].BoxName:</b><br />
+                                            <b>Small:</b> $@small.ToString("N2")<br />
+                                            <b>Medium:</b> $@medium.ToString("N2")<br />
+                                            <b>Large:</b> $@large.ToString("N2")<br />
+                                            <b>X-Large:</b> $@xlarge.ToString("N2")
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            if (colNum > 4)
+                            {
+                                colNum = 1;
+                                <div style="clear: both;">
+                                </div>
+                            }
+                        }
+                        <br />
+                    </div>
+                }
+                @if (Model.AddSideAssistances.Count > 0)
+                {
+                    colNum = 1;
+                    <div class="addTopping boxShadow">
+                        <div style="padding: 10px 10px 10px 0px; font-family: Miramonte, Century Gothic;
+                        font-size: 13px; font-weight: bold; color: #2e728b;">
+                            Select as many as you’d like (optional):
+                        </div>
+                        @for (int i = 0; i < Model.AddSideAssistances.Count; i++)
+                        {
+                            colNum++;
+
+                            <div style="float: left; width: 240px;">
+                                <div style="float: left; width: 20px;">
+                                    @Html.HiddenFor(x => x.AddSideAssistances[i].BoxName)
+                                    @Html.HiddenFor(x => x.AddSideAssistances[i].BoxPrice)
+                                    @Html.HiddenFor(x => x.AddSideAssistances[i].BoxBizPrice)
+                                    @Html.CheckBoxFor(x => x.AddSideAssistances[i].Checked)
+                                </div>
+                                <div style="float: left; width: 210px;">
+                                    @Html.LabelFor(x => x.AddSideAssistances[i].Checked, "Add " + Model.AddSideAssistances[i].BoxName + " ( $" + Model.AddSideAssistances[i].BoxPrice.ToString("N2") + " )")
+                                </div>
+                            </div>
+                            if (colNum > 2)
+                            {
+                                colNum = 1;
+                                <div style="clear: both;">
+                                </div>
+                            }
+                        }
+                        <br />
+                    </div>
+                }
+                <div class="popbox3 boxShadow">
+                    <div class="row textleft rowpadding">
+                        <div class="col-sm-4 col-md-4">
+                            <b>Special Instructions</b>
+                        </div>
+                        <div class="col-sm-8 col-md-8">
+                            (Example: less salt, etc. Additional charges may apply.)<br />
+                            <div>
+                                @Html.TextAreaFor(m => m.Instructions, 2, 30, new { })
+                                <div class="remaining">
+                                    Characters remaining: <span class="count">512</span>
+                                    <input id="btnClear" type="button" value="Clean Text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                </div>
+                @if (string.IsNullOrEmpty(Model.Product.SmallImage)==false && Model.Product.SmallImage.ToLower().StartsWith("imagesoon")==false)
+                {
+                    <div class="float-left">
+                        <img src="@Url.Content(Model.Product.SmallImagePath)" class="bigImg img-responsive" />
+                    </div>
+                }
+                <div class="float-right">
+                    <button type="button" onclick="$('#addtocart-form').submit();" class="btn btn-primary" title="Add to cart">Add to cart &nbsp;&nbsp; <i class="fa fa-2x fa-cart-arrow-down"></i></button>
+                </div>
+            </div><br /><br />
+        }
+    </div>
+    </div>

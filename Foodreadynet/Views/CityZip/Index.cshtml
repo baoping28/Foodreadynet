@@ -1,0 +1,98 @@
+﻿@model FoodReady.WebUI.Models.BizInfoModel
+@{
+    ViewBag.Title = Model.ZipCode;
+}
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/searchBoxJS.js")" type="text/javascript"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKiEdbCcINToyXHXIFFkh-jf2AUe_NHz8&sensor=false"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/googleMapJS.js")" type="text/javascript">  </script>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("input#autoZipcode").autocomplete({
+                source: '@Url.Action("ZipCodes", "Home")',
+                minLength: 1,
+                select: function (event, ui) {
+                   // deliv = $("input[@@name='DeliveryGroup']:checked").val();
+                    addr = $("input#autoAddress").val();
+                    zip = ui.item.value;
+                    if (addr == "Your Street, City, State (Required)") {
+                        addr = "";
+                    }
+                    if (addr == "") {
+                        $("#geomsg").html("Please enter your address, city, state.").show("slow"); return;
+                    }
+                    if (zip == "Your Zip Code (Required)") {
+                        zip = "";
+                    }
+
+                    var value = zip.split("---");
+                    zip = value[0];
+
+                    if ($.trim(zip).length != 5) return;
+
+                    var postData = '{"address":"' + addr + '","zipcode":"' + zip + '"}';
+                    $.ajax({
+                        url: '/Home/ValidateAddress',
+                        type: 'POST',
+                        data: postData,
+                        dataType: 'json',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (result) {
+                            if (result.resp == "OK") {
+                                $("#goImg").attr("disabled", "true");
+                                location.href = "/Restaurants" + "?address=" + addr + "&zip=" + zip;
+                            }
+                            else {
+                                $("#geomsg").html("Invalid address! Please try again.").show("slow");
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>}
+@Html.Partial("_SearchDivPartial")
+<div class="container toppadding">
+    <div class="row">
+        <h2 style="color:#1E7CB8;padding-left:10px;">
+            <b>Top Rated Restaurants in @Model.ZipCode</b>
+        </h2><hr />
+
+        <div class="col-sm-6 col-md-6">
+            <div id="map_canvas">
+            </div>
+        </div>
+        <div class="col-sm-1 col-md-1">
+        </div>
+        <div class="col-sm-5 col-md-5">
+            @Html.Partial("_YelpTopPartial", Model.YelpTops)
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <h3 style="padding-left:10px;">
+            @Model.CityName Restaurants by Cuisine in @Model.ZipCode
+        </h3>
+        @Html.Raw(Model.ShowCuisines)<br />
+        <br />
+    </div>
+    @if (Model.NewBiz.Count > 0)
+    {
+        <hr />
+        <div class="row">
+            <h3 style="padding-left:10px;">
+                Newly Added Online Restaurants in @Model.ZipCode
+            </h3>
+
+            <div>
+                @foreach (var b in Model.NewBiz)
+                {
+                    @Html.Partial("_NewRestaurantPartial", b)
+                }
+            </div>
+        </div>
+    }
+</div>
+<input id="hLat" type="hidden" value="@Model.BizInfo.Latitude" />
+<input id="hLng" type="hidden" value="@Model.BizInfo.Longitude" />
+<input id="markers" type="hidden" value="@Model.MapMarkers" />

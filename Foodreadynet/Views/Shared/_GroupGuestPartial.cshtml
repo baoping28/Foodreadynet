@@ -1,0 +1,24 @@
+﻿@model FoodReady.WebUI.Models.GroupGuestModel
+<h3><b>Join an existing group ordering</b></h3>
+@using (Ajax.BeginForm("Join", "Group", FormMethod.Post, new AjaxOptions
+                {
+                    UpdateTargetId = "popupbody1",
+                    OnBegin = "onPopup1Begin",
+                    OnSuccess = "onPopup1Success",
+                    OnFailure = "onPopup1Failed"
+                }, new { @id = "join-form" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.GroupId)
+        @Html.TextBoxFor(m => m.GroupId, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.GroupId)
+    </div><br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.LableName)
+        @Html.TextBoxFor(m => m.LableName, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.LableName)
+    </div><br />
+    <div class="form-group">
+        <button id="btnjoin" type="button" onclick="$('#join-form').submit();" class="btn btn-primary btn-lg" title="Join group"><span class="glyphicon glyphicon-ok"></span> &nbsp;&nbsp; Join Group Ordering</button>
+    </div><br />
+}

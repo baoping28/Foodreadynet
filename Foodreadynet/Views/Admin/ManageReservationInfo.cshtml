@@ -1,0 +1,108 @@
+﻿@model FoodReady.WebUI.Models.BizRVInfoModel
+@using FR.Infrastructure.Helpers
+
+@{
+    ViewBag.Title = "Manage Reservation Info";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="titlebox boxShadow">
+    <center><h3>Edit Reservation Info (@Model.Bizinfo.BizTitle)</h3></center>
+</div>
+@ViewBag.updateMsg
+
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(e => e.BizRVInfoId)
+        @Html.HiddenFor(e => e.BizInfoID)
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.BizPrice)
+                    @Html.DropDownListFor(e => e.BizPrice, Helper.RestaurantPriceDropdown("$$"), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.BizPrice)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.StandingCapacity)
+                    @Html.TextBoxFor(m => m.StandingCapacity, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.StandingCapacity)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SeatedCapacity)
+                    @Html.TextBoxFor(m => m.SeatedCapacity, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.SeatedCapacity)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.StartTime)
+                    @Html.DropDownListFor(e => e.StartTime, Helper.TimeDropdown(), "Choose a time", new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.StartTime)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EndTime)
+                    @Html.DropDownListFor(e => e.EndTime, Helper.TimeDropdown(), "Choose a time", new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.EndTime)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DiningStyle)
+                    @Html.DropDownListFor(e => e.DiningStyle, Helper.DiningStyleDropdown("Casual"), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.DiningStyle)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PaymentOptions)
+                    @Html.TextBoxFor(m => m.PaymentOptions, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.PaymentOptions)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.AcceptWalkIn)
+                    @Html.DropDownListFor(e => e.AcceptWalkIn, Helper.YesNoDropdown("Yes"), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.AcceptWalkIn)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ExecutiveChef)
+                    @Html.TextBoxFor(m => m.ExecutiveChef, new { @class = "form-control boxShadow" })
+                </div><br />
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Facilities)
+                    @Html.TextAreaFor(m => m.Facilities, 5, 50, new { @class = "form-control boxShadow" })
+                    <div class="remaining">
+                        Characters remaining: <span class="count">512</span>
+                        <input id="btnClearFt" type="button" value="Reset Text" class="btn btn-default btn-sm" />
+                    </div>
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Events)
+                    @Html.TextAreaFor(m => m.Events, 5, 50, new { @class = "form-control boxShadow" })
+                    <div class="remaining">
+                        Characters remaining: <span class="count">512</span>
+                        <input id="btnClearEv" type="button" value="Reset Text" class="btn btn-default btn-sm" />
+                    </div>
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Parking)
+                    @Html.TextAreaFor(m => m.Parking, 5, 50, new { @class = "form-control boxShadow" })
+                    <div class="remaining">
+                        Characters remaining: <span class="count">512</span>
+                        <input id="btnClearPk" type="button" value="Reset Text" class="btn btn-default btn-sm" />
+                    </div>
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Details)
+                    @Html.TextAreaFor(m => m.Details, 5, 50, new { @class = "form-control boxShadow" })
+                    <div class="remaining">
+                        Characters remaining: <span class="count">512</span>
+                        <input id="btnClearDt" type="button" value="Reset Text" class="btn btn-default btn-sm" />
+                    </div>
+                </div><br />
+                <div class="form-group pull-right">
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+                </div><br />
+                <div class="form-group">
+                    <p>@Html.ActionLink("Back to Manage Restaurant " + Model.Bizinfo.BizTitle, "ManageRestaurant", "admin", new { id = Model.BizInfoID }, null)</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

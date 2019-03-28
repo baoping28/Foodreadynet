@@ -1,0 +1,16 @@
+﻿@model FR.Domain.Model.Entities.SauceChoice
+<div id="@Url.Content("item" + Model.SauceChoiceId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoSauceChoice", "Admin", new { id = Model.SauceChoiceId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.SauceChoiceId),
+                            OnBegin = "onFreeItemBegin('" + Model.SauceChoiceId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.SauceChoiceId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.SauceChoiceId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the sauce choice: " + Model.Title + " ?"
+                        }))
+    {
+                                                   
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+                        }
+</div>

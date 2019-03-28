@@ -1,0 +1,90 @@
+﻿@model FoodReady.WebUI.Models.AddItemModel
+@using FR.Infrastructure.Helpers
+<div id="popupbody">
+    <div class="modal-header divAddCart">
+        <h5 id="poptitle" class="modal-title">you are leaving the shared shopping cart for checkout</h5>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-1 col-md-1"></div>
+            <div class="col-sm-5 col-md-5" style="border-right:solid 1px #808080;">
+                @if (ViewBag.okcheckout == "show")
+                {
+                    <table class="table table-striped">
+                        <tr>
+                            <td>
+                                <b>Global Subtotal:</b>
+                            </td>
+                            <td><b>$@Model.SharedCart.PartySubTotal().ToString("N2")</b></td>
+                        </tr>
+                        @if (string.IsNullOrEmpty(Model.SharedCart.PartyCouponChoice) == false)
+                        {
+                            <tr>
+                                <td colspan="2"><span style="color: Green;">@Helper.CouponNote(Model.SharedCart.PartyDiscountPercentage, Model.SharedCart.PartyFreeItem, Model.SharedCart.PartySubTotal())&nbsp;</span></td>
+
+                            </tr>
+                        }
+                        <tr>
+                            <td>Tax (@Model.SharedCart.PartyTaxRate.ToString("N2")%):</td>
+                            <td>@Helper.ToUSD(Model.SharedCart.PartyTax().ToString("N2"))</td>
+                        </tr>
+                        @if (Model.SharedCart.IsPartyDelivery)
+                        {
+                            var charge = Model.SharedCart.IsPartyDelivery ? "Delivery Charge:" : "";
+                            var fee = Model.SharedCart.IsPartyDelivery ? Helper.DeliveryFee(Model.SharedCart.PartyDeliveryFee()) : "";
+                            <tr>
+                                <td>Order Type:</td>
+                                <td>Delivery</td>
+                            </tr>
+                            <tr>
+                                <td>@charge</td>
+                                <td>@fee</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>Order Type:</td>
+                                <td>Pickup</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td>Tip:</td>
+                            <td>$@Model.SharedCart.PartyDriverTip().ToString("N2")</td>
+                        </tr>
+                        <tr>
+                            <td>Current Order <b>Total:</b></td>
+                            <td><span style="color:Red; font-weight:bold;">$@Model.SharedCart.PartyTotal().ToString("N2")</span></td>
+                        </tr>
+
+                    </table><hr />
+                    <p>
+                        <a href="@Url.Action("Login", "Account", routeValues: new { returnUrl = "/GroupCheckout/Index", backFromCheckout = true })" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> <b>Ready to check out</b>
+                        </a><br />
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        Checkout can not be continued. Please go back to your cart and check the minimun
+                        order.
+                    </p>
+                }
+
+            </div>
+            <div class="col-sm-1 col-md-1"></div>
+            <div class="col-sm-5 col-md-5">
+                <h4>Shared Cart Order Status:</h4>
+                <ul>
+                    @{var status = "";}
+                    @foreach (var c in Model.SharedCart.PartyCart.Keys)
+                    {
+                        status = (Model.SharedCart.PartyCart[c].IsFinishedShareOrdering) ? "Done" : "Ordering";
+                        <li><b>@c</b>&nbsp;&nbsp;&nbsp; <span>@status</span></li>
+                    }
+                </ul>
+            </div>
+        </div><br />
+    </div>
+</div>

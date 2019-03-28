@@ -1,0 +1,9 @@
+﻿@model FR.Domain.Model.Entities.BizImage
+<div class="divAddCart boxShadow">
+    @Model.BizInfo.BizTitle
+</div>
+<center>
+    <div>
+        <img src="@Url.Content(Model.BigImagePath)" title="@Url.Content(Model.BizInfo.BizTitle)"  class="biggerImg"/>
+    </div>
+</center>

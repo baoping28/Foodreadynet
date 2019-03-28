@@ -1,0 +1,16 @@
+﻿@model IdentitySample.Models.MyDetailModel
+<div style="min-height:300px;">
+<div>
+    @if (ViewBag.ok=="yes")
+{
+<p><h3>Your profile has been successfully updated.</h3></p>
+    <p>To view the new profile, go @Html.ActionLink("Back to My Account", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" }),
+     then click "My Profile" link. </p>
+}
+else
+{
+    <p>Oops! Your profile updating action failed.</p>
+}
+@Html.ActionLink("Back to My Account", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })
+</div>
+</div>

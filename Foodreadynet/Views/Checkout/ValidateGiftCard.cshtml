@@ -1,0 +1,37 @@
+﻿@model FoodReady.WebUI.Models.CheckoutGiftModel
+<div id="divGift">
+@if (Model.GiftCardStatus == 5)
+{
+    <div class="midTitle chechtitle">Please come back in 10 minites.</div>
+     @Html.Partial("_LockGiftCodeTry")
+}
+else if (Model.GiftCardStatus == 0)
+{
+     <div class="midTitle chechtitle">Sorry, invalid gift card code. Please try again.</div>
+      @Html.Partial("_PayWithGiftCard")
+}
+else if (Model.GiftCardStatus == 1)
+{
+         <div class="midTitle chechtitle">
+        Sorry,your gift card code has been expired.<br />
+        Note: This Virtual Gift Card will expire one year from its last use. If
+        it is not used within the first year, it will also expire.
+    </div>
+     @Html.Partial("_PayWithGiftCard")
+}
+else if (Model.GiftCardStatus == 2)
+{
+     <div class=" midTitle chechtitle">Sorry, your gift card balance is zero.</div>
+     @Html.Partial("_PayWithGiftCard")
+}
+else if (Model.GiftCardStatus == 3)
+{
+    <div class="midTitle chechtitle">Pay with gift card</div>
+    @Html.Partial("_PayGiftCardOnly", Model) 
+}
+else
+{
+   <div class="midTitle chechtitle">Pay with gift card, then credit card</div>
+    @Html.Partial("_PayRestWithCreditCard", Model)
+}
+</div>

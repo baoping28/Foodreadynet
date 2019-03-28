@@ -1,0 +1,41 @@
+﻿@model FoodReady.WebUI.Models.BizInfoModel
+<div class="container toppadding">
+    <div class="row">
+        <h2 style="color:#1E7CB8;padding-left:10px;"><img src="@Url.Content("~/images/fk.png")" /><b> Most Popular Cuisines</b></h2>
+        <p style="padding-left:10px;">
+            <small>
+                What are you hungry for? No matter what cuisine you're craving, you can order it
+                right here.There are over 100 different cuisines available. With all that variety
+                in over 50 cities nationwide, we've made it easier than ever to find and order exactly
+                what you want.
+            </small>
+        </p><br />
+        <div class="col-sm-3 col-md-3">
+            <a href="/AllCuisines/Cuisine/Chinese">
+                <img src="../../Content/images/ch.png" title="Chinese Food" class="imgBox boxShadow boxCorner img-responsive" />
+            </a>
+        </div>
+        <div class="col-sm-3 col-md-3">
+            <a href="/AllCuisines/Cuisine/Pizza">
+                <img src="../../Content/images/pz.png" title="Pizza" class="imgBox boxShadow boxCorner img-responsive" />
+            </a>
+        </div>
+        <div class="col-sm-3 col-md-3">
+            <a href="/AllCuisines/Cuisine/Italian">
+                <img src="../../Content/images/it.png" title="Italian Food" class="imgBox boxShadow boxCorner img-responsive" />
+            </a>
+        </div>
+        <div class="col-sm-3 col-md-3">
+            <a href="/AllCuisines/Cuisine/Japanese">
+                <img src="../../Content/images/jp.png" title="Japanese Food" class="imgBox boxShadow boxCorner img-responsive" />
+            </a>
+        </div>
+    </div>
+    <hr />
+</div>
+<div class="container">
+    <div class="row">
+        <h4 style="padding-left:10px;"><b>All Cuisines:</b></h4>
+        @Html.Raw(Model.ShowCuisines)
+    </div>
+</div>

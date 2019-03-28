@@ -1,0 +1,37 @@
+﻿@model FoodReady.WebUI.Models.DeliveryCheckModel
+<div id="popupbody">
+    <div class="modal-header">
+        <h5 id="poptitle" class="modal-title" style="color:black;text-align:center;">Let's see if <span class="midTitle">@ViewBag.bizname</span> delivers to your location.</h5>
+    </div>
+    <div class="modal-body">
+        <div class="searchContent">
+            @using (Ajax.BeginForm("CheckDeliveryOKResult", "Restaurants", FormMethod.Post, new AjaxOptions
+    {
+        UpdateTargetId = "popupbody",
+        OnBegin = "onRepopupBegin",
+        OnSuccess = "onRepopupSuccess",
+        OnFailure = "onRepopupFailed"
+    }, new { @id = "checkdelveryok-form" }))
+            {
+                @Html.Hidden("BizInfoId", @ViewBag.bizid == null ? null : (string)@ViewBag.bizid)
+                @Html.Hidden("BizName", @ViewBag.bizname == null ? null : (string)@ViewBag.bizname)
+                <center>
+                    <div class="form-group">
+                        Address: @Html.TextBoxFor(m => m.Address, new { @class = "boxShadow", @value = @Model.Address })
+                        @Html.ValidationMessageFor(m => m.Address)
+                    </div>
+                    <div class="form-group">
+                        Zipcode: @Html.TextBoxFor(m => m.ZipCode, new { @class = "boxShadow", @value = @Model.ZipCode })
+                        @Html.ValidationMessageFor(m => m.ZipCode)
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" onclick="$('#checkdelveryok-form').submit();" class="btn btn-primary btn-sm" title="Check if the restaurant delivers to you">Check if the restaurant delivers to you &nbsp;&nbsp; <span class="glyphicon glyphicon-ok"></span></button>
+                        <a class="btn btn-primary btn-sm" href="@Url.Content("~/Restaurants/Menu/" + @Model.BizInfoId)"><span class="glyphicon glyphicon-book"></span>  &nbsp; &nbsp;  <b>Just bring me to the menu</b></a>
+
+                    </div>
+                </center>
+            }
+        </div>
+    </div>
+</div>

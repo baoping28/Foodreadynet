@@ -1,0 +1,26 @@
+﻿@model IEnumerable<FoodReady.WebUI.Models.TopYelpModel>
+@using FoodReady.WebUI.HtmlHelpers
+@foreach (var y in Model)
+{
+    <table>
+        <tr>
+            <td>
+                <b>@Html.ActionLink(y.Biz.BizTitle, "Menu", "Restaurants", new { id = y.Biz.BizInfoId }, null)</b><br />
+                <a href="@Url.Content("~/Restaurants/Menu/" + y.Biz.BizInfoId)">
+                    <img src="@Url.Content("~/Content/BizImages/" + y.Biz.ImageUrl)" class="bizImg boxShadow boxCorner" />
+                </a>
+                <div style="clear: both;">
+                </div>
+            </td>
+            <td>
+                @Html.Partial("_TopYelpRating", y.Yelp)
+                @StarRatings.ListCuisineNames(y.Biz.BizCuisines.Where(e => e.BizInfoId == y.Biz.BizInfoId).ToList())
+                <br />
+                @Html.Raw(y.Biz.BizTwoLineAddressString)
+            </td>
+        </tr>
+    </table>
+    <div style="clear: both;">
+    </div>
+    <br />
+}

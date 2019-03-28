@@ -1,0 +1,98 @@
+﻿@model FoodReady.WebUI.Models.PayModel
+@using FR.Infrastructure.Helpers
+@using FoodReady.WebUI.HtmlHelpers
+@{
+    ViewBag.Title = "Checkout";
+}
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/copyAddressJS.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/RemainingCharacterCount.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/checkoutJS.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/CheckoutSlideUpDown.js")" type="text/javascript"></script>
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:#ffffff;" class="checkoutTitle">
+                CHECK OUT <small style="font-size:16px;color:#dddddd;">
+                    using one of following payment methods to complete the checkout
+                </small>
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container toppadding">
+    <div id="complete" class="row">
+        <div>
+            <div class="col-sm-7 col-md-7 boxShadow" style="margin-bottom:10px;">
+                <ul class="nav nav-pills">
+                    <li class="active">
+                        <a href="#tab1" data-toggle="tab"><b>Credit Card Payment</b></a>
+                    </li>
+                    <li>
+                        <a href="#tab2" data-toggle="tab"><b>PayPal Payment</b></a>
+                    </li>
+                    <li>
+                        <a href="#tab3" data-toggle="tab"><b>Gift Card Payment</b></a>
+                    </li>
+                </ul>
+                <div class="tab-content well">
+                    <div class="tab-pane active" id="tab1">
+                        <h3><b>Credit Card Payment</b></h3><hr />
+                        <div>
+                            @Html.Partial("_PayWithCreditCard", Model.CreditCardModel)
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <div class="tab-pane active" id="tab1">
+                            <h3><b>Paypal Payment</b></h3>
+                            <div>
+                                @Html.Partial("_PayWithPayPal", Model.PaypalModel)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab3">
+                        <h3><b>Gift Card Payment</b></h3>
+                        <div id="giftcard">
+                            @Html.Partial("_PayWithGiftCard")
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-5 col-md-5">
+                @Html.Partial("_ShoppingCartInfo", Model.CreditCardModel.Cart)
+                <p>
+                    <a href="@ViewBag.id" class="btn btn-lg btn-primary" title="Back to shopping cart">
+                        <span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp; Make a cart change
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="divfailed" class="hide">
+            <div class="col-sm-12 col-md-12">
+                <p>
+                    Sorry, The transction and payment you have just made failed. No charge is made.
+                    This could be many reasons including expired card, mismatch of credit card numbers,
+                    CSC numbers, card holder name, billing address. Please <a href="/Checkout/Index">
+                        try
+                        again
+                    </a>and make sure all required information are correct.
+                </p>
+                <p>
+                    If you have any questions, please call at @ViewBag.servicephone. Thank you for your ordering
+                    with foodready.net.
+                </p>
+                <p>
+                    <a href="@ViewBag.id" title="Back to shopping cart">Back to menu</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div id="divsuccess">
+            </div>
+        </div>
+    </div>
+</div>

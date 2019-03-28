@@ -1,0 +1,114 @@
+﻿@model FR.Domain.Model.Entities.Order
+<div id="order-num" style="background-color:azure;">
+    @if (ViewBag.ok == "y")
+    {
+        <ul>
+            <li class="liveorder">
+                <span style="cursor:pointer;color:maroon;" onclick="doslideupdown(this);">
+                    <b> @Model.BizName </b> &nbsp; &nbsp;
+                    @if (Model.OrderStatusId==9)
+                    {
+                       <span>This order is confirmed</span>
+                    }
+                    else
+                    {
+                        <span>This order is <b>not</b> confirmed</span>
+                    }
+                </span>  &nbsp; &nbsp; 
+                <button class="btn btn-primary" onclick="doremove(this, @Model.OrderId,9);">Done and Remove</button>
+                <div class="itemList">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3">
+                            @{var str = 800000000 + Model.OrderId;}
+                            Order Number: <b>@str</b>
+                        </div>
+                        <div class="col-sm-3 col-md-3">
+                            Order Time: <b>@Model.AddedDate.ToShortTimeString()  @Model.AddedDate.ToShortDateString()</b>
+                        </div>
+                        <div class="col-sm-3 col-md-3">
+                            Order Type: <b>@Model.OrderType</b>
+                        </div>
+                        <div class="col-sm-3 col-md-3">
+                            Scheduled Time: <b>@Model.ScheduleTime @Model.ScheduleDate</b>
+                        </div>
+                    </div><hr />
+                    @foreach (var item in Model.OrderItems)
+                    {
+                        <div class='row'>
+                            <div class='col-sm-2 col-md-2'>
+                                <b>@item.Quantity.ToString()</b>
+                            </div>
+                            <div class='col-sm-10 col-md-10'>
+                                <b>@item.Title</b>
+                                @if (string.IsNullOrEmpty(item.ProductSizeTitle) == false)
+                                {
+                                    <span>( @item.ProductSizeTitle )</span>
+                                }
+                                @if (string.IsNullOrEmpty(item.DressingChoice) == false)
+                                {
+                                    <p>Dressing: @item.DressingChoice</p>
+                                }
+                                @if (string.IsNullOrEmpty(item.SelectedFreeToppings) == false)
+                                {
+                                    <p>Free toppings: @item.SelectedFreeToppings</p>
+                                }
+                                @if (string.IsNullOrEmpty(item.SelectedToppings) == false)
+                                {
+                                    <p>Extra toppings for each:: @item.SelectedToppings</p>
+                                }
+                                @if (string.IsNullOrEmpty(item.HowSpicy) == false)
+                                {
+                                    <p>Spicy: @item.HowSpicy</p>
+                                }
+                                @if (string.IsNullOrEmpty(item.SideChoice) == false)
+                                {
+                                    <p>Side choice: @item.SideChoice</p>
+                                }
+                                @if (string.IsNullOrEmpty(item.SauceChoice) == false)
+                                {
+                                    <p>Sauce choice: @item.SauceChoice</p>
+                                }
+                                @if (string.IsNullOrEmpty(item.CrustChoice) == false)
+                                {
+                                    <p>Crust choice: @item.CrustChoice</p>
+                                }
+                                @if (string.IsNullOrEmpty(item.CheeseAmount) == false)
+                                {
+                                    <p>Cheese Amount: @item.CheeseAmount</p>
+                                }
+                                @if (string.IsNullOrEmpty(item.SelectedAddSides) == false)
+                                {
+                                    <p>Add: @item.SelectedAddSides</p>
+                                }
+                                @if (string.IsNullOrEmpty(item.Instruction) == false)
+                                {
+                                    <p>Instructions: @item.Instruction</p>
+                                }
+                            </div>
+                        </div><hr />
+                    }
+                    @if (string.IsNullOrEmpty(Model.CouponChoice) == false)
+                    {
+                        <div class='row'>
+                            <div class='col-sm-12 col-md-12'>
+                                @Model.CouponChoice
+                            </div>
+                        </div><hr />
+                    }
+                    @if (string.IsNullOrEmpty(Model.CustomerMessage) == false)
+                    {
+                        <div class='row'>
+                            <div class='col-sm-12 col-md-12'>
+                                @Model.CustomerMessage
+                            </div>
+                        </div><hr />
+                    }
+                </div>
+            </li>
+        </ul>
+    }
+    else
+    {
+        <p>nnnnn</p>
+    }
+</div>

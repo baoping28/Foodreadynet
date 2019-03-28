@@ -1,0 +1,8 @@
+﻿.input-group[class*="col-"] {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.error-404 {
+  font-size: 8em;
+}

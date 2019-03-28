@@ -1,0 +1,22 @@
+﻿<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&key=AIzaSyDKiEdbCcINToyXHXIFFkh-jf2AUe_NHz8" async="" defer="defer" type="text/javascript"></script>
+<script type="text/javascript" src="../Scripts/FRJqueryScripts/GoogleSearchAuto.js"></script>
+<center><h4>Find out the restaurants in your neighborhood.</h4></center>
+<div id="msg" style="display:none;">Please check your input and try again.</div>
+<div>
+    @Html.RadioButton("DeliveryGroup", "true", (bool)ViewBag.delivery, new { id = "DELIVERY" })
+    @Html.Label("DELIVERY", new { @class = "labelSearch" })
+   &nbsp;  &nbsp;  &nbsp; @Html.RadioButton("DeliveryGroup", "false", !(bool)ViewBag.delivery, new { id = "PICKUP" })
+    @Html.Label("PICKUP", new { @class = "labelSearch" })
+    <br />
+</div>
+<div style="color:#000000;">
+    <input id="autocomplete" placeholder="Your street,city,state zipcode"
+           class="boxShadow" style="width:260px;height:40px;margin-bottom:10px;" onfocus="geolocate()" type="text">
+    <button id="gosearch" class="btn btn-primary boxShadow" style="height:40px;padding:8px 12px 8px 12px; position:relative;top:-1px;"><span class="glyphicon glyphicon-search"></span> &nbsp; Find your favorite restaurants</button>
+    <input type="hidden" id="street_number" disabled="true">
+    <input type="hidden" id="route" disabled="true">
+    <input type="hidden" id="locality" disabled="true">
+    <input type="hidden" id="administrative_area_level_1" disabled="true">
+    <input type="hidden" id="postal_code" disabled="true">
+    <input type="hidden" id="country" disabled="true">
+</div>

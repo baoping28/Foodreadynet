@@ -1,0 +1,140 @@
+﻿@model FoodReady.WebUI.Models.CheckoutModel
+@using FR.Infrastructure.Helpers
+
+@{var str = Model.Cart.IsDelivery ? "Delivery" : "Pickup";}
+@{var charge = Model.Cart.IsDelivery ? "Delivery Charge:" : "";
+var fee = Model.Cart.IsDelivery ? Helper.DeliveryFee(Model.Cart.DeliveryFee) : "";}
+<div class="row">
+    <div class="col-sm-6 col-md-6" style="border-right:solid 1px #008cba;">
+        <table class="table table-striped">
+            <tr>
+                <td> Order Type:</td>
+                <td>@str</td>
+            </tr>
+            <tr>
+                @if (Model.Cart.IsDelivery)
+                {
+                    <td>
+                        Delivery to:
+                    </td>
+                    <td>
+                        @Model.FirstName @Model.LastName<br />
+                        @if (string.IsNullOrEmpty(Model.RoomNumber)==false) {
+                        <text>#@Model.RoomNumber</text>  <br />
+                        }
+                        @Model.AddressLine<br />
+                        @Model.City, @Model.State @Model.ZipCode
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Pickup by:
+                    </td>
+                    <td>
+                        @Model.FirstName  @Model.LastName
+                    </td>
+                }
+            </tr>
+            <tr>
+                <td>
+                    Billing to:
+                </td>
+                <td>@Model.BillFirstName @Model.BillLastName</td>
+            </tr>
+            <tr>
+                <td>Card Type:</td>
+                <td>@Helper.GetCardNameByTypeValue(Model.CardType)</td>
+            </tr>
+            <tr>
+                <td>Card Number:</td>
+                <td>@Model.CardNumber</td>
+            </tr>
+            <tr>
+                <td>Security Code:</td>
+                <td>@Model.SecurityCode</td>
+            </tr>
+            <tr>
+                <td>Expire:</td>
+                <td>@Model.ExpirationMonth / @Model.ExpirationYear</td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>@Model.Phone</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>@Model.Email</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-sm-6 col-md-6">
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    Scheduled Time:
+                </td>
+                <td>
+                    @Model.ScheduleTime,  @Helper.GetScheduleDate(Model.ScheduleDate)
+                </td>
+            </tr>
+            <tr>
+                <td><b>Subtotal:</b></td>
+                <td><b>$@Model.Cart.SubTotal().ToString("N2")</b></td>
+            </tr>
+            <tr>
+                @if (string.IsNullOrEmpty(Model.Cart.CouponChoice) == false)
+                {
+                    <td> Offer:</td>
+                    <td><span style="color: Green;">@Helper.CouponNote(Model.Cart.DiscountPercentage, Model.Cart.FreeItem, Model.Cart.SubTotal())&nbsp;</span></td>
+                }
+                else
+                {
+                    <td> Offer:</td>
+                    <td>Not available</td>
+                }
+            </tr>
+            <tr>
+                <td>Tax (@Model.Cart.TaxRate.ToString("N2")%):</td>
+                <td><span id="tax">@Helper.ToUSD(Model.Cart.Tax().ToString("N2"))</span></td>
+            </tr>
+            <tr>
+                <td>@charge</td>
+                <td>@fee</td>
+            </tr>
+            <tr>
+                @if (Model.Cart.serviceCharge > 0.0m)
+                {
+                    <td>Service Charge:</td>
+                    <td><span id="Service">@Helper.DeliveryFee(Model.Cart.serviceCharge)</span></td>
+                }
+                else
+                {
+                    <td>Service Charge:</td>
+                    <td>$0.00</td>
+                }
+            </tr>
+            <tr>
+                @if (Model.Cart.DriverTip > 0.0m)
+                {
+                    <td>Tip:</td>
+                    <td>$@Model.Cart.DriverTip.ToString("N2")</td>
+                }
+                else
+                {
+                    <td>Tip:</td>
+                    <td>$0.00</td>
+                }
+            </tr>
+            <tr>
+                <td>Instructions:</td>
+                <td>@Model.Instructions</td>
+            </tr>
+            <tr>
+                <td><h3 style="color: Red;font-weight:bold;">Total:</h3></td>
+                <td><h3 id="cartTotal" style="color: Red;font-weight:bold;">@Helper.ToUSD(Model.Cart.Total().ToString("N2"))</h3></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<hr />

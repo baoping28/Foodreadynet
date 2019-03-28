@@ -1,0 +1,19 @@
+﻿@model FR.Domain.Model.Entities.HotelType
+<div id="@Url.Content("item" + Model.HotelTypeId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoHotelType", "Admin", new { id = Model.HotelTypeId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.HotelTypeId),
+                            OnBegin = "onFreeItemBegin('" + Model.HotelTypeId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.HotelTypeId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.HotelTypeId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the Hotel Type: " + Model.Name + " ?"
+                        }))
+    {
+
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+    }
+</div>
+
+
+

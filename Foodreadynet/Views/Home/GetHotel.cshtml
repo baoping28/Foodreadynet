@@ -1,0 +1,45 @@
+﻿
+@model FoodReady.WebUI.Models.HotelModel
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/hotelsearch.js")" type="text/javascript"></script>
+<div id="popupbody">
+    <div class="modal-header">
+        <h4 id="poptitle" class="modal-title" style="color:black;text-align:center;">Choose a city and then select your <b>@ViewBag.typenme</b> <small> we'll find restaurants near you.</small></h4>
+    </div>
+    <div class="modal-body">
+        @{var n = 0;}
+        @foreach (var h in Model.DCityHotel)
+        {
+            n++;
+            <div class="panel-group" id="@Url.Content("accordionH" + n)">
+                <div class="panel panel-default">
+                    <h3 class="panel-title">
+                        &nbsp; <a data-toggle="collapse" data-parent="@Url.Content("#accordionH" + n)" href="@Url.Content("#togetH" + n)"><span class="glyphicon glyphicon-circle-arrow-down"></span> @ViewBag.typenme in <b>@h.Key</b></a>
+                    </h3>
+                </div>
+                <div class="row">
+                    <div id="@Url.Content("togetH" + n)" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            @foreach (var t in h.Value)
+                            {
+                                var url = "?address=" + t.AddressLine + "," + t.City + "," + t.State + "&city=" + t.City + "&zip=" + t.ZipCode;
+                                <div class="col-sm-12 col-md-12">
+                                    <a href="@Url.Content("~/Restaurants" + @url)" class="hotelsearch">
+                                        <img src="@Url.Content(t.ImagePath)" title="Select a hotel" class="float-left hotelImg img-circle img-responsive" /><span style="color:maroon;font-weight:bold;"> @t.Name</span><br />
+                                        @t.AddressLine,<br />@t.City, @t.State @t.ZipCode
+                                    </a><br />
+                                    <a onclick="@Url.Content("getDirections('" + Model.GoogleMapLink(t) + "');return false;")" href=""><span class="glyphicon glyphicon-map-marker"></span>GET MAP</a>
+                                    <div style="clear:both;"></div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div id="loading" class="loadCheck">
+            <center>
+                <img id="loader" class="loadCheck" style="text-align:center;" src="@Url.Content("~/Content/Images/ajax-loaderPng4.gif")" />
+            </center>
+        </div>
+    </div>
+</div>

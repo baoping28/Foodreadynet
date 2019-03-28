@@ -1,0 +1,26 @@
+﻿@model FR.Domain.Model.Entities.Product
+<div id="popupbody1">
+    <div class="modal-header divAddCart">
+        <h5 id="poptitle1" class="modal-title">
+            @Model.Title
+        </h5>
+    </div>
+    <div class="modal-body">
+        @using (Ajax.BeginForm("AddToSharedCart", "Group", new { id = Model.ProductId }, new AjaxOptions
+{
+    UpdateTargetId = "popupbody1",
+    OnBegin = "onPopup1Begin",
+    OnSuccess = "onPopup1Success",
+    OnFailure = "onPopup1Failed"
+}, new { @id = "continuecart-form" }))
+        {<center>
+                <div>
+                    <img src="@Url.Content(Model.BigImagePath)" title="Add to cart" class="biggerImg img-responsive" />
+                </div>
+                <div id="divSubmit">
+                   <button type="button" onclick="$('#continuecart-form').submit();" class="btn btn-primary" title="Continue">Continue &nbsp; <i class="fa fa-2x fa-caret-right"></i></button>
+                   </div>
+            </center>
+        }
+    </div>
+</div>

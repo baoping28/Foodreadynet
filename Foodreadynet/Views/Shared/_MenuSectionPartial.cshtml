@@ -1,0 +1,58 @@
+﻿@model FoodReady.WebUI.Models.SubMenuViewModel
+<div id="menuCancel" class="midTitle">
+    Menu Index <i id="menuClose" class="fa fa-remove fa-2x pull-right"></i>
+</div>
+<div id="indexlink">
+    @{var cuisineName = Model.CategoryList.FirstOrDefault() == null ? "" : Model.CategoryList.FirstOrDefault().BizCuisine.CuisineTypeName;}
+    <ul>
+        @foreach (var bc in Model.MenuList)
+        {
+            <li class="indexTitle">
+                @Ajax.ActionLink(bc.CuisineTypeName + " Menu", "SubMenu", "Restaurants", new { id = bc.BizCuisineId }, new AjaxOptions
+{
+    UpdateTargetId = "menucontent",
+    OnBegin = "onSubMenuBegin",
+    OnComplete = "onSubMenuCompleted('" + bc.CuisineTypeName.Replace(" ", "") + "')",
+    OnFailure = "onSubMenuFailed"
+})
+        </li>
+        }
+        @foreach (var c in Model.CategoryList)
+        {
+
+            <li>
+                <a href="@Url.Content("#ctg" + c.CategoryId)">
+                    <img src="../../Content/images/Arrow.png" class="checkoutImg" />
+                    &nbsp; @c.Title
+                </a>
+            </li>
+        }
+        <li>
+            <img src="../../Content/Images/chili.png" title="Spicy" class="foodtypeImg" />@Ajax.ActionLink("Spicy", "SubMenu", "Restaurants", new { id = Model.CurrentBizCuisineId, sortParam = "spicy" }, new AjaxOptions
+{
+    UpdateTargetId = "menucontent",
+    OnBegin = "onSubMenuBegin",
+    OnComplete = "onSubMenuCompleted('" + cuisineName.Replace(" ", "") + "')",
+    OnFailure = "onSubMenuFailed"
+})
+        </li>
+        <li>
+            <img src="../../Content/Images/veg.png" title="Vegetarian" class="foodtypeImg" />@Ajax.ActionLink("Vegetarian", "SubMenu", "Restaurants", new { id = Model.CurrentBizCuisineId, sortParam = "veg" }, new AjaxOptions
+{
+    UpdateTargetId = "menucontent",
+    OnBegin = "onSubMenuBegin",
+    OnComplete = "onSubMenuCompleted('" + cuisineName.Replace(" ", "") + "')",
+    OnFailure = "onSubMenuFailed"
+})
+        </li>
+        <li>
+            <img src="../../Content/Images/ratingStar.png" title="Popular" class="foodtypeImg" />@Ajax.ActionLink("Popular", "SubMenu", "Restaurants", new { id = Model.CurrentBizCuisineId, sortParam = "pop" }, new AjaxOptions
+{
+    UpdateTargetId = "menucontent",
+    OnBegin = "onSubMenuBegin",
+    OnComplete = "onSubMenuCompleted('" + cuisineName.Replace(" ", "") + "')",
+    OnFailure = "onSubMenuFailed"
+})
+        </li>
+    </ul>
+</div>

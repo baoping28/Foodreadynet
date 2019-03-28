@@ -1,0 +1,17 @@
+﻿@model FR.Domain.Model.Entities.CrustChoice
+<div id="@Url.Content("item" + Model.CrustChoiceId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoCrustChoice", "Admin", new { id = Model.CrustChoiceId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.CrustChoiceId),
+                            OnBegin = "onFreeItemBegin('" + Model.CrustChoiceId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.CrustChoiceId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.CrustChoiceId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the item: " + Model.Title + " ?"
+                        }))
+    {
+                                                   
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+    }
+</div>
+

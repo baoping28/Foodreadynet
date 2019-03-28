@@ -1,0 +1,54 @@
+﻿@model FoodReady.WebUI.Models.DeliveryCheckModel
+<script language="javascript">
+    function Redirect() {
+        var returnUrl = "@ViewBag.goList";
+        if (returnUrl) {
+            window.location.href = returnUrl;
+        }
+    }
+    Redirect();
+</script>
+@if (string.IsNullOrEmpty(@ViewBag.success))
+{
+    <div id="popupbody1">
+        <div class="modal-header">
+            <h4 id="poptitle" class="modal-title" style="color:black;text-align:center;">Tell us your location, we find restaurants with discount offers.</h4>
+        </div>
+        <div class="modal-body">
+            <p style="color:#21609c;text-align:center;">
+                @ViewBag.ValidateAddress
+            </p>
+
+            @using (Ajax.BeginForm("DiscountResult", "Restaurants", FormMethod.Post, new AjaxOptions
+    {
+        UpdateTargetId = "popupbody1",
+        OnBegin = "onPopup1Begin",
+        OnSuccess = "onPopup1Success",
+        OnFailure = "onPopup1Failed"
+    }, new { @id = "winpopup2-form" }))
+            {
+                <center>
+                    <div class="form-group">
+                        Address: @Html.TextBoxFor(m => m.Address, new { @class = "boxShadow", @value = @Model.Address })
+                        @Html.ValidationMessageFor(m => m.Address)
+                    </div>
+                    <div class="form-group">
+                        Zipcode: @Html.TextBoxFor(m => m.ZipCode, new { @class = "boxShadow", @value = @Model.ZipCode })
+                        @Html.ValidationMessageFor(m => m.ZipCode)
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" onclick="$('#winpopup2-form').submit();" class="btn btn-primary btn-sm" title="Get restaurants with discount offers">Get restaurants with discount offers &nbsp;&nbsp; <span class="glyphicon glyphicon-ok"></span></button>
+                    </div>
+                </center>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <br />
+    <center>
+        <div><img id="loader" class="loadCheck" src="@Url.Content("~/Content/Images/ajax-loaderPng4.gif")" /> &nbsp; &nbsp; Please wait...</div>
+    </center>
+}

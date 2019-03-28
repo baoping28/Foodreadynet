@@ -1,0 +1,40 @@
+﻿@model FoodReady.WebUI.Models.FamilyMealModel
+@{
+    ViewBag.Title = "Edit Family Meal";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center>
+        <h3>(@Model.Bizinfo.BizTitle) Edit Family Meal <small style="color:white;">
+            (product:
+            @Model.Product.Title)
+        </small></h3>
+    </center>
+</div>
+@ViewBag.result
+<p></p>
+
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(e => e.ProductID)
+        @Html.HiddenFor(e => e.FamilyMealID)
+        @Html.HiddenFor(e => e.BizInfoID)
+    <div class="form-group">
+        @Html.LabelFor(m => m.NumberOfPeople)
+        @Html.TextBoxFor(m => m.NumberOfPeople, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.NumberOfPeople)
+    </div><br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.MealToAdd)
+        @Html.TextBoxFor(m => m.MealToAdd, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.MealToAdd)
+    </div><br />
+    <div class="form-group pull-right">
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+    </div><br />
+    <div class="form-group">
+        <p>@Html.ActionLink("Back to Manage Family Meal " + Model.Product.Title, "ManageFamilyMeal", "admin", new { id = Model.ProductID, bizid = Model.BizInfoID }, null)</p>
+    </div>
+    }
+</div>

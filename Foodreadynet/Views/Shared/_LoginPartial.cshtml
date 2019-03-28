@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated) {
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav">
+            <li>
+                 @Html.ActionLink("Hi!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+               <!-- @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" }) -->
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">LOG OFF</a></li>
+        </ul>
+    }
+}
+else 
+{
+    <ul class="nav navbar-nav">
+        <li><a href="@Url.Action("Login", "Account")">SIGN IN <i class="fa fa-sign-in fa-2x"></i></a></li>
+    </ul>
+}
+
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+        <a id="searchrestaurant" href="#" class="dropdown-toggle" data-toggle="dropdown"> RESTAURANTS <i class="fa fa-search fa-2x"></i> &nbsp; &nbsp;</a>
+        <ul class="dropdown-menu">
+            <li>@Ajax.ActionLink(" Restaurants By Hotel", "HotelType", "Home", null, new AjaxOptions
+                {
+                    UpdateTargetId = "popupbody1",
+                    OnBegin = "onPopup1Begin",
+                    OnSuccess = "onPopup1Success",
+                    OnFailure = "onPopup1Failed"
+                }, new { @class = "fa fa-bed" })
+            </li>
+            <li>@Html.ActionLink(" Restaurants By City", "Index", "AllCities",null, new { @class = "fa fa-building-o" })</li>
+            <li>@Html.ActionLink(" Restaurants By Cuisine", "Index", "AllCuisines", null, new { @class = "fa fa-cutlery" }) </li>
+            <li>@Html.ActionLink(" Restaurants By zip code", "Index", "AllZipcodes", null, new { @class = "fa fa-barcode" })</li>
+            <li>
+                <div id="auto1" class="form-group">
+                    &nbsp; &nbsp; @Html.TextBox("keyword", "", new { @class = "defaultText", title = "Search by keyword" })
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li> <a id="viewcart" href="#">BAG <i class="fa fa-shopping-bag fa-2x"></i><span id="bagitems" style="position:relative;top:2px;left:-21px;font-weight:600;color:red;">@ViewBag.bagitems</span></a></li>
+</ul>

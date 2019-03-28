@@ -1,0 +1,91 @@
+﻿@model IEnumerable<FR.Domain.Model.Entities.GiftCard>
+@{
+    ViewBag.Title = "My Gift Card";
+}
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:#ffffff;">
+                @User.Identity.Name' Gift Cards
+            </h1>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/FRAdminScripts/datepickerJQ.js")" type="text/javascript"></script>
+<div class="container toppadding">
+    <div>
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>
+                        Gift Card Code
+                    </th>
+                    <th>
+                        Purchaser Name
+                    </th>
+                    <th>
+                        Credit Card
+                    </th>
+                    <th>
+                        Recipient Email
+                    </th>
+                    <th>
+                        Purchase Amount
+                    </th>
+                    <th>
+                        Balance
+                    </th>
+                    <th>
+                        Last use Amount
+                    </th>
+                    <th>
+                        Last action Time
+                    </th>
+                    <th>
+                        Action Details
+                    </th>
+                </tr>
+                @foreach (var gc in Model)
+                {
+                    <tr class="trBorder">
+                        <td>
+                            @Html.Raw(gc.last4Digits)
+                        </td>
+                        <td>
+                            @gc.AddedBy
+                        </td>
+                        <td>
+                            @Html.Raw(gc.CreditCard.last4Digits)
+                        </td>
+                        <td>
+                            @gc.RecipientEmail
+                        </td>
+                        <td>
+                            @gc.Amount.ToString("N2")
+                        </td>
+                        <td>
+                            @gc.Balance.ToString("N2")
+                        </td>
+                        <td>
+                            @gc.LastPayAmount.ToString("N2")
+                        </td>
+                        <td>
+                            @gc.LastTimeUse
+                        </td>
+                        <td>
+                            @using (Ajax.BeginForm("GiftCardDetails", "Manage", new { id = gc.GiftCardId, code = gc.GiftCardCode }, new AjaxOptions
+        {
+            UpdateTargetId = "popupbody1",
+            OnBegin = "onPopup1Begin",
+            OnSuccess = "onPopup1Success",
+            OnFailure = "onPopup1Failed"
+        }))
+                            {
+                                <input type="submit" value="Action Details" title="Action Details" class="float-left" />
+
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+    </div>
+</div>

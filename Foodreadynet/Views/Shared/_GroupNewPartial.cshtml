@@ -1,0 +1,36 @@
+﻿@model FoodReady.WebUI.Models.GroupInfoModel
+<h3><b>Start a new group ordering</b></h3>
+<div>
+    @using (Ajax.BeginForm("Start", "Group", FormMethod.Post, new AjaxOptions
+                {
+                    UpdateTargetId = "popupbody1",
+                    OnBegin = "onPopup1Begin",
+                    OnSuccess = "onPopup1Success",
+                    OnFailure = "onPopup1Failed"
+                }, new { @id = "group-form" }))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Address)
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.Address)
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.ZipCode)
+            @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.ZipCode)
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.MaximumOrder)
+            @Html.TextBoxFor(m => m.MaximumOrder, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.MaximumOrder)
+        </div><br />
+        <div class="form-group">
+            <button id="btngroup" type="button" onclick="$('#group-form').submit();" class="btn btn-primary btn-lg" title="Start"><span class="glyphicon glyphicon-ok"></span> &nbsp;&nbsp; Start Group Ordering</button>
+        </div><br />
+    }
+</div>

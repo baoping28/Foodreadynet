@@ -1,0 +1,16 @@
+﻿@model FR.Domain.Model.Entities.DiscountCoupon
+<div id="@Url.Content("item" + Model.DiscountCouponId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoDiscount", "Admin", new { id = Model.DiscountCouponId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.DiscountCouponId),
+                            OnBegin = "onFreeItemBegin('" + Model.DiscountCouponId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.DiscountCouponId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.DiscountCouponId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the discount coupon: " + Model.Title + " ?"
+                        }))
+    {
+                                                   
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+                        }
+</div>

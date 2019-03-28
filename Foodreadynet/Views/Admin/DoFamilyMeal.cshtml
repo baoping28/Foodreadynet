@@ -1,0 +1,16 @@
+﻿@model FR.Domain.Model.Entities.FamilyMeal
+<div id="@Url.Content("item" + Model.FamilyMealId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoFamilyMeal", "Admin", new { id = Model.FamilyMealId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.FamilyMealId),
+                            OnBegin = "onFreeItemBegin('" + Model.FamilyMealId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.FamilyMealId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.FamilyMealId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the item: " + Model.MealToAdd + "(" + Model.NumberOfPeople.ToString() + ") ?"
+                        }))
+    {
+                                                   
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+                        }
+</div>

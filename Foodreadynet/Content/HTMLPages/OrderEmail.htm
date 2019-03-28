@@ -1,0 +1,38 @@
+﻿<html>
+<body> <script type="text/javascript" language="javascript" >
+           function getDirections(maplink) {
+               var winName = "BizLocation";
+               var ShelpWindow = window.open(maplink, winName, 'scrollbars=yes,width=1000,height=600 left=100 top=100 resizable=yes');
+           }
+    </script>
+<div style="width:730px; padding:60px; text-align:center;">
+ <h2>+BizName+</h2>
+  +BizInfos+ <br />
+ Order placed at +orderTime+ for <b>+orderType+</b> <br />
+ Order Payment Type: <b>+paymentType+</b> <br />
+ Order Number: <b>+orderNumber+</b> <br />
+ <hr /><br />
+<table style="width:730px; border:solid 1px black; padding:10px;">
+  <tr ><td style="width:350px; border:solid 1px black; padding:10px; text-align:right;"> Customer Name: </td>
+  <td style="width:350px; border:solid 1px black; padding:10px; text-align:left;"> +name+ </td></tr>
+  +address+
+  <tr><td style="width:350px; border:solid 1px black; padding:10px; text-align:right;"> Phone: </td>
+  <td style="width:350px; border:solid 1px black; padding:10px; text-align:left;"> +phone+ </td></tr>
+  +creditCard+
+</table>
+<table style="width:730px; border:solid 1px black;">
+  <tr><th> Qty</th><th> Item</th><th> Price</th></tr>
+  +orderItems+
+  <tr><td colspan='2' align='right'> Subtotal: </td><td align='right'> +subtotal+ </td></tr>
+  <tr><td colspan='2' align='right'> Tax: </td><td align='right'> +tax+ </td></tr>
+  <tr><td colspan='2' align='right'> Coupon Code: </td><td align='right'> +couponCode+ </td></tr>
+  <tr><td colspan='2' align='right'> Total: </td><td align='right'> +total+ </td></tr>
+</table>
+<hr /><br />
+END OF ORDER
+</div>
+ <a class="LkProduct" onclick="getDirections('https://maps.google.com/maps?saddr=Your+Address&daddr=1743+Willow+Pass+Rd.,+Concord,+CA,+94520,+USA&hl=en&ll=37.974525,-122.040763');return false;" href="">GET DRIVING
+                    DIRECTIONS </a>
+</body>
+</html>
+

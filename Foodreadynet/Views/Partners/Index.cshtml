@@ -1,0 +1,153 @@
+﻿@model FoodReady.WebUI.Models.RestaurantJoinModel
+@{
+    ViewBag.Title = "Restaurant Partners";
+}
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/RemainingCharacterCount.js")" type="text/javascript"></script>
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:#ffffff;">
+                Restaurant Owners <small style="font-size:16px;color:#dddddd;">
+                    improve your business by just one touch with us
+                </small>
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container toppadding liststyle">
+    <div class="row">
+        <div class="col-sm-7 col-md-7 boxShadow">
+            <ul class="nav nav-pills">
+                <li class="active">
+                    <a href="#tab1" data-toggle="tab"><b>JOIN US</b></a>
+                </li>
+                <li>
+                    <a href="#tab2" data-toggle="tab"><b>WHO WE ARE</b></a>
+                </li>
+                <li>
+                    <a href="#tab3" data-toggle="tab"><b>HOW IT WORKS</b></a>
+                </li>
+            </ul>
+            <div class="tab-content well">
+                <div class="tab-pane active" id="tab1">
+                    <div>
+                        <div style="padding: 10px 20px 10px 20px; font-size: 12px; font-family: Arial; color: #2e728b;
+                            text-align: justify;">
+                            <h3>
+                                FREE, NO CONTRACT!
+                            </h3>
+                            Foodready.net can improve restaurant business, increase food sales and market restaurant
+                            online.If you are a restaurant owner and want to start increasing your takeout and
+                            delivery business, join Foodready.net today. By filling up and submitting the form,
+                            you will receive a fax number and email address where you can send us a copy of
+                            your restaurant menu and one of our sales representatives will get back to you as
+                            soon as possible.
+                        </div>
+                        @Html.Partial("_PartnerInfoPartial", Model)
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab2">
+                    <div style="padding: 20px; text-align: justify;">
+                        <p>
+                            We are a company of young, energetic, and highly motivated people. Foodready.net
+                            is driven by a core management team composed of seasoned industry professionals.
+                            We believes a restaurant should focus its energy on things that a restaurant does
+                            best - which is making a great meal. We also believe that users should be able to
+                            find restaurants easily, compare them, and place orders from those restaurants -
+                            all in one place.
+                        </p>
+                        <p>
+                            Foodready.net provides an easy, fast and secure online food ordering service of
+                            take-out and delivery food from your local restaurants. Our fast-growing network
+                            of online restaurants offers a wide selection of menus and over 100 cuisines from
+                            popular Chinese, Pizza, Japanese, and American menus to exotic Mexican, Italian,
+                            Thai and Spanish. Our online food ordering service makes it easy to access your
+                            favorite restaurants and menus in our database. By entering your location, selecting
+                            a restaurant, reading its review and menu, choosing your food and placing order,
+                            your order is instantly sent to the restaurant for delivery or pickup. Foodyready.net
+                            makes food ready that esay!
+                        </p>
+                        By joining us, you will get:
+                        <ul>
+                            <li>Setup: Free</li>
+                            <li>Maintenance: Free</li>
+                            <li>Live Chat Support: Free </li>
+                            <li>Web site: Free (optional)</li>
+                            <li>Post your coupons: Free</li>
+                        </ul>
+                        <p>
+                            Sign up now! Contact us at @ViewBag.servicephone
+
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab3">
+                    <div>
+                        <img src="@Url.Content("~/Content/images/sixangles.png")" class="img-responsive" />
+                    </div>
+                    <div style="padding: 20px;">
+                        <p>
+                            FoodReady.Net will post your menu online according to the information you provide including
+                            business days and hours, minimum order, delivery charge and coupons. We advertise
+                            our website online and in the media to customers in your area. Your menu will reach
+                            countless internet users. Our website averages more than 1,000,000 hits a month!
+                        </p>
+                        <p>
+                            Our system allows your customers to place their orders ONLINE, issue the orders
+                            directly to your restaurant and confirms the orders. All you need to do is deliver
+                            and provide good food and great customer service!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5 col-md-5" style="padding: 30px;">
+            <div>
+                <center>
+                    <a href="@Url.Content("~/RestaurantOwners")" class="btn btn-lg btn-primary">
+                        <span class="glyphicon glyphicon-user"></span> &nbsp;  Restaurant Owner Log On
+                    </a>
+                    <h2 class="bigTitle">
+                        Call For More Info
+                        <br />
+                        @ViewBag.servicephone
+                    </h2>
+                </center>
+                <p>
+                    <b>What Restaurant Owners Say About Us</b><br />
+                    "Foodready.net tripled our Delivery Business by promoting our menu online."<br />
+                    88 Chinese, Los Angeles
+                    <br />
+                    <br />
+                    "We use many online ordering services and foodready.net is the best one by far."<br />
+                    Pino Pizza, San Francisco
+                    <br />
+                    <br />
+                    "Foodready.net helped us to increase our online delivery sales by exposing and advertising
+                    our restaurant online."<br />
+                    Front Room, San Francisco
+                </p>
+                <p>
+                    <b>Benefits of Using our Service</b>
+                </p>
+                <ul>
+                    <li>
+                        Foodready.net guarantees an Increase in your volume of delivery orders, in some cases by
+                        as much as 75% or more!!
+                    </li>
+                    <li>Foodready.net offers Free advertising online and in the media.</li>
+                    <li>Using foodready.net will help you reach new markets.</li>
+                    <li>
+                        Orders placed through foodready.net are clearly printed, eliminating errors due to misinterpretation
+                        or handwriting illegibility.
+                    </li>
+                    <li>No misunderstanding, no miscommunications.</li>
+                    <li>
+                        Foodready.net has Millions of registered users and our user bank is growing every day. Get
+                        free direct exposure to Millions of online users.
+                    </li>
+                </ul>
+                <br />
+            </div>
+        </div>
+    </div>
+    </div>

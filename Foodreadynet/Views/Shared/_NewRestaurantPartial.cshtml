@@ -1,0 +1,20 @@
+﻿@model FR.Domain.Model.Entities.BizInfo
+@using FoodReady.WebUI.HtmlHelpers
+
+<div style=" margin-top: 2px; float:left; margin-Right:30px; text-align:center;">
+    <a href="@Url.Content("~/Restaurants/Menu/" + Model.BizInfoId)">
+        <img src="@Url.Content("~/Content/BizImages/" + @Model.ImageUrl)" class="newAddedbBizImg boxShadow boxCorner" /></a>
+    <div style="clear: both;"></div>
+    <div style="width: 180px; font-family:Arial; font-size:12px;">
+        <b>@Html.ActionLink(Model.BizTitle, "Menu", "Restaurants", new { id = Model.BizInfoId }, null)</b><br />
+        @StarRatings.ListCuisineNames(Model.BizCuisines.Where(e => e.BizInfoId == @Model.BizInfoId).ToList())
+        <br />
+        @if (string.IsNullOrEmpty(Model.YelpBizId) == false)
+        {
+          @Html.Partial("_TopYelpRating", YelpBizDetails.GetYelpBiz(Model))
+        }
+        @Html.Raw(Model.BizTwoLineAddressString)
+        <br />
+        @Model.AddedDate.ToShortDateString()
+      </div>
+</div>

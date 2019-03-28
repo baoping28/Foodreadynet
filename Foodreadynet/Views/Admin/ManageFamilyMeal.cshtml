@@ -1,0 +1,83 @@
+﻿@model FoodReady.WebUI.Models.FamilyMealModel
+@using FR.Infrastructure.Helpers
+
+@{
+    ViewBag.Title = "Manage Family Meal";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center>
+        <h1>(@Model.Bizinfo.BizTitle) Manage Family Meal for @Model.Product.Title (@Model.LFamilyMeal.Count)</h1>
+    </center>
+</div>
+@ViewBag.result
+<div class="container boxShadow boxpadding">
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                Number of People
+            </th>
+            <th>
+                Active
+            </th>
+        </tr>
+        @foreach (var p in Model.LFamilyMeal)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(p.MealToAdd + "(" + p.NumberOfPeople.ToString() + ")", "EditFamilyMeal", "admin", new { id = p.FamilyMealId, bizid = Model.BizInfoID }, null)<br />
+                </td>
+                <td>
+                    <div id="@Url.Content("item" + p.FamilyMealId)" class="deleteButtons">
+                        @using (Ajax.BeginForm("DoFamilyMeal", "Admin", new { id = p.FamilyMealId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + p.FamilyMealId),
+                            OnBegin = "onFreeItemBegin('" + p.FamilyMealId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + p.FamilyMealId + "')",
+                            OnFailure = "onFreeItemFailure('" + p.FamilyMealId + "')",
+                            Confirm = "Do you want to " + @Url.Content(p.Active ? "lock" : "unlock") + " the item: " + p.MealToAdd + "(" + p.NumberOfPeople.ToString() + ") ?"
+                        }))
+                        {
+
+                            <input class="@Url.Content(p.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(p.Active ? "To lock item" : "To unlock item")" value="" />
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<p></p>
+<div class="titlebox boxShadow">
+    <center>
+        <h3>Add meal to "@Model.Product.Title"</h3>
+    </center>
+</div>
+@ViewBag.result
+<p></p>
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(e => e.BizInfoID)
+        @Html.HiddenFor(e => e.ProductID)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.NumberOfPeople)
+            @Html.TextBoxFor(m => m.NumberOfPeople, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.NumberOfPeople)
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.MealToAdd)
+            @Html.TextBoxFor(m => m.MealToAdd, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.MealToAdd)
+        </div><br />
+        <div class="form-group pull-right">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Add</button>
+        </div><br />
+        <div class="form-group">
+            <p>@Html.ActionLink("Back to Manage Products " + Model.Bizinfo.BizTitle, "ManageProducts", "admin", new { id = Model.Product.CategoryId, bizid = Model.BizInfoID }, null)</p>
+        </div>
+    }
+</div>

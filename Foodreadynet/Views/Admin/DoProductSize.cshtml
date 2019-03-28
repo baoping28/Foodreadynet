@@ -1,0 +1,16 @@
+﻿@model FR.Domain.Model.Entities.ProductSize
+<div id="@Url.Content("item" + Model.ProductSizeId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoProductSize", "Admin", new { id = Model.ProductSizeId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.ProductSizeId),
+                            OnBegin = "onFreeItemBegin('" + Model.ProductSizeId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.ProductSizeId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.ProductSizeId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the product size: " + Model.Title + " ?"
+                        }))
+    {
+                                                   
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+    }
+</div>

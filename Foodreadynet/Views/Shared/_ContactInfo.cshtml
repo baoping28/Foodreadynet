@@ -1,0 +1,29 @@
+﻿@model FoodReady.WebUI.Models.CheckoutModel
+@using FR.Infrastructure.Helpers
+@using FoodReady.WebUI.HtmlHelpers
+<p class="midTitle">
+    Contact Info
+</p>
+<div id="contactInfo">
+    <div class="form-group">
+        @Html.LabelFor(m => m.Phone)
+        <div class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-phone"></span>
+            </span>
+        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.Phone)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+
+        <div class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-envelope"></span>
+            </span>
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.Email)
+        </div>
+    </div>
+</div><hr />

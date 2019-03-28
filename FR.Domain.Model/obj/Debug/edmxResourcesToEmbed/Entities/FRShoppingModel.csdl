@@ -1,0 +1,1856 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FRShoppingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="BizInfos" Relationship="Self.FK_fr_BizInfos_AspNetUsers" FromRole="AspNetUsers" ToRole="fr_BizInfos" />
+    <NavigationProperty Name="ConvertedPoints" Relationship="Self.FK_fr_ConvertedPoints_AspNetUsers" FromRole="AspNetUsers" ToRole="fr_ConvertedPoints" />
+    <NavigationProperty Name="FavorRestaurants" Relationship="Self.FK_fr_FavorRestaurants_AspNetUsers" FromRole="AspNetUsers" ToRole="fr_FavorRestaurants" />
+    <NavigationProperty Name="GiftCards" Relationship="Self.FK_fr_GiftCards_AspNetUsers" FromRole="AspNetUsers" ToRole="fr_GiftCards" />
+    <NavigationProperty Name="UserDetails" Relationship="Self.FK_fr_UserDetails_AspNetUsers" FromRole="AspNetUsers" ToRole="fr_UserDetails" />
+    <NavigationProperty Name="Votes" Relationship="Self.FK_fr_Votes_AspNetUsers" FromRole="AspNetUsers" ToRole="fr_Votes" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AddressLine" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CrossStreet" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizInfos" Relationship="Self.FK_fr_BizInfos_fr_Address" FromRole="fr_Address" ToRole="fr_BizInfos" />
+    <NavigationProperty Name="UserDetails" Relationship="Self.FK_fr_UserDetails_fr_Address" FromRole="fr_Address" ToRole="fr_UserDetails" />
+  </EntityType>
+  <EntityType Name="AddSide">
+    <Key>
+      <PropertyRef Name="AddSideId" />
+    </Key>
+    <Property Name="AddSideId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BizPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_fr_AddSides_fr_Products" FromRole="fr_AddSides" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="BizCuisine">
+    <Key>
+      <PropertyRef Name="BizCuisineId" />
+    </Key>
+    <Property Name="BizCuisineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BizInfoId" Type="Int32" Nullable="false" />
+    <Property Name="CuisineTypeId" Type="Int32" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizInfo" Relationship="Self.FK_fr_BizCuisines_fr_BizInfos" FromRole="fr_BizCuisines" ToRole="fr_BizInfos" />
+    <NavigationProperty Name="CuisineType" Relationship="Self.FK_fr_BizCuisines_fr_CuisineTypes" FromRole="fr_BizCuisines" ToRole="fr_CuisineTypes" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK_fr_Categories_fr_BizCuisines" FromRole="fr_BizCuisines" ToRole="fr_Categories" />
+  </EntityType>
+  <EntityType Name="BizFoodType">
+    <Key>
+      <PropertyRef Name="BizFoodTypeId" />
+    </Key>
+    <Property Name="BizFoodTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BizInfoId" Type="Int32" Nullable="false" />
+    <Property Name="FoodTypeId" Type="Int32" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizInfo" Relationship="Self.FK_fr_BizFoodTypes_fr_BizInfos" FromRole="fr_BizFoodTypes" ToRole="fr_BizInfos" />
+    <NavigationProperty Name="FoodType" Relationship="Self.FK_fr_BizFoodTypes_fr_FoodTypes" FromRole="fr_BizFoodTypes" ToRole="fr_FoodTypes" />
+  </EntityType>
+  <EntityType Name="BizHour">
+    <Key>
+      <PropertyRef Name="BizHourId" />
+    </Key>
+    <Property Name="BizHourId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LMonStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LMonClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LTueStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LTueClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LWedStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LWedClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LThuStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LThuClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LFriStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LFriClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LSatStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LSatClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LSunStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LSunClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MonStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MonClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TueStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TueClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WedStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WedClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ThuStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ThuClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FriStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FriClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SatStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SatClose" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SunStart" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SunColse" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ZoneNameId" Type="Int32" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ZoneName" Relationship="Self.FK_fr_BizHours_fr_ZoneNames" FromRole="fr_BizHours" ToRole="fr_ZoneNames" />
+    <NavigationProperty Name="BizInfo" Relationship="Self.FK_fr_BizInfos_fr_BizHours" FromRole="fr_BizHours" ToRole="fr_BizInfos" />
+  </EntityType>
+  <EntityType Name="BizImage">
+    <Key>
+      <PropertyRef Name="BizImageId" />
+    </Key>
+    <Property Name="BizImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BizInfoId" Type="Int32" Nullable="false" />
+    <Property Name="SmallImageName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BigImageName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizInfo" Relationship="Self.FK_fr_BizImages_fr_BizInfos" FromRole="fr_BizImages" ToRole="fr_BizInfos" />
+  </EntityType>
+  <EntityType Name="BizInfo">
+    <Key>
+      <PropertyRef Name="BizInfoId" />
+    </Key>
+    <Property Name="BizInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BizTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddressId" Type="Int32" Nullable="false" />
+    <Property Name="YelpBizId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactInfoId" Type="Int32" Nullable="false" />
+    <Property Name="BizHourId" Type="Int32" Nullable="false" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FoodCost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HasDiscountCoupons" Type="Boolean" Nullable="false" />
+    <Property Name="HasFreeItemCoupons" Type="Boolean" Nullable="false" />
+    <Property Name="HasBreakfast" Type="Boolean" Nullable="false" />
+    <Property Name="HasLunchSpecial" Type="Boolean" Nullable="false" />
+    <Property Name="CanOrderForNextday" Type="Boolean" Nullable="false" />
+    <Property Name="Website" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Delivery" Type="Boolean" Nullable="false" />
+    <Property Name="DeliveryRadius" Type="Int32" Nullable="false" />
+    <Property Name="DeliveryFee" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DeliveryMinimum" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="TaxPercentageRate" Type="Decimal" Precision="5" Scale="4" Nullable="false" />
+    <Property Name="RatingVotes" Type="Int32" Nullable="false" />
+    <Property Name="TotalRating" Type="Int32" Nullable="false" />
+    <Property Name="FiveStarVotes" Type="Int32" Nullable="false" />
+    <Property Name="FourStarVotes" Type="Int32" Nullable="false" />
+    <Property Name="ThreeStarVotes" Type="Int32" Nullable="false" />
+    <Property Name="TwoStarVotes" Type="Int32" Nullable="false" />
+    <Property Name="OneStarVotes" Type="Int32" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_fr_BizInfos_AspNetUsers" FromRole="fr_BizInfos" ToRole="AspNetUsers" />
+    <NavigationProperty Name="Address" Relationship="Self.FK_fr_BizInfos_fr_Address" FromRole="fr_BizInfos" ToRole="fr_Address" />
+    <NavigationProperty Name="BizCuisines" Relationship="Self.FK_fr_BizCuisines_fr_BizInfos" FromRole="fr_BizInfos" ToRole="fr_BizCuisines" />
+    <NavigationProperty Name="BizFoodTypes" Relationship="Self.FK_fr_BizFoodTypes_fr_BizInfos" FromRole="fr_BizInfos" ToRole="fr_BizFoodTypes" />
+    <NavigationProperty Name="BizHour" Relationship="Self.FK_fr_BizInfos_fr_BizHours" FromRole="fr_BizInfos" ToRole="fr_BizHours" />
+    <NavigationProperty Name="BizImages" Relationship="Self.FK_fr_BizImages_fr_BizInfos" FromRole="fr_BizInfos" ToRole="fr_BizImages" />
+    <NavigationProperty Name="ContactInfo" Relationship="Self.FK_fr_BizInfos_fr_ContactInfos" FromRole="fr_BizInfos" ToRole="fr_ContactInfos" />
+    <NavigationProperty Name="BizRVInfos" Relationship="Self.FK_fr_BizRVInfos_fr_BizInfos" FromRole="fr_BizInfos" ToRole="fr_BizRVInfos" />
+    <NavigationProperty Name="DayOfCloses" Relationship="Self.FK_fr_DayOfCloses_fr_BizInfos" FromRole="fr_BizInfos" ToRole="fr_DayOfCloses" />
+    <NavigationProperty Name="DiscountCoupons" Relationship="Self.FK_fr_DiscountCoupons_fr_BizInfos" FromRole="fr_BizInfos" ToRole="fr_DiscountCoupons" />
+    <NavigationProperty Name="FavorRestaurants" Relationship="Self.FK_fr_FavorRestaurants_fr_BizInfos" FromRole="fr_BizInfos" ToRole="fr_FavorRestaurants" />
+    <NavigationProperty Name="FreeItemCoupons" Relationship="Self.FK_fr_FreeItemCoupons_fr_BizInfos" FromRole="fr_BizInfos" ToRole="fr_FreeItemCoupons" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_fr_Orders_fr_BizInfos" FromRole="fr_BizInfos" ToRole="fr_Orders" />
+    <NavigationProperty Name="Votes" Relationship="Self.FK_fr_Votes_fr_BizInfos" FromRole="fr_BizInfos" ToRole="fr_Votes" />
+  </EntityType>
+  <EntityType Name="BizRVInfo">
+    <Key>
+      <PropertyRef Name="BizRVInfoId" />
+    </Key>
+    <Property Name="BizRVInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BizInfoId" Type="Int32" Nullable="false" />
+    <Property Name="BizPrice" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StandingCapacity" Type="Int32" Nullable="false" />
+    <Property Name="SeatedCapacity" Type="Int32" Nullable="false" />
+    <Property Name="StartTime" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EndTime" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiningStyle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PaymentOptions" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AcceptWalkIn" Type="Boolean" Nullable="false" />
+    <Property Name="ExecutiveChef" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrivatePartyFacilities" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SpecialEvents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Parking" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdditionalDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizInfo" Relationship="Self.FK_fr_BizRVInfos_fr_BizInfos" FromRole="fr_BizRVInfos" ToRole="fr_BizInfos" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_fr_Reservations_fr_BizRVInfos" FromRole="fr_BizRVInfos" ToRole="fr_Reservations" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BizCuisineId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizCuisine" Relationship="Self.FK_fr_Categories_fr_BizCuisines" FromRole="fr_Categories" ToRole="fr_BizCuisines" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_fr_Products_fr_Categories" FromRole="fr_Categories" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="CheeseAmount">
+    <Key>
+      <PropertyRef Name="CheeseAmountId" />
+    </Key>
+    <Property Name="CheeseAmountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BizPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_fr_CheeseAmounts_fr_Products" FromRole="fr_CheeseAmounts" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="ContactInfo">
+    <Key>
+      <PropertyRef Name="ContactInfoId" />
+    </Key>
+    <Property Name="ContactInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizInfos" Relationship="Self.FK_fr_BizInfos_fr_ContactInfos" FromRole="fr_ContactInfos" ToRole="fr_BizInfos" />
+    <NavigationProperty Name="UserDetails" Relationship="Self.FK_fr_UserDetails_fr_ContactInfos" FromRole="fr_ContactInfos" ToRole="fr_UserDetails" />
+  </EntityType>
+  <EntityType Name="ConvertedPoint">
+    <Key>
+      <PropertyRef Name="ConvertedPointId" />
+    </Key>
+    <Property Name="ConvertedPointId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RewardVoucherId" Type="Int32" Nullable="false" />
+    <Property Name="ConvertedPoints" Type="Int32" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_fr_ConvertedPoints_AspNetUsers" FromRole="fr_ConvertedPoints" ToRole="AspNetUsers" />
+    <NavigationProperty Name="RewardVoucher" Relationship="Self.FK_fr_ConvertedPoints_fr_RewardVouchers" FromRole="fr_ConvertedPoints" ToRole="fr_RewardVouchers" />
+  </EntityType>
+  <EntityType Name="CookMethod">
+    <Key>
+      <PropertyRef Name="CookMethodId" />
+    </Key>
+    <Property Name="CookMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="fr_Products" Relationship="Self.FK_fr_Products_fr_CookMethods" FromRole="fr_CookMethods" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="CreditCard">
+    <Key>
+      <PropertyRef Name="CreditCardId" />
+    </Key>
+    <Property Name="CreditCardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreditCardTypeId" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreditCardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExpirationMonth" Type="Int32" Nullable="false" />
+    <Property Name="ExpirationYear" Type="Int32" Nullable="false" />
+    <Property Name="SecurityCode" Type="Int32" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CreditCardType" Relationship="Self.FK_fr_CreditCards_fr_CreditCardTypes" FromRole="fr_CreditCards" ToRole="fr_CreditCardTypes" />
+    <NavigationProperty Name="GiftCards" Relationship="Self.FK_fr_GiftCards_fr_CreditCards" FromRole="fr_CreditCards" ToRole="fr_GiftCards" />
+  </EntityType>
+  <EntityType Name="CreditCardType">
+    <Key>
+      <PropertyRef Name="CreditCardTypeId" />
+    </Key>
+    <Property Name="CreditCardTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="CreditCards" Relationship="Self.FK_fr_CreditCards_fr_CreditCardTypes" FromRole="fr_CreditCardTypes" ToRole="fr_CreditCards" />
+  </EntityType>
+  <EntityType Name="CrustChoice">
+    <Key>
+      <PropertyRef Name="CrustChoiceId" />
+    </Key>
+    <Property Name="CrustChoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BizPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_fr_CrustChoices_fr_Products" FromRole="fr_CrustChoices" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="CuisineType">
+    <Key>
+      <PropertyRef Name="CuisineTypeId" />
+    </Key>
+    <Property Name="CuisineTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizCuisines" Relationship="Self.FK_fr_BizCuisines_fr_CuisineTypes" FromRole="fr_CuisineTypes" ToRole="fr_BizCuisines" />
+  </EntityType>
+  <EntityType Name="DayOfClose">
+    <Key>
+      <PropertyRef Name="DayOfCloseId" />
+    </Key>
+    <Property Name="DayOfCloseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BizInfoId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CloseDay" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ZoneNameId" Type="Int32" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizInfo" Relationship="Self.FK_fr_DayOfCloses_fr_BizInfos" FromRole="fr_DayOfCloses" ToRole="fr_BizInfos" />
+    <NavigationProperty Name="ZoneName" Relationship="Self.FK_fr_DayOfCloses_fr_ZoneNames" FromRole="fr_DayOfCloses" ToRole="fr_ZoneNames" />
+  </EntityType>
+  <EntityType Name="DiscountCoupon">
+    <Key>
+      <PropertyRef Name="DiscountCouponId" />
+    </Key>
+    <Property Name="DiscountCouponId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BizInfoId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="Int32" Nullable="false" />
+    <Property Name="OrderMinimum" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpirationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizInfo" Relationship="Self.FK_fr_DiscountCoupons_fr_BizInfos" FromRole="fr_DiscountCoupons" ToRole="fr_BizInfos" />
+  </EntityType>
+  <EntityType Name="Dressing">
+    <Key>
+      <PropertyRef Name="DressingId" />
+    </Key>
+    <Property Name="DressingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ProductDressings" Relationship="Self.FK_fr_ProductDressings_fr_Dressings" FromRole="fr_Dressings" ToRole="fr_ProductDressings" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="DriverId" />
+    </Key>
+    <Property Name="DriverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SigninName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SigninPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Stayin" Type="Boolean" Nullable="false" />
+    <Property Name="WorkArea" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddressLine" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FamilyMeal">
+    <Key>
+      <PropertyRef Name="FamilyMealId" />
+    </Key>
+    <Property Name="FamilyMealId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="NumberOfPeople" Type="Int32" Nullable="false" />
+    <Property Name="MealToAdd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_fr_FamilyMeals_fr_Products" FromRole="fr_FamilyMeals" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="FavorRestaurant">
+    <Key>
+      <PropertyRef Name="FavorRestaurantId" />
+    </Key>
+    <Property Name="FavorRestaurantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BizInfoId" Type="Int32" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_fr_FavorRestaurants_AspNetUsers" FromRole="fr_FavorRestaurants" ToRole="AspNetUsers" />
+    <NavigationProperty Name="BizInfo" Relationship="Self.FK_fr_FavorRestaurants_fr_BizInfos" FromRole="fr_FavorRestaurants" ToRole="fr_BizInfos" />
+  </EntityType>
+  <EntityType Name="FoodType">
+    <Key>
+      <PropertyRef Name="FoodTypeId" />
+    </Key>
+    <Property Name="FoodTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizFoodTypes" Relationship="Self.FK_fr_BizFoodTypes_fr_FoodTypes" FromRole="fr_FoodTypes" ToRole="fr_BizFoodTypes" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_fr_Products_fr_FoodTypes" FromRole="fr_FoodTypes" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="FreeItemCoupon">
+    <Key>
+      <PropertyRef Name="FreeItemId" />
+    </Key>
+    <Property Name="FreeItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BizInfoId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="OrderMinimum" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpirationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizInfo" Relationship="Self.FK_fr_FreeItemCoupons_fr_BizInfos" FromRole="fr_FreeItemCoupons" ToRole="fr_BizInfos" />
+  </EntityType>
+  <EntityType Name="GiftCard">
+    <Key>
+      <PropertyRef Name="GiftCardId" />
+    </Key>
+    <Property Name="GiftCardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GiftCardCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreditCardId" Type="Int32" Nullable="false" />
+    <Property Name="LastPayBizInfoId" Type="Int32" Nullable="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RecipientEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="LastTimeUse" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="LastPayAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="LastOrderTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_fr_GiftCards_AspNetUsers" FromRole="fr_GiftCards" ToRole="AspNetUsers" />
+    <NavigationProperty Name="CreditCard" Relationship="Self.FK_fr_GiftCards_fr_CreditCards" FromRole="fr_GiftCards" ToRole="fr_CreditCards" />
+  </EntityType>
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="HotelId" />
+    </Key>
+    <Property Name="HotelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HotelTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddressLine" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="HotelType" Relationship="Self.FK_fr_Hotel_fr_HotelTypes" FromRole="fr_Hotel" ToRole="fr_HotelTypes" />
+  </EntityType>
+  <EntityType Name="HotelType">
+    <Key>
+      <PropertyRef Name="HotelTypeId" />
+    </Key>
+    <Property Name="HotelTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Hotels" Relationship="Self.FK_fr_Hotel_fr_HotelTypes" FromRole="fr_HotelTypes" ToRole="fr_Hotel" />
+  </EntityType>
+  <EntityType Name="MealSection">
+    <Key>
+      <PropertyRef Name="MealSectionId" />
+    </Key>
+    <Property Name="MealSectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_fr_Products_fr_MealSections" FromRole="fr_MealSections" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="OrderItem">
+    <Key>
+      <PropertyRef Name="OrderItemId" />
+    </Key>
+    <Property Name="OrderItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsFamilyMeal" Type="Boolean" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="FinalSalePrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BizUnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BizFinalPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="ExtraListTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ProductSizeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductSizePrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BizSizePrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="HowSpicy" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SideChoice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SauceChoice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SelectedFreeToppings" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="DressingChoice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SelectedToppings" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="SelectedAddSides" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="AddSideListPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BizAddSideListPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="CrustChoice" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CrustChoicePrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="CrustChoiceBizPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="CheeseAmount" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="cheeseAmountPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="CheeseAmountBizPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Instruction" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="BizItemTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ItemTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_fr_OrderItems_fr_Orders" FromRole="fr_OrderItems" ToRole="fr_Orders" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_fr_OrderItems_fr_Products" FromRole="fr_OrderItems" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogonName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BizInfoId" Type="Int32" Nullable="false" />
+    <Property Name="OrderStatusId" Type="Int32" Nullable="false" />
+    <Property Name="CreditCardId" Type="Int32" Nullable="false" />
+    <Property Name="IsLoggedUser" Type="Boolean" Nullable="false" />
+    <Property Name="IsPayPalPayment" Type="Boolean" Nullable="false" />
+    <Property Name="IsGiftCardPayment" Type="Boolean" Nullable="false" />
+    <Property Name="GiftCardId" Type="Int32" Nullable="false" />
+    <Property Name="GiftCardAmountPay" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="CustomerMessage" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ScheduleDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ScheduleTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CouponChoice" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsDelivery" Type="Boolean" Nullable="false" />
+    <Property Name="DeliveryCharge" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BizDiscountAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DiscountAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BizSubTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="OrderTax" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="OrderTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BizOrderTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ServiceCharge" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DriverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DriverTip" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TransactionId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizInfo" Relationship="Self.FK_fr_Orders_fr_BizInfos" FromRole="fr_Orders" ToRole="fr_BizInfos" />
+    <NavigationProperty Name="OrderItems" Relationship="Self.FK_fr_OrderItems_fr_Orders" FromRole="fr_Orders" ToRole="fr_OrderItems" />
+    <NavigationProperty Name="OrderStatus" Relationship="Self.FK_fr_Orders_fr_OrderStatuses" FromRole="fr_Orders" ToRole="fr_OrderStatuses" />
+  </EntityType>
+  <EntityType Name="OrderStatus">
+    <Key>
+      <PropertyRef Name="OrderStatusId" />
+    </Key>
+    <Property Name="OrderStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_fr_Orders_fr_OrderStatuses" FromRole="fr_OrderStatuses" ToRole="fr_Orders" />
+  </EntityType>
+  <EntityType Name="ProductDressing">
+    <Key>
+      <PropertyRef Name="ProductDressingId" />
+    </Key>
+    <Property Name="ProductDressingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="DressingId" Type="Int32" Nullable="false" />
+    <Property Name="DressingTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExtraDressingPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Dressing" Relationship="Self.FK_fr_ProductDressings_fr_Dressings" FromRole="fr_ProductDressings" ToRole="fr_Dressings" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_fr_ProductDressings_fr_Products" FromRole="fr_ProductDressings" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="CookMethodId" Type="Int32" Nullable="false" />
+    <Property Name="FoodTypeId" Type="Int32" Nullable="false" />
+    <Property Name="MealSectionId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BizPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="Int32" Nullable="false" />
+    <Property Name="SmallImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BigImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MaxNumOfFreeTopping" Type="Int32" Nullable="false" />
+    <Property Name="IsSpicy" Type="Boolean" Nullable="false" />
+    <Property Name="IsVegetarian" Type="Boolean" Nullable="false" />
+    <Property Name="IsMostPopular" Type="Boolean" Nullable="false" />
+    <Property Name="IsFamilyDinner" Type="Boolean" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AddSides" Relationship="Self.FK_fr_AddSides_fr_Products" FromRole="fr_Products" ToRole="fr_AddSides" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_fr_Products_fr_Categories" FromRole="fr_Products" ToRole="fr_Categories" />
+    <NavigationProperty Name="CheeseAmounts" Relationship="Self.FK_fr_CheeseAmounts_fr_Products" FromRole="fr_Products" ToRole="fr_CheeseAmounts" />
+    <NavigationProperty Name="CookMethod" Relationship="Self.FK_fr_Products_fr_CookMethods" FromRole="fr_Products" ToRole="fr_CookMethods" />
+    <NavigationProperty Name="CrustChoices" Relationship="Self.FK_fr_CrustChoices_fr_Products" FromRole="fr_Products" ToRole="fr_CrustChoices" />
+    <NavigationProperty Name="FamilyMeals" Relationship="Self.FK_fr_FamilyMeals_fr_Products" FromRole="fr_Products" ToRole="fr_FamilyMeals" />
+    <NavigationProperty Name="FoodType" Relationship="Self.FK_fr_Products_fr_FoodTypes" FromRole="fr_Products" ToRole="fr_FoodTypes" />
+    <NavigationProperty Name="MealSection" Relationship="Self.FK_fr_Products_fr_MealSections" FromRole="fr_Products" ToRole="fr_MealSections" />
+    <NavigationProperty Name="OrderItems" Relationship="Self.FK_fr_OrderItems_fr_Products" FromRole="fr_Products" ToRole="fr_OrderItems" />
+    <NavigationProperty Name="ProductDressings" Relationship="Self.FK_fr_ProductDressings_fr_Products" FromRole="fr_Products" ToRole="fr_ProductDressings" />
+    <NavigationProperty Name="ProductSizes" Relationship="Self.FK_fr_ProductSizes_fr_Products" FromRole="fr_Products" ToRole="fr_ProductSizes" />
+    <NavigationProperty Name="ProductToppings" Relationship="Self.FK_fr_ProductToppings_fr_Products" FromRole="fr_Products" ToRole="fr_ProductToppings" />
+    <NavigationProperty Name="SauceChoices" Relationship="Self.FK_fr_SauceChoices_fr_Products" FromRole="fr_Products" ToRole="fr_SauceChoices" />
+    <NavigationProperty Name="SideChoices" Relationship="Self.FK_fr_SideChoices_fr_Products" FromRole="fr_Products" ToRole="fr_SideChoices" />
+  </EntityType>
+  <EntityType Name="ProductSize">
+    <Key>
+      <PropertyRef Name="ProductSizeId" />
+    </Key>
+    <Property Name="ProductSizeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Size" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BizPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_fr_ProductSizes_fr_Products" FromRole="fr_ProductSizes" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="ProductTopping">
+    <Key>
+      <PropertyRef Name="ProductToppingId" />
+    </Key>
+    <Property Name="ProductToppingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="ToppingId" Type="Int32" Nullable="false" />
+    <Property Name="ToppingTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ExtraToppingPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Increment" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_fr_ProductToppings_fr_Products" FromRole="fr_ProductToppings" ToRole="fr_Products" />
+    <NavigationProperty Name="Topping" Relationship="Self.FK_fr_ProductToppings_fr_Toppings" FromRole="fr_ProductToppings" ToRole="fr_Toppings" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="ReservationId" />
+    </Key>
+    <Property Name="ReservationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BizRVInfoId" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RVDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RVTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartySize" Type="Int32" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizRVInfo" Relationship="Self.FK_fr_Reservations_fr_BizRVInfos" FromRole="fr_Reservations" ToRole="fr_BizRVInfos" />
+  </EntityType>
+  <EntityType Name="RewardVoucher">
+    <Key>
+      <PropertyRef Name="RewardVoucherId" />
+    </Key>
+    <Property Name="RewardVoucherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ImageUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ConvertedPoints" Relationship="Self.FK_fr_ConvertedPoints_fr_RewardVouchers" FromRole="fr_RewardVouchers" ToRole="fr_ConvertedPoints" />
+  </EntityType>
+  <EntityType Name="SauceChoice">
+    <Key>
+      <PropertyRef Name="SauceChoiceId" />
+    </Key>
+    <Property Name="SauceChoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_fr_SauceChoices_fr_Products" FromRole="fr_SauceChoices" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="SideChoice">
+    <Key>
+      <PropertyRef Name="SideChoiceId" />
+    </Key>
+    <Property Name="SideChoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_fr_SideChoices_fr_Products" FromRole="fr_SideChoices" ToRole="fr_Products" />
+  </EntityType>
+  <EntityType Name="Topping">
+    <Key>
+      <PropertyRef Name="ToppingId" />
+    </Key>
+    <Property Name="ToppingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ProductToppings" Relationship="Self.FK_fr_ProductToppings_fr_Toppings" FromRole="fr_Toppings" ToRole="fr_ProductToppings" />
+  </EntityType>
+  <EntityType Name="UserDetail">
+    <Key>
+      <PropertyRef Name="UserDetailId" />
+    </Key>
+    <Property Name="UserDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddressId" Type="Int32" Nullable="false" />
+    <Property Name="ContactInfoId" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_fr_UserDetails_AspNetUsers" FromRole="fr_UserDetails" ToRole="AspNetUsers" />
+    <NavigationProperty Name="Address" Relationship="Self.FK_fr_UserDetails_fr_Address" FromRole="fr_UserDetails" ToRole="fr_Address" />
+    <NavigationProperty Name="ContactInfo" Relationship="Self.FK_fr_UserDetails_fr_ContactInfos" FromRole="fr_UserDetails" ToRole="fr_ContactInfos" />
+  </EntityType>
+  <EntityType Name="Vote">
+    <Key>
+      <PropertyRef Name="VoteId" />
+    </Key>
+    <Property Name="VoteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BizInfoId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PenName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RatingVote" Type="Int32" Nullable="false" />
+    <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="Self.FK_fr_Votes_AspNetUsers" FromRole="fr_Votes" ToRole="AspNetUsers" />
+    <NavigationProperty Name="BizInfo" Relationship="Self.FK_fr_Votes_fr_BizInfos" FromRole="fr_Votes" ToRole="fr_BizInfos" />
+  </EntityType>
+  <EntityType Name="ZoneName">
+    <Key>
+      <PropertyRef Name="ZoneNameId" />
+    </Key>
+    <Property Name="ZoneNameId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BizHours" Relationship="Self.FK_fr_BizHours_fr_ZoneNames" FromRole="fr_ZoneNames" ToRole="fr_BizHours" />
+    <NavigationProperty Name="DayOfCloses" Relationship="Self.FK_fr_DayOfCloses_fr_ZoneNames" FromRole="fr_ZoneNames" ToRole="fr_DayOfCloses" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizInfos_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="fr_BizInfos">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ConvertedPoints_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+    <End Role="fr_ConvertedPoints" Type="FRShoppingModel.ConvertedPoint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="fr_ConvertedPoints">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_FavorRestaurants_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+    <End Role="fr_FavorRestaurants" Type="FRShoppingModel.FavorRestaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="fr_FavorRestaurants">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_GiftCards_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+    <End Role="fr_GiftCards" Type="FRShoppingModel.GiftCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="fr_GiftCards">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_UserDetails_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+    <End Role="fr_UserDetails" Type="FRShoppingModel.UserDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="fr_UserDetails">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Votes_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+    <End Role="fr_Votes" Type="FRShoppingModel.Vote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="fr_Votes">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Address_fr_Address">
+    <End Role="fr_Address" Type="FRShoppingModel.Address" Multiplicity="1" />
+    <End Role="fr_Address1" Type="FRShoppingModel.Address" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Address">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="fr_Address1">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizInfos_fr_Address">
+    <End Role="fr_Address" Type="FRShoppingModel.Address" Multiplicity="1" />
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Address">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="fr_BizInfos">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_UserDetails_fr_Address">
+    <End Role="fr_Address" Type="FRShoppingModel.Address" Multiplicity="1" />
+    <End Role="fr_UserDetails" Type="FRShoppingModel.UserDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Address">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="fr_UserDetails">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_AddSides_fr_Products">
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="1" />
+    <End Role="fr_AddSides" Type="FRShoppingModel.AddSide" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_AddSides">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizCuisines_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="1" />
+    <End Role="fr_BizCuisines" Type="FRShoppingModel.BizCuisine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_BizCuisines">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizCuisines_fr_CuisineTypes">
+    <End Role="fr_CuisineTypes" Type="FRShoppingModel.CuisineType" Multiplicity="1" />
+    <End Role="fr_BizCuisines" Type="FRShoppingModel.BizCuisine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_CuisineTypes">
+        <PropertyRef Name="CuisineTypeId" />
+      </Principal>
+      <Dependent Role="fr_BizCuisines">
+        <PropertyRef Name="CuisineTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Categories_fr_BizCuisines">
+    <End Role="fr_BizCuisines" Type="FRShoppingModel.BizCuisine" Multiplicity="1" />
+    <End Role="fr_Categories" Type="FRShoppingModel.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizCuisines">
+        <PropertyRef Name="BizCuisineId" />
+      </Principal>
+      <Dependent Role="fr_Categories">
+        <PropertyRef Name="BizCuisineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizFoodTypes_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="1" />
+    <End Role="fr_BizFoodTypes" Type="FRShoppingModel.BizFoodType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_BizFoodTypes">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizFoodTypes_fr_FoodTypes">
+    <End Role="fr_FoodTypes" Type="FRShoppingModel.FoodType" Multiplicity="1" />
+    <End Role="fr_BizFoodTypes" Type="FRShoppingModel.BizFoodType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_FoodTypes">
+        <PropertyRef Name="FoodTypeId" />
+      </Principal>
+      <Dependent Role="fr_BizFoodTypes">
+        <PropertyRef Name="FoodTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizHours_fr_ZoneNames">
+    <End Role="fr_ZoneNames" Type="FRShoppingModel.ZoneName" Multiplicity="1" />
+    <End Role="fr_BizHours" Type="FRShoppingModel.BizHour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_ZoneNames">
+        <PropertyRef Name="ZoneNameId" />
+      </Principal>
+      <Dependent Role="fr_BizHours">
+        <PropertyRef Name="ZoneNameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizInfos_fr_BizHours">
+    <End Role="fr_BizHours" Type="FRShoppingModel.BizHour" Multiplicity="1" />
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizHours">
+        <PropertyRef Name="BizHourId" />
+      </Principal>
+      <Dependent Role="fr_BizInfos">
+        <PropertyRef Name="BizHourId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizImages_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="1" />
+    <End Role="fr_BizImages" Type="FRShoppingModel.BizImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_BizImages">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizInfos_fr_ContactInfos">
+    <End Role="fr_ContactInfos" Type="FRShoppingModel.ContactInfo" Multiplicity="1" />
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_ContactInfos">
+        <PropertyRef Name="ContactInfoId" />
+      </Principal>
+      <Dependent Role="fr_BizInfos">
+        <PropertyRef Name="ContactInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizRVInfos_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="1" />
+    <End Role="fr_BizRVInfos" Type="FRShoppingModel.BizRVInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_BizRVInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_DayOfCloses_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="1" />
+    <End Role="fr_DayOfCloses" Type="FRShoppingModel.DayOfClose" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_DayOfCloses">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_DiscountCoupons_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="1" />
+    <End Role="fr_DiscountCoupons" Type="FRShoppingModel.DiscountCoupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_DiscountCoupons">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_FavorRestaurants_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="1" />
+    <End Role="fr_FavorRestaurants" Type="FRShoppingModel.FavorRestaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_FavorRestaurants">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_FreeItemCoupons_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="1" />
+    <End Role="fr_FreeItemCoupons" Type="FRShoppingModel.FreeItemCoupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_FreeItemCoupons">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Orders_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="1" />
+    <End Role="fr_Orders" Type="FRShoppingModel.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_Orders">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Votes_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="FRShoppingModel.BizInfo" Multiplicity="1" />
+    <End Role="fr_Votes" Type="FRShoppingModel.Vote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_Votes">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Reservations_fr_BizRVInfos">
+    <End Role="fr_BizRVInfos" Type="FRShoppingModel.BizRVInfo" Multiplicity="1" />
+    <End Role="fr_Reservations" Type="FRShoppingModel.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizRVInfos">
+        <PropertyRef Name="BizRVInfoId" />
+      </Principal>
+      <Dependent Role="fr_Reservations">
+        <PropertyRef Name="BizRVInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Products_fr_Categories">
+    <End Role="fr_Categories" Type="FRShoppingModel.Category" Multiplicity="1" />
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Categories">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="fr_Products">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_CheeseAmounts_fr_Products">
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="1" />
+    <End Role="fr_CheeseAmounts" Type="FRShoppingModel.CheeseAmount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_CheeseAmounts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_UserDetails_fr_ContactInfos">
+    <End Role="fr_ContactInfos" Type="FRShoppingModel.ContactInfo" Multiplicity="1" />
+    <End Role="fr_UserDetails" Type="FRShoppingModel.UserDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_ContactInfos">
+        <PropertyRef Name="ContactInfoId" />
+      </Principal>
+      <Dependent Role="fr_UserDetails">
+        <PropertyRef Name="ContactInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ConvertedPoints_fr_RewardVouchers">
+    <End Role="fr_RewardVouchers" Type="FRShoppingModel.RewardVoucher" Multiplicity="1" />
+    <End Role="fr_ConvertedPoints" Type="FRShoppingModel.ConvertedPoint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_RewardVouchers">
+        <PropertyRef Name="RewardVoucherId" />
+      </Principal>
+      <Dependent Role="fr_ConvertedPoints">
+        <PropertyRef Name="RewardVoucherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Products_fr_CookMethods">
+    <End Role="fr_CookMethods" Type="FRShoppingModel.CookMethod" Multiplicity="1" />
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_CookMethods">
+        <PropertyRef Name="CookMethodId" />
+      </Principal>
+      <Dependent Role="fr_Products">
+        <PropertyRef Name="CookMethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_CreditCards_fr_CreditCardTypes">
+    <End Role="fr_CreditCardTypes" Type="FRShoppingModel.CreditCardType" Multiplicity="1" />
+    <End Role="fr_CreditCards" Type="FRShoppingModel.CreditCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_CreditCardTypes">
+        <PropertyRef Name="CreditCardTypeId" />
+      </Principal>
+      <Dependent Role="fr_CreditCards">
+        <PropertyRef Name="CreditCardTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_GiftCards_fr_CreditCards">
+    <End Role="fr_CreditCards" Type="FRShoppingModel.CreditCard" Multiplicity="1" />
+    <End Role="fr_GiftCards" Type="FRShoppingModel.GiftCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_CreditCards">
+        <PropertyRef Name="CreditCardId" />
+      </Principal>
+      <Dependent Role="fr_GiftCards">
+        <PropertyRef Name="CreditCardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_CrustChoices_fr_Products">
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="1" />
+    <End Role="fr_CrustChoices" Type="FRShoppingModel.CrustChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_CrustChoices">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_DayOfCloses_fr_ZoneNames">
+    <End Role="fr_ZoneNames" Type="FRShoppingModel.ZoneName" Multiplicity="1" />
+    <End Role="fr_DayOfCloses" Type="FRShoppingModel.DayOfClose" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_ZoneNames">
+        <PropertyRef Name="ZoneNameId" />
+      </Principal>
+      <Dependent Role="fr_DayOfCloses">
+        <PropertyRef Name="ZoneNameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ProductDressings_fr_Dressings">
+    <End Role="fr_Dressings" Type="FRShoppingModel.Dressing" Multiplicity="1" />
+    <End Role="fr_ProductDressings" Type="FRShoppingModel.ProductDressing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Dressings">
+        <PropertyRef Name="DressingId" />
+      </Principal>
+      <Dependent Role="fr_ProductDressings">
+        <PropertyRef Name="DressingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_FamilyMeals_fr_Products">
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="1" />
+    <End Role="fr_FamilyMeals" Type="FRShoppingModel.FamilyMeal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_FamilyMeals">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Products_fr_FoodTypes">
+    <End Role="fr_FoodTypes" Type="FRShoppingModel.FoodType" Multiplicity="1" />
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_FoodTypes">
+        <PropertyRef Name="FoodTypeId" />
+      </Principal>
+      <Dependent Role="fr_Products">
+        <PropertyRef Name="FoodTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Hotel_fr_HotelTypes">
+    <End Role="fr_HotelTypes" Type="FRShoppingModel.HotelType" Multiplicity="1" />
+    <End Role="fr_Hotel" Type="FRShoppingModel.Hotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_HotelTypes">
+        <PropertyRef Name="HotelTypeId" />
+      </Principal>
+      <Dependent Role="fr_Hotel">
+        <PropertyRef Name="HotelTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Products_fr_MealSections">
+    <End Role="fr_MealSections" Type="FRShoppingModel.MealSection" Multiplicity="1" />
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_MealSections">
+        <PropertyRef Name="MealSectionId" />
+      </Principal>
+      <Dependent Role="fr_Products">
+        <PropertyRef Name="MealSectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_OrderItems_fr_Orders">
+    <End Role="fr_Orders" Type="FRShoppingModel.Order" Multiplicity="1" />
+    <End Role="fr_OrderItems" Type="FRShoppingModel.OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Orders">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="fr_OrderItems">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_OrderItems_fr_Products">
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="1" />
+    <End Role="fr_OrderItems" Type="FRShoppingModel.OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_OrderItems">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Orders_fr_OrderStatuses">
+    <End Role="fr_OrderStatuses" Type="FRShoppingModel.OrderStatus" Multiplicity="1" />
+    <End Role="fr_Orders" Type="FRShoppingModel.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_OrderStatuses">
+        <PropertyRef Name="OrderStatusId" />
+      </Principal>
+      <Dependent Role="fr_Orders">
+        <PropertyRef Name="OrderStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ProductDressings_fr_Products">
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="1" />
+    <End Role="fr_ProductDressings" Type="FRShoppingModel.ProductDressing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_ProductDressings">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ProductSizes_fr_Products">
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="1" />
+    <End Role="fr_ProductSizes" Type="FRShoppingModel.ProductSize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_ProductSizes">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ProductToppings_fr_Products">
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="1" />
+    <End Role="fr_ProductToppings" Type="FRShoppingModel.ProductTopping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_ProductToppings">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_SauceChoices_fr_Products">
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="1" />
+    <End Role="fr_SauceChoices" Type="FRShoppingModel.SauceChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_SauceChoices">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_SideChoices_fr_Products">
+    <End Role="fr_Products" Type="FRShoppingModel.Product" Multiplicity="1" />
+    <End Role="fr_SideChoices" Type="FRShoppingModel.SideChoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_SideChoices">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ProductToppings_fr_Toppings">
+    <End Role="fr_Toppings" Type="FRShoppingModel.Topping" Multiplicity="1" />
+    <End Role="fr_ProductToppings" Type="FRShoppingModel.ProductTopping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Toppings">
+        <PropertyRef Name="ToppingId" />
+      </Principal>
+      <Dependent Role="fr_ProductToppings">
+        <PropertyRef Name="ToppingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="FRShoppingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="Addresses" EntityType="FRShoppingModel.Address" />
+    <EntitySet Name="AddSides" EntityType="FRShoppingModel.AddSide" />
+    <EntitySet Name="BizCuisines" EntityType="FRShoppingModel.BizCuisine" />
+    <EntitySet Name="BizFoodTypes" EntityType="FRShoppingModel.BizFoodType" />
+    <EntitySet Name="BizHours" EntityType="FRShoppingModel.BizHour" />
+    <EntitySet Name="BizImages" EntityType="FRShoppingModel.BizImage" />
+    <EntitySet Name="BizInfos" EntityType="FRShoppingModel.BizInfo" />
+    <EntitySet Name="BizRVInfos" EntityType="FRShoppingModel.BizRVInfo" />
+    <EntitySet Name="Categories" EntityType="FRShoppingModel.Category" />
+    <EntitySet Name="CheeseAmounts" EntityType="FRShoppingModel.CheeseAmount" />
+    <EntitySet Name="ContactInfos" EntityType="FRShoppingModel.ContactInfo" />
+    <EntitySet Name="ConvertedPoints" EntityType="FRShoppingModel.ConvertedPoint" />
+    <EntitySet Name="CookMethods" EntityType="FRShoppingModel.CookMethod" />
+    <EntitySet Name="CreditCards" EntityType="FRShoppingModel.CreditCard" />
+    <EntitySet Name="CreditCardTypes" EntityType="FRShoppingModel.CreditCardType" />
+    <EntitySet Name="CrustChoices" EntityType="FRShoppingModel.CrustChoice" />
+    <EntitySet Name="CuisineTypes" EntityType="FRShoppingModel.CuisineType" />
+    <EntitySet Name="DayOfCloses" EntityType="FRShoppingModel.DayOfClose" />
+    <EntitySet Name="DiscountCoupons" EntityType="FRShoppingModel.DiscountCoupon" />
+    <EntitySet Name="Dressings" EntityType="FRShoppingModel.Dressing" />
+    <EntitySet Name="Drivers" EntityType="FRShoppingModel.Driver" />
+    <EntitySet Name="FamilyMeals" EntityType="FRShoppingModel.FamilyMeal" />
+    <EntitySet Name="FavorRestaurants" EntityType="FRShoppingModel.FavorRestaurant" />
+    <EntitySet Name="FoodTypes" EntityType="FRShoppingModel.FoodType" />
+    <EntitySet Name="FreeItemCoupons" EntityType="FRShoppingModel.FreeItemCoupon" />
+    <EntitySet Name="GiftCards" EntityType="FRShoppingModel.GiftCard" />
+    <EntitySet Name="Hotels" EntityType="FRShoppingModel.Hotel" />
+    <EntitySet Name="HotelTypes" EntityType="FRShoppingModel.HotelType" />
+    <EntitySet Name="MealSections" EntityType="FRShoppingModel.MealSection" />
+    <EntitySet Name="OrderItems" EntityType="FRShoppingModel.OrderItem" />
+    <EntitySet Name="Orders" EntityType="FRShoppingModel.Order" />
+    <EntitySet Name="OrderStatuses" EntityType="FRShoppingModel.OrderStatus" />
+    <EntitySet Name="ProductDressings" EntityType="FRShoppingModel.ProductDressing" />
+    <EntitySet Name="Products" EntityType="FRShoppingModel.Product" />
+    <EntitySet Name="ProductSizes" EntityType="FRShoppingModel.ProductSize" />
+    <EntitySet Name="ProductToppings" EntityType="FRShoppingModel.ProductTopping" />
+    <EntitySet Name="Reservations" EntityType="FRShoppingModel.Reservation" />
+    <EntitySet Name="RewardVouchers" EntityType="FRShoppingModel.RewardVoucher" />
+    <EntitySet Name="SauceChoices" EntityType="FRShoppingModel.SauceChoice" />
+    <EntitySet Name="SideChoices" EntityType="FRShoppingModel.SideChoice" />
+    <EntitySet Name="Toppings" EntityType="FRShoppingModel.Topping" />
+    <EntitySet Name="UserDetails" EntityType="FRShoppingModel.UserDetail" />
+    <EntitySet Name="Votes" EntityType="FRShoppingModel.Vote" />
+    <EntitySet Name="ZoneNames" EntityType="FRShoppingModel.ZoneName" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizInfos_AspNetUsers" Association="Self.FK_fr_BizInfos_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ConvertedPoints_AspNetUsers" Association="Self.FK_fr_ConvertedPoints_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="fr_ConvertedPoints" EntitySet="ConvertedPoints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_FavorRestaurants_AspNetUsers" Association="Self.FK_fr_FavorRestaurants_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="fr_FavorRestaurants" EntitySet="FavorRestaurants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_GiftCards_AspNetUsers" Association="Self.FK_fr_GiftCards_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="fr_GiftCards" EntitySet="GiftCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_UserDetails_AspNetUsers" Association="Self.FK_fr_UserDetails_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="fr_UserDetails" EntitySet="UserDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Votes_AspNetUsers" Association="Self.FK_fr_Votes_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="fr_Votes" EntitySet="Votes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Address_fr_Address" Association="Self.FK_fr_Address_fr_Address">
+      <End Role="fr_Address" EntitySet="Addresses" />
+      <End Role="fr_Address1" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizInfos_fr_Address" Association="Self.FK_fr_BizInfos_fr_Address">
+      <End Role="fr_Address" EntitySet="Addresses" />
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_UserDetails_fr_Address" Association="Self.FK_fr_UserDetails_fr_Address">
+      <End Role="fr_Address" EntitySet="Addresses" />
+      <End Role="fr_UserDetails" EntitySet="UserDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_AddSides_fr_Products" Association="Self.FK_fr_AddSides_fr_Products">
+      <End Role="fr_Products" EntitySet="Products" />
+      <End Role="fr_AddSides" EntitySet="AddSides" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizCuisines_fr_BizInfos" Association="Self.FK_fr_BizCuisines_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+      <End Role="fr_BizCuisines" EntitySet="BizCuisines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizCuisines_fr_CuisineTypes" Association="Self.FK_fr_BizCuisines_fr_CuisineTypes">
+      <End Role="fr_CuisineTypes" EntitySet="CuisineTypes" />
+      <End Role="fr_BizCuisines" EntitySet="BizCuisines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Categories_fr_BizCuisines" Association="Self.FK_fr_Categories_fr_BizCuisines">
+      <End Role="fr_BizCuisines" EntitySet="BizCuisines" />
+      <End Role="fr_Categories" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizFoodTypes_fr_BizInfos" Association="Self.FK_fr_BizFoodTypes_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+      <End Role="fr_BizFoodTypes" EntitySet="BizFoodTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizFoodTypes_fr_FoodTypes" Association="Self.FK_fr_BizFoodTypes_fr_FoodTypes">
+      <End Role="fr_FoodTypes" EntitySet="FoodTypes" />
+      <End Role="fr_BizFoodTypes" EntitySet="BizFoodTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizHours_fr_ZoneNames" Association="Self.FK_fr_BizHours_fr_ZoneNames">
+      <End Role="fr_ZoneNames" EntitySet="ZoneNames" />
+      <End Role="fr_BizHours" EntitySet="BizHours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizInfos_fr_BizHours" Association="Self.FK_fr_BizInfos_fr_BizHours">
+      <End Role="fr_BizHours" EntitySet="BizHours" />
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizImages_fr_BizInfos" Association="Self.FK_fr_BizImages_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+      <End Role="fr_BizImages" EntitySet="BizImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizInfos_fr_ContactInfos" Association="Self.FK_fr_BizInfos_fr_ContactInfos">
+      <End Role="fr_ContactInfos" EntitySet="ContactInfos" />
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizRVInfos_fr_BizInfos" Association="Self.FK_fr_BizRVInfos_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+      <End Role="fr_BizRVInfos" EntitySet="BizRVInfos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_DayOfCloses_fr_BizInfos" Association="Self.FK_fr_DayOfCloses_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+      <End Role="fr_DayOfCloses" EntitySet="DayOfCloses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_DiscountCoupons_fr_BizInfos" Association="Self.FK_fr_DiscountCoupons_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+      <End Role="fr_DiscountCoupons" EntitySet="DiscountCoupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_FavorRestaurants_fr_BizInfos" Association="Self.FK_fr_FavorRestaurants_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+      <End Role="fr_FavorRestaurants" EntitySet="FavorRestaurants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_FreeItemCoupons_fr_BizInfos" Association="Self.FK_fr_FreeItemCoupons_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+      <End Role="fr_FreeItemCoupons" EntitySet="FreeItemCoupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Orders_fr_BizInfos" Association="Self.FK_fr_Orders_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+      <End Role="fr_Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Votes_fr_BizInfos" Association="Self.FK_fr_Votes_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="BizInfos" />
+      <End Role="fr_Votes" EntitySet="Votes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Reservations_fr_BizRVInfos" Association="Self.FK_fr_Reservations_fr_BizRVInfos">
+      <End Role="fr_BizRVInfos" EntitySet="BizRVInfos" />
+      <End Role="fr_Reservations" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Products_fr_Categories" Association="Self.FK_fr_Products_fr_Categories">
+      <End Role="fr_Categories" EntitySet="Categories" />
+      <End Role="fr_Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_CheeseAmounts_fr_Products" Association="Self.FK_fr_CheeseAmounts_fr_Products">
+      <End Role="fr_Products" EntitySet="Products" />
+      <End Role="fr_CheeseAmounts" EntitySet="CheeseAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_UserDetails_fr_ContactInfos" Association="Self.FK_fr_UserDetails_fr_ContactInfos">
+      <End Role="fr_ContactInfos" EntitySet="ContactInfos" />
+      <End Role="fr_UserDetails" EntitySet="UserDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ConvertedPoints_fr_RewardVouchers" Association="Self.FK_fr_ConvertedPoints_fr_RewardVouchers">
+      <End Role="fr_RewardVouchers" EntitySet="RewardVouchers" />
+      <End Role="fr_ConvertedPoints" EntitySet="ConvertedPoints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Products_fr_CookMethods" Association="Self.FK_fr_Products_fr_CookMethods">
+      <End Role="fr_CookMethods" EntitySet="CookMethods" />
+      <End Role="fr_Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_CreditCards_fr_CreditCardTypes" Association="Self.FK_fr_CreditCards_fr_CreditCardTypes">
+      <End Role="fr_CreditCardTypes" EntitySet="CreditCardTypes" />
+      <End Role="fr_CreditCards" EntitySet="CreditCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_GiftCards_fr_CreditCards" Association="Self.FK_fr_GiftCards_fr_CreditCards">
+      <End Role="fr_CreditCards" EntitySet="CreditCards" />
+      <End Role="fr_GiftCards" EntitySet="GiftCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_CrustChoices_fr_Products" Association="Self.FK_fr_CrustChoices_fr_Products">
+      <End Role="fr_Products" EntitySet="Products" />
+      <End Role="fr_CrustChoices" EntitySet="CrustChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_DayOfCloses_fr_ZoneNames" Association="Self.FK_fr_DayOfCloses_fr_ZoneNames">
+      <End Role="fr_ZoneNames" EntitySet="ZoneNames" />
+      <End Role="fr_DayOfCloses" EntitySet="DayOfCloses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ProductDressings_fr_Dressings" Association="Self.FK_fr_ProductDressings_fr_Dressings">
+      <End Role="fr_Dressings" EntitySet="Dressings" />
+      <End Role="fr_ProductDressings" EntitySet="ProductDressings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_FamilyMeals_fr_Products" Association="Self.FK_fr_FamilyMeals_fr_Products">
+      <End Role="fr_Products" EntitySet="Products" />
+      <End Role="fr_FamilyMeals" EntitySet="FamilyMeals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Products_fr_FoodTypes" Association="Self.FK_fr_Products_fr_FoodTypes">
+      <End Role="fr_FoodTypes" EntitySet="FoodTypes" />
+      <End Role="fr_Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Hotel_fr_HotelTypes" Association="Self.FK_fr_Hotel_fr_HotelTypes">
+      <End Role="fr_HotelTypes" EntitySet="HotelTypes" />
+      <End Role="fr_Hotel" EntitySet="Hotels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Products_fr_MealSections" Association="Self.FK_fr_Products_fr_MealSections">
+      <End Role="fr_MealSections" EntitySet="MealSections" />
+      <End Role="fr_Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_OrderItems_fr_Orders" Association="Self.FK_fr_OrderItems_fr_Orders">
+      <End Role="fr_Orders" EntitySet="Orders" />
+      <End Role="fr_OrderItems" EntitySet="OrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_OrderItems_fr_Products" Association="Self.FK_fr_OrderItems_fr_Products">
+      <End Role="fr_Products" EntitySet="Products" />
+      <End Role="fr_OrderItems" EntitySet="OrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Orders_fr_OrderStatuses" Association="Self.FK_fr_Orders_fr_OrderStatuses">
+      <End Role="fr_OrderStatuses" EntitySet="OrderStatuses" />
+      <End Role="fr_Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ProductDressings_fr_Products" Association="Self.FK_fr_ProductDressings_fr_Products">
+      <End Role="fr_Products" EntitySet="Products" />
+      <End Role="fr_ProductDressings" EntitySet="ProductDressings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ProductSizes_fr_Products" Association="Self.FK_fr_ProductSizes_fr_Products">
+      <End Role="fr_Products" EntitySet="Products" />
+      <End Role="fr_ProductSizes" EntitySet="ProductSizes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ProductToppings_fr_Products" Association="Self.FK_fr_ProductToppings_fr_Products">
+      <End Role="fr_Products" EntitySet="Products" />
+      <End Role="fr_ProductToppings" EntitySet="ProductToppings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_SauceChoices_fr_Products" Association="Self.FK_fr_SauceChoices_fr_Products">
+      <End Role="fr_Products" EntitySet="Products" />
+      <End Role="fr_SauceChoices" EntitySet="SauceChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_SideChoices_fr_Products" Association="Self.FK_fr_SideChoices_fr_Products">
+      <End Role="fr_Products" EntitySet="Products" />
+      <End Role="fr_SideChoices" EntitySet="SideChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ProductToppings_fr_Toppings" Association="Self.FK_fr_ProductToppings_fr_Toppings">
+      <End Role="fr_Toppings" EntitySet="Toppings" />
+      <End Role="fr_ProductToppings" EntitySet="ProductToppings" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

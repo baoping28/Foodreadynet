@@ -1,0 +1,67 @@
+﻿@model FR.Domain.Model.Entities.Reservation
+@using FR.Infrastructure.Helpers
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/datepickerJQ.js")" type="text/javascript"></script>
+<div id="popupbody1">
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <img src="@Url.Content("~/Content/BizImages/" + Model.BizRVInfo.BizInfo.ImageUrl)" class="bizImg boxShadow boxCorner" />
+                <h4 id="poptitle1" class="modal-title" style="color:black;text-align:center;">Change reservation at @Model.BizName</h4>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        @using (Ajax.BeginForm("MakeReservationChange", "Reservation", FormMethod.Post, new AjaxOptions
+    {
+        UpdateTargetId = "popupbody1",
+        OnBegin = "onPopup1Begin",
+        OnSuccess = "onPopup1Success",
+        OnFailure = "onPopup1Failed"
+    }))
+        {
+            <div class="boxShadow" style="padding: 20px 10px 20px 30px; background-color: Beige;">
+                @Html.Hidden("id", Model.ReservationId)
+                <div class="row">
+                    <h3>New reservation</h3><hr />
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <b>Date:</b><br />
+                            @Html.TextBox("rvDate", DateTime.Now.ToShortDateString(), new { @class = "form-control boxShadow", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <b>Time:</b><br />
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                                @Html.DropDownList("rvTime", Helper.RVTimeDropdown(Model.BizRVInfo.StartTime, Model.BizRVInfo.EndTime), new { @class = "form-control boxShadow" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <b>Party Size:</b><br />
+
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                                @Html.DropDownList("rvNum", Helper.NumOfPeopleDropdown(null), new { @class = "form-control boxShadow" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3">
+                        <div class="form-group">
+                            <div id="divreserve" style="padding-top:20px;">
+                                <input type="submit" value="Find a table" class="btn btn-primary" id="reserve" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

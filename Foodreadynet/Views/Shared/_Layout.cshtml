@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Foodready.net</title>   <!-- Custom Fonts -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="~/Content/style.css"> 
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/foodreadyJS")
+    <script src="~/Scripts/Plugins/jquery.popupoverlay.js"></script>
+    <script src="~/Scripts/FoodreadyJS/popupJS.js"></script>
+
+    <script src="~/Scripts/FoodreadyJS/main.js"></script>
+    <script src="~/Scripts/FoodreadyJS/modernizr.js"></script>
+
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $("input#keyword").autocomplete({
+                source: '@Url.Action("KeyWordsList", "Restaurants")',
+                minLength: 2,
+                select: function (event, ui) {
+                    keys = ui.item.value;
+                    if (keys == "Search by keyword") {
+                        keys = "";
+                    }
+                    var value = keys.split("---");
+                    keys = value[0];
+                    if ($.trim(keys).length > 50) return;
+                    location.href = "/Restaurants/SearchList" + "?keyword=" + keys;
+                }
+            });
+        });
+    </script>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=407065392706850";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/home">
+                    <img src="~/Content/images/fr.png" class="headimg img-responsive"> <span class="light" style="font-size:22px;text-transform:none;"> FOODREADY.net</span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div class="content-body">
+            @RenderBody()
+        </div>
+    </section>
+    <section class="footerwrapper">
+        <footer>
+            @{Html.RenderAction("Footer", "Home");}
+        </footer>
+    </section>
+
+    @Html.Partial("_ViewCartPartial")
+    <div class="container-full">
+        <div class="col-sm-offset-11 col-md-offset-11">
+            <p id="back-top"><a href="#top" title="Back to top" style="color:#1E7CB8;"><span class="glyphicon glyphicon-eject btn-lg" style="padding:10px 10px 10px 10px;"></span></a></p>
+        </div>
+    </div>
+
+    <div class="modal fade" id="popupModal" role="dialog" aria-hidden="true">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 col-md-2">
+                </div>
+                <div class="col-sm-8 col-md-8">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <button id="topClose" type="button" class="close" style="position:relative;top:4px; left:-10px;" aria-hidden="true">&times;</button>
+                            <div id="popupbody">
+                                <div class="modal-header">
+                                    <h5 id="poptitle" class="modal-title" style="color:black;text-align:center;"></h5>
+                                </div>
+                                <div class="modal-body">
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="btnClose" type="button" class="btn btn-primary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-md-2">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="popupModal1" role="dialog" aria-hidden="true">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-1 col-md-1">
+                </div>
+                <div class="col-sm-10 col-md-10">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <button id="topClose1" type="button" class="close" style="position:relative;top:4px; left:-10px;" aria-hidden="true">&times;</button>
+                            <div id="popupbody1">
+                                <div class="modal-header">
+                                    <h5 id="poptitle1" class="modal-title" style="color:black;text-align:center;"></h5>
+                                </div>
+                                <div class="modal-body">
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="btnClose1" type="button" class="btn btn-primary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1 col-md-1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-full">
+        <div class="modal fade" id="popupModal2" role="dialog" aria-hidden="true">
+            <div class="modal-dialog fullsize">
+                <div class="modal-content fullsize">
+                    <button id="topClose2" type="button" class="close" style="position:relative;top:4px; left:-10px;" aria-hidden="true"><span class="fa fa-2x fa-remove"></span></button>
+                    <div id="popupbody2">
+                        <div class="modal-header">
+                            <h5 id="poptitle2" class="modal-title" style="color:black;text-align:center;"></h5>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="popupModal3" role="dialog" aria-hidden="true">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 col-md-2">
+                </div>
+                <div class="col-sm-8 col-md-8">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <button id="topClose3" type="button" class="close" style="position:relative;top:4px; left:-10px;" aria-hidden="true">&times;</button>
+                            <div id="popupbody3">
+                                <div class="modal-header">
+                                    <h5 id="poptitle3" class="modal-title" style="color:black;text-align:center;"><img src="~/Content/images/fr.png" class="headimg img-responsive"> FoodReady.Net All Time Live Chat Support</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row toppadding">
+                                        <div class="col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+                                            <i class="fa fa-2x fa-headphones" style="color:#1d63a7;"></i>
+                                            Questions? Live Chat with one of our representatives
+                                        </div>
+                                    </div><hr />
+
+
+                                    @using (Ajax.BeginForm("ChatHelp", "Home", new AjaxOptions
+            {
+                UpdateTargetId = "popupbody3",
+                OnBegin = "onPopupChatBegin",
+                OnSuccess = "onPopupChatSuccess",
+                OnFailure = "onPopupChatFailed"
+            }, new { @id = "chat-form" }))
+                                    {
+                                        <div class="row">
+                                            <div class="col-sm-offset-1 col-md-offset-1" style="font-size:12px;color:red;">
+                                                <p id="chatNameCheck">
+                                                </p>
+                                                <p id="chatEmailCheck">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-1 col-md-1"></div>
+                                            <div class="col-sm-5 col-md-5">
+                                                Name:
+                                                <br />
+                                                @Html.TextBox("chatUsername", "", new { @class = "boxShadow", title = "Your name" })
+                                                <br />
+
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                Email:
+                                                <br />
+                                                @Html.TextBox("chatEmail", "", new { @class = "boxShadow", title = "Your email address" })
+                                                <br />
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-sm-1 col-md-1"></div>
+                                            <div class="col-sm-5 col-md-5">
+                                                Question:(optional)
+                                                <br />
+                                                @Html.TextBox("chatQuestion", "", new { @class = "boxShadow", title = "What issue about" })
+                                                <br />
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+
+                                                <p>
+                                                    <br /> <button type="button" onclick="$('#chat-form').submit();" class="btn btn-primary btn-sm" title="Chat now"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp; Chat with us </button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="btnClose3" type="button" class="btn btn-primary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-md-2">
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

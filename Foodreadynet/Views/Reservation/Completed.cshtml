@@ -1,0 +1,30 @@
+﻿@model FoodReady.WebUI.Models.RVConfirmationModel
+
+@{
+    ViewBag.Title = "Completed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h3 style="color:#ffffff;">
+                Thanks for your reservation at @ViewBag.biztitle
+            </h3>
+        </div>
+    </div>
+</div>
+
+<div class="container toppadding">
+    <div class="row">
+        <h4>
+            Your table is reserved for @Model.RVNum, @ViewBag.datetime.
+        </h4>
+        <p>
+            We sent you an email at: @Model.Email. If you are unable to honor 10 minutes after
+            the time of the reservation, the table will be open. If you want to cancel any reservations
+            that they will be unable to honor at least 30 minutes in advance on the day of the
+            reservation, please call @ViewBag.biztitle directly at: @Model.Bizinfo.ContactInfo.Phone
+        </p>
+        --- Enjoy! ---
+    </div>
+</div>

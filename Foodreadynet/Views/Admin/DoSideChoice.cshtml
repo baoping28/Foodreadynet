@@ -1,0 +1,16 @@
+﻿@model FR.Domain.Model.Entities.SideChoice
+<div id="@Url.Content("item" + Model.SideChoiceId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoSideChoice", "Admin", new { id = Model.SideChoiceId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.SideChoiceId),
+                            OnBegin = "onFreeItemBegin('" + Model.SideChoiceId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.SideChoiceId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.SideChoiceId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the side choice: " + Model.Title + " ?"
+                        }))
+    {
+                                                   
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+                        }
+</div>

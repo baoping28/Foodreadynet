@@ -1,0 +1,434 @@
+﻿@model FoodReady.WebUI.Models.MenuViewModel
+@using FR.Infrastructure.Helpers
+@using FoodReady.WebUI.HtmlHelpers
+@{
+    var first = 0;
+    ViewBag.Title = "Menu";
+}
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/JqueryFloatingMenu.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/hoverPopupDiv.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/CartDropdownlist.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/hoverMenuJS.js")" type="text/javascript"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKiEdbCcINToyXHXIFFkh-jf2AUe_NHz8&sensor=false"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/slidingUpDown.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/clockJS.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    (function () {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>
+<div class="container-full carttoppadding">
+    <div class="row">
+        <div id="col-left" class="col-sm-7 col-md-7" style="min-height:1000px;">
+            @Html.Partial("_ProductViewPartial", Model)
+
+            <div id="productcontent">
+                <div id="menuHeader" class="boxShadow nav nav-tabs nav-stacked affix" data-spy="affix" data-offset-top="358">
+                    <ul>
+                        @foreach (var bc in Model.MenuList)
+                        {
+                            first++;
+                            <li>
+                                @Ajax.ActionLink(bc.CuisineTypeName, "SubMenu", "Restaurants", new { id = bc.BizCuisineId }, new AjaxOptions
+                   {
+                       UpdateTargetId = "menucontent",
+                       OnBegin = "onSubMenuBegin",
+                       OnComplete = "onSubMenuCompleted('" + bc.CuisineTypeName.Replace(" ", "") + "')",
+                       OnFailure = "onSubMenuFailed"
+                   }, new { id = bc.CuisineTypeName.Replace(" ", ""), @class = first == 1 ? "selected" : "" })
+                            </li>
+
+                            if (bc.HasLunchSpecail && bc.BizInfo.IsLunchTimeNow)
+                            {
+                                first++;
+                                <li>
+                                    @Ajax.ActionLink("Lunch Special", "LunchMenu", "Restaurants", new { id = bc.BizCuisineId }, new AjaxOptions
+                               {
+                                   UpdateTargetId = "menucontent",
+                                   OnBegin = "onSubMenuBegin",
+                                   OnComplete = "onSubMenuCompleted('lunch')",
+                                   OnFailure = "onSubMenuFailed"
+                               }, new { id = "lunch", @class = first == 1 ? "selected" : "" })
+                                </li>
+                            }
+                        }
+                        <li class="pull-right">
+                            <div class="trigger">
+                                <a id="sectionA" href="#" onclick="return false;" class="btn btn-primary btn-sm" style="background-color:#fff;"><i class="fa fa-map"></i> Index</a>
+                            </div>
+                            <div class="popup">
+                                @{Html.RenderAction("MenuSection", "Restaurants", new { id = Model.FirstSubmenu.BizCuisineId });}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div style="clear: both;">
+                </div>
+                @{Html.RenderAction("SubMenu", "Restaurants", new { id = Model.FirstSubmenu.BizCuisineId });}
+            </div>
+        </div>
+    </div>
+    <div id="cd-cart">
+        <table class="table table-responsive boxShadow" style="padding:0px;margin:0px;">
+            <tr>
+                <td>
+                    <table class="table table-responsive boxShadow" style="margin-bottom:0px;padding:0px; background-color:#777;">
+
+                        <tr>
+                            <td>
+                                <div class="bubbleInfo">
+                                    <div id="slidecancel">
+                                        <span id="slidecart" title="Close" class="fa fa-close fa-2x"></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <center> <div class="carttitle">@Model.BizInfo.BizTitle</div></center>
+                                </div>
+                                <div class="deliveryBtn">
+                                    <div class="col-sm-6 col-md-6 pull-left">
+                                        @Html.RadioButton("DeliveryGroup", "true", Model.Cart.IsDelivery, new { id = "DELIVERY", @class = "del" })
+                                        @Html.Label("DELIVERY", new { @class = "radioLabel" }) &nbsp; <span style="color:white;" class="fa fa-car"></span>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 pull-right">
+                                        @Html.RadioButton("DeliveryGroup", "false", !(Model.Cart.IsDelivery), new { id = "PICKUP", @class = "del pull-right" })
+                                        @Html.Label("PICKUP", new { @class = "radioLabel pull-right" }) <span style="color:white;" class="fa fa-shopping-bag pull-right"> &nbsp; </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="CartContent">
+                        @if (Model.Cart.Lines.Count() == 0)
+                        {
+                            <div style="text-align:center;height:100%;color:#aaa;padding-top:40px;padding-bottom:40px;">
+                                <p><i class="fa fa-shopping-bag fa-5x fa-align-center"></i></p>
+                                <h4>Your bag is currently empty.</h4>
+                                <hr /><h3 style="color:#1E7CB8;"><i class="fa fa-clock-o fa-2x" style="position:relative;top:6px;"></i> MENU HOURS</h3>
+                                <h4 class="localtime">@Model.BizInfo.GetBizHours()</h4>
+                                <div class="populink">
+                                    <span id="clock" style="color:black;font-size:40px;font-weight:bold;"></span>
+                                </div>
+                                <div class="popupdiv">
+                                    This is the restaurant's local time
+                                </div>
+                            </div>
+                            <div>
+                                @if ((Model.BizInfo.HasDiscountCoupons || Model.BizInfo.HasFreeItemCoupons))
+                                {
+                                    using (Ajax.BeginForm("Coupons", "Restaurants", new { id = Model.BizInfo.BizInfoId }, new AjaxOptions
+                                    {
+                                        UpdateTargetId = "popupbody1",
+                                        OnBegin = "onPopup1Begin",
+                                        OnSuccess = "onPopup1Success",
+                                        OnFailure = "onPopup1Failed"
+                                    }))
+                                    {
+                                        <center><input type="image" src="@Url.Content("~/Content/Images/coupon1.png") " title=" Coupons" class="img-responsive" /></center>
+
+                                    }
+                                }
+                            </div>
+
+                        }
+                        else
+                        {
+                            <table class="table table-striped table-responsive" style="padding:0px;">
+                                <thead>
+                                    <tr>
+                                        <th align="left">
+                                            Qty
+                                        </th>
+                                        <th align="left">
+                                            Item
+                                        </th>
+                                        <th align="right">
+                                            <div style="text-align:right;">Price</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var line in Model.Cart.Lines)
+                                    {
+                                        <tr id="tr-@line.ID">
+                                            <td align="left">
+                                                @if (line.IsReorderItem)
+                                                {
+                                                    <span>@line.Quantity.ToString()</span>
+                                                }
+                                                else
+                                                {
+
+                                                    if (line.IsFamilyMeal)
+                                                    {
+                                                        @Html.DropDownList(line.ItemId, new SelectList(new[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }, line.Quantity.ToString()), new { @class = "productQty", Enabled = "False" })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DropDownList(line.ItemId, new SelectList(new[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }, line.Quantity.ToString()), new { @class = "productQty", Enabled = "False" })
+                                                    }
+                                                    @Html.Hidden("q" + line.ItemId, line.ItemId)
+                                                }
+                                                <span class="fa fa-close rm-item" title="remove"></span> @Html.Hidden("r-" + line.ItemId, line.Title)
+                                                @Ajax.ActionLink(" ", "RemoveFromCart", "Cart", new { itemId = line.ItemId }, new AjaxOptions
+                {
+                    UpdateTargetId = "CartContent",
+                    OnBegin = "onRemoveBegin",
+                    OnComplete = "onRemoveCompleted",
+                    OnFailure = "onRemoveFailed"
+                })
+                                            </td>
+                                            <td align="left">
+                                                <div class="itemTitle">
+                                                    @line.Title
+                                                    @if (string.IsNullOrEmpty(line.ProductSizeTitle) == false)
+                                                    {
+                                                        <span>(@line.ProductSizeTitle)</span>
+                                                    }
+                                                </div>
+                                            </td>
+                                            <td align="right">
+                                                <div class="itemright">
+                                                    <b>
+                                                        <span id='proSubt-@line.ItemId'>
+                                                            @Helper.ToUSD(((line.ItemTotal).ToString("N2")))
+                                                        </span>
+                                                    </b>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        if (string.IsNullOrEmpty(line.DressingChoice) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="itemnote">
+                                                        Selected dressing: @line.DressingChoice
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (string.IsNullOrEmpty(line.SelectedFreeToppings) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="itemnote">
+                                                        Free toppings:
+                                                        @line.SelectedFreeToppings
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if ((line.IsReorderItem && string.IsNullOrEmpty(line.ReSelectedToppings) == false) || line.ToppingList.Count > 0)
+                                        {
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="itemnote">
+                                                        Extra toppings for each item:<br />
+                                                        @Html.Raw(line.ToppingListNote)
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (line.IsSpicy && string.IsNullOrEmpty(line.HowSpicy) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="itemnote">
+                                                        Spicy choice : @line.HowSpicy
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (string.IsNullOrEmpty(line.SideChoice) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="itemnote">
+                                                        Side choice: @line.SideChoice
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (string.IsNullOrEmpty(line.SauceChoice) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="itemnote">
+                                                        Sauce choice: @line.SauceChoice
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (string.IsNullOrEmpty(line.CrustChoice) == false)
+                                        {
+                                            var cc = line.CrustChoicePrice == 0.0m ? string.Empty : "($" + line.CrustChoicePrice.ToString("N2") + " extra)";
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="itemnote">
+                                                        Crust choice: @line.CrustChoice @cc
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (string.IsNullOrEmpty(line.CheeseChoice) == false)
+                                        {
+                                            var cc = line.CheeseChoicePrice == 0.0m ? string.Empty : "($" + line.CheeseChoicePrice.ToString("N2") + " extra)";
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="itemnote">
+                                                        Cheese Amount: @line.CheeseChoice @cc
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if ((line.IsReorderItem && string.IsNullOrEmpty(line.ReSelectedAddSides) == false) || line.AddSideList.Count > 0)
+                                        {
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="itemnote">
+                                                        For each item:<br />
+                                                        @Html.Raw(line.AddSideListNote)
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (string.IsNullOrEmpty(line.Instruction) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="itemnote">
+                                                        Instructions: @line.Instruction
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                                <tfoot class="cartFoot">
+                                    <tr>
+                                        <td colspan="2" align="right" style="border-top:solid 2px #000000;">
+                                            Subtotal:
+                                        </td>
+                                        <td align="right" style="border-top:solid 2px #000000;">
+                                            <div class="itemright">
+                                                <span id="subtotal">@Helper.ToUSD(Model.Cart.SubTotal().ToString("N2"))</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @if (Model.DiscountCouponList.Count > 0 || Model.FreeItemCouponList.Count > 0)
+                                    {
+                                        <tr>
+                                            <td colspan="3" align="right">
+                                                @Html.DropDownListFor(e => e.CouponChoice, Model.CouponChoices(Model.Cart.CouponChoice, Model.Cart.SubTotal()), new { @class = (Model.DiscountCouponList.Count > 0 || Model.FreeItemCouponList.Count > 0) ? "couponChoice" : "couponChoiceOff" })
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr>
+                                        <td colspan="2" align="right">
+                                            Tax (@Model.Cart.TaxRate.ToString("N2")%):
+                                        </td>
+                                        <td align="right">
+                                            <div class="itemright">
+                                                <span id="tax">@Helper.ToUSD(Model.Cart.Tax().ToString("N2"))</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @{var charge = Model.Cart.IsDelivery ? "Delivery Charge:" : "";
+                                    var fee = Model.Cart.IsDelivery ? Helper.DeliveryFee(Model.Cart.DeliveryFee) : "";}
+                                    <tr>
+                                        <td colspan="2" align="right">
+                                            <span id="DelCharge">@charge</span>
+                                        </td>
+                                        <td align="right">
+                                            <div class="itemright">
+                                                <span id="Fee">@fee</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @if (Model.Cart.serviceCharge > 0.0m)
+                                    {
+                                        <tr>
+                                            <td colspan="2" align="right">
+                                                Service Charge:
+                                            </td>
+                                            <td align="right">
+                                                <div class="itemright">
+                                                    <span id="Service">@Helper.DeliveryFee(Model.Cart.serviceCharge)</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                    @if (Model.Cart.SubTotal() > 0.0m)
+                                    {
+                                        <tr>
+                                            <td colspan="3" align="right">
+                                                @Html.DropDownListFor(e => e.DriverTip, Helper.DriverTip(Model.Cart.DriverTip, Model.Cart.SubTotal(), Model.Cart.IsDelivery), new { @class = "driverTip" })
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr style="background-color:#dddddd;">
+                                        <td colspan="2" align="right">
+                                            <div class="totalright">
+                                                <span>Total:</span>
+                                            </div>
+                                        </td>
+                                        <td align="right">
+                                            <div class="totalright">
+                                                <span id="cartTotal" style="color: Red">
+
+                                                    @if (Model.Cart.SubTotal() > 0.0m)
+                                                    {
+                                                        @Helper.ToUSD(Model.Cart.Total().ToString("N2"))
+                                                    }
+                                                    else
+                                                    {
+                                                        <text>$0.00</text>
+                                                    }
+                                                </span>
+                                                @Html.Hidden("totalItems", Model.Cart.Lines.Sum(x => x.Quantity))
+                                            </div>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            @if (Model.Cart.Lines.Count() > 0)
+                                            {
+                                                <a class="@Url.Content((Model.CheckoutBtnShow()) ? "CheckoutNowShow" : "CheckoutNowHide") btn btn-primary" id="CheckoutBtn" href="@Url.Action("Login", "Account", routeValues: new { returnUrl = "/Checkout/Index", backFromCheckout = true })">
+                                                    <span class="glyphicon glyphicon-shopping-cart"></span>  &nbsp; &nbsp;  <b>Process to check out</b>
+                                                </a>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            @if (Model.BizInfo.Delivery)
+                                            {
+                                                <div>
+                                                    <center>
+                                                        @Ajax.ActionLink("Check if the restaurant delivers to your area", "CheckDelivery", "Restaurants", new { id = Model.BizInfo.BizInfoId, bizname = Model.BizInfo.BizTitle }, new AjaxOptions
+                        {
+                            UpdateTargetId = "popupbody",
+                            OnBegin = "onPopupBegin",
+                            OnSuccess = "onPopupSuccess",
+                            OnFailure = "onPopupFailed"
+                        })
+                                                    </center>
+                                                </div>
+                                            }
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        }
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div><div id="cart-btn"></div>

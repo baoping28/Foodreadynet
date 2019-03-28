@@ -1,0 +1,34 @@
+﻿@model FoodReady.WebUI.Models.BizInfoModel
+<div class="container toppadding">
+    <div class="row">
+        <h2 style="color:#1E7CB8;padding-left:10px;"><img src="@Url.Content("~/images/city.png")" /><b> Restaurants in Most Popular Cities</b><small> in California East Bay area</small></h2>
+        <br />
+        <div class="col-sm-3 col-md-3">
+            <a href="/AllCities/City/Concord">
+                <img src="../../Content/images/concord.png" title="Concord, CA" class="imgBox boxShadow boxCorner img-responsive" />
+            </a>
+        </div>
+        <div class="col-sm-3 col-md-3">
+            <a href="/AllCities/City/Walnut-Creek">
+                <img src="../../Content/images/walnutcreek.png" title="Walnut Creek, CA" class="imgBox boxShadow boxCorner img-responsive" />
+            </a>
+        </div>
+        <div class="col-sm-3 col-md-3">
+            <a href="/AllCities/City/Pleasant-Hill">
+                <img src="../../Content/images/pleasanthill.png" title="Pleasant Hill, CA" class="imgBox boxShadow boxCorner img-responsive" />
+            </a>
+        </div>
+        <div class="col-sm-3 col-md-3">
+            <a href="/AllCities/City/Lafayette">
+                <img src="../../Content/images/lafayette.png" title="Lafayette, CA" class="imgBox boxShadow boxCorner img-responsive" />
+            </a>
+        </div>
+    </div>
+    <hr />
+</div>
+<div class="container">
+    <div class="row">
+        <h4 style="padding-left:10px;"><b>All Cities <small> in US &amp; Canada:</small></b></h4>
+        @Html.Raw(Model.ShowCities)
+    </div>
+</div>

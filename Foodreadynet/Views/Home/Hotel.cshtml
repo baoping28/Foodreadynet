@@ -1,0 +1,57 @@
+﻿@model FoodReady.WebUI.Models.HotelModel
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/hotelsearch.js")" type="text/javascript"></script>
+<div id="popupbody1">
+    <div class="modal-header">
+        <h5 id="poptitle" class="modal-title" style="color:black;text-align:center;">Choose a city and then select your <b>@ViewBag.typenme</b> <small> we'll find restaurants near you.</small></h5>
+    </div>
+    <div class="modal-body">
+        @{var n = 0;}
+        @foreach (var h in Model.DCityHotel)
+        {
+            n++;
+            <div class="panel-group" id="@Url.Content("accordion" + n)">
+                <div class="panel panel-default">
+                    <h3 class="panel-title">
+                        &nbsp; <a data-toggle="collapse" data-parent="@Url.Content("#accordion" + n)" href="@Url.Content("#toget" + n)"><span class="glyphicon glyphicon-circle-arrow-down"></span> @ViewBag.typenme in <b>@h.Key</b></a>
+                    </h3>
+                </div>
+                <div class="row">
+                    <div id="@Url.Content("toget" + n)" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            @foreach (var t in h.Value)
+                            {
+                                var url = "?address=" + t.AddressLine + "," + t.City + "," + t.State + "&city=" + t.City + "&zip=" + t.ZipCode;
+                                <div class="col-sm-6 col-md-6">
+                                    <a href="@Url.Content("~/Restaurants" + @url)" class="hotelsearch">
+                                        <img src="@Url.Content(t.ImagePath)" title="Select a hotel" class="float-left hotelImg img-circle img-responsive" /><span style="color:maroon;font-weight:bold;"> @t.Name</span><br />
+                                        @t.AddressLine,<br />@t.City, @t.State @t.ZipCode
+                                    </a><br />
+                                    <a onclick="@Url.Content("getDirections('" + Model.GoogleMapLink(t) + "');return false;")" href=""><span class="glyphicon glyphicon-map-marker"></span>GET MAP</a>
+                                    <div style="clear:both;"></div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @using (Ajax.BeginForm("HotelType", "Home", FormMethod.Post, new AjaxOptions
+                {
+                    UpdateTargetId = "popupbody1",
+                    OnBegin = "onPopup1Begin",
+                    OnSuccess = "onPopup1Success",
+                    OnFailure = "onPopup1Failed"
+                }, new { @id = "hotelpop-form" }))
+        {
+
+            <center>
+                <button id="btngo" type="button" onclick="$('#hotelpop-form').submit();" class="btn btn-primary btn-sm" title="Go back"><span class="glyphicon glyphicon-repeat"></span> &nbsp;&nbsp; Go back</button>
+            </center>
+        }
+        <div id="loading" class="loadCheck">
+            <center>
+                <img id="loader" class="loadCheck" style="text-align:center;" src="@Url.Content("~/Content/Images/ajax-loaderPng4.gif")" />
+            </center>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿@using (Ajax.BeginForm("GiftCardCheck", "Home", new AjaxOptions
+    {
+        UpdateTargetId = "giftcard",
+        OnBegin = "onGiftBegin",
+        OnSuccess = "onGiftSuccess",
+        OnFailure = "onGiftFailed"
+    }, new { @id = "codecheck-form" }))
+{
+    <div class="row">
+        <div style="padding-left:12px;">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-barcode"></span> &nbsp; gift card code:
+                    </span>
+                    @Html.TextBox("txtGC", "", new { @class = "form-control boxShadow" })
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="$('#codecheck-form').submit();" class="btn btn-lg btn-primary" title="Gift card balance check">Gift card balance check &nbsp;&nbsp; <span class="glyphicon glyphicon-ok"></span></button>
+            </div>
+            <div id="GCloading" class="loadCheck">
+                <img id="GCloader" class="loadCheck" src="@Url.Content("~/Content/Images/ajax-loaderPng4.gif")" />
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,43 @@
+﻿@model FR.Domain.Model.Entities.Vote
+@using FoodReady.WebUI.HtmlHelpers
+@using FR.Infrastructure.Helpers
+<div>
+    @if (Model.RatingVote > 0)
+    {
+        <div>
+            <img src="@Url.Content("~/Content/images/smallImeal.png")" class="checkoutImg" />
+            @Html.Ratings(Model.BizInfo)
+            (@Model.BizInfo.BizTitle, average ratings: @Model.BizInfo.AverageRating base on
+            @Model.BizInfo.RatingVotes reviews)</div>
+        <div>
+            <p>
+                @Html.RatingsByVote(Model.RatingVote) you rated @Model.RatingVote stars
+            </p>
+            <div><b>@Model.Title</b></div>
+            <div style="text-align:justify;">
+                "@Helper.GetReview(Model.Comment, Model.Comment.Length)"
+            </div>
+            <p>
+                Posted by <span style="color: #2e728b">@Model.PenName</span> on <span style="color: #2e728b">
+                    <a href="#" title="View details">foodready.net</a></span><br />
+                Wrote on: @Model.AddedDate.ToShortDateString()<br />
+                Last updated: @Model.UpdatedDate.ToShortDateString()</p>
+            @Html.ActionLink("Write a new review on " + @Model.BizInfo.BizTitle, "AddReview", "Reviews", new { id = Model.BizInfo.BizInfoId }, new { @class = "midLink", title = "Add a review" })<br />
+            <div id="@Url.Content("item" + Model.VoteId)" class="deleteButtons">
+                @using (Ajax.BeginForm("DoReview", "Manage", new { id = Model.VoteId},
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.VoteId),
+                            OnBegin = "onReviewBegin('" + Model.VoteId + "')",
+                            OnSuccess = "onReviewSuccess('" + Model.VoteId + "')",
+                            OnFailure = "onReviewFailure('" + Model.VoteId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "hide" : "open") + " the review: " + Model.Title + " ?"
+                        }))
+                {
+                                                   
+                    <input type="submit" title="@Url.Content(Model.Active ? "To hide review" : "To open review")" value="@Url.Content(Model.Active ? "Hide the review for public" : "Open the review for public")" />
+    }
+            </div>
+        </div>
+    }
+</div>

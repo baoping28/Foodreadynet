@@ -1,0 +1,8 @@
+﻿@model FoodReady.WebUI.Models.BuyGiftCardModel
+
+<h3>Thank you for your purchasing our Virtual Gift Card.</h3>
+<p>Your Virtual Gift Card Code: <b>@TempData["CardCode"]</b><br />
+Your Virtual Gift Card Amount: <b>@Model.Amount.ToString("N2")</b><br />
+A email has been sent to @Model.RecipientEmail, including all the virtual gift card information.<br />
+ Please save it in a safe place and  enjoy.</p>
+<p>@Html.ActionLink("I want to buy another virtual gift card","CardPurchase","Home")</p>

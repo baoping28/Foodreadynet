@@ -1,0 +1,116 @@
+﻿@model FoodReady.WebUI.Models.ProductToppingModel
+@{
+    ViewBag.Title = "ManageProductTopping";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center><h3>(@Model.Bizinfo.BizTitle) Manage @Model.Product.Title Toppings (@Model.Product.ProductToppings.Count)</h3></center>
+</div>
+@ViewBag.result
+
+<div id="divAllUsers" class="container boxShadow boxpadding">
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                Edit Topping
+            </th>
+            <th>
+                Extra Price
+            </th>
+            <th>
+                Active
+            </th>
+        </tr>
+        @foreach (var p in Model.LProductToppings)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(p.ToppingTitle, "EditProductTopping", "admin", new { id = p.ProductToppingId, bizid = Model.BizInfoID }, null)<br />
+                </td>
+                <td>
+                    $@p.ExtraToppingPrice.ToString("N2")
+                </td>
+                <td>
+                    <div id="@Url.Content("item" + p.ProductToppingId)" class="deleteButtons">
+                        @using (Ajax.BeginForm("DoProductTopping", "Admin", new { id = p.ProductToppingId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + p.ProductToppingId),
+                            OnBegin = "onFreeItemBegin('" + p.ProductToppingId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + p.ProductToppingId + "')",
+                            OnFailure = "onFreeItemFailure('" + p.ProductToppingId + "')",
+                            Confirm = "Do you want to " + @Url.Content(p.Active ? "lock" : "unlock") + " the product Topping: " + p.ToppingTitle + " ?"
+                        }))
+                        {
+
+                            <input class="@Url.Content(p.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(p.Active ? "To lock item" : "To unlock item")" value="" />
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p></p>
+<div class="titlebox boxShadow">
+    <center><h3>Add Toppings to @Model.Product.Title</h3></center>
+</div>
+<p></p>
+@ViewBag.result
+<div class="container boxShadow boxpadding">
+    @if (Model.ToppingProducts != null && Model.ToppingProducts.Count > 0)
+    {
+        using (Html.BeginForm("CopyProductTopping", "Admin", new { idto = Model.ProductID, bizid = Model.BizInfoID }))
+        {
+            <div class="col-sm-8 col-md-8">
+                @Html.DropDownList("idfrom", Model.ToppingProducts, new { @class = "form-control boxShadow" })
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <input type="submit" value="Copy Toppings" class="btn btn-primary btn-sm" />
+            </div>
+        }
+    }
+</div>
+<p></p>
+
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(e => e.BizInfoID)
+        @Html.HiddenFor(e => e.ProductID)
+        <div id="create">
+            <div class="form-group">
+                @Html.LabelFor(m => m.ExtraPrice)
+                @Html.TextBoxFor(m => m.ExtraPrice, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.ExtraPrice)
+            </div><br />
+            <div class="form-group">
+                @Html.LabelFor(m => m.Increment)
+                @Html.TextBoxFor(m => m.Increment, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Increment)
+            </div><br />
+            @for (int i = 0; i < Model.ToppingAssistances.Count; i++)
+            {
+                <div class="col-sm-2 col-md-2">
+                    <div style="float: left;">
+                        @Html.HiddenFor(x => x.ToppingAssistances[i].BoxName)
+                        @Html.HiddenFor(x => x.ToppingAssistances[i].BoxID)
+                        @Html.CheckBoxFor(x => x.ToppingAssistances[i].Checked)
+                    </div>
+                    <div style="float: left; padding-top: 4px;">
+                        @Html.LabelFor(x => x.ToppingAssistances[i].Checked, Model.ToppingAssistances[i].BoxName)
+                    </div>
+                </div>
+
+            }
+        </div>
+        <div style="clear:both;"></div>
+        <br /><br />
+        <div class="form-group pull-right">
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Add</button>
+        </div><br />
+        <div class="form-group">
+                <p>@Html.ActionLink("Back to Manage Products " + Model.Bizinfo.BizTitle, "ManageProducts", "admin", new { id = Model.Product.CategoryId, bizid = Model.BizInfoID }, null)</p>
+        </div><br />
+    }
+</div>

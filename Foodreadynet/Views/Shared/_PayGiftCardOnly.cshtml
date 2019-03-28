@@ -1,0 +1,71 @@
+﻿@model FoodReady.WebUI.Models.CheckoutGiftModel
+@using FR.Infrastructure.Helpers
+@using FoodReady.WebUI.HtmlHelpers
+@if (IsAjax)
+{
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/FRJqueryScripts/checkoutJS.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/FRJqueryScripts/RemainingCharacterCount.js")" type="text/javascript"></script>
+}
+<div id="paygiftcard">
+    <p>
+        Your gift card balance:<b> $@Model.GCBalance.ToString("N2")</b> <br />
+        Order Total:<b> $@Model.GCCart.Total().ToString("N2")</b><br />
+        Pay<b> $@Model.GCCart.Total().ToString("N2") </b>with gift card to complete the checkout:
+    </p><hr />
+    @using (Ajax.BeginForm("GiftOnlyConfirmation", "Checkout", new AjaxOptions
+    {
+        UpdateTargetId = "popupbody2",
+        OnBegin = "onPopup2Begin",
+        OnSuccess = "onPopup2Success",
+        OnFailure = "onPopup2Failed"
+    }, new { @id = "giftonly-form" }))
+    {
+        <div>
+            @Html.HiddenFor(e => e.GCGiftcardID)
+            @Html.HiddenFor(e => e.GCBalance)
+            @Html.HiddenFor(e => e.GCUserID)
+            @Html.Partial("_GCShippingInfo", Model)
+            @Html.Partial("_GCContactInfo", Model)
+            <div id="GCorderSchedule" style="display: none;">
+            </div>
+            <div class="form-group">
+                <b>Order scheduled for</b>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </span>
+                    @Html.DropDownListFor(e => e.GCScheduleDate, Model.GCScheduleAssistances, new { @class = "form-control boxShadow" })
+                </div>
+            </div>
+            <div class="form-group">
+                <b>At time</b>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                    @Html.DropDownListFor(e => e.GCScheduleTime, Model.GCTimeAssistances, new { @class = "form-control boxShadow" })
+                </div>
+            </div>
+            <div style="clear: both;">
+            </div>
+
+            <div class="form-group">
+                <b>Special Instructions</b> (Example: less salt, etc. Additional charges may apply.)
+                <div class="float-left">
+                    @Html.TextAreaFor(m => m.GCInstructions, 2, 40, new { @class = "form-control boxShadow" })
+                    <div class="remaining">
+                        Characters remaining: <span class="count">512</span>
+                        <input id="btnGiftClear" type="button" value="Clean Text" />
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;">
+            </div><br />
+            <div class="form-group">
+                <button type="button" onclick="$('#giftonly-form').submit();" class="btn btn-primary" title="Continue to check out">Continue to check out &nbsp;&nbsp; <span class="glyphicon glyphicon-hand-right"></span></button>
+            </div>
+        </div>
+    }
+</div>
+

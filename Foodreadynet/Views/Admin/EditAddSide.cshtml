@@ -1,0 +1,54 @@
+﻿@model FoodReady.WebUI.Models.AddSideModel
+@using FR.Infrastructure.Helpers
+
+@{
+    ViewBag.Title = "Edit AddSide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center>
+        <h3> Edit a side item to "@Model.Product.Title"</h3>
+    </center>
+</div>
+@ViewBag.result
+<p></p>
+<div id="create" class="container boxShadow boxpadding">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(e => e.BizInfoID)
+        @Html.HiddenFor(e => e.ProductID)
+        @Html.HiddenFor(e => e.AddSideID)
+        @Html.HiddenFor(e => e.BizInfoID)
+        @Html.HiddenFor(e => e.ProductID)
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.Description)
+            @Html.ValidationMessageFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description, 3, 50, new { @class = "form-control boxShadow" })
+            <div class="remaining">
+                Characters remaining: <span class="count">512</span>
+                <input id="btnClear" type="button" value="Reset Text" style="margin-left: 40px;" />
+            </div>
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.Price)
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.Price)
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.BizPrice)
+            @Html.TextBoxFor(m => m.BizPrice, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.BizPrice)
+        </div><br />
+        <div class="form-group pull-right">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+        </div><br />
+        <div class="form-group">
+            <p>@Html.ActionLink("Back to Manage Products " + Model.Bizinfo.BizTitle, "ManageProducts", "admin", new { id = Model.Product.CategoryId, bizid = Model.BizInfoID }, null)</p>
+        </div>
+    }
+</div>

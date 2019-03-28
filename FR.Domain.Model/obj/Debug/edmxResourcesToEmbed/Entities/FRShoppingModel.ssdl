@@ -1,0 +1,1789 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FRShoppingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_Address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddressLine" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CrossStreet" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_AddSides">
+    <Key>
+      <PropertyRef Name="AddSideId" />
+    </Key>
+    <Property Name="AddSideId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="BizPrice" Type="money" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_BizCuisines">
+    <Key>
+      <PropertyRef Name="BizCuisineId" />
+    </Key>
+    <Property Name="BizCuisineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BizInfoId" Type="int" Nullable="false" />
+    <Property Name="CuisineTypeId" Type="int" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_BizFoodTypes">
+    <Key>
+      <PropertyRef Name="BizFoodTypeId" />
+    </Key>
+    <Property Name="BizFoodTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BizInfoId" Type="int" Nullable="false" />
+    <Property Name="FoodTypeId" Type="int" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_BizHours">
+    <Key>
+      <PropertyRef Name="BizHourId" />
+    </Key>
+    <Property Name="BizHourId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LMonStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LMonClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LTueStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LTueClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LWedStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LWedClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LThuStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LThuClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LFriStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LFriClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LSatStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LSatClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LSunStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LSunClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="MonStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="MonClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="TueStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="TueClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="WedStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="WedClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="ThuStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="ThuClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="FriStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="FriClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="SatStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="SatClose" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="SunStart" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="SunColse" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="ZoneNameId" Type="int" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_BizImages">
+    <Key>
+      <PropertyRef Name="BizImageId" />
+    </Key>
+    <Property Name="BizImageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BizInfoId" Type="int" Nullable="false" />
+    <Property Name="SmallImageName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="BigImageName" Type="nvarchar" MaxLength="64" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_BizInfos">
+    <Key>
+      <PropertyRef Name="BizInfoId" />
+    </Key>
+    <Property Name="BizInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="BizTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddressId" Type="int" Nullable="false" />
+    <Property Name="YelpBizId" Type="nvarchar" MaxLength="128" />
+    <Property Name="Latitude" Type="nvarchar" MaxLength="50" />
+    <Property Name="Longitude" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactInfoId" Type="int" Nullable="false" />
+    <Property Name="BizHourId" Type="int" Nullable="false" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FoodCost" Type="nvarchar" MaxLength="50" />
+    <Property Name="HasDiscountCoupons" Type="bit" Nullable="false" />
+    <Property Name="HasFreeItemCoupons" Type="bit" Nullable="false" />
+    <Property Name="HasBreakfast" Type="bit" Nullable="false" />
+    <Property Name="HasLunchSpecial" Type="bit" Nullable="false" />
+    <Property Name="CanOrderForNextday" Type="bit" Nullable="false" />
+    <Property Name="Website" Type="nvarchar" MaxLength="100" />
+    <Property Name="Delivery" Type="bit" Nullable="false" />
+    <Property Name="DeliveryRadius" Type="int" Nullable="false" />
+    <Property Name="DeliveryFee" Type="money" Nullable="false" />
+    <Property Name="DeliveryMinimum" Type="money" Nullable="false" />
+    <Property Name="TaxPercentageRate" Type="decimal" Precision="5" Scale="4" Nullable="false" />
+    <Property Name="RatingVotes" Type="int" Nullable="false" />
+    <Property Name="TotalRating" Type="int" Nullable="false" />
+    <Property Name="FiveStarVotes" Type="int" Nullable="false" />
+    <Property Name="FourStarVotes" Type="int" Nullable="false" />
+    <Property Name="ThreeStarVotes" Type="int" Nullable="false" />
+    <Property Name="TwoStarVotes" Type="int" Nullable="false" />
+    <Property Name="OneStarVotes" Type="int" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_BizRVInfos">
+    <Key>
+      <PropertyRef Name="BizRVInfoId" />
+    </Key>
+    <Property Name="BizRVInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BizInfoId" Type="int" Nullable="false" />
+    <Property Name="BizPrice" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="StandingCapacity" Type="int" Nullable="false" />
+    <Property Name="SeatedCapacity" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="EndTime" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="DiningStyle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PaymentOptions" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="AcceptWalkIn" Type="bit" Nullable="false" />
+    <Property Name="ExecutiveChef" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrivatePartyFacilities" Type="ntext" />
+    <Property Name="SpecialEvents" Type="ntext" />
+    <Property Name="Parking" Type="ntext" />
+    <Property Name="AdditionalDetails" Type="ntext" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_Categories">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BizCuisineId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="100" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_CheeseAmounts">
+    <Key>
+      <PropertyRef Name="CheeseAmountId" />
+    </Key>
+    <Property Name="CheeseAmountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="BizPrice" Type="money" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_ContactInfos">
+    <Key>
+      <PropertyRef Name="ContactInfoId" />
+    </Key>
+    <Property Name="ContactInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_ConvertedPoints">
+    <Key>
+      <PropertyRef Name="ConvertedPointId" />
+    </Key>
+    <Property Name="ConvertedPointId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RewardVoucherId" Type="int" Nullable="false" />
+    <Property Name="ConvertedPoints" Type="int" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_CookMethods">
+    <Key>
+      <PropertyRef Name="CookMethodId" />
+    </Key>
+    <Property Name="CookMethodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_CreditCards">
+    <Key>
+      <PropertyRef Name="CreditCardId" />
+    </Key>
+    <Property Name="CreditCardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="CreditCardTypeId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreditCardNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ExpirationMonth" Type="int" Nullable="false" />
+    <Property Name="ExpirationYear" Type="int" Nullable="false" />
+    <Property Name="SecurityCode" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_CreditCardTypes">
+    <Key>
+      <PropertyRef Name="CreditCardTypeId" />
+    </Key>
+    <Property Name="CreditCardTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_CrustChoices">
+    <Key>
+      <PropertyRef Name="CrustChoiceId" />
+    </Key>
+    <Property Name="CrustChoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="BizPrice" Type="money" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_CuisineTypes">
+    <Key>
+      <PropertyRef Name="CuisineTypeId" />
+    </Key>
+    <Property Name="CuisineTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_DayOfCloses">
+    <Key>
+      <PropertyRef Name="DayOfCloseId" />
+    </Key>
+    <Property Name="DayOfCloseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BizInfoId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CloseDay" Type="datetime" Nullable="false" />
+    <Property Name="ZoneNameId" Type="int" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_DiscountCoupons">
+    <Key>
+      <PropertyRef Name="DiscountCouponId" />
+    </Key>
+    <Property Name="DiscountCouponId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BizInfoId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="int" Nullable="false" />
+    <Property Name="OrderMinimum" Type="money" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="ExpirationDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_Dressings">
+    <Key>
+      <PropertyRef Name="DressingId" />
+    </Key>
+    <Property Name="DressingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_Drivers">
+    <Key>
+      <PropertyRef Name="DriverId" />
+    </Key>
+    <Property Name="DriverId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SigninName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SigninPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Stayin" Type="bit" Nullable="false" />
+    <Property Name="WorkArea" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="AddressLine" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_FamilyMeals">
+    <Key>
+      <PropertyRef Name="FamilyMealId" />
+    </Key>
+    <Property Name="FamilyMealId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="NumberOfPeople" Type="int" Nullable="false" />
+    <Property Name="MealToAdd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_FavorRestaurants">
+    <Key>
+      <PropertyRef Name="FavorRestaurantId" />
+    </Key>
+    <Property Name="FavorRestaurantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="BizInfoId" Type="int" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_FoodTypes">
+    <Key>
+      <PropertyRef Name="FoodTypeId" />
+    </Key>
+    <Property Name="FoodTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_FreeItemCoupons">
+    <Key>
+      <PropertyRef Name="FreeItemId" />
+    </Key>
+    <Property Name="FreeItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BizInfoId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="OrderMinimum" Type="money" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="ExpirationDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_GiftCards">
+    <Key>
+      <PropertyRef Name="GiftCardId" />
+    </Key>
+    <Property Name="GiftCardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GiftCardCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CreditCardId" Type="int" Nullable="false" />
+    <Property Name="LastPayBizInfoId" Type="int" Nullable="false" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="RecipientEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+    <Property Name="LastTimeUse" Type="datetime" Nullable="false" />
+    <Property Name="Balance" Type="money" Nullable="false" />
+    <Property Name="LastPayAmount" Type="money" Nullable="false" />
+    <Property Name="LastOrderTotal" Type="money" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_Hotel">
+    <Key>
+      <PropertyRef Name="HotelId" />
+    </Key>
+    <Property Name="HotelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HotelTypeId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="AddressLine" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="100" />
+    <Property Name="Latitude" Type="nvarchar" MaxLength="50" />
+    <Property Name="Longitude" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_HotelTypes">
+    <Key>
+      <PropertyRef Name="HotelTypeId" />
+    </Key>
+    <Property Name="HotelTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_MealSections">
+    <Key>
+      <PropertyRef Name="MealSectionId" />
+    </Key>
+    <Property Name="MealSectionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_OrderItems">
+    <Key>
+      <PropertyRef Name="OrderItemId" />
+    </Key>
+    <Property Name="OrderItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsFamilyMeal" Type="bit" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="FinalSalePrice" Type="money" Nullable="false" />
+    <Property Name="BizUnitPrice" Type="money" Nullable="false" />
+    <Property Name="BizFinalPrice" Type="money" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="ExtraListTotal" Type="money" Nullable="false" />
+    <Property Name="ProductSizeTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductSize" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductSizePrice" Type="money" Nullable="false" />
+    <Property Name="BizSizePrice" Type="money" Nullable="false" />
+    <Property Name="HowSpicy" Type="nvarchar" MaxLength="30" />
+    <Property Name="SideChoice" Type="nvarchar" MaxLength="50" />
+    <Property Name="SauceChoice" Type="nvarchar" MaxLength="50" />
+    <Property Name="SelectedFreeToppings" Type="nvarchar" MaxLength="512" />
+    <Property Name="DressingChoice" Type="nvarchar" MaxLength="50" />
+    <Property Name="SelectedToppings" Type="nvarchar" MaxLength="256" />
+    <Property Name="SelectedAddSides" Type="nvarchar" MaxLength="256" />
+    <Property Name="AddSideListPrice" Type="money" Nullable="false" />
+    <Property Name="BizAddSideListPrice" Type="money" Nullable="false" />
+    <Property Name="CrustChoice" Type="nvarchar" MaxLength="256" />
+    <Property Name="CrustChoicePrice" Type="money" Nullable="false" />
+    <Property Name="CrustChoiceBizPrice" Type="money" Nullable="false" />
+    <Property Name="CheeseAmount" Type="nvarchar" MaxLength="256" />
+    <Property Name="cheeseAmountPrice" Type="money" Nullable="false" />
+    <Property Name="CheeseAmountBizPrice" Type="money" Nullable="false" />
+    <Property Name="Instruction" Type="nvarchar" MaxLength="512" />
+    <Property Name="BizItemTotal" Type="money" Nullable="false" />
+    <Property Name="ItemTotal" Type="money" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_Orders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LogonName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="BizInfoId" Type="int" Nullable="false" />
+    <Property Name="OrderStatusId" Type="int" Nullable="false" />
+    <Property Name="CreditCardId" Type="int" Nullable="false" />
+    <Property Name="IsLoggedUser" Type="bit" Nullable="false" />
+    <Property Name="IsPayPalPayment" Type="bit" Nullable="false" />
+    <Property Name="IsGiftCardPayment" Type="bit" Nullable="false" />
+    <Property Name="GiftCardId" Type="int" Nullable="false" />
+    <Property Name="GiftCardAmountPay" Type="money" Nullable="false" />
+    <Property Name="CustomerMessage" Type="nvarchar" MaxLength="1000" />
+    <Property Name="ScheduleDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ScheduleTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CouponChoice" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsDelivery" Type="bit" Nullable="false" />
+    <Property Name="DeliveryCharge" Type="money" Nullable="false" />
+    <Property Name="BizDiscountAmount" Type="money" Nullable="false" />
+    <Property Name="DiscountAmount" Type="money" Nullable="false" />
+    <Property Name="SubTotal" Type="money" Nullable="false" />
+    <Property Name="BizSubTotal" Type="money" Nullable="false" />
+    <Property Name="OrderTax" Type="money" Nullable="false" />
+    <Property Name="OrderTotal" Type="money" Nullable="false" />
+    <Property Name="BizOrderTotal" Type="money" Nullable="false" />
+    <Property Name="ServiceCharge" Type="money" Nullable="false" />
+    <Property Name="DriverName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DriverTip" Type="money" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Street" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="TransactionId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_OrderStatuses">
+    <Key>
+      <PropertyRef Name="OrderStatusId" />
+    </Key>
+    <Property Name="OrderStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_ProductDressings">
+    <Key>
+      <PropertyRef Name="ProductDressingId" />
+    </Key>
+    <Property Name="ProductDressingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="DressingId" Type="int" Nullable="false" />
+    <Property Name="DressingTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ExtraDressingPrice" Type="money" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_Products">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="CookMethodId" Type="int" Nullable="false" />
+    <Property Name="FoodTypeId" Type="int" Nullable="false" />
+    <Property Name="MealSectionId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="BizPrice" Type="money" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="int" Nullable="false" />
+    <Property Name="SmallImage" Type="nvarchar" MaxLength="100" />
+    <Property Name="BigImage" Type="nvarchar" MaxLength="100" />
+    <Property Name="MaxNumOfFreeTopping" Type="int" Nullable="false" />
+    <Property Name="IsSpicy" Type="bit" Nullable="false" />
+    <Property Name="IsVegetarian" Type="bit" Nullable="false" />
+    <Property Name="IsMostPopular" Type="bit" Nullable="false" />
+    <Property Name="IsFamilyDinner" Type="bit" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_ProductSizes">
+    <Key>
+      <PropertyRef Name="ProductSizeId" />
+    </Key>
+    <Property Name="ProductSizeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Size" Type="int" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="BizPrice" Type="money" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_ProductToppings">
+    <Key>
+      <PropertyRef Name="ProductToppingId" />
+    </Key>
+    <Property Name="ProductToppingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="ToppingId" Type="int" Nullable="false" />
+    <Property Name="ToppingTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="ExtraToppingPrice" Type="money" Nullable="false" />
+    <Property Name="Increment" Type="money" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_Reservations">
+    <Key>
+      <PropertyRef Name="ReservationId" />
+    </Key>
+    <Property Name="ReservationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BizRVInfoId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="RVDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RVTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartySize" Type="int" Nullable="false" />
+    <Property Name="Message" Type="ntext" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_RewardVouchers">
+    <Key>
+      <PropertyRef Name="RewardVoucherId" />
+    </Key>
+    <Property Name="RewardVoucherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="100" />
+    <Property Name="Value" Type="money" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_SauceChoices">
+    <Key>
+      <PropertyRef Name="SauceChoiceId" />
+    </Key>
+    <Property Name="SauceChoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_SideChoices">
+    <Key>
+      <PropertyRef Name="SideChoiceId" />
+    </Key>
+    <Property Name="SideChoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_Toppings">
+    <Key>
+      <PropertyRef Name="ToppingId" />
+    </Key>
+    <Property Name="ToppingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_UserDetails">
+    <Key>
+      <PropertyRef Name="UserDetailId" />
+    </Key>
+    <Property Name="UserDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddressId" Type="int" Nullable="false" />
+    <Property Name="ContactInfoId" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_Votes">
+    <Key>
+      <PropertyRef Name="VoteId" />
+    </Key>
+    <Property Name="VoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BizInfoId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="256" />
+    <Property Name="PenName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RatingVote" Type="int" Nullable="false" />
+    <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Comment" Type="ntext" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fr_ZoneNames">
+    <Key>
+      <PropertyRef Name="ZoneNameId" />
+    </Key>
+    <Property Name="ZoneNameId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="AddedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Address_fr_Address">
+    <End Role="fr_Address" Type="Self.fr_Address" Multiplicity="1" />
+    <End Role="fr_Address1" Type="Self.fr_Address" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Address">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="fr_Address1">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_AddSides_fr_Products">
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="1" />
+    <End Role="fr_AddSides" Type="Self.fr_AddSides" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_AddSides">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizCuisines_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="1" />
+    <End Role="fr_BizCuisines" Type="Self.fr_BizCuisines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_BizCuisines">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizCuisines_fr_CuisineTypes">
+    <End Role="fr_CuisineTypes" Type="Self.fr_CuisineTypes" Multiplicity="1" />
+    <End Role="fr_BizCuisines" Type="Self.fr_BizCuisines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_CuisineTypes">
+        <PropertyRef Name="CuisineTypeId" />
+      </Principal>
+      <Dependent Role="fr_BizCuisines">
+        <PropertyRef Name="CuisineTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizFoodTypes_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="1" />
+    <End Role="fr_BizFoodTypes" Type="Self.fr_BizFoodTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_BizFoodTypes">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizFoodTypes_fr_FoodTypes">
+    <End Role="fr_FoodTypes" Type="Self.fr_FoodTypes" Multiplicity="1" />
+    <End Role="fr_BizFoodTypes" Type="Self.fr_BizFoodTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_FoodTypes">
+        <PropertyRef Name="FoodTypeId" />
+      </Principal>
+      <Dependent Role="fr_BizFoodTypes">
+        <PropertyRef Name="FoodTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizHours_fr_ZoneNames">
+    <End Role="fr_ZoneNames" Type="Self.fr_ZoneNames" Multiplicity="1" />
+    <End Role="fr_BizHours" Type="Self.fr_BizHours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_ZoneNames">
+        <PropertyRef Name="ZoneNameId" />
+      </Principal>
+      <Dependent Role="fr_BizHours">
+        <PropertyRef Name="ZoneNameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizImages_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="1" />
+    <End Role="fr_BizImages" Type="Self.fr_BizImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_BizImages">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizInfos_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="fr_BizInfos">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizInfos_fr_Address">
+    <End Role="fr_Address" Type="Self.fr_Address" Multiplicity="1" />
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Address">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="fr_BizInfos">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizInfos_fr_BizHours">
+    <End Role="fr_BizHours" Type="Self.fr_BizHours" Multiplicity="1" />
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizHours">
+        <PropertyRef Name="BizHourId" />
+      </Principal>
+      <Dependent Role="fr_BizInfos">
+        <PropertyRef Name="BizHourId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizInfos_fr_ContactInfos">
+    <End Role="fr_ContactInfos" Type="Self.fr_ContactInfos" Multiplicity="1" />
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_ContactInfos">
+        <PropertyRef Name="ContactInfoId" />
+      </Principal>
+      <Dependent Role="fr_BizInfos">
+        <PropertyRef Name="ContactInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_BizRVInfos_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="1" />
+    <End Role="fr_BizRVInfos" Type="Self.fr_BizRVInfos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_BizRVInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Categories_fr_BizCuisines">
+    <End Role="fr_BizCuisines" Type="Self.fr_BizCuisines" Multiplicity="1" />
+    <End Role="fr_Categories" Type="Self.fr_Categories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizCuisines">
+        <PropertyRef Name="BizCuisineId" />
+      </Principal>
+      <Dependent Role="fr_Categories">
+        <PropertyRef Name="BizCuisineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_CheeseAmounts_fr_Products">
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="1" />
+    <End Role="fr_CheeseAmounts" Type="Self.fr_CheeseAmounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_CheeseAmounts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ConvertedPoints_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="fr_ConvertedPoints" Type="Self.fr_ConvertedPoints" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="fr_ConvertedPoints">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ConvertedPoints_fr_RewardVouchers">
+    <End Role="fr_RewardVouchers" Type="Self.fr_RewardVouchers" Multiplicity="1" />
+    <End Role="fr_ConvertedPoints" Type="Self.fr_ConvertedPoints" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_RewardVouchers">
+        <PropertyRef Name="RewardVoucherId" />
+      </Principal>
+      <Dependent Role="fr_ConvertedPoints">
+        <PropertyRef Name="RewardVoucherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_CreditCards_fr_CreditCardTypes">
+    <End Role="fr_CreditCardTypes" Type="Self.fr_CreditCardTypes" Multiplicity="1" />
+    <End Role="fr_CreditCards" Type="Self.fr_CreditCards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_CreditCardTypes">
+        <PropertyRef Name="CreditCardTypeId" />
+      </Principal>
+      <Dependent Role="fr_CreditCards">
+        <PropertyRef Name="CreditCardTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_CrustChoices_fr_Products">
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="1" />
+    <End Role="fr_CrustChoices" Type="Self.fr_CrustChoices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_CrustChoices">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_DayOfCloses_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="1" />
+    <End Role="fr_DayOfCloses" Type="Self.fr_DayOfCloses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_DayOfCloses">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_DayOfCloses_fr_ZoneNames">
+    <End Role="fr_ZoneNames" Type="Self.fr_ZoneNames" Multiplicity="1" />
+    <End Role="fr_DayOfCloses" Type="Self.fr_DayOfCloses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_ZoneNames">
+        <PropertyRef Name="ZoneNameId" />
+      </Principal>
+      <Dependent Role="fr_DayOfCloses">
+        <PropertyRef Name="ZoneNameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_DiscountCoupons_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="1" />
+    <End Role="fr_DiscountCoupons" Type="Self.fr_DiscountCoupons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_DiscountCoupons">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_FamilyMeals_fr_Products">
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="1" />
+    <End Role="fr_FamilyMeals" Type="Self.fr_FamilyMeals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_FamilyMeals">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_FavorRestaurants_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="fr_FavorRestaurants" Type="Self.fr_FavorRestaurants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="fr_FavorRestaurants">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_FavorRestaurants_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="1" />
+    <End Role="fr_FavorRestaurants" Type="Self.fr_FavorRestaurants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_FavorRestaurants">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_FreeItemCoupons_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="1" />
+    <End Role="fr_FreeItemCoupons" Type="Self.fr_FreeItemCoupons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_FreeItemCoupons">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_GiftCards_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="fr_GiftCards" Type="Self.fr_GiftCards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="fr_GiftCards">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_GiftCards_fr_CreditCards">
+    <End Role="fr_CreditCards" Type="Self.fr_CreditCards" Multiplicity="1" />
+    <End Role="fr_GiftCards" Type="Self.fr_GiftCards" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_CreditCards">
+        <PropertyRef Name="CreditCardId" />
+      </Principal>
+      <Dependent Role="fr_GiftCards">
+        <PropertyRef Name="CreditCardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Hotel_fr_HotelTypes">
+    <End Role="fr_HotelTypes" Type="Self.fr_HotelTypes" Multiplicity="1" />
+    <End Role="fr_Hotel" Type="Self.fr_Hotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_HotelTypes">
+        <PropertyRef Name="HotelTypeId" />
+      </Principal>
+      <Dependent Role="fr_Hotel">
+        <PropertyRef Name="HotelTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_OrderItems_fr_Orders">
+    <End Role="fr_Orders" Type="Self.fr_Orders" Multiplicity="1" />
+    <End Role="fr_OrderItems" Type="Self.fr_OrderItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Orders">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="fr_OrderItems">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_OrderItems_fr_Products">
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="1" />
+    <End Role="fr_OrderItems" Type="Self.fr_OrderItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_OrderItems">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Orders_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="1" />
+    <End Role="fr_Orders" Type="Self.fr_Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_Orders">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Orders_fr_OrderStatuses">
+    <End Role="fr_OrderStatuses" Type="Self.fr_OrderStatuses" Multiplicity="1" />
+    <End Role="fr_Orders" Type="Self.fr_Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_OrderStatuses">
+        <PropertyRef Name="OrderStatusId" />
+      </Principal>
+      <Dependent Role="fr_Orders">
+        <PropertyRef Name="OrderStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ProductDressings_fr_Dressings">
+    <End Role="fr_Dressings" Type="Self.fr_Dressings" Multiplicity="1" />
+    <End Role="fr_ProductDressings" Type="Self.fr_ProductDressings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Dressings">
+        <PropertyRef Name="DressingId" />
+      </Principal>
+      <Dependent Role="fr_ProductDressings">
+        <PropertyRef Name="DressingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ProductDressings_fr_Products">
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="1" />
+    <End Role="fr_ProductDressings" Type="Self.fr_ProductDressings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_ProductDressings">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Products_fr_Categories">
+    <End Role="fr_Categories" Type="Self.fr_Categories" Multiplicity="1" />
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Categories">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="fr_Products">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Products_fr_CookMethods">
+    <End Role="fr_CookMethods" Type="Self.fr_CookMethods" Multiplicity="1" />
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_CookMethods">
+        <PropertyRef Name="CookMethodId" />
+      </Principal>
+      <Dependent Role="fr_Products">
+        <PropertyRef Name="CookMethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Products_fr_FoodTypes">
+    <End Role="fr_FoodTypes" Type="Self.fr_FoodTypes" Multiplicity="1" />
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_FoodTypes">
+        <PropertyRef Name="FoodTypeId" />
+      </Principal>
+      <Dependent Role="fr_Products">
+        <PropertyRef Name="FoodTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Products_fr_MealSections">
+    <End Role="fr_MealSections" Type="Self.fr_MealSections" Multiplicity="1" />
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_MealSections">
+        <PropertyRef Name="MealSectionId" />
+      </Principal>
+      <Dependent Role="fr_Products">
+        <PropertyRef Name="MealSectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ProductSizes_fr_Products">
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="1" />
+    <End Role="fr_ProductSizes" Type="Self.fr_ProductSizes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_ProductSizes">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ProductToppings_fr_Products">
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="1" />
+    <End Role="fr_ProductToppings" Type="Self.fr_ProductToppings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_ProductToppings">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_ProductToppings_fr_Toppings">
+    <End Role="fr_Toppings" Type="Self.fr_Toppings" Multiplicity="1" />
+    <End Role="fr_ProductToppings" Type="Self.fr_ProductToppings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Toppings">
+        <PropertyRef Name="ToppingId" />
+      </Principal>
+      <Dependent Role="fr_ProductToppings">
+        <PropertyRef Name="ToppingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Reservations_fr_BizRVInfos">
+    <End Role="fr_BizRVInfos" Type="Self.fr_BizRVInfos" Multiplicity="1" />
+    <End Role="fr_Reservations" Type="Self.fr_Reservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizRVInfos">
+        <PropertyRef Name="BizRVInfoId" />
+      </Principal>
+      <Dependent Role="fr_Reservations">
+        <PropertyRef Name="BizRVInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_SauceChoices_fr_Products">
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="1" />
+    <End Role="fr_SauceChoices" Type="Self.fr_SauceChoices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_SauceChoices">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_SideChoices_fr_Products">
+    <End Role="fr_Products" Type="Self.fr_Products" Multiplicity="1" />
+    <End Role="fr_SideChoices" Type="Self.fr_SideChoices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="fr_SideChoices">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_UserDetails_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="fr_UserDetails" Type="Self.fr_UserDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="fr_UserDetails">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_UserDetails_fr_Address">
+    <End Role="fr_Address" Type="Self.fr_Address" Multiplicity="1" />
+    <End Role="fr_UserDetails" Type="Self.fr_UserDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_Address">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="fr_UserDetails">
+        <PropertyRef Name="AddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_UserDetails_fr_ContactInfos">
+    <End Role="fr_ContactInfos" Type="Self.fr_ContactInfos" Multiplicity="1" />
+    <End Role="fr_UserDetails" Type="Self.fr_UserDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_ContactInfos">
+        <PropertyRef Name="ContactInfoId" />
+      </Principal>
+      <Dependent Role="fr_UserDetails">
+        <PropertyRef Name="ContactInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Votes_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="fr_Votes" Type="Self.fr_Votes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="fr_Votes">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fr_Votes_fr_BizInfos">
+    <End Role="fr_BizInfos" Type="Self.fr_BizInfos" Multiplicity="1" />
+    <End Role="fr_Votes" Type="Self.fr_Votes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fr_BizInfos">
+        <PropertyRef Name="BizInfoId" />
+      </Principal>
+      <Dependent Role="fr_Votes">
+        <PropertyRef Name="BizInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FRShoppingModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_Address" EntityType="Self.fr_Address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_AddSides" EntityType="Self.fr_AddSides" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_BizCuisines" EntityType="Self.fr_BizCuisines" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_BizFoodTypes" EntityType="Self.fr_BizFoodTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_BizHours" EntityType="Self.fr_BizHours" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_BizImages" EntityType="Self.fr_BizImages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_BizInfos" EntityType="Self.fr_BizInfos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_BizRVInfos" EntityType="Self.fr_BizRVInfos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_Categories" EntityType="Self.fr_Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_CheeseAmounts" EntityType="Self.fr_CheeseAmounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_ContactInfos" EntityType="Self.fr_ContactInfos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_ConvertedPoints" EntityType="Self.fr_ConvertedPoints" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_CookMethods" EntityType="Self.fr_CookMethods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_CreditCards" EntityType="Self.fr_CreditCards" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_CreditCardTypes" EntityType="Self.fr_CreditCardTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_CrustChoices" EntityType="Self.fr_CrustChoices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_CuisineTypes" EntityType="Self.fr_CuisineTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_DayOfCloses" EntityType="Self.fr_DayOfCloses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_DiscountCoupons" EntityType="Self.fr_DiscountCoupons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_Dressings" EntityType="Self.fr_Dressings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_Drivers" EntityType="Self.fr_Drivers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_FamilyMeals" EntityType="Self.fr_FamilyMeals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_FavorRestaurants" EntityType="Self.fr_FavorRestaurants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_FoodTypes" EntityType="Self.fr_FoodTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_FreeItemCoupons" EntityType="Self.fr_FreeItemCoupons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_GiftCards" EntityType="Self.fr_GiftCards" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_Hotel" EntityType="Self.fr_Hotel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_HotelTypes" EntityType="Self.fr_HotelTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_MealSections" EntityType="Self.fr_MealSections" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_OrderItems" EntityType="Self.fr_OrderItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_Orders" EntityType="Self.fr_Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_OrderStatuses" EntityType="Self.fr_OrderStatuses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_ProductDressings" EntityType="Self.fr_ProductDressings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_Products" EntityType="Self.fr_Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_ProductSizes" EntityType="Self.fr_ProductSizes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_ProductToppings" EntityType="Self.fr_ProductToppings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_Reservations" EntityType="Self.fr_Reservations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_RewardVouchers" EntityType="Self.fr_RewardVouchers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_SauceChoices" EntityType="Self.fr_SauceChoices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_SideChoices" EntityType="Self.fr_SideChoices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_Toppings" EntityType="Self.fr_Toppings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_UserDetails" EntityType="Self.fr_UserDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_Votes" EntityType="Self.fr_Votes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fr_ZoneNames" EntityType="Self.fr_ZoneNames" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Address_fr_Address" Association="Self.FK_fr_Address_fr_Address">
+      <End Role="fr_Address" EntitySet="fr_Address" />
+      <End Role="fr_Address1" EntitySet="fr_Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_AddSides_fr_Products" Association="Self.FK_fr_AddSides_fr_Products">
+      <End Role="fr_Products" EntitySet="fr_Products" />
+      <End Role="fr_AddSides" EntitySet="fr_AddSides" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizCuisines_fr_BizInfos" Association="Self.FK_fr_BizCuisines_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+      <End Role="fr_BizCuisines" EntitySet="fr_BizCuisines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizCuisines_fr_CuisineTypes" Association="Self.FK_fr_BizCuisines_fr_CuisineTypes">
+      <End Role="fr_CuisineTypes" EntitySet="fr_CuisineTypes" />
+      <End Role="fr_BizCuisines" EntitySet="fr_BizCuisines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizFoodTypes_fr_BizInfos" Association="Self.FK_fr_BizFoodTypes_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+      <End Role="fr_BizFoodTypes" EntitySet="fr_BizFoodTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizFoodTypes_fr_FoodTypes" Association="Self.FK_fr_BizFoodTypes_fr_FoodTypes">
+      <End Role="fr_FoodTypes" EntitySet="fr_FoodTypes" />
+      <End Role="fr_BizFoodTypes" EntitySet="fr_BizFoodTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizHours_fr_ZoneNames" Association="Self.FK_fr_BizHours_fr_ZoneNames">
+      <End Role="fr_ZoneNames" EntitySet="fr_ZoneNames" />
+      <End Role="fr_BizHours" EntitySet="fr_BizHours" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizImages_fr_BizInfos" Association="Self.FK_fr_BizImages_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+      <End Role="fr_BizImages" EntitySet="fr_BizImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizInfos_AspNetUsers" Association="Self.FK_fr_BizInfos_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizInfos_fr_Address" Association="Self.FK_fr_BizInfos_fr_Address">
+      <End Role="fr_Address" EntitySet="fr_Address" />
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizInfos_fr_BizHours" Association="Self.FK_fr_BizInfos_fr_BizHours">
+      <End Role="fr_BizHours" EntitySet="fr_BizHours" />
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizInfos_fr_ContactInfos" Association="Self.FK_fr_BizInfos_fr_ContactInfos">
+      <End Role="fr_ContactInfos" EntitySet="fr_ContactInfos" />
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_BizRVInfos_fr_BizInfos" Association="Self.FK_fr_BizRVInfos_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+      <End Role="fr_BizRVInfos" EntitySet="fr_BizRVInfos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Categories_fr_BizCuisines" Association="Self.FK_fr_Categories_fr_BizCuisines">
+      <End Role="fr_BizCuisines" EntitySet="fr_BizCuisines" />
+      <End Role="fr_Categories" EntitySet="fr_Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_CheeseAmounts_fr_Products" Association="Self.FK_fr_CheeseAmounts_fr_Products">
+      <End Role="fr_Products" EntitySet="fr_Products" />
+      <End Role="fr_CheeseAmounts" EntitySet="fr_CheeseAmounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ConvertedPoints_AspNetUsers" Association="Self.FK_fr_ConvertedPoints_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="fr_ConvertedPoints" EntitySet="fr_ConvertedPoints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ConvertedPoints_fr_RewardVouchers" Association="Self.FK_fr_ConvertedPoints_fr_RewardVouchers">
+      <End Role="fr_RewardVouchers" EntitySet="fr_RewardVouchers" />
+      <End Role="fr_ConvertedPoints" EntitySet="fr_ConvertedPoints" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_CreditCards_fr_CreditCardTypes" Association="Self.FK_fr_CreditCards_fr_CreditCardTypes">
+      <End Role="fr_CreditCardTypes" EntitySet="fr_CreditCardTypes" />
+      <End Role="fr_CreditCards" EntitySet="fr_CreditCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_CrustChoices_fr_Products" Association="Self.FK_fr_CrustChoices_fr_Products">
+      <End Role="fr_Products" EntitySet="fr_Products" />
+      <End Role="fr_CrustChoices" EntitySet="fr_CrustChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_DayOfCloses_fr_BizInfos" Association="Self.FK_fr_DayOfCloses_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+      <End Role="fr_DayOfCloses" EntitySet="fr_DayOfCloses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_DayOfCloses_fr_ZoneNames" Association="Self.FK_fr_DayOfCloses_fr_ZoneNames">
+      <End Role="fr_ZoneNames" EntitySet="fr_ZoneNames" />
+      <End Role="fr_DayOfCloses" EntitySet="fr_DayOfCloses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_DiscountCoupons_fr_BizInfos" Association="Self.FK_fr_DiscountCoupons_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+      <End Role="fr_DiscountCoupons" EntitySet="fr_DiscountCoupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_FamilyMeals_fr_Products" Association="Self.FK_fr_FamilyMeals_fr_Products">
+      <End Role="fr_Products" EntitySet="fr_Products" />
+      <End Role="fr_FamilyMeals" EntitySet="fr_FamilyMeals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_FavorRestaurants_AspNetUsers" Association="Self.FK_fr_FavorRestaurants_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="fr_FavorRestaurants" EntitySet="fr_FavorRestaurants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_FavorRestaurants_fr_BizInfos" Association="Self.FK_fr_FavorRestaurants_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+      <End Role="fr_FavorRestaurants" EntitySet="fr_FavorRestaurants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_FreeItemCoupons_fr_BizInfos" Association="Self.FK_fr_FreeItemCoupons_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+      <End Role="fr_FreeItemCoupons" EntitySet="fr_FreeItemCoupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_GiftCards_AspNetUsers" Association="Self.FK_fr_GiftCards_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="fr_GiftCards" EntitySet="fr_GiftCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_GiftCards_fr_CreditCards" Association="Self.FK_fr_GiftCards_fr_CreditCards">
+      <End Role="fr_CreditCards" EntitySet="fr_CreditCards" />
+      <End Role="fr_GiftCards" EntitySet="fr_GiftCards" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Hotel_fr_HotelTypes" Association="Self.FK_fr_Hotel_fr_HotelTypes">
+      <End Role="fr_HotelTypes" EntitySet="fr_HotelTypes" />
+      <End Role="fr_Hotel" EntitySet="fr_Hotel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_OrderItems_fr_Orders" Association="Self.FK_fr_OrderItems_fr_Orders">
+      <End Role="fr_Orders" EntitySet="fr_Orders" />
+      <End Role="fr_OrderItems" EntitySet="fr_OrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_OrderItems_fr_Products" Association="Self.FK_fr_OrderItems_fr_Products">
+      <End Role="fr_Products" EntitySet="fr_Products" />
+      <End Role="fr_OrderItems" EntitySet="fr_OrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Orders_fr_BizInfos" Association="Self.FK_fr_Orders_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+      <End Role="fr_Orders" EntitySet="fr_Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Orders_fr_OrderStatuses" Association="Self.FK_fr_Orders_fr_OrderStatuses">
+      <End Role="fr_OrderStatuses" EntitySet="fr_OrderStatuses" />
+      <End Role="fr_Orders" EntitySet="fr_Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ProductDressings_fr_Dressings" Association="Self.FK_fr_ProductDressings_fr_Dressings">
+      <End Role="fr_Dressings" EntitySet="fr_Dressings" />
+      <End Role="fr_ProductDressings" EntitySet="fr_ProductDressings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ProductDressings_fr_Products" Association="Self.FK_fr_ProductDressings_fr_Products">
+      <End Role="fr_Products" EntitySet="fr_Products" />
+      <End Role="fr_ProductDressings" EntitySet="fr_ProductDressings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Products_fr_Categories" Association="Self.FK_fr_Products_fr_Categories">
+      <End Role="fr_Categories" EntitySet="fr_Categories" />
+      <End Role="fr_Products" EntitySet="fr_Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Products_fr_CookMethods" Association="Self.FK_fr_Products_fr_CookMethods">
+      <End Role="fr_CookMethods" EntitySet="fr_CookMethods" />
+      <End Role="fr_Products" EntitySet="fr_Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Products_fr_FoodTypes" Association="Self.FK_fr_Products_fr_FoodTypes">
+      <End Role="fr_FoodTypes" EntitySet="fr_FoodTypes" />
+      <End Role="fr_Products" EntitySet="fr_Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Products_fr_MealSections" Association="Self.FK_fr_Products_fr_MealSections">
+      <End Role="fr_MealSections" EntitySet="fr_MealSections" />
+      <End Role="fr_Products" EntitySet="fr_Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ProductSizes_fr_Products" Association="Self.FK_fr_ProductSizes_fr_Products">
+      <End Role="fr_Products" EntitySet="fr_Products" />
+      <End Role="fr_ProductSizes" EntitySet="fr_ProductSizes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ProductToppings_fr_Products" Association="Self.FK_fr_ProductToppings_fr_Products">
+      <End Role="fr_Products" EntitySet="fr_Products" />
+      <End Role="fr_ProductToppings" EntitySet="fr_ProductToppings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_ProductToppings_fr_Toppings" Association="Self.FK_fr_ProductToppings_fr_Toppings">
+      <End Role="fr_Toppings" EntitySet="fr_Toppings" />
+      <End Role="fr_ProductToppings" EntitySet="fr_ProductToppings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Reservations_fr_BizRVInfos" Association="Self.FK_fr_Reservations_fr_BizRVInfos">
+      <End Role="fr_BizRVInfos" EntitySet="fr_BizRVInfos" />
+      <End Role="fr_Reservations" EntitySet="fr_Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_SauceChoices_fr_Products" Association="Self.FK_fr_SauceChoices_fr_Products">
+      <End Role="fr_Products" EntitySet="fr_Products" />
+      <End Role="fr_SauceChoices" EntitySet="fr_SauceChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_SideChoices_fr_Products" Association="Self.FK_fr_SideChoices_fr_Products">
+      <End Role="fr_Products" EntitySet="fr_Products" />
+      <End Role="fr_SideChoices" EntitySet="fr_SideChoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_UserDetails_AspNetUsers" Association="Self.FK_fr_UserDetails_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="fr_UserDetails" EntitySet="fr_UserDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_UserDetails_fr_Address" Association="Self.FK_fr_UserDetails_fr_Address">
+      <End Role="fr_Address" EntitySet="fr_Address" />
+      <End Role="fr_UserDetails" EntitySet="fr_UserDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_UserDetails_fr_ContactInfos" Association="Self.FK_fr_UserDetails_fr_ContactInfos">
+      <End Role="fr_ContactInfos" EntitySet="fr_ContactInfos" />
+      <End Role="fr_UserDetails" EntitySet="fr_UserDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Votes_AspNetUsers" Association="Self.FK_fr_Votes_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="fr_Votes" EntitySet="fr_Votes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fr_Votes_fr_BizInfos" Association="Self.FK_fr_Votes_fr_BizInfos">
+      <End Role="fr_BizInfos" EntitySet="fr_BizInfos" />
+      <End Role="fr_Votes" EntitySet="fr_Votes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

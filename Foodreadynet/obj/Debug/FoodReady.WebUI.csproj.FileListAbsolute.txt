@@ -1,0 +1,259 @@
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Foodreadynet.dll.config
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Foodreadynet.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Foodreadynet.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Antlr3.Runtime.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\EntityFramework.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\EntityFramework.SqlServer.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Newtonsoft.Json.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Owin.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.Helpers.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.Mvc.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.Optimization.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.Razor.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.WebPages.Deployment.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.WebPages.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.WebPages.Razor.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\WebGrease.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Antlr3.Runtime.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\EntityFramework.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\EntityFramework.SqlServer.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Newtonsoft.Json.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.Helpers.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.Mvc.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.Optimization.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.Razor.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.WebPages.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.WebPages.Deployment.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\System.Web.WebPages.Razor.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\obj\Debug\Foodreadynet.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\obj\Debug\Foodreadynet.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\obj\Debug\FoodReady.WebUI.csprojResolveAssemblyReference.cache
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\PagedList.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\PagedList.Mvc.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\PagedList.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\PagedList.Mvc.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\FR.Domain.Model.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\FR.Infrastructure.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\FR.Repository.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\FR.Services.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\FR.Domain.Model.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\FR.Infrastructure.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\FR.Repository.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\FR.Services.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\YelpSharp.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Ninject.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Ninject.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Ninject.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Recaptcha.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Recaptcha.MvcModel.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\Recaptcha.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\obj\Debug\FoodReady.WebUI.Migrations.InitialCreate.resources
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\obj\Debug\FoodReady.WebUI.csproj.GenerateResource.Cache
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\obj\Debug\FoodReady.WebUI.Migrations.AddedDate.resources
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\obj\Debug\FoodReady.WebUI.Migrations.UpdatedDate.resources
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\obj\Debug\FoodReady.WebUI.Migrations.Active.resources
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\RestSharp.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\RestSharp.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\Foodreadynet\bin\log4net.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Foodreadynet.dll.config
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Foodreadynet.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Foodreadynet.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Antlr3.Runtime.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\EntityFramework.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\EntityFramework.SqlServer.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\FR.Domain.Model.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\FR.Infrastructure.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\FR.Repository.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\FR.Services.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Newtonsoft.Json.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Ninject.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Owin.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\PagedList.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\PagedList.Mvc.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Recaptcha.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Recaptcha.MvcModel.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\RestSharp.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Helpers.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Mvc.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Optimization.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Razor.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.WebPages.Deployment.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.WebPages.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.WebPages.Razor.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\WebGrease.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\YelpSharp.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\FR.Domain.Model.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\FR.Infrastructure.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\FR.Repository.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\FR.Services.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Antlr3.Runtime.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\EntityFramework.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\EntityFramework.SqlServer.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\log4net.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Newtonsoft.Json.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Ninject.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Ninject.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\PagedList.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\PagedList.Mvc.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\Recaptcha.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\RestSharp.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Helpers.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Mvc.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Optimization.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Razor.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.WebPages.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.WebPages.Deployment.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.WebPages.Razor.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\obj\Debug\FoodReady.WebUI.csprojResolveAssemblyReference.cache
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\obj\Debug\Foodreadynet.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\obj\Debug\Foodreadynet.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\obj\Debug\FoodReady.WebUI.Migrations.AddedDate.resources
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\obj\Debug\FoodReady.WebUI.csproj.GenerateResource.Cache
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\obj\Debug\FoodReady.WebUI.Migrations.UpdatedDate.resources
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\Foodreadynet\obj\Debug\FoodReady.WebUI.Migrations.Active.resources
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Foodreadynet.dll.config
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Foodreadynet.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Foodreadynet.pdb
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Antlr3.Runtime.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\EntityFramework.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\EntityFramework.SqlServer.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\FR.Domain.Model.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\FR.Infrastructure.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\FR.Repository.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\FR.Services.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Google.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Web.Infrastructure.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Newtonsoft.Json.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Ninject.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Owin.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\PagedList.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\PagedList.Mvc.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Recaptcha.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Recaptcha.MvcModel.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\RestSharp.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Helpers.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Mvc.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Optimization.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Razor.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.WebPages.Deployment.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.WebPages.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.WebPages.Razor.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\WebGrease.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\YelpSharp.dll
+D:\Foodreadynet-slidecart\Foodreadynet\bin\FR.Domain.Model.pdb
+D:\Foodreadynet-slidecart\Foodreadynet\bin\FR.Domain.Model.dll.config
+D:\Foodreadynet-slidecart\Foodreadynet\bin\FR.Infrastructure.pdb
+D:\Foodreadynet-slidecart\Foodreadynet\bin\FR.Repository.pdb
+D:\Foodreadynet-slidecart\Foodreadynet\bin\FR.Services.pdb
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Antlr3.Runtime.pdb
+D:\Foodreadynet-slidecart\Foodreadynet\bin\EntityFramework.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\EntityFramework.SqlServer.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\log4net.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Google.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Newtonsoft.Json.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Ninject.pdb
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Ninject.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\PagedList.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\PagedList.Mvc.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\Recaptcha.pdb
+D:\Foodreadynet-slidecart\Foodreadynet\bin\RestSharp.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Helpers.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Mvc.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Optimization.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.Razor.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.WebPages.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.WebPages.Deployment.xml
+D:\Foodreadynet-slidecart\Foodreadynet\bin\System.Web.WebPages.Razor.xml
+D:\Foodreadynet-slidecart\Foodreadynet\obj\Debug\FoodReady.WebUI.csprojAssemblyReference.cache
+D:\Foodreadynet-slidecart\Foodreadynet\obj\Debug\FoodReady.WebUI.Migrations.AddedDate.resources
+D:\Foodreadynet-slidecart\Foodreadynet\obj\Debug\FoodReady.WebUI.Migrations.UpdatedDate.resources
+D:\Foodreadynet-slidecart\Foodreadynet\obj\Debug\FoodReady.WebUI.Migrations.Active.resources
+D:\Foodreadynet-slidecart\Foodreadynet\obj\Debug\FoodReady.WebUI.csproj.GenerateResource.cache
+D:\Foodreadynet-slidecart\Foodreadynet\obj\Debug\FoodReady.WebUI.csproj.CoreCompileInputs.cache
+D:\Foodreadynet-slidecart\Foodreadynet\obj\Debug\FoodReady.WebUI.csproj.CopyComplete
+D:\Foodreadynet-slidecart\Foodreadynet\obj\Debug\Foodreadynet.dll
+D:\Foodreadynet-slidecart\Foodreadynet\obj\Debug\Foodreadynet.pdb

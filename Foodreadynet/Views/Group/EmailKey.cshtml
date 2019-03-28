@@ -1,0 +1,47 @@
+﻿@model FoodReady.WebUI.Models.EmailGroupKeyModel
+<div id="popupbody1">
+    <div class="modal-header">
+        <h4 id="poptitle" class="modal-title" style="color:black;text-align:center;">
+            <b>Email the group key to your friends to join the group cart</b><small style="font-size:16px;">
+                <br />
+                @Html.TextBox("cartkey", (string)ViewBag.cartkey, new { @readonly = "readonly", @style = "background-color:Khaki; width:420px;" })
+            </small>
+        </h4>
+    </div>
+    <div class="modal-body">
+        <h4 style="color:maroon;text-align:center;">@Html.Raw(ViewBag.result)</h4>
+        <div class="row" style="padding-left:10px;">
+            @using (Ajax.BeginForm("EmailKey", "Group", new AjaxOptions
+            {
+                UpdateTargetId = "popupbody1",
+                OnBegin = "onPopup1Begin",
+                OnSuccess = "onPopup1Success",
+                OnFailure = "onPopup1Failed"
+            }))
+            {
+                <div class="col-md-6 col-sm-6 ">
+                    <p>
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </p>
+                    <p>
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </p>
+                </div>
+                <div class="col-md-6 col-sm-6 ">
+                    <p>
+                        @Html.LabelFor(m => m.Message)
+                        @Html.TextAreaFor(m => m.Message, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.Message)
+                    </p>
+                    <p>
+                        <input type="submit" id="emailkey" value="Send email" class="btn btn-primary" />
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

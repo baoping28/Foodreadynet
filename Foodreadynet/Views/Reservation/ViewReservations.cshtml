@@ -1,0 +1,140 @@
+﻿@model IEnumerable<FR.Domain.Model.Entities.Reservation>
+@{
+    ViewBag.Title = "View Reservations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:#ffffff;">
+                View upcoming reservations
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container toppadding">
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-envelope"></span> &nbsp; Email:
+                    </span>
+                    @Html.TextBox("vEmail", "", new { @class = "defaultZipText" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <br />
+                <input id="rvSubmit" type="submit" value="View Upcoming Reservations" class="btn btn-primary" title="View Upcoming Reservations" />
+            </div>
+        }
+    </div><hr />
+    <div class="row">
+        @if (Model != null && Model.Count() > 0)
+        {
+            <h3>
+                Upcoming Reservations (@Model.Count())
+            </h3>
+            <table class="table table-striped">
+                <tr class="trBorder">
+                    <th>
+                        Restaurant
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Phone
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Party Size
+                    </th>
+                    <th>
+                        Message
+                    </th>
+                    <th>
+                        Change
+                    </th>
+                    <th>
+                        Cancel
+                    </th>
+                </tr>
+                @foreach (var r in Model)
+                {
+                    <tr class="trBorder">
+                        <td>
+                            @r.BizName
+                        </td>
+                        <td>
+                            @r.RVDate @r.RVTime
+                        </td>
+                        <td>
+                            @r.FirstName @r.LastName
+                        </td>
+                        <td>
+                            @r.Phone
+                        </td>
+                        <td>
+                            @r.Email
+                        </td>
+                        <td>
+                            @r.PartySize
+                        </td>
+                        <td>
+                            @r.Message
+                        </td>
+                        <td>
+                            @using (Ajax.BeginForm("FindTableForChange", "Reservation", FormMethod.Post, new AjaxOptions
+                                {
+                                    UpdateTargetId = "popupbody1",
+                                    OnBegin = "onPopup1Begin",
+                                    OnSuccess = "onPopup1Success",
+                                    OnFailure = "onPopup1Failed"
+                                }))
+                            {
+                                @Html.Hidden("id", r.ReservationId)
+                                <input type="submit" value="Change" title="Make a change" />
+                            }
+                        </td>
+                        <td>
+                            @if (r.Active)
+                            {
+                                <div id="@Url.Content("item" + r.ReservationId)" class="deleteButtons">
+                                    @using (Ajax.BeginForm("DoRVCancel", "Reservation", new { id = r.ReservationId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + r.ReservationId),
+                            OnBegin = "onReviewBegin('" + r.ReservationId + "')",
+                            OnSuccess = "onReviewSuccess('" + r.ReservationId + "')",
+                            OnFailure = "onReviewFailure('" + r.ReservationId + "')",
+                            Confirm = "Do you want to Cancel the reservation ?"
+                        }))
+                                    {
+
+                                        <input type="submit" title="Cancel" value="Cancel" />
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div>Cancelled</div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else if (Model != null && Model.Count() <= 0)
+        {
+            <p>There is no upcoming reservation.</p>
+        }
+    </div>
+</div>

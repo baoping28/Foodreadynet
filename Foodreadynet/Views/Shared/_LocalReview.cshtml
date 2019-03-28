@@ -1,0 +1,25 @@
+﻿@model FR.Domain.Model.Entities.BizInfo
+@using FoodReady.WebUI.HtmlHelpers
+@using FR.Infrastructure.Helpers
+@{var v = Model.GetRandomVote();}
+<div>
+    @if (Model.RatingVotes > 0)
+    {<div>
+        <img src="@Url.Content("~/Content/images/smallImeal.png")" class="checkoutImg" />
+         @Html.Ratings(Model)
+        <span style="position: relative; top: -6px;"> @Model.RatingVotes reviews</span></div>
+    }
+    <div class="RatingBody boxShadow">
+        @if (v != null)
+        {
+            <div>
+                @Html.RatingsByVote(v.RatingVote)
+            </div>
+        <div>
+           "@Helper.GetReview(v.Comment, 200)"
+        </div>
+        <p> Posted by <span style="color: #2e728b">@v.PenName</span> on <span style="color: #2e728b">
+            <a href="#" title="View details">foodready.net</a></span></p>
+        }
+    </div>
+</div>

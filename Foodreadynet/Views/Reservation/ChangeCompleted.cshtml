@@ -1,0 +1,32 @@
+﻿@model FR.Domain.Model.Entities.Reservation
+@{
+    ViewBag.Title = "Change completed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h3 style="color:#ffffff;">
+                Your reservation has been changed at @Model.BizName
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="container toppadding">
+    <div class="row">
+        <h4>
+            Your reservation has been changed at @Model.BizName
+        </h4>
+        <p>
+            You have changed your reserved for @ViewBag.rvnum, @ViewBag.datetime.
+        </p>
+        <p>
+            We sent you an email at: @Model.Email. If you are unable to honor 10 minutes after
+            the time of the reservation, the table will be open. If you want to cancel any reservations
+            that they will be unable to honor at least 30 minutes in advance on the day of the
+            reservation, please call @Model.BizName directly at: @Model.BizRVInfo.BizInfo.ContactInfo.Phone.
+        </p>
+        Enjoy!
+        --- Enjoy! ---
+    </div>
+</div>

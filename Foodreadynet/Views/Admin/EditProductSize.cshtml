@@ -1,0 +1,45 @@
+﻿@model FoodReady.WebUI.Models.ProductSizeModel
+@{
+    ViewBag.Title = "Edit Product Size";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center>
+        <h3> (@Model.Bizinfo.BizTitle) Edit product size <span style="font-size: 12px;">(product: @Model.Product.Title)</span></h3>
+    </center>
+</div>
+
+@ViewBag.result
+<div id="create" class="container boxShadow boxpadding">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(e => e.ProductID)
+        @Html.HiddenFor(e => e.ProductSizeID)
+        @Html.HiddenFor(e => e.BizInfoID)
+        @Html.HiddenFor(e => e.Title)
+        <div class="smallTitle">
+            Size Title: @Model.Title
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.Size)
+            @Html.TextBoxFor(m => m.Size, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.Size)
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.Price)
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.Price)
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.BizPrice)
+            @Html.TextBoxFor(m => m.BizPrice, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.BizPrice)
+        </div><br />
+            <div class="form-group pull-right">
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+            </div><br />
+        <div class="form-group">
+            <p>@Html.ActionLink("Back to Manage Product Size " + Model.Product.Title, "ManageSize", "admin", new { id = Model.ProductID, bizid = Model.BizInfoID }, null)</p>
+        </div>
+    }
+</div>

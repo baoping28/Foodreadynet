@@ -1,0 +1,32 @@
+﻿@model FoodReady.WebUI.Models.SauceChoiceModel
+
+@{
+    ViewBag.Title = "Edit Sauce Choice";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center><h3>(@Model.Bizinfo.BizTitle) Edit sauce choice <span style="font-size: 12px;">(product: @Model.Product.Title)</span></h3></center>
+</div>
+@ViewBag.result
+
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(e => e.ProductID)
+        @Html.HiddenFor(e => e.SauceChoiceID)
+        @Html.HiddenFor(e => e.BizInfoID)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.Title)
+    </div><br />
+
+    <div class="form-group pull-right">
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+        <br />
+    </div><br />
+    <div class="form-group">
+        <p>@Html.ActionLink("Back to Manage Side Choice " + Model.Product.Title, "ManageSauceChoice", "admin", new { id = Model.ProductID, bizid = Model.BizInfoID }, null)</p>
+    </div>
+    }
+</div>

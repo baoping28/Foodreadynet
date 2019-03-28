@@ -1,0 +1,36 @@
+﻿@model FoodReady.WebUI.Models.ProductDressingModel
+
+@{
+    ViewBag.Title = "Edit Product Dressing";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="titlebox boxShadow">
+    <center><h3>(@Model.Bizinfo.BizTitle) Edit Product Dressing @Model.DressingTitle</h3></center>
+</div>
+<p></p>
+        @ViewBag.result
+<div class="container boxShadow boxpadding">
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(e => e.BizInfoID)
+    @Html.HiddenFor(e => e.ProductID)
+    @Html.HiddenFor(e => e.ProductDressingID)
+    @Html.HiddenFor(e => e.DressingID)
+    @Html.HiddenFor(e => e.DressingTitle)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ExtraPrice)
+        @Html.TextBoxFor(x => x.ExtraPrice, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.ExtraPrice)
+    </div><br />
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+        <br />
+    </div><br />
+    <div class="form-group">
+        <p>@Html.ActionLink("Back to Manage Product Dressing ", "ManageProductDressing", "admin", new { id = Model.ProductID, bizid = Model.BizInfoID }, null)</p>
+    </div>
+}
+</div>

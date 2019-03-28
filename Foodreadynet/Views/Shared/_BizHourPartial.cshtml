@@ -1,0 +1,24 @@
+﻿@model FR.Domain.Model.Entities.BizInfo
+<div class="ptlHours"><center>
+    <div style="background-color:#eeeeee; color:#2e728b;font-size:14px; font-family:Miramonte;padding:6px;">
+        
+            <b>@Model.BizTitle Hours:</b>
+    </div>
+    @if (Model.HasAnyLunchTime==false)
+    {
+        @Html.Partial("_DinnerTimePartial",Model);
+    }
+    else if (Model.HasAnyDinnerTime==false)
+    {
+        @Html.Partial("_LunchTimePartial", Model);
+    }
+    else if (Model.HasNoAnyBreakTime)
+    {
+         @Html.Partial("_StrightTimePartial", Model);
+    }
+    else
+    {
+         @Html.Partial("_BreakhTimePartial", Model);
+    }
+    </center>
+</div>

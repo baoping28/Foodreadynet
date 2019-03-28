@@ -1,0 +1,31 @@
+﻿<div class="container-full" style="padding-top:20px;padding-bottom:20px;background:#d11414;color:#ffffff;">
+    <div class="container">
+        <div class="col-sm-4 col-md-4" style="text-align:center;">
+            <h4 style="font-weight:500;">Find discount coupons</h4>
+            @using (Ajax.BeginForm("Discount", "Home",null, new AjaxOptions
+    {
+        UpdateTargetId = "winContent",
+        OnBegin = "onWinBegin",
+        OnSuccess = "onWinSuccess",
+        OnFailure = "onWinFailed"
+    }, new { @id = "winpopup-form" }))
+            {
+                <div class="form-group">
+                    <button type="button" onclick="$('#winpopup-form').submit();" class="btn btn-primary" title="Discount coupons"><span class="glyphicon glyphicon-barcode"></span> &nbsp; Discount coupons</button>
+                 </div>
+            }
+        </div>
+        <div class="col-sm-4 col-md-4" style="text-align:center;">
+            <h4 style="font-weight:500;">
+                Get rewards
+            </h4>
+            <a href="~/rewards" class="btn btn-primary">
+                <span class="glyphicon glyphicon-gift"></span> &nbsp; Rewards to you
+            </a>
+        </div>
+        <div class="col-sm-4 col-md-4" style="text-align:center;">
+            <h4 style="font-weight:500;">1-510-512-6869</h4>
+            <a id="chatwithus" class="btn btn-primary" href="#"><span class="glyphicon glyphicon-comment"></span> &nbsp; Help? Chat with us</a>
+        </div>
+    </div>
+</div>

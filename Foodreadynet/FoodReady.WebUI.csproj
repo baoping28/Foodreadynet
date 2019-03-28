@@ -1,0 +1,1166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C096278E-8CF6-47BE-A160-AB6E357F4C3C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FoodReady.WebUI</RootNamespace>
+    <AssemblyName>Foodreadynet</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject-2.2.1.0-release-net-4\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="paypal_base">
+      <HintPath>..\FoodReady.WebUI\bin\paypal_base.dll</HintPath>
+    </Reference>
+    <Reference Include="Recaptcha">
+      <HintPath>..\packages\recaptcha.1.0.5.0\lib\.NetFramework 4.0\Recaptcha.dll</HintPath>
+    </Reference>
+    <Reference Include="Recaptcha.MvcModel">
+      <HintPath>..\packages\reCaptchaMvcExtensions.1.0.1\lib\Recaptcha.MvcModel.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="YelpSharp">
+      <HintPath>..\packages\YelpSharp.1.1.0.0\lib\net4\YelpSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AdminSite.css" />
+    <Content Include="Content\BizImages\pizzaguys_073284c1-d374-4ae3-b44f-74224aabaad0.png" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom.css" />
+    <Content Include="Content\grayscale.css" />
+    <Content Include="Content\HotelImages\best_western.png" />
+    <Content Include="Content\HotelImages\days_inn.png" />
+    <Content Include="Content\HotelImages\hilton.png" />
+    <Content Include="Content\HotelImages\Hotel_1\daysinnrocklin.png" />
+    <Content Include="Content\HotelImages\Hotel_1\daysinnsacramento.png" />
+    <Content Include="Content\HotelImages\Hotel_2\bestwesternsacramento.png" />
+    <Content Include="Content\HotelImages\Hotel_3\hiltonconcord.png" />
+    <Content Include="Content\HotelImages\Hotel_3\hiltoncupertino.png" />
+    <Content Include="Content\HotelImages\Hotel_4\imageSoon.png" />
+    <Content Include="Content\HotelImages\Hotel_5\imageSoon.png" />
+    <Content Include="Content\HotelImages\hyatt.png" />
+    <Content Include="Content\HotelImages\imageSoon.png" />
+    <Content Include="Content\HTMLPages\BackToIMEAL.htm" />
+    <Content Include="Content\HTMLPages\BackToPartner.htm" />
+    <Content Include="Content\HTMLPages\BuyGiftCardEmail.htm" />
+    <Content Include="Content\HTMLPages\CustomerEmail.htm" />
+    <Content Include="Content\HTMLPages\DriverEmail.html" />
+    <Content Include="Content\HTMLPages\EmailOrderSumary.htm" />
+    <Content Include="Content\HTMLPages\EmailOrderToDriver.htm" />
+    <Content Include="Content\HTMLPages\EmailPickupSumary.htm" />
+    <Content Include="Content\HTMLPages\EmailSharedOrderSumary.htm" />
+    <Content Include="Content\HTMLPages\EmailSharedPickupSumary.htm" />
+    <Content Include="Content\HTMLPages\EmailToBoss.htm" />
+    <Content Include="Content\HTMLPages\GiftToCustomer.htm" />
+    <Content Include="Content\HTMLPages\GiftToFoodready.htm" />
+    <Content Include="Content\HTMLPages\OrderEmail.htm" />
+    <Content Include="Content\HTMLPages\OrderList.htm" />
+    <Content Include="Content\HTMLPages\OrderPickupSumary.htm" />
+    <Content Include="Content\HTMLPages\OrderSumary.htm" />
+    <Content Include="Content\HTMLPages\RegisterBizEmail.htm" />
+    <Content Include="Content\HTMLPages\ReservationToCustomer.htm" />
+    <Content Include="Content\HTMLPages\ReservationToRestaurant.htm" />
+    <Content Include="Content\HTMLPages\RVCancelToCustomer.htm" />
+    <Content Include="Content\HTMLPages\RVCancelToRestaurant.htm" />
+    <Content Include="Content\HTMLPages\RVChangetoCustomer.htm" />
+    <Content Include="Content\HTMLPages\RVChangetoRestaurant.htm" />
+    <Content Include="Content\HTMLPages\SharedOrderPickupSumary.htm" />
+    <Content Include="Content\HTMLPages\SharedOrderSumary.htm" />
+    <Content Include="Content\Images\a03.png" />
+    <Content Include="Content\Images\active.png" />
+    <Content Include="Content\Images\ajax-loaderPng4.gif" />
+    <Content Include="Content\Images\ajaxloader.gif" />
+    <Content Include="Content\Images\am.png" />
+    <Content Include="Content\Images\amazon100.png" />
+    <Content Include="Content\Images\amazon50.png" />
+    <Content Include="Content\Images\apple100.png" />
+    <Content Include="Content\Images\apple50.png" />
+    <Content Include="Content\Images\Arrow.png" />
+    <Content Include="Content\Images\arrow_left.png" />
+    <Content Include="Content\Images\arrow_left1.png" />
+    <Content Include="Content\Images\arrow_left2.png" />
+    <Content Include="Content\Images\arrow_left3.png" />
+    <Content Include="Content\Images\arrow_left4.png" />
+    <Content Include="Content\Images\arrow_right.png" />
+    <Content Include="Content\Images\arrow_right1.png" />
+    <Content Include="Content\Images\arrow_right2.png" />
+    <Content Include="Content\Images\arrow_right3.png" />
+    <Content Include="Content\Images\arrow_right4.png" />
+    <Content Include="Content\Images\b03.png" />
+    <Content Include="Content\Images\bag.png" />
+    <Content Include="Content\Images\barnes100.png" />
+    <Content Include="Content\Images\barnes50.png" />
+    <Content Include="Content\Images\bestbuy100.png" />
+    <Content Include="Content\Images\bestbuy50.png" />
+    <Content Include="Content\Images\bodyBg.png" />
+    <Content Include="Content\Images\buttons.png" />
+    <Content Include="Content\Images\cancel.png" />
+    <Content Include="Content\Images\car.png" />
+    <Content Include="Content\Images\cg.png" />
+    <Content Include="Content\Images\cg1.png" />
+    <Content Include="Content\Images\ch.png" />
+    <Content Include="Content\Images\chatMan.png" />
+    <Content Include="Content\Images\chatNow.png" />
+    <Content Include="Content\Images\chevron100.png" />
+    <Content Include="Content\Images\chevron50.png" />
+    <Content Include="Content\Images\chili.png" />
+    <Content Include="Content\Images\city.png" />
+    <Content Include="Content\Images\concord.png" />
+    <Content Include="Content\Images\coupon.png" />
+    <Content Include="Content\Images\creditcard.png" />
+    <Content Include="Content\Images\CSCImg.png" />
+    <Content Include="Content\Images\deactive.png" />
+    <Content Include="Content\Images\dl1.png" />
+    <Content Include="Content\Images\downloadApps.png" />
+    <Content Include="Content\Images\dr1.png" />
+    <Content Include="Content\Images\facebookImg.png" />
+    <Content Include="Content\Images\findtable.png" />
+    <Content Include="Content\Images\fork.png" />
+    <Content Include="Content\Images\freeApp.png" />
+    <Content Include="Content\Images\frHd-1.png" />
+    <Content Include="Content\Images\frHd.png" />
+    <Content Include="Content\Images\frHeader-1.png" />
+    <Content Include="Content\Images\frHeader.png" />
+    <Content Include="Content\Images\giftcard.png" />
+    <Content Include="Content\Images\giftcheck.png" />
+    <Content Include="Content\Images\goback.png" />
+    <Content Include="Content\Images\gocheck.png" />
+    <Content Include="Content\Images\gocheckout.png" />
+    <Content Include="Content\Images\hd.png" />
+    <Content Include="Content\Images\help3.png" />
+    <Content Include="Content\Images\homedepot100.png" />
+    <Content Include="Content\Images\homedepot50.png" />
+    <Content Include="Content\Images\howwork.png" />
+    <Content Include="Content\Images\icons-18-black.png" />
+    <Content Include="Content\Images\icons-18-white.png" />
+    <Content Include="Content\Images\icons-36-black.png" />
+    <Content Include="Content\Images\icons-36-white.png" />
+    <Content Include="Content\Images\icon_online.gif" />
+    <Content Include="Content\Images\id.png" />
+    <Content Include="Content\Images\imageSoon.png" />
+    <Content Include="Content\Images\it.png" />
+    <Content Include="Content\Images\jp.png" />
+    <Content Include="Content\Images\lafayette.png" />
+    <Content Include="Content\Images\leave.png" />
+    <Content Include="Content\Images\livechat.png" />
+    <Content Include="Content\Images\login.png" />
+    <Content Include="Content\Images\loginBd.png" />
+    <Content Include="Content\Images\loginBgd.png" />
+    <Content Include="Content\Images\loginBtn.png" />
+    <Content Include="Content\Images\logoff.png" />
+    <Content Include="Content\Images\ls.png" />
+    <Content Include="Content\Images\ls1.png" />
+    <Content Include="Content\Images\macys100.png" />
+    <Content Include="Content\Images\macys50.png" />
+    <Content Include="Content\Images\mail.png" />
+    <Content Include="Content\Images\makechange.png" />
+    <Content Include="Content\Images\makeRV.png" />
+    <Content Include="Content\Images\marrow_left.png" />
+    <Content Include="Content\Images\marrow_left1.png" />
+    <Content Include="Content\Images\marrow_right.png" />
+    <Content Include="Content\Images\marrow_right1.png" />
+    <Content Include="Content\Images\menusection.png" />
+    <Content Include="Content\Images\mFrHd.png" />
+    <Content Include="Content\Images\mFrHder.png" />
+    <Content Include="Content\Images\mHd.png" />
+    <Content Include="Content\Images\mHdr-1.png" />
+    <Content Include="Content\Images\mHdr.png" />
+    <Content Include="Content\Images\mhomeBgd.png" />
+    <Content Include="Content\Images\minusSign.png" />
+    <Content Include="Content\Images\mlogin.png" />
+    <Content Include="Content\Images\mm1.png" />
+    <Content Include="Content\Images\mPlaceorder.png" />
+    <Content Include="Content\Images\mr1.png" />
+    <Content Include="Content\Images\mx.png" />
+    <Content Include="Content\Images\ny.png" />
+    <Content Include="Content\Images\ny1.png" />
+    <Content Include="Content\Images\nytest.png" />
+    <Content Include="Content\Images\ok.png" />
+    <Content Include="Content\Images\paypal.png" />
+    <Content Include="Content\Images\paypalBtn.png" />
+    <Content Include="Content\Images\pd1.png" />
+    <Content Include="Content\Images\pekingBoy.png" />
+    <Content Include="Content\Images\person.png" />
+    <Content Include="Content\Images\pleasanthill.png" />
+    <Content Include="Content\Images\PlusSign.png" />
+    <Content Include="Content\Images\px1.png" />
+    <Content Include="Content\Images\pz.png" />
+    <Content Include="Content\Images\ratingEmpty.png" />
+    <Content Include="Content\Images\ratingHalf.png" />
+    <Content Include="Content\Images\ratingStar.png" />
+    <Content Include="Content\Images\remove.png" />
+    <Content Include="Content\Images\reservations.png" />
+    <Content Include="Content\Images\resLogin.png" />
+    <Content Include="Content\Images\rewards.png" />
+    <Content Include="Content\Images\rollerBg.png" />
+    <Content Include="Content\Images\rollerBgd.png" />
+    <Content Include="Content\Images\rollerBkImg.png" />
+    <Content Include="Content\Images\roundTable.png" />
+    <Content Include="Content\Images\rvImg.png" />
+    <Content Include="Content\Images\rvImg1.png" />
+    <Content Include="Content\Images\search.png" />
+    <Content Include="Content\Images\searchBg.png" />
+    <Content Include="Content\Images\searchBt.png" />
+    <Content Include="Content\Images\searchBtn.png" />
+    <Content Include="Content\Images\searchGo.png" />
+    <Content Include="Content\Images\sf.png" />
+    <Content Include="Content\Images\sf1.png" />
+    <Content Include="Content\Images\shanghaiGourmet.png" />
+    <Content Include="Content\Images\sharedcart.png" />
+    <Content Include="Content\Images\sixangles.png" />
+    <Content Include="Content\Images\st1.png" />
+    <Content Include="Content\Images\staples100.png" />
+    <Content Include="Content\Images\staples50.png" />
+    <Content Include="Content\Images\starbucks100.png" />
+    <Content Include="Content\Images\starbucks50.png" />
+    <Content Include="Content\Images\th.png" />
+    <Content Include="Content\Images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\Images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\Images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\Images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\Images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\Images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\Images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\Images\vc1.png" />
+    <Content Include="Content\Images\veg.png" />
+    <Content Include="Content\Images\viewRVS.png" />
+    <Content Include="Content\Images\walmart100.png" />
+    <Content Include="Content\Images\walmart50.png" />
+    <Content Include="Content\Images\walnutcreek.png" />
+    <Content Include="Content\Images\yelp.png" />
+    <Content Include="Content\Images\yelp6018.png" />
+    <Content Include="Content\jquery.ui.datepicker.custom.css" />
+    <Content Include="Content\reset.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="font-awesome\css\font-awesome.css" />
+    <Content Include="font-awesome\css\font-awesome.min.css" />
+    <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\city.png" />
+    <Content Include="Images\facebook.png" />
+    <Content Include="Images\fk.png" />
+    <Content Include="Images\restaurant1.png" />
+    <Content Include="Images\searchcity.png" />
+    <Content Include="Images\searchcity1.png" />
+    <Content Include="Images\searchcity2.png" />
+    <Content Include="Images\shanghai_3.png" />
+    <Content Include="Images\step1.png" />
+    <Content Include="Images\step2.png" />
+    <Content Include="Images\step3.png" />
+    <Content Include="Images\Twitte.png" />
+    <Content Include="packages.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="font-awesome\less\bordered-pulled.less" />
+    <Content Include="font-awesome\less\core.less" />
+    <Content Include="font-awesome\less\fixed-width.less" />
+    <Content Include="font-awesome\less\font-awesome.less" />
+    <Content Include="font-awesome\less\icons.less" />
+    <Content Include="font-awesome\less\larger.less" />
+    <Content Include="font-awesome\less\list.less" />
+    <Content Include="font-awesome\less\mixins.less" />
+    <Content Include="font-awesome\less\path.less" />
+    <Content Include="font-awesome\less\rotated-flipped.less" />
+    <Content Include="font-awesome\less\spinning.less" />
+    <Content Include="font-awesome\less\stacked.less" />
+    <Content Include="font-awesome\less\variables.less" />
+    <Content Include="font-awesome\scss\font-awesome.scss" />
+    <Content Include="font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="font-awesome\scss\_core.scss" />
+    <Content Include="font-awesome\scss\_fixed-width.scss" />
+    <Content Include="font-awesome\scss\_icons.scss" />
+    <Content Include="font-awesome\scss\_larger.scss" />
+    <Content Include="font-awesome\scss\_list.scss" />
+    <Content Include="font-awesome\scss\_mixins.scss" />
+    <Content Include="font-awesome\scss\_path.scss" />
+    <Content Include="font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="font-awesome\scss\_spinning.scss" />
+    <Content Include="font-awesome\scss\_stacked.scss" />
+    <Content Include="font-awesome\scss\_variables.scss" />
+    <Content Include="Content\HotelImages\Hotel_1\Thumbs.db" />
+    <Content Include="Content\HotelImages\Hotel_2\Thumbs.db" />
+    <Content Include="Content\HotelImages\Hotel_3\Thumbs.db" />
+    <Content Include="Content\HotelImages\Hotel_4\Thumbs.db" />
+    <Content Include="Content\HotelImages\Hotel_5\Thumbs.db" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="PPCancelPage.htm" />
+    <Content Include="RedirectPage.htm" />
+    <Content Include="Scripts\FoodreadyJS\carouselStart.js" />
+    <Content Include="Scripts\FoodreadyJS\grayscale.js" />
+    <Content Include="Scripts\FoodreadyJS\main.js" />
+    <Content Include="Scripts\FoodreadyJS\modernizr.js" />
+    <Content Include="Scripts\FoodreadyJS\popupJS.js" />
+    <Content Include="Scripts\FRAdminScripts\adminCharacterCount.js" />
+    <Content Include="Scripts\FRAdminScripts\adminMainJS.js" />
+    <Content Include="Scripts\FRAdminScripts\datepickerJQ.js" />
+    <Content Include="Scripts\FRAdminScripts\ModalPopupJS.js" />
+    <Content Include="Scripts\FRAdminScripts\onAjaxScript.js" />
+    <Content Include="Scripts\FRAdminScripts\usersJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\autocompleteJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\backtocartJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\CartDropdownlist.js" />
+    <Content Include="Scripts\FRJqueryScripts\checkoutJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\CheckoutSlideUpDown.js" />
+    <Content Include="Scripts\FRJqueryScripts\clockJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\copyAddressJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\cscPopup.js" />
+    <Content Include="Scripts\FRJqueryScripts\datepickerJQ.js" />
+    <Content Include="Scripts\FRJqueryScripts\driverSignJs.js" />
+    <Content Include="Scripts\FRJqueryScripts\GCCheckoutSlideUpDown.js" />
+    <Content Include="Scripts\FRJqueryScripts\giftCSCPop.js" />
+    <Content Include="Scripts\FRJqueryScripts\googleMapJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\googleMapSearchJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\GoogleSearchAuto.js" />
+    <Content Include="Scripts\FRJqueryScripts\groupChanel.js" />
+    <Content Include="Scripts\FRJqueryScripts\groupCheckoutJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\groupDropDown.js" />
+    <Content Include="Scripts\FRJqueryScripts\hotelsearch.js" />
+    <Content Include="Scripts\FRJqueryScripts\hoverMenuJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\hoverPopupDiv.js" />
+    <Content Include="Scripts\FRJqueryScripts\JqueryFloatingMenu.js" />
+    <Content Include="Scripts\FRJqueryScripts\mainMenuJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\onAjaxScript.js" />
+    <Content Include="Scripts\FRJqueryScripts\popupAddress.js" />
+    <Content Include="Scripts\FRJqueryScripts\popupWindowJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\ppChanel.js" />
+    <Content Include="Scripts\FRJqueryScripts\RemainingCharacterCount.js" />
+    <Content Include="Scripts\FRJqueryScripts\RVValidate.js" />
+    <Content Include="Scripts\FRJqueryScripts\searchBoxJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\ShareCartDropdownlist.js" />
+    <Content Include="Scripts\FRJqueryScripts\shareFloatingMenu.js" />
+    <Content Include="Scripts\FRJqueryScripts\SharepopupJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\sharepusherJS.js" />
+    <Content Include="Scripts\FRJqueryScripts\sliding.form.js" />
+    <Content Include="Scripts\FRJqueryScripts\slidingUpDown.js" />
+    <Content Include="Scripts\FRJqueryScripts\StarRating.js" />
+    <Content Include="Scripts\FRJqueryScripts\subFloatingMenu.js" />
+    <Content Include="Scripts\FRJqueryScripts\TestOnly.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.confirm.js" />
+    <Content Include="Scripts\jquery.confirm.min.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Plugins\jquery.popupoverlay.js" />
+    <Content Include="Scripts\Plugins\jssor.js" />
+    <Content Include="Scripts\Plugins\jssor.slider.js" />
+    <Content Include="Scripts\Plugins\jssor.slider.min.js" />
+    <Content Include="Scripts\Plugins\jssor.slider.mini.js" />
+    <Content Include="Scripts\Plugins\tooltipimg.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SignalrJS\signalrChat.js" />
+    <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Views\Home\HotelType.cshtml" />
+    <Content Include="Views\Home\MainContent.cshtml" />
+    <Content Include="Views\Home\Footer.cshtml" />
+    <Content Include="Views\AllCities\Index.cshtml" />
+    <Content Include="Views\Shared\_SearchDivPartial.cshtml" />
+    <Content Include="Views\AllCities\ShowAllCities.cshtml" />
+    <Content Include="Views\AllCities\City.cshtml" />
+    <Content Include="Views\Shared\_SearchCity1Partial.cshtml" />
+    <Content Include="Views\Admin\AllOfUsers.cshtml" />
+    <Content Include="Views\Admin\AllRestaurantUsers.cshtml" />
+    <Content Include="Views\Admin\AllUsers.cshtml" />
+    <Content Include="Views\Admin\CreateReservationInfo.cshtml" />
+    <Content Include="Views\Admin\CreateRestaurant.cshtml" />
+    <Content Include="Views\Admin\DoAddSide.cshtml" />
+    <Content Include="Views\Admin\DoApprove.cshtml" />
+    <Content Include="Views\Admin\DoBizImage.cshtml" />
+    <Content Include="Views\Admin\DoBizInfo.cshtml" />
+    <Content Include="Views\Admin\DoCategory.cshtml" />
+    <Content Include="Views\Admin\DoCheeseAmount.cshtml" />
+    <Content Include="Views\Admin\DoCrustChoice.cshtml" />
+    <Content Include="Views\Admin\DoDayOfClose.cshtml" />
+    <Content Include="Views\Admin\DoDiscount.cshtml" />
+    <Content Include="Views\Admin\DoFamilyMeal.cshtml" />
+    <Content Include="Views\Admin\DoFreeItem.cshtml" />
+    <Content Include="Views\Admin\DoGiftCard.cshtml" />
+    <Content Include="Views\Admin\DoHotelType.cshtml" />
+    <Content Include="Views\Admin\DoMenu.cshtml" />
+    <Content Include="Views\Admin\DoProduct.cshtml" />
+    <Content Include="Views\Admin\DoProductDressing.cshtml" />
+    <Content Include="Views\Admin\DoProductSize.cshtml" />
+    <Content Include="Views\Admin\DoProductTopping.cshtml" />
+    <Content Include="Views\Admin\DoSauceChoice.cshtml" />
+    <Content Include="Views\Admin\DoSideChoice.cshtml" />
+    <Content Include="Views\Admin\EditAddSide.cshtml" />
+    <Content Include="Views\Admin\EditBizImage.cshtml" />
+    <Content Include="Views\Admin\EditCategory.cshtml" />
+    <Content Include="Views\Admin\EditCheeseAmount.cshtml" />
+    <Content Include="Views\Admin\EditCloseDay.cshtml" />
+    <Content Include="Views\Admin\EditCrustChoice.cshtml" />
+    <Content Include="Views\Admin\EditDiscount.cshtml" />
+    <Content Include="Views\Admin\EditFamilyMeal.cshtml" />
+    <Content Include="Views\Admin\EditFreeItem.cshtml" />
+    <Content Include="Views\Admin\EditHotelType.cshtml" />
+    <Content Include="Views\Admin\EditProduct.cshtml" />
+    <Content Include="Views\Admin\EditProductDressing.cshtml" />
+    <Content Include="Views\Admin\EditProductSize.cshtml" />
+    <Content Include="Views\Admin\EditProductTopping.cshtml" />
+    <Content Include="Views\Admin\EditSauceChoice.cshtml" />
+    <Content Include="Views\Admin\EditSideChoice.cshtml" />
+    <Content Include="Views\Admin\FaxOrder.cshtml" />
+    <Content Include="Views\Admin\GiftCardDetails.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\ItemDetails.cshtml" />
+    <Content Include="Views\Admin\ManageAddSide.cshtml" />
+    <Content Include="Views\Admin\ManageBizImages.cshtml" />
+    <Content Include="Views\Admin\ManageCategories.cshtml" />
+    <Content Include="Views\Admin\ManageCheeseAmount.cshtml" />
+    <Content Include="Views\Admin\ManageCloseDays.cshtml" />
+    <Content Include="Views\Admin\ManageCoupons.cshtml" />
+    <Content Include="Views\Admin\ManageCrustChoice.cshtml" />
+    <Content Include="Views\Admin\ManageFamilyMeal.cshtml" />
+    <Content Include="Views\Admin\ManageFreeItems.cshtml" />
+    <Content Include="Views\Admin\ManageGiftCards.cshtml" />
+    <Content Include="Views\Admin\ManageHotels.cshtml" />
+    <Content Include="Views\Admin\ManageHotelTypes.cshtml" />
+    <Content Include="Views\Admin\ManageMenu.cshtml" />
+    <Content Include="Views\Admin\ManageOrders.cshtml" />
+    <Content Include="Views\Admin\ManageProductDressing.cshtml" />
+    <Content Include="Views\Admin\ManageProducts.cshtml" />
+    <Content Include="Views\Admin\ManageProductTopping.cshtml" />
+    <Content Include="Views\Admin\ManageReservationInfo.cshtml" />
+    <Content Include="Views\Admin\ManageReservations.cshtml" />
+    <Content Include="Views\Admin\ManageRestaurant.cshtml" />
+    <Content Include="Views\Admin\ManageSauceChoice.cshtml" />
+    <Content Include="Views\Admin\ManageSideChoice.cshtml" />
+    <Content Include="Views\Admin\ManageSize.cshtml" />
+    <Content Include="Views\Admin\OrderDetails.cshtml" />
+    <Content Include="Views\Admin\OrderItems.cshtml" />
+    <Content Include="Views\Admin\RegisterBiz.cshtml" />
+    <Content Include="Views\Admin\RegisterDriver.cshtml" />
+    <Content Include="Views\Admin\RestaurantOrders.cshtml" />
+    <Content Include="Views\Admin\RestaurantUserDetails.cshtml" />
+    <Content Include="Views\Admin\UserDetails.cshtml" />
+    <Content Include="Views\Shared\_AddDetailPartial.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_BillingInfo.cshtml" />
+    <Content Include="Views\Shared\_BizDescription.cshtml" />
+    <Content Include="Views\Shared\_BizHourPartial.cshtml" />
+    <Content Include="Views\Shared\_BizInfoPartial.cshtml" />
+    <Content Include="Views\Shared\_BottomPartial.cshtml" />
+    <Content Include="Views\Shared\_BreakhTimePartial.cshtml" />
+    <Content Include="Views\Shared\_CodeCheckPartial.cshtml" />
+    <Content Include="Views\Shared\_ConfirmPartial.cshtml" />
+    <Content Include="Views\Shared\_ContactInfo.cshtml" />
+    <Content Include="Views\Shared\_DinnerTimePartial.cshtml" />
+    <Content Include="Views\Shared\_GCContactInfo.cshtml" />
+    <Content Include="Views\Shared\_GCPaymentInfo.cshtml" />
+    <Content Include="Views\Shared\_GCShippingInfo.cshtml" />
+    <Content Include="Views\Shared\_GiftCardSuccessNotice.cshtml" />
+    <Content Include="Views\Shared\_GiftConfirmPartial.cshtml" />
+    <Content Include="Views\Shared\_GiftOnlyConfirmPartial.cshtml" />
+    <Content Include="Views\Shared\_GiftSuccessPartial.cshtml" />
+    <Content Include="Views\Shared\_GoogleSearchPartial.cshtml" />
+    <Content Include="Views\Shared\_LocalReview.cshtml" />
+    <Content Include="Views\Shared\_LockGiftCodeTry.cshtml" />
+    <Content Include="Views\Shared\_LunchTimePartial.cshtml" />
+    <Content Include="Views\Shared\_MenuSectionPartial.cshtml" />
+    <Content Include="Views\Shared\_MyDetailsPartial.cshtml" />
+    <Content Include="Views\Shared\_MyReview.cshtml" />
+    <Content Include="Views\Shared\_NewRestaurantPartial.cshtml" />
+    <Content Include="Views\Shared\_PartnerInfoPartial.cshtml" />
+    <Content Include="Views\Shared\_PayGiftCardOnly.cshtml" />
+    <Content Include="Views\Shared\_PaymentInfo.cshtml" />
+    <Content Include="Views\Shared\_PayRestWithCreditCard.cshtml" />
+    <Content Include="Views\Shared\_PayWithCreditCard.cshtml" />
+    <Content Include="Views\Shared\_PayWithGiftCard.cshtml" />
+    <Content Include="Views\Shared\_PayWithPayPal.cshtml" />
+    <Content Include="Views\Shared\_PPContactInfo.cshtml" />
+    <Content Include="Views\Shared\_PPShippingInfo.cshtml" />
+    <Content Include="Views\Shared\_ProductImagesPartial.cshtml" />
+    <Content Include="Views\Shared\_ProductViewPartial.cshtml" />
+    <Content Include="Views\Shared\_RewardPartial.cshtml" />
+    <Content Include="Views\Shared\_SearchCity2Partial.cshtml" />
+    <Content Include="Views\Shared\_SearchCuisine1Partial.cshtml" />
+    <Content Include="Views\Shared\_SearchCuisineDivPartial.cshtml" />
+    <Content Include="Views\Shared\_SharedCartBodyPartial.cshtml" />
+    <Content Include="Views\Shared\_SharedCartLockedPartial.cshtml" />
+    <Content Include="Views\Shared\_ShareMenuSectionPartial.cshtml" />
+    <Content Include="Views\Shared\_ShareProductImagesPartial.cshtml" />
+    <Content Include="Views\Shared\_ShareProductViewPartial.cshtml" />
+    <Content Include="Views\Shared\_ShippingInfo.cshtml" />
+    <Content Include="Views\Shared\_ShoppingCartInfo.cshtml" />
+    <Content Include="Views\Shared\_StrightTimePartial.cshtml" />
+    <Content Include="Views\Shared\_SuccessPartial.cshtml" />
+    <Content Include="Views\Shared\_TopYelpRating.cshtml" />
+    <Content Include="Views\Shared\_ViewCartPartial.cshtml" />
+    <Content Include="Views\Shared\_YelpReview.cshtml" />
+    <Content Include="Views\Shared\_YelpTopPartial.cshtml" />
+    <Content Include="Views\CityCuisine\Index.cshtml" />
+    <Content Include="Views\CityZip\Index.cshtml" />
+    <Content Include="Views\AllCuisines\Cuisine.cshtml" />
+    <Content Include="Views\AllCuisines\Index.cshtml" />
+    <Content Include="Views\AllCuisines\ShowAllCuisines.cshtml" />
+    <Content Include="Views\AllZipcodes\Index.cshtml" />
+    <Content Include="Views\AllZipcodes\ShowAllZips.cshtml" />
+    <Content Include="Views\Restaurants\CheckDelivery.cshtml" />
+    <Content Include="Views\Restaurants\CheckDeliveryOK.cshtml" />
+    <Content Include="Views\Restaurants\CheckDeliveryOKResult.cshtml" />
+    <Content Include="Views\Restaurants\CheckResult.cshtml" />
+    <Content Include="Views\Restaurants\Coupons.cshtml" />
+    <Content Include="Views\Restaurants\Index.cshtml" />
+    <Content Include="Views\Restaurants\loadBizImage.cshtml" />
+    <Content Include="Views\Restaurants\LunchMenu.cshtml" />
+    <Content Include="Views\Restaurants\Menu.cshtml" />
+    <Content Include="Views\Restaurants\MenuSection.cshtml" />
+    <Content Include="Views\Restaurants\ReferRestaurant.cshtml" />
+    <Content Include="Views\Restaurants\SearchList.cshtml" />
+    <Content Include="Views\Restaurants\SearchSort.cshtml" />
+    <Content Include="Views\Restaurants\ShowBizImages.cshtml" />
+    <Content Include="Views\Restaurants\SubMenu.cshtml" />
+    <Content Include="Views\Cart\AddToCart.cshtml" />
+    <Content Include="Views\Cart\loadImage.cshtml" />
+    <Content Include="Views\Cart\RemoveFromCart.cshtml" />
+    <Content Include="Views\Cart\UpdateCart.cshtml" />
+    <Content Include="Views\Home\Hotel.cshtml" />
+    <Content Include="Views\Home\GetHotel.cshtml" />
+    <Content Include="Views\Manage\MyProfile.cshtml" />
+    <Content Include="Views\Manage\EditProfile.cshtml" />
+    <Content Include="Views\Manage\MyFavorRestaurants.cshtml" />
+    <Content Include="Views\Manage\MyGiftCards.cshtml" />
+    <Content Include="Views\Manage\GiftCardDetails.cshtml" />
+    <Content Include="Views\Rewards\Appreciate.cshtml" />
+    <Content Include="Views\Rewards\Index.cshtml" />
+    <Content Include="Views\Rewards\MyPoints.cshtml" />
+    <Content Include="Views\Manage\MyReviews.cshtml" />
+    <Content Include="Views\Manage\DoReview.cshtml" />
+    <Content Include="Views\Manage\OrderDetails.cshtml" />
+    <Content Include="Views\Manage\OrderHistory.cshtml" />
+    <Content Include="Views\Manage\OrderItems.cshtml" />
+    <Content Include="Views\Manage\PrintReceipt.cshtml" />
+    <Content Include="Views\Checkout\APIError.cshtml" />
+    <Content Include="Views\Checkout\CheckoutConfirmation.cshtml" />
+    <Content Include="Views\Checkout\DoExpressPayment.cshtml" />
+    <Content Include="Views\Checkout\GiftOnlyConfirmation.cshtml" />
+    <Content Include="Views\Checkout\GiftPayConfirmation.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\ValidateGiftCard.cshtml" />
+    <Content Include="Views\Home\CardPurchase.cshtml" />
+    <Content Include="Views\Home\GiftCard.cshtml" />
+    <Content Include="Views\Home\GiftCardCheck.cshtml" />
+    <Content Include="Views\Reservation\ChangeCompleted.cshtml" />
+    <Content Include="Views\Reservation\Completed.cshtml" />
+    <Content Include="Views\Reservation\DoRVCancel.cshtml" />
+    <Content Include="Views\Reservation\FindTable.cshtml" />
+    <Content Include="Views\Reservation\FindTableForChange.cshtml" />
+    <Content Include="Views\Reservation\Index.cshtml" />
+    <Content Include="Views\Reservation\MainContent.cshtml" />
+    <Content Include="Views\Reservation\MakeReservation.cshtml" />
+    <Content Include="Views\Reservation\MakeReservationChange.cshtml" />
+    <Content Include="Views\Reservation\ViewReservations.cshtml" />
+    <Content Include="Views\Partners\Index.cshtml" />
+    <Content Include="Views\Partners\InfoSubmit.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Home\SiteMap.cshtml" />
+    <Content Include="Views\Home\TermsOfUse.cshtml" />
+    <Content Include="Views\Reviews\AddReview.cshtml" />
+    <Content Include="Views\FRManager\EmailOrder.cshtml" />
+    <Content Include="Views\FRManager\FaxOrder.cshtml" />
+    <Content Include="Views\FRManager\Index.cshtml" />
+    <Content Include="Views\FRManager\ItemDetails.cshtml" />
+    <Content Include="Views\FRManager\OrderDetails.cshtml" />
+    <Content Include="Views\FRManager\OrderForDrivers.cshtml" />
+    <Content Include="Views\FRManager\OrderItems.cshtml" />
+    <Content Include="Views\FRManager\Orders.cshtml" />
+    <Content Include="Views\Driver\Index.cshtml" />
+    <Content Include="Views\Driver\ResetDriverPassword.cshtml" />
+    <Content Include="Views\Home\ChatHelp.cshtml" />
+    <Content Include="Views\Group\Index.cshtml" />
+    <Content Include="Views\Group\Start.cshtml" />
+    <Content Include="Views\Group\Share.cshtml" />
+    <Content Include="Views\Group\Join.cshtml" />
+    <Content Include="Views\Shared\_GroupNewPartial.cshtml" />
+    <Content Include="Views\Shared\_GroupUnlockedPartial.cshtml" />
+    <Content Include="Views\Shared\_LockedWithBossPartial.cshtml" />
+    <Content Include="Views\Shared\_LockedWithGuestPartial.cshtml" />
+    <Content Include="Views\Group\SubMenu.cshtml" />
+    <Content Include="Views\Group\LunchMenu.cshtml" />
+    <Content Include="Views\Group\MenuSection.cshtml" />
+    <Content Include="Views\Group\AddToSharedCart.cshtml" />
+    <Content Include="Views\Group\UpdateSharedCart.cshtml" />
+    <Content Include="Views\Shared\_GroupGuestPartial.cshtml" />
+    <Content Include="Views\Group\RemoveFromCart.cshtml" />
+    <Content Include="Views\Group\loadImage.cshtml" />
+    <Content Include="Views\Group\GoCheckout.cshtml" />
+    <Content Include="Views\GroupCheckout\Index.cshtml" />
+    <Content Include="Views\Shared\_GroupCartInfo.cshtml" />
+    <Content Include="Views\Shared\_GroupPayWithCreditCard.cshtml" />
+    <Content Include="Views\Shared\_GroupShippingInfo.cshtml" />
+    <Content Include="Views\Shared\_GroupPaymentInfo.cshtml" />
+    <Content Include="Views\Shared\_GroupContactInfo.cshtml" />
+    <Content Include="Views\GroupCheckout\GroupCheckoutConfirmation.cshtml" />
+    <Content Include="Views\Shared\_GroupConfirmPartial.cshtml" />
+    <Content Include="Views\Shared\_GroupSuccessPartial.cshtml" />
+    <Content Include="Views\Group\EmailKey.cshtml" />
+    <Content Include="Views\Group\SendGroupKey.cshtml" />
+    <Content Include="Views\Restaurants\Discount.cshtml" />
+    <Content Include="Views\Restaurants\DiscountResult.cshtml" />
+    <Content Include="Views\Restaurants\DiscountList.cshtml" />
+    <Content Include="Views\LiveOrder\Index.cshtml" />
+    <Content Include="Views\LiveOrder\GetMissedOrders.cshtml" />
+    <Content Include="Views\Manage\AddMyDetail.cshtml" />
+    <Content Include="Views\LiveOrder\GetOrderByNumber.cshtml" />
+    <Content Include="Views\Shared\_YelpRating.cshtml" />
+    <None Include="Web References\net.interfax.ws\dfs.wsdl" />
+    <Content Include="Web References\net.interfax.ws\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\net.interfax.ws\ErrorMessage1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.interfax.ws\FaxItem1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.interfax.ws\FaxItemEx1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.interfax.ws\FaxQueryResult1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.interfax.ws\FaxQueryResult31.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.interfax.ws\ListPPResult1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.interfax.ws\PPCardResult1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.interfax.ws\PPCardTransactions1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.interfax.ws\PPCardTransactionsOfPPCardTransaction1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.interfax.ws\PPCardTrasnactionsByteArray1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\net.interfax.ws\SubmitResult1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Site.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
+    <None Include="Web References\net.interfax.ws\dfs.disco" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Views\UsersAdmin\Details.cshtml" />
+    <Content Include="Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Views\UsersAdmin\Create.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\DisplayEmail.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Binders\CartModelBinder.cs" />
+    <Compile Include="Configs\Config.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AllCitiesController.cs" />
+    <Compile Include="Controllers\AllCuisinesController.cs" />
+    <Compile Include="Controllers\AllZipcodesController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\CityCuisineController.cs" />
+    <Compile Include="Controllers\CityZipController.cs" />
+    <Compile Include="Controllers\DriverController.cs" />
+    <Compile Include="Controllers\FRManagerController.cs" />
+    <Compile Include="Controllers\GroupCheckoutController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LiveOrderController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PartnersController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
+    <Compile Include="Controllers\RestaurantsController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
+    <Compile Include="Controllers\RewardsController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="EmailServices\EmailContents.cs" />
+    <Compile Include="EmailServices\EmailManager.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HtmlHelpers\StarRatings.cs" />
+    <Compile Include="HtmlHelpers\YelpBizDetails.cs" />
+    <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Migrations\201603310753140_AddedDate.cs" />
+    <Compile Include="Migrations\201603310753140_AddedDate.Designer.cs">
+      <DependentUpon>201603310753140_AddedDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603310756005_UpdatedDate.cs" />
+    <Compile Include="Migrations\201603310756005_UpdatedDate.Designer.cs">
+      <DependentUpon>201603310756005_UpdatedDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603310757159_Active.cs" />
+    <Compile Include="Migrations\201603310757159_Active.Designer.cs">
+      <DependentUpon>201603310757159_Active.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddItemModel.cs" />
+    <Compile Include="Models\AddSideModel.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\AskForAddressModel.cs" />
+    <Compile Include="Models\BizCuisineModel.cs" />
+    <Compile Include="Models\BizDescriptionModel.cs" />
+    <Compile Include="Models\BizImageModel.cs" />
+    <Compile Include="Models\BizRVInfoModel.cs" />
+    <Compile Include="Models\BuyGiftCardModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\CheckoutGiftModel.cs" />
+    <Compile Include="Models\CheckoutModel.cs" />
+    <Compile Include="Models\CheckoutPayPalModel.cs" />
+    <Compile Include="Models\CheeseAmountModel.cs" />
+    <Compile Include="Models\ContactModel.cs" />
+    <Compile Include="Models\CouponViewModel.cs" />
+    <Compile Include="Models\CrustChoiceModel.cs" />
+    <Compile Include="Models\DayOfCloseModel.cs" />
+    <Compile Include="Models\DeliveryCheckModel.cs" />
+    <Compile Include="Models\DiscountListViewModel.cs" />
+    <Compile Include="Models\DiscountModel.cs" />
+    <Compile Include="Models\DoApproveModel.cs" />
+    <Compile Include="Models\DriverModel.cs" />
+    <Compile Include="Models\EmailGroupKeyModel.cs" />
+    <Compile Include="Models\FamilyMealModel.cs" />
+    <Compile Include="Models\FilterViewModels.cs" />
+    <Compile Include="Models\FooterModel.cs" />
+    <Compile Include="Models\FreeItemModel.cs" />
+    <Compile Include="Models\FreshShareCartOthersModel.cs" />
+    <Compile Include="Models\GiftCardModel.cs" />
+    <Compile Include="Models\GroupCheckoutModel.cs" />
+    <Compile Include="Models\GroupInfoModel.cs" />
+    <Compile Include="Models\HotelModel.cs" />
+    <Compile Include="Models\HotelsModel.cs" />
+    <Compile Include="Models\HotelTypeModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LostPasswordModel.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MenuViewModel.cs" />
+    <Compile Include="Models\MyOrder.cs" />
+    <Compile Include="Models\OrderDriversModel.cs" />
+    <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Models\PayModel.cs" />
+    <Compile Include="Models\PointSumaryModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ProductSizeModel.cs" />
+    <Compile Include="Models\ProductToppingModel.cs" />
+    <Compile Include="Models\RatingViewModel.cs" />
+    <Compile Include="Models\ReferRestaurantModel.cs" />
+    <Compile Include="Models\ReservationModel.cs" />
+    <Compile Include="Models\ResetDriverPasswordModel.cs" />
+    <Compile Include="Models\ResetPasswordModel.cs" />
+    <Compile Include="Models\RestaurantJoinModel.cs" />
+    <Compile Include="Models\RestaurantModel.cs" />
+    <Compile Include="Models\RestaurantOrderViewModel.cs" />
+    <Compile Include="Models\RestaurantUserModel.cs" />
+    <Compile Include="Models\RVConfirmationModel.cs" />
+    <Compile Include="Models\SauceChoiceModel.cs" />
+    <Compile Include="Models\SearchModels.cs" />
+    <Compile Include="Models\ShareMenuViewModel.cs" />
+    <Compile Include="Models\SideChoiceModel.cs" />
+    <Compile Include="Models\SubMenuViewModel.cs" />
+    <Compile Include="Models\TestModel.cs" />
+    <Compile Include="Models\TopYelpModel.cs" />
+    <Compile Include="Models\UserDetailModel.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
+    <Compile Include="Models\ViewCartModel.cs" />
+    <Compile Include="Models\YelpReviewModel.cs" />
+    <Compile Include="NinjectDependency\NinjectDependencyResolver.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Web References\net.interfax.ws\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://ws.interfax.net/dfs.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\net.interfax.ws\</RelPath>
+      <UpdateFromURL>http://ws.interfax.net/dfs.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Foodreadynet_net_interfax_ws_InterFax</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FR.Domain.Model\FR.Domain.Model.csproj">
+      <Project>{f329dc4d-ffed-4248-beba-1e83c38d64f3}</Project>
+      <Name>FR.Domain.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FR.Infrastructure\FR.Infrastructure.csproj">
+      <Project>{ebb56586-03d4-494d-97f4-98b2f0e18a19}</Project>
+      <Name>FR.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FR.Repository\FR.Repository.csproj">
+      <Project>{3b33b461-bb0b-429f-837e-54c1bc1bdb68}</Project>
+      <Name>FR.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FR.Services\FR.Services.csproj">
+      <Project>{3d702ae2-1a07-444e-8d2a-e17adebed3f4}</Project>
+      <Name>FR.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\BizImages\Biz_2\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603310753140_AddedDate.resx">
+      <DependentUpon>201603310753140_AddedDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603310756005_UpdatedDate.resx">
+      <DependentUpon>201603310756005_UpdatedDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603310757159_Active.resx">
+      <DependentUpon>201603310757159_Active.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50654</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:34560/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:34560/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

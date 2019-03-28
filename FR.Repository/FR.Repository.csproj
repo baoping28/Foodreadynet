@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3B33B461-BB0B-429F-837E-54C1BC1BDB68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FR.Repository</RootNamespace>
+    <AssemblyName>FR.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\BaseRepository.cs" />
+    <Compile Include="Interfaces\IAddressRepository.cs" />
+    <Compile Include="Interfaces\IAddSideRepository.cs" />
+    <Compile Include="Interfaces\IBizCuisineRepository.cs" />
+    <Compile Include="Interfaces\IBizFoodTypeRepository.cs" />
+    <Compile Include="Interfaces\IBizHourRepository.cs" />
+    <Compile Include="Interfaces\IBizImageRepository.cs" />
+    <Compile Include="Interfaces\IBizInfoRepository.cs" />
+    <Compile Include="Interfaces\IBizRVInfoRepository.cs" />
+    <Compile Include="Interfaces\ICategoryRepository.cs" />
+    <Compile Include="Interfaces\ICheeseChoiceRepository.cs" />
+    <Compile Include="Interfaces\IContactInfoRepository.cs" />
+    <Compile Include="Interfaces\IConvertedPointRepository.cs" />
+    <Compile Include="Interfaces\ICookMethodRepository.cs" />
+    <Compile Include="Interfaces\ICreditCardRepository.cs" />
+    <Compile Include="Interfaces\ICreditCardTypeRepository.cs" />
+    <Compile Include="Interfaces\ICrustChoiceRepository.cs" />
+    <Compile Include="Interfaces\ICuisineTypeRepository.cs" />
+    <Compile Include="Interfaces\IDayOfCloseRepository.cs" />
+    <Compile Include="Interfaces\IDiscountCouponRepository.cs" />
+    <Compile Include="Interfaces\IDressingRepository.cs" />
+    <Compile Include="Interfaces\IDriverRepository.cs" />
+    <Compile Include="Interfaces\IFamilyMealRepository.cs" />
+    <Compile Include="Interfaces\IFavorRestaurantRepository.cs" />
+    <Compile Include="Interfaces\IFoodTypeRepository.cs" />
+    <Compile Include="Interfaces\IFreeItemCouponRepository.cs" />
+    <Compile Include="Interfaces\IGiftCardRepository.cs" />
+    <Compile Include="Interfaces\IHotelRepository.cs" />
+    <Compile Include="Interfaces\IHotelTypeRepository.cs" />
+    <Compile Include="Interfaces\IMealSectionRepository.cs" />
+    <Compile Include="Interfaces\IOrderItemRepository.cs" />
+    <Compile Include="Interfaces\IOrderRepository.cs" />
+    <Compile Include="Interfaces\IOrderStatusRepository.cs" />
+    <Compile Include="Interfaces\IProductDressingRepository.cs" />
+    <Compile Include="Interfaces\IProductRepository.cs" />
+    <Compile Include="Interfaces\IProductSizeRepository.cs" />
+    <Compile Include="Interfaces\IProductToppingRepository.cs" />
+    <Compile Include="Interfaces\IReservationRepository.cs" />
+    <Compile Include="Interfaces\IRewardVoucherRepository.cs" />
+    <Compile Include="Interfaces\ISauceChoiceRepository.cs" />
+    <Compile Include="Interfaces\ISideChoiceRepository.cs" />
+    <Compile Include="Interfaces\IToppingRepository.cs" />
+    <Compile Include="Interfaces\IUserDetailRepository.cs" />
+    <Compile Include="Interfaces\IUserLoginRepository.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Interfaces\IVoteRepository.cs" />
+    <Compile Include="Interfaces\IZoneNameRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShoppingRepository\AddressRepository.cs" />
+    <Compile Include="ShoppingRepository\AddSideRepository.cs" />
+    <Compile Include="ShoppingRepository\BaseShoppingCartRepository.cs" />
+    <Compile Include="ShoppingRepository\BizCuisineRepository.cs" />
+    <Compile Include="ShoppingRepository\BizFoodTypeRepository.cs" />
+    <Compile Include="ShoppingRepository\BizHourRepository.cs" />
+    <Compile Include="ShoppingRepository\BizImageRepository.cs" />
+    <Compile Include="ShoppingRepository\BizInfoRepository.cs" />
+    <Compile Include="ShoppingRepository\BizRVInfoRepository.cs" />
+    <Compile Include="ShoppingRepository\CategoryRepository.cs" />
+    <Compile Include="ShoppingRepository\CheeseAmountRepository.cs" />
+    <Compile Include="ShoppingRepository\ContactInfoRepository.cs" />
+    <Compile Include="ShoppingRepository\ConvertedPointRepository.cs" />
+    <Compile Include="ShoppingRepository\CookMethodRepository.cs" />
+    <Compile Include="ShoppingRepository\CreditCardRepository.cs" />
+    <Compile Include="ShoppingRepository\CreditCardTypeRepository.cs" />
+    <Compile Include="ShoppingRepository\CrustChoiceRepository.cs" />
+    <Compile Include="ShoppingRepository\CuisineTypeRepository.cs" />
+    <Compile Include="ShoppingRepository\DayOfCloseRepository.cs" />
+    <Compile Include="ShoppingRepository\DiscountCouponRepository.cs" />
+    <Compile Include="ShoppingRepository\DressingRepository.cs" />
+    <Compile Include="ShoppingRepository\DriverRepository.cs" />
+    <Compile Include="ShoppingRepository\FamilyMealRepository.cs" />
+    <Compile Include="ShoppingRepository\FavorRestaurantRepository.cs" />
+    <Compile Include="ShoppingRepository\FoodTypeRepository.cs" />
+    <Compile Include="ShoppingRepository\FreeItemCouponRepository.cs" />
+    <Compile Include="ShoppingRepository\GiftCardRepository.cs" />
+    <Compile Include="ShoppingRepository\HotelRepository.cs" />
+    <Compile Include="ShoppingRepository\HotelTypeRepository.cs" />
+    <Compile Include="ShoppingRepository\MealSectionRepository.cs" />
+    <Compile Include="ShoppingRepository\OrderItemRepository.cs" />
+    <Compile Include="ShoppingRepository\OrderRepository.cs" />
+    <Compile Include="ShoppingRepository\OrderStatusRepository.cs" />
+    <Compile Include="ShoppingRepository\ProductDressingRepository.cs" />
+    <Compile Include="ShoppingRepository\ProductRepository.cs" />
+    <Compile Include="ShoppingRepository\ProductSizeRepository.cs" />
+    <Compile Include="ShoppingRepository\ProductToppingRepository.cs" />
+    <Compile Include="ShoppingRepository\ReservationRepository.cs" />
+    <Compile Include="ShoppingRepository\RewardVoucherRepository.cs" />
+    <Compile Include="ShoppingRepository\SauceChoiceRepository.cs" />
+    <Compile Include="ShoppingRepository\SideChoiceRepository.cs" />
+    <Compile Include="ShoppingRepository\ToppingRepository.cs" />
+    <Compile Include="ShoppingRepository\UserDetailRepository.cs" />
+    <Compile Include="ShoppingRepository\UserLoginRepository.cs" />
+    <Compile Include="ShoppingRepository\UserRepository.cs" />
+    <Compile Include="ShoppingRepository\VoteRepository.cs" />
+    <Compile Include="ShoppingRepository\ZoneNameRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FR.Domain.Model\FR.Domain.Model.csproj">
+      <Project>{f329dc4d-ffed-4248-beba-1e83c38d64f3}</Project>
+      <Name>FR.Domain.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FR.Infrastructure\FR.Infrastructure.csproj">
+      <Project>{ebb56586-03d4-494d-97f4-98b2f0e18a19}</Project>
+      <Name>FR.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

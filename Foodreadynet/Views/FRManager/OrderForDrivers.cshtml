@@ -1,0 +1,97 @@
+﻿@model FoodReady.WebUI.Models.OrderDriversModel
+@using FR.Services.FilterServces
+@{ var apptime = string.Empty;}
+<div id="hotelContent" class="boxShadow boxCorner">
+    <div class="container" style="background:#008cba;padding-top:20px;padding-bottom:20px;padding-left:15px;">
+        <div class="container">
+            <div class="row">
+                <h3 style="color:#ffffff;">
+                    <b>Drivers in @Model.Order.BizInfo.Address.City for @Model.Order.BizInfo.BizTitle</b><br />
+                    <small style="color:#ffffff;">@Model.Order.BizInfo.BizAddressString</small>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="container hotelpadding">
+        <div class="row toppadding">
+            <div id="emailresult" style="text-align:center;"></div>
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Working Area
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Phone
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Signin time
+                    </th>
+                    <th>
+                        Distance
+                    </th>
+                </tr>
+                @foreach (var dr in Model.LDrivers)
+                {
+                    <tr>
+                        <td>
+                            @dr.FirstName @dr.LastName
+                        </td>
+                        <td>
+                            @dr.WorkArea
+                        </td>
+                        <td>
+                            @dr.AddressLine, @dr.City,@dr.State @dr.ZipCode
+                        </td>
+                        <td>
+                            @dr.Phone
+                        </td>
+                        <td>
+
+                            @Ajax.ActionLink(dr.Email, "EmailOrder", "FRManager", new { id = dr.DriverId, orderid = Model.Order.OrderId }, new AjaxOptions
+               {
+                   UpdateTargetId = @Url.Content("order" + Model.Order.OrderId),
+                   OnBegin = "onDriverBegin('" + dr.DriverId + "')",
+                   OnSuccess = "onDriverSuccess('" + dr.DriverId + "')",
+                   OnFailure = "onDriverFailure('" + dr.DriverId + "')",
+                   Confirm = "Do you want to email the order to " + dr.FirstName + " " + dr.LastName + "?"
+               }, new { @class = "midLink", title = "email the order" })
+                            <div id="@Url.Content("item" + dr.DriverId)">
+                            </div>
+                        </td>
+                        <td>
+                            @dr.UpdatedDate.ToString()
+                        </td>
+                        <td>
+                            @{var dist = SearchFilter.GetDistance(dr.DriverFullAddress, Model.Order.BizInfo, out apptime);}
+                            @if (dist >= 0.0m)
+                            {
+                                <div>
+                                    <b>
+                                        @dist.ToString("N2") mi
+                                    </b>
+                                </div>
+                            }
+                            else
+                            {
+                                <div>Distance: unknown</div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+

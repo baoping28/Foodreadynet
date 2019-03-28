@@ -1,0 +1,57 @@
+﻿@model FoodReady.WebUI.Models.GroupCheckoutModel
+<div>
+    <center>
+        <h4>
+            Thank you for your ordering with foodready.net !
+        </h4>
+        @TempData["OrderSummaryTitle"] ( Order Total: @Model.GroupCheckoutCart.PartyTotal().ToString("N2")
+        )
+    </center>
+    @if (Model.GroupCheckoutCart.IsPartyDelivery)
+    {
+        <div>
+            <p>
+                You have just placed a delivery order with www.foodready.net. Normally, you will receive
+                your order within 50 minites at address:<br />
+                <br />
+                <b>
+                    @Model.FirstName @Model.LastName
+                    <br />
+                    @Model.AddressLine
+                    <br />
+                    @Model.City, @Model.State @Model.ZipCode
+                </b>
+            </p>
+            <p>
+                If you have any questions, please call at @ViewBag.servicephone .We will be happy to response
+                you as soon as possible. Thank you for your ordering!
+            </p>
+            <br />
+        </div>
+    }
+    else
+    {
+        <div>
+            <p>
+                You have just placed a pickup order with www.foodready.net. Please arrive in 30 minutes at the followings:
+            </p>
+            <ul>
+                @foreach (var b in Model.LBizForGoogleMap)
+                {
+                    <li>
+                        <p>Restaurant: @b.BizTitle</p>
+                        <p>Address: @b.BizAddressString</p>
+                        <a class="LkProduct" onclick="@Url.Content("getDirections('" + FoodReady.WebUI.Controllers.BaseController.GoogleMapLink(b) + "');return false;")" href="">
+                            GET DIRECTIONS
+                        </a>
+                    </li>
+                }
+            </ul>
+            <p>
+                If you have any questions, please call at @ViewBag.servicephone.
+            </p>
+            <p>Thank you for your ordering!</p>
+        </div>
+    }
+</div>
+

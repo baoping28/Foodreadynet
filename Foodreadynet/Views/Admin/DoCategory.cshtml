@@ -1,0 +1,16 @@
+﻿@model FR.Domain.Model.Entities.Category
+<div id="@Url.Content("item" + Model.CategoryId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoCategory", "Admin", new { id = Model.CategoryId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.CategoryId),
+                            OnBegin = "onFreeItemBegin('" + Model.CategoryId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.CategoryId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.CategoryId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the Category: " + Model.Title + " ?"
+                        }))
+    {
+                                                   
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+                        }
+</div>

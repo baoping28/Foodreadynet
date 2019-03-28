@@ -1,0 +1,219 @@
+﻿@model FR.Domain.Model.Entities.ShoppingCart
+@using FR.Infrastructure.Helpers
+@using FoodReady.WebUI.HtmlHelpers
+<div style="background-color: #f6f7f8;" class="boxShadow">
+    <div style="padding-left:10px;">
+        <h2>Cart Info <small>@Model.BizName</small></h2>
+        @{var str = Model.IsDelivery ? "Delivery" : "Pickup";}
+        <p class="smallTitle">
+            <b>Order Type: @str</b>
+        </p>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr class="cartListBg">
+                <th align="left">
+                    Qty
+                </th>
+                <th align="left">
+                    Item
+                </th>
+                <th align="left">
+                    Price
+                </th>
+                <th align="right">
+                    <div style="text-align:right;">Item total</div> 
+                </th>
+            </tr>
+        </thead>
+        <tbody id="ListBody">
+            @foreach (var line in Model.Lines)
+            {
+                <tr id="tr-@line.ID">
+                    <td align="left">
+                        @line.Quantity
+                    </td>
+                    <td align="left">
+                        <div class="itemTitle">
+                            @line.Title
+                            @if (string.IsNullOrEmpty(line.ProductSizeTitle) == false)
+                            {
+                                <span>(@line.ProductSizeTitle)</span>
+                            }
+                        </div>
+                    </td>
+                    <td align="left">
+                        <div class="itemPrice">
+                            @Helper.ToUSD(line.FinalPrice.ToString("N2"))
+                        </div>
+                    </td>
+                    <td align="right">
+                        <div class="itemright">
+                            <b>
+                                <span id='proSubt-@line.ItemId'>
+                                    @Helper.ToUSD(((line.ItemTotal).ToString("N2")))
+                                </span>
+                            </b>
+                        </div>
+                    </td>
+                </tr>
+
+                if (string.IsNullOrEmpty(line.DressingChoice) == false)
+                {
+                    <tr>
+                        <td colspan="4"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="itemnote">
+                                Selected dressing: @line.DressingChoice
+                            </div>
+                        </td>
+                    </tr>
+                }
+                if (line.IsReorderItem && string.IsNullOrEmpty(line.ReSelectedToppings) == false)
+                {
+                    <tr>
+                        <td colspan="4"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="itemnote">
+                                Extra toppings for each item:<br />
+                                @Html.Raw(line.ToppingListNote)
+                            </div>
+                        </td>
+                    </tr>
+                }
+                else if (line.ToppingList.Count > 0)
+                {
+                    <tr>
+                        <td colspan="4"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="itemnote">
+                                Extra toppings for each item:<br />
+                                @Html.Raw(line.ToppingListNote)
+                            </div>
+                        </td>
+                    </tr>
+                }
+                if (line.IsSpicy && string.IsNullOrEmpty(line.HowSpicy) == false)
+                {
+                    <tr>
+                        <td colspan="4"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="itemnote">
+                                Spicy choice: @line.HowSpicy
+                            </div>
+                        </td>
+                    </tr>
+                }
+                if (string.IsNullOrEmpty(line.SideChoice) == false)
+                {
+                    <tr>
+                        <td colspan="4"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="itemnote">
+                                Side choice: @line.SideChoice
+                            </div>
+                        </td>
+                    </tr>
+                }
+                if (string.IsNullOrEmpty(line.Instruction) == false)
+                {
+                    <tr>
+                        <td colspan="4"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div class="itemnote">
+                                Instructions: @line.Instruction
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+        <tfoot class="cartFoot">
+            <tr>
+                <td colspan="3" align="right" style="border-top:solid 1px #888888;">
+                    Subtotal:
+                </td>
+                <td align="right" style="border-top:solid 1px #888888;">
+                    <div class="itemright">
+                        <span id="subtotal">@Helper.ToUSD(Model.SubTotal().ToString("N2"))</span>
+                    </div>
+                </td>
+            </tr>
+            @if (string.IsNullOrEmpty(Model.CouponChoice) == false)
+            {
+                <tr>
+                    <td colspan="4" align="right">
+                        <span style="color: Green;">@Helper.CouponNote(Model.DiscountPercentage, Model.FreeItem, Model.SubTotal())&nbsp;</span>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="3" align="right">
+                    Tax (@Model.TaxRate.ToString("N2")%):
+                </td>
+                <td align="right">
+                    <div class="itemright">
+                        <span id="tax">@Helper.ToUSD(Model.Tax().ToString("N2"))</span>
+                    </div>
+                </td>
+            </tr>
+            @{var charge = Model.IsDelivery ? "Delivery Charge:" : "";
+            var fee = Model.IsDelivery ? Helper.DeliveryFee(Model.DeliveryFee) : "";}
+            <tr>
+                <td colspan="3" align="right">
+                    <span id="DelCharge">@charge</span>
+                </td>
+                <td align="right">
+                    <div class="itemright">
+                        <span id="Fee">@fee</span>
+                    </div>
+                </td>
+            </tr>
+            @if (Model.serviceCharge > 0.0m)
+            {
+                <tr>
+                    <td colspan="3" align="right">
+                        Service Charge:
+                    </td>
+                    <td align="right">
+                        <div class="itemright">
+                            <span id="Service">@Helper.DeliveryFee(Model.serviceCharge)</span>
+                        </div>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="1" align="right" style="padding-top:16px;">
+                    Tip:
+                </td>
+                <td colspan="3" align="right">
+                    @Html.DropDownList("DriverTip", Helper.DriverTip(Model.DriverTip, Model.SubTotal(),Model.IsDelivery), new { @class = "form-control" })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="right" style="border-top:solid 2px #000000;">
+                    <div class="totalright">
+                        <span>Total:</span>
+                    </div>
+                </td>
+                <td align="right" style="border-top:solid 2px #000000;">
+                    <div class="totalright">
+                        <span id="cartTotal" style="color: Red">@Helper.ToUSD(Model.Total().ToString("N2"))</span>
+                    </div>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+

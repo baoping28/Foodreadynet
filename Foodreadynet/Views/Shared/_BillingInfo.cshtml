@@ -1,0 +1,50 @@
+﻿@model FoodReady.WebUI.Models.CheckoutModel
+@using FR.Infrastructure.Helpers
+@using FoodReady.WebUI.HtmlHelpers
+<div class="checkoutBox boxShadow">
+    <fieldset id="billingInfo">
+        <legend>Billing Info</legend>
+        <div class="midTitle">
+            Billing Info</div>
+        <table cellpadding="0" cellspacing="0">
+            @if (Model.Cart.IsDelivery && Model.Cart.IsBizDelivery)
+            {
+                <tr>
+                    <td align="right">
+                     <input name="sameAsShipping" id="sameAsShipping" type="checkbox" value="sameAsShipping" />
+                    </td>
+                    <td>
+                        <label for="sameAsShipping">
+                            &nbsp;&nbsp;<b>Same as delivery info</b></label>
+                    </td>
+                </tr>  
+            }
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(m => m.BillFirstName)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.BillFirstName) Test
+                        @Html.ValidationMessageFor(m => m.BillFirstName)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="editor-label">
+                        @Html.LabelFor(m => m.BillLastName)
+                    </div>
+                </td>
+                <td>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(m => m.BillLastName) user
+                        @Html.ValidationMessageFor(m => m.BillLastName)
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</div>

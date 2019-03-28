@@ -1,0 +1,72 @@
+﻿@model IEnumerable<FR.Domain.Model.Entities.Order>
+<div id="popupbody">
+    <div class="modal-header">
+        <h5 id="poptitle" class="modal-title" style="color:black;text-align:center;">Action Details</h5>
+    </div>
+    <div class="modal-body">
+        <table class="table table-striped table-bordered table-hover">
+            <tr class="trBorder">
+                <th>
+                    Gift Card Code
+                </th>
+                <th>
+                    Order Number
+                </th>
+                <th>
+                    User Name
+                </th>
+                <th>
+                    Order Time
+                </th>
+                <th>
+                    Restaurant Name
+                </th>
+                <th>
+                    OrderType
+                </th>
+                <th>
+                    Payment Type
+                </th>
+                <th>
+                    Order Total
+                </th>
+                <th>
+                    Gift Card Amount Pay
+                </th>
+            </tr>
+            @foreach (var gc in Model)
+            {
+                <tr class="trBorder">
+                    <td>
+                        @ViewBag.gcode
+                    </td>
+                    <td>
+                        @gc.InvioceNumber
+                    </td>
+                    <td>
+                        @gc.LogonName
+                    </td>
+                    <td>
+                        @gc.AddedDate.ToString()
+                    </td>
+                    <td>
+                        @gc.BizName
+                    </td>
+                    <td>
+                        @gc.OrderType
+                    </td>
+                    <td>
+                        @gc.PaymentType
+                    </td>
+                    <td>
+                        @gc.OrderTotal.ToString("N2")
+                    </td>
+                    <td>
+                        @gc.GiftCardAmountPay.ToString("N2")
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>

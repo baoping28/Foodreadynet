@@ -1,0 +1,17 @@
+﻿@model FoodReady.WebUI.Models.AddItemModel
+@using FR.Infrastructure.Helpers
+<div id="CartContent">
+    @Html.Partial("_SharedCartBodyPartial", Model)
+    <input id="g-canadditem" type="hidden" value="@ViewBag.canadditem" />
+    <input id="g-itemid" type="hidden" value="@ViewBag.itemid" />
+    <input id="g-quantity" type="hidden" value="@ViewBag.quantity" />
+    <input id="g-productTitle" type="hidden" value="@ViewBag.title" />
+    <input id="g-price" type="hidden" value="@ViewBag.price" />
+    <input id="g-itemTotal" type="hidden" value="@ViewBag.itemtotal" />
+    <input id="g-subtotal" type="hidden" value="@ViewBag.subtotal" />
+    <input id="g-tax" type="hidden" value="@ViewBag.tax" />
+    <input id="g-drivertip" type="hidden" value="@ViewBag.drivertip" />
+    <input id="g-globalSubtotal" type="hidden" value="@ViewBag.globalsubtotal" />
+    <input id="g-globalTotal" type="hidden" value="@ViewBag.globaltotal" />
+    <input id="g-btnShow" type="hidden" value="@ViewBag.btnshow" />
+</div>

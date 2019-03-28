@@ -1,0 +1,156 @@
+﻿@model FoodReady.WebUI.Models.BizInfoModel
+@using System.Data.Entity;
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <h3>
+            <i class="fa fa-bed" style="color:#1d63a7;"></i>
+            Browse delivery & takeout restaurants by hotel <small> where you are at</small>
+        </h3>
+    </div>
+    <br />
+</div>
+<div class="row">
+    @foreach (var h in Model.HotelTypes)
+    {
+        <div class="col-sm-3 col-md-3">
+
+            @using (Ajax.BeginForm("GetHotel", "Home", new { id = h.HotelTypeId, name = h.Name }, new AjaxOptions
+                {
+                    UpdateTargetId = "popupbody",
+                    OnBegin = "onPopupBegin",
+                    OnSuccess = "onPopupSuccess",
+                    OnFailure = "onPopupFailed"
+                }))
+            {
+                <input type="image" src="@Url.Content(h.ImagePath)" title="Select a hotel" class="hotelImg img-circle img-responsive" style="clear:both;" /><b>@h.Name</b><br /><br />
+            }
+        </div>
+    }
+    <div style="clear: both;">
+    </div>
+    <br />
+    <div class="col-xs-12 col-sm-12">
+        @Ajax.ActionLink("Browse All Hotels", "HotelType", "Home", null, new AjaxOptions
+                {
+                    UpdateTargetId = "popupbody1",
+                    OnBegin = "onPopup1Begin",
+                    OnSuccess = "onPopup1Success",
+                    OnFailure = "onPopup1Failed"
+                })
+    </div>
+    <br />
+    <hr />
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <h3>
+            <i class="fa fa-building-o" style="color:#1d63a7;"></i>
+            Browse delivery & takeout restaurants by city <small> in California East Bay area</small>
+        </h3>
+    </div>
+    <br />
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCities/City/Concord">
+            <img src="../../Content/images/concord.png" title="Concord, CA" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCities/City/Walnut-Creek">
+            <img src="../../Content/images/walnutcreek.png" title="Walnut Creek, CA" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCities/City/Pleasant-Hill">
+            <img src="../../Content/images/pleasanthill.png" title="Pleasant Hill, CA" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCities/City/Lafayette">
+            <img src="../../Content/images/lafayette.png" title="Lafayette, CA" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+</div>
+
+<div class="row toppadding">
+    @Html.Raw(Model.ShowMostPopularCities)
+    <div style="clear: both;">
+    </div>
+    <br />
+    <div class="col-xs-12 col-sm-12">
+        @Html.ActionLink("Browse All Cities", "Index", "AllCities", null,null)
+    </div>
+    <br />
+    <hr />
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <h3>
+            <i class="fa fa-cutlery" style="color:#1d63a7;"></i>
+            Browse delivery & takeout restaurants by cuisine  <small> Most popular cuisines</small>
+        </h3>
+    </div>
+    <br />
+</div>
+<div class="row">
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCuisines/Cuisine/Chinese">
+            <img src="../../Content/images/ch.png" title="Chinese Food" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCuisines/Cuisine/Pizza">
+            <img src="../../Content/images/pz.png" title="Pizza" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCuisines/Cuisine/Italian">
+            <img src="../../Content/images/it.png" title="Italian Food" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCuisines/Cuisine/Japanese">
+            <img src="../../Content/images/jp.png" title="Japanese Food" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+</div>
+<div class="row toppadding">
+    @Html.Raw(Model.ShowMostPopularCuisines)
+    <div style="clear: both;">
+    </div>
+    <br />
+    <div class="col-xs-12 col-sm-12">
+        @Html.ActionLink("Browse All Cuisines", "Index", "AllCuisines", null, null)
+    </div>
+    <br />
+    <hr />
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <h3>
+            <i class="fa fa-barcode" style="color:#1d63a7;"></i>
+            Browse delivery & takeout restaurants by zip code <small> Most popular zip codes</small>
+        </h3>
+    </div>
+    <br />
+</div>
+<div class="row">
+    @Html.Raw(Model.ShowZipCodes)
+    <div style="clear: both;">
+    </div>
+    <br />
+    <div class="col-xs-12 col-sm-12">
+        @Html.ActionLink("Browse All Zip Codes", "Index", "AllZipcodes", null,null)
+    </div>
+    <br />
+    <hr />
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <h3>Three easy steps to make an online food order for delivery and takeout</h3>
+    </div><br />
+    <div class="col-sm-4 col-md-4"><i class="fa fa-3x fa-search" style="color:#1E7CB8;"></i> Search and select a restaurant.<br />You can search restaurants by city, cuisine, zip code or key words.</div>
+    <div class="col-sm-4 col-md-4"><i class="fa fa-3x fa-mouse-pointer" style="color:#1E7CB8;"></i> Order whatever you like for delivery or takeout. You can also make a reservation at the restaurant you select.</div>
+    <div class="col-sm-4 col-md-4"> <i class="fa fa-3x fa-car" style="color:#1E7CB8;"></i> Your delivery order is delivered to you, your takeout order is ready for pickup at the restaurant and your table is already setup for your dining --- ENJOY! .</div>
+</div>

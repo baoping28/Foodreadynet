@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "Gift Card";
+}
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/slidingUpDown.js")" type="text/javascript"></script>
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:#ffffff;">
+                FoodReady.net Virtual Gift Card
+            </h1>
+        </div>
+    </div>
+</div>
+
+<div class="container toppadding">
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <h4><img src="@Url.Content("~/Content/images/giftcard.png")" /> <b>A SUPPRESSING GIFT</b></h4>
+            <div id="giftbox">
+                <ul>
+                    <li>Virtual Gift Card purchase between $10 and $500</li>
+                    <li>Once purchased, the Virtual Gift Card code is automatically emailed to the recipient</li>
+                    <li>Use instantly Like credit credit at foodready.net</li>
+                    <li>Easy to use, just provide gift card code once in checkout process.</li>
+                </ul>
+                <a href="/home/CardPurchase" class="btn btn-lg btn-primary">
+                    Buy gift cards now <span class="glyphicon glyphicon-heart"></span>
+                </a>
+            </div>
+            <p>
+            </p><hr />
+            <h4><b>Gift card balance check</b></h4> <br />
+            <div id="giftcard">
+                @Html.Partial("_CodeCheckPartial")
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6" style="border-left:solid 1px maroon">
+            <h4><b>Gift Card FAQs</b></h4>
+            <div class="slideTitle boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>How do I buy a Virtual Gift Card? </b>
+            </div>
+            <div class="slideitemList">
+                Easy! Log into your foodready.net account (or create an account if you don't
+                already have one) and fill up Virtual Gift Card Purchase form.<br />
+                Note: When purchasing a Virtual Gift Card, credit cards are the only accepted
+                form of payment.
+            </div>
+            <div class="slideTitle boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>Can I send a Virtual Gift Card directly to someone else? </b>
+            </div>
+            <div class="slideitemList">
+                Yes, of cause! At the time of purchase, enter the recipient's email address in the appropriate
+                box. An email with the Virtual Gift Card Code will be sent to the recipient
+                from your account email address.
+            </div>
+            <div class="slideTitle boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>Where can I use my Virtual Gift Card? </b>
+            </div>
+            <div class="slideitemList">
+                Make a payment just like Credit Card.
+            </div>
+            <div class="slideTitle boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>How do I use my Virtual Gift Card? </b>
+            </div>
+            <div class="slideitemList">
+                When you're ready to use your Virtual Gift Card and going to make a payment, on the checkout
+                page, select Gift Card Payment tab, then following the instructions.
+            </div>
+            <div class="slideTitle boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>What if my Virtual Gift Card does not cover the cost of my order? </b>
+            </div>
+            <div class="slideitemList">
+                No problem! You can pay the remaining balance with your credit card.
+            </div>
+            <div class="slideTitle boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>
+                    What if my order is small? Do I have to use up the entire Virtual Gift Card?
+                </b>
+            </div>
+            <div class="slideitemList">
+                Nope! Order what you want and keep the remaining balance for future orders. Remember
+                - you only need to enter the Virtual Gift Card Code one time. You can always
+                check the remaining balance on your Virtual Gift Card.
+            </div>
+            <div class="slideTitle boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>Does my Virtual Gift Card expire? </b>
+            </div>
+            <div class="slideitemList">
+                Yes, a Virtual Gift Card expires one year from its last use. If you purchase
+                a Virtual Gift Card and do not use it within the first year, it will also
+                expire.
+            </div>
+            <div class="slideTitle boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>
+                    Oops! I accidentally deleted my Virtual Gift Card. Can I get another one?
+                </b>
+            </div>
+            <div class="slideitemList">
+                Please contact us with the following information: Purchaser's logon name, purchaser's
+                account email address, Recipient's email address We'll contact you by e-mail
+                once we have cancelled the original Virtual Gift Card and issued a new
+                one.
+            </div>
+            <div class="slideTitle boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>
+                    I purchased a Virtual Gift Card, but never received it. Where is it?
+                </b>
+            </div>
+            <div class="slideitemList">
+                Occasionally, our emails may be blocked by certain email providers. Just call us
+                at 1-510-512-6789 or send us an email and we'll work with you, to help resolve the
+                problem.
+            </div>
+            <div class="slideTitle boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>What if my Virtual Gift Card is stolen? </b>
+            </div>
+            <div class="slideitemList">
+                Once you use the Virtual Gift Card, it will be linked to your delivery.com
+                account for only you to use. If, as the recipient of a Virtual Gift Card,
+                you suspect foul play, feel free to contact us and we will try to help. Upon receipt
+                of the Virtual Gift Card in your email inbox, please treat it like cash!
+            </div>
+            <div class="slideTitle boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>Other questions </b>
+            </div>
+            <div class="slideitemList">
+                If you have any other questions concerning your Virtual Gift Card, feel
+                free to contact us for additional help.
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+﻿
+@if (IsAjax)
+{
+    <script src="@Url.Content("~/Scripts/SignalrJS/signalrChat.js")" type="text/javascript"></script>
+}
+<div id="popupbody3">
+    <div class="modal-header">
+        <h5 id="poptitle3" class="modal-title" style="color:black;text-align:center;">FoodReady.Net All Time Live Chat Support</h5>
+    </div>
+    <div class="modal-body">
+        <div>
+            <textarea rows="4" style="width:100%;" id="message" />
+            <input type="button" id="sendmessage" value="Send" style="float:right;" />
+        </div>
+        <div style="clear:both;"></div>
+        <input type="hidden" id="displayname" value="@ViewBag.chatname" />
+        <input type="hidden" id="displayemail" value="@ViewBag.chatemail" />
+        <input type="hidden" id="displayquestion" value="@ViewBag.chatquestion" />
+        <input type="hidden" id="displayadmin" value="@ViewBag.chatadmin" />
+        <ul id="adminpannel"></ul>
+
+        <ul id="discussion"></ul>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Infrastructure\bin\Debug\FR.Infrastructure.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Infrastructure\bin\Debug\FR.Infrastructure.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Infrastructure\obj\Debug\FR.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Infrastructure\obj\Debug\FR.Infrastructure.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Infrastructure\obj\Debug\FR.Infrastructure.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Infrastructure\bin\Debug\FR.Infrastructure.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Infrastructure\bin\Debug\FR.Infrastructure.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Infrastructure\obj\Debug\FR.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Infrastructure\obj\Debug\FR.Infrastructure.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Infrastructure\obj\Debug\FR.Infrastructure.pdb
+D:\Foodreadynet-slidecart\FR.Infrastructure\obj\Debug\FR.Infrastructure.csprojAssemblyReference.cache
+D:\Foodreadynet-slidecart\FR.Infrastructure\obj\Debug\FR.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Foodreadynet-slidecart\FR.Infrastructure\obj\Debug\FR.Infrastructure.dll
+D:\Foodreadynet-slidecart\FR.Infrastructure\obj\Debug\FR.Infrastructure.pdb
+D:\Foodreadynet-slidecart\FR.Infrastructure\bin\Debug\FR.Infrastructure.dll
+D:\Foodreadynet-slidecart\FR.Infrastructure\bin\Debug\FR.Infrastructure.pdb
+D:\Foodreadynet-slidecart\FR.Infrastructure\bin\Debug\System.Web.Mvc.dll
+D:\Foodreadynet-slidecart\FR.Infrastructure\bin\Debug\System.Web.Mvc.xml
+D:\Foodreadynet-slidecart\FR.Infrastructure\obj\Debug\FR.Infrastructure.csproj.CopyComplete

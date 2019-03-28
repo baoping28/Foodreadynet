@@ -1,0 +1,196 @@
+﻿@model FR.Domain.Model.Entities.Order
+<div class="container">
+    <div>
+        <center>
+            <h3>Order Details</h3>
+        </center>
+    </div><hr />
+    <div class="row toppadding">
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <th>
+                    Order Number
+                </th>
+                <th>
+                    Order Time
+                </th>
+                <th>
+                    Customer Logon Name
+                </th>
+                <th>
+                    Restaurant Name
+                </th>
+                <th>
+                    OrderType
+                </th>
+                <th>
+                    Payment Type
+                </th>
+                <th>
+                    Total Amount Paid
+                </th>
+                <th>
+                    Gift Card Amount Pay
+                </th>
+                <th>
+                    Discount Amount
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Model.InvioceNumber
+                </td>
+                <td>
+                    @Model.AddedDate.ToString()
+                </td>
+                <td>
+                    @Model.LogonName
+                </td>
+                <td>
+                    @Model.BizInfo.BizTitle
+                </td>
+                <td>
+                    @Model.OrderType
+                </td>
+                <td>
+                    @ViewBag.paymenttype
+                </td>
+                <td>
+                    @Model.OrderTotal.ToString("N2")
+                </td>
+                <td>
+                    @Model.GiftCardAmountPay.ToString("N2")
+                </td>
+                <td>
+                    @Model.DiscountAmount.ToString("N2")
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row toppadding">
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <th>
+                    Subtotal
+                </th>
+                <th>
+                    Order Tax
+                </th>
+                <th>
+                    Delivery Charge
+                </th>
+                <th>
+                    Service Charge
+                </th>
+                <th>
+                    Driver Tip
+                </th>
+                <th>
+                    Order Total
+                </th>
+                <th>
+                    Schedule Time
+                </th>
+                <th>
+                    Coupon Choice
+                </th>
+                <th>
+                    Customer Message
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Model.SubTotal.ToString("N2")
+                </td>
+                <td>
+                    @Model.OrderTax.ToString("N2")
+                </td>
+                <td>
+                    @Model.DeliveryCharge.ToString("N2")
+                </td>
+                <td>
+                    @Model.ServiceCharge.ToString("N2")
+                </td>
+                <td>
+                    @Model.DriverTip.ToString("N2")
+                </td>
+                <td>
+                    @Model.OrderTotal.ToString("N2")
+                </td>
+                <td>
+                    @Model.ScheduleTime
+                </td>
+                <td>
+                    @Model.CouponChoice
+                </td>
+                <td>
+                    @Model.CustomerMessage
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div class="row toppadding">
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <th>
+                    Customer Name
+                </th>
+                <th>
+                    Customer Address
+                </th>
+                <th>
+                    Customer Phone
+                </th>
+                <th>
+                    Customer Email
+                </th>
+                <th>
+                    Customer IP
+                </th>
+                <th>
+                    Is Logged User
+                </th>
+                <th>
+                    PayPal Transaction ID
+                </th>
+                <th>
+                    Credit Card
+                </th>
+                <th>
+                    Driver Name
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Model.FirstName  @Model.LastName
+                </td>
+                <td>
+                    @Model.Street, @Model.City, @Model.State @Model.ZipCode
+                </td>
+                <td>
+                    @Model.Phone
+                </td>
+                <td>
+                    @Model.Email
+                </td>
+                <td>
+                    @Model.IpAddress
+                </td>
+                <td>
+                    @Model.IsLoggedUser.ToString()
+                </td>
+                <td>
+                    @Model.TransactionId
+                </td>
+                <td>
+                    @Html.Raw(ViewBag.creditcard)
+                </td>
+                <td>
+                    @Model.DriverName
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

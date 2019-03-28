@@ -1,0 +1,149 @@
+﻿@model IdentitySample.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage your account";
+}
+
+<div class="container-full  titlepadding">
+    <div class="container">
+        <div class="row">
+            <h2>
+                @ViewBag.Title <small style="color:white;">(@User.Identity.Name)</small>
+            </h2>
+        </div>
+    </div>
+</div>
+<div class="container toppadding">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <p class="text-success">@ViewBag.StatusMessage</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <i class="fa fa-2x fa-user" style="color:#1d63a7;"></i>
+            @Html.ActionLink("My Profile", "MyProfile", "Manage", null, new { @class = "Link16", title = "View/Update my profile" })
+           
+        </div>
+
+        <div class="col-sm-6 col-md-6">
+            <i class="fa fa-2x fa-cutlery" style="color:#1d63a7;"></i>
+            @Html.ActionLink("My Favorite Restaurants", "MyFavorRestaurants", "Manage", null, new { @class = "Link16", title = "My Favorite Restaurants" })
+            
+        </div>
+    </div><hr />
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <i class="fa fa-2x fa-credit-card" style="color:#1d63a7;"></i>
+            @Html.ActionLink("My Gift Cards", "MyGiftCards", "Manage", null, new { @class = "Link16", title = "My Gift Cards" })
+            
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <i class="fa fa-2x fa-gift" style="color:#1d63a7;"></i>
+            @Html.ActionLink("My Reward Points", "MyPoints", "Rewards", null, new { @class = "Link16", title = "My Reward Points" })
+           
+        </div>
+    </div><hr />
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <i class="fa fa-2x fa-history" style="color:#1d63a7;"></i>
+            @Html.ActionLink("My Order History", "OrderHistory", "Manage", null, new { @class = "Link16", title = "View/Print my order history" })
+            
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <i class="fa fa-2x fa-star" style="color:#1d63a7;"></i>
+            @Html.ActionLink("My Reviews", "MyReviews", "Manage", null, new { @class = "Link16", title = "View/Edit my reviews" })
+            
+        </div>
+    </div><hr />
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <i class="fa fa-2x fa-key" style="color:#1d63a7;"></i>
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your password", "ChangePassword", null, new { @class = "Link16", title = "Change your password" })
+            }
+            else
+            {
+                @Html.ActionLink("Pick a password", "SetPassword", null, new { @class = "Link16", title = "Pick a password" })
+            }
+           
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <i class="fa fa-2x fa-user-plus" style="color:#1d63a7;"></i>
+            @Html.ActionLink("Manage external Logins " + "(" + @Model.Logins.Count + ")", "ManageLogins", null, new { @class = "Link16", title = "Manage external Logins" })
+            
+        </div>
+    </div><hr />
+</div>
+
+<!--
+    <div class="row">
+        <div class="col-md-8">
+            <p>
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("Change your password", "ChangePassword")
+                }
+                else
+                {
+                    @Html.ActionLink("Pick a password", "SetPassword")
+                }
+            </p>
+            <p>
+                Phone Number: @(Model.PhoneNumber ?? "None") [
+                @if (Model.PhoneNumber != null)
+                {
+                    @Html.ActionLink("Change", "AddPhoneNumber")
+                    @: &nbsp;|&nbsp;
+                    @Html.ActionLink("Remove", "RemovePhoneNumber")
+                }
+                else
+                {
+                    @Html.ActionLink("Add", "AddPhoneNumber")
+                }
+                ]
+            </p>
+            <p>
+                External Logins: @Model.Logins.Count
+                @Html.ActionLink("[Manage]", "ManageLogins")
+            </p>
+            @if (Model.TwoFactor)
+            {
+                <form method="post" action="/Manage/DisableTFA">
+                    <p>
+                        Two factor is currently enabled:
+                        <input type="submit" value="Disable" class="btn btn-default" />
+                    </p>
+                </form>
+            }
+            else
+            {
+                <form method="post" action="/Manage/EnableTFA">
+                    <p>
+                        Two factor is currently disabled:
+                        <input type="submit" value="Enable" class="btn btn-default" />
+                    </p>
+                </form>
+            }
+            @if (Model.BrowserRemembered)
+            {
+                <form method="post" action="/Manage/ForgetBrowser">
+                    <p>
+                        Browser is curently remembered for two factor:
+                        <input type="submit" value="Forget Browser" class="btn btn-default" />
+                    </p>
+                </form>
+            }
+            else
+            {
+                <form method="post" action="/Manage/RememberBrowser">
+                    <p>
+                        Browser is curently not remembered for two factor:
+                        <input type="submit" value="Remember Browser" class="btn btn-default" />
+                    </p>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+    -->

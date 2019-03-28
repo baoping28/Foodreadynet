@@ -1,0 +1,42 @@
+﻿@model FR.Domain.Model.Entities.UserDetail
+@{
+    ViewBag.Title = "My Profile";
+}
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:#ffffff;">
+                @User.Identity.Name' Profile
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container toppadding">
+    <div class="row">
+        @if (Model != null)
+        {
+            <div id="myprofile">
+                @Html.Partial("_MyDetailsPartial", new IdentitySample.Models.MyDetailModel()
+{
+    UserDetailID = Model.UserDetailId,
+    UserID = Model.UserId,
+    FirstName = Model.FirstName,
+    LastName = Model.LastName,
+    AddressLine = Model.Address.AddressLine,
+    CrossStreet = Model.Address.CrossStreet,
+    City = Model.Address.City,
+    State = Model.Address.State,
+    ZipCode = Model.Address.ZipCode,
+    Phone = Model.ContactInfo.Phone,
+    Email = Model.ContactInfo.Email
+})
+            </div>
+        }
+        else
+        {
+            <div id="myprofile">
+                @Html.Partial("_AddDetailPartial", new IdentitySample.Models.MyDetailModel() { UserID = ViewBag.myid })
+            </div>
+        }
+    </div>
+</div>

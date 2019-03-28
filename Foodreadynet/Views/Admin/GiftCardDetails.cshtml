@@ -1,0 +1,136 @@
+﻿@model FR.Domain.Model.Entities.GiftCard
+<div>
+    <center><h3>Gift Card Details</h3></center>
+</div><hr />
+
+<div id="addContent" style="background-color:White;padding:10px;">
+    <table class="table table-striped table-hover table-responsive">
+        <tr>
+            <th>
+                Buy Date
+            </th>
+            <th>
+                Gift Card ID
+            </th>
+            <th>
+                Gift Card Code
+            </th>
+            <th>
+                User(Buyer) ID
+            </th>
+            <th>
+                User(Buyer) Name
+            </th>
+            <th>
+                Credit Card ID
+            </th>
+            <th>
+                Credit Card
+            </th>
+            <th>
+                Last Pay BizInfoID
+            </th>
+            <th>
+                Last Pay Restaurant Name
+            </th>
+            <th>
+                Buyer Email
+            </th>
+
+        </tr>
+        <tr>
+            <td>
+                @Model.AddedDate.ToString()
+            </td>
+            <td>
+                @Model.GiftCardId
+            </td>
+            <td>
+                @Model.GiftCardCode
+            </td>
+            <td>
+                @Model.UserId.ToString()
+            </td>
+            <td>
+                @ViewBag.buyername
+            </td>
+            <td>
+                @Model.CreditCardId.ToString()
+            </td>
+            <td>
+                @Html.Raw(ViewBag.creditcard)
+            </td>
+            <td>
+                @Model.LastPayBizInfoId
+            </td>
+            <td>
+                @ViewBag.bizname
+            </td>
+            <td>
+                @Model.UserEmail
+            </td>
+        </tr>
+    </table>
+<p></p>
+    <table class="table table-striped table-hover table-responsive">
+        <tr>
+            <th>
+                Recipient Email
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Balance
+            </th>
+            <th>
+                Last Use Time
+            </th>
+            <th>
+                Last Pay Amount
+            </th>
+            <th>
+                Last Order Total
+            </th>
+            <th>
+                Last Action Time
+            </th>
+            <th>
+                Last Action By
+            </th>
+            <th>
+                Active
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Model.RecipientEmail
+            </td>
+            <td>
+                @Model.Amount.ToString("N2")
+            </td>
+            <td>
+                @Model.Balance.ToString("N2")
+            </td>
+            <td>
+                @Model.LastTimeUse.ToString()
+            </td>
+            <td>
+                @Model.LastPayAmount.ToString("N2")
+            </td>
+            <td>
+                @Model.LastOrderTotal.ToString("N2")
+            </td>
+            <td>
+                @Model.UpdatedDate.ToString("")
+            </td>
+            <td>
+                @Model.UpdatedBy
+            </td>
+            <td>
+                @Model.Active.ToString()
+            </td>
+        </tr>
+    </table>
+</div>
+

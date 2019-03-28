@@ -1,0 +1,96 @@
+﻿@model FoodReady.WebUI.Models.BizDescriptionModel
+@using FR.Services.FilterServces
+@using FoodReady.WebUI.HtmlHelpers
+@if (Model.BizInfo.IsBizNew)
+{
+    <div><span style="font-size:14px; color:#C51616;"><b> New! </b></span>(@Model.BizInfo.AddedDate.ToShortDateString())</div>
+}
+@{ var apptime = string.Empty;}
+@if (Model.BizInfo.Delivery)
+{
+    <div style="font-size:12px;">
+        Delivery minimum:<b> $@Model.BizInfo.DeliveryMinimum.ToString("N2") before tax</b>
+        <br />
+        @{ var str = Model.BizInfo.DeliveryFee > 0.0m ? "$" + Model.BizInfo.DeliveryFee.ToString("N2") : "Free";}
+        Delivery fee: <b>@str</b>
+        <div>
+            @if ((Model.BizInfo.HasDiscountCoupons || Model.BizInfo.HasFreeItemCoupons))
+            {
+                using (Ajax.BeginForm("Coupons", "Restaurants", new { id = Model.BizInfo.BizInfoId }, new AjaxOptions
+                {
+                    UpdateTargetId = "popupbody1",
+                    OnBegin = "onPopup1Begin",
+                    OnSuccess = "onPopup1Success",
+                    OnFailure = "onPopup1Failed"
+                }))
+                {
+                    <button type="submit" title="View coupon" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-barcode"></span> &nbsp; View coupon</button>
+
+                }
+            }
+        </div>
+        @{var dist = SearchFilter.GetDistance(Model.History.FullAddress, Model.BizInfo, out apptime);}
+        @if (dist >= 0.0m)
+        {
+            <div>
+                Distance: <b>
+                    @dist.ToString("N2")
+                    mi
+                </b> to <span class="estimatetime">@Model.History.FullAddress </span>
+                <br />
+                <div class="populink">
+                    Estimate time: <span class="estimatetime">@SearchFilter.FormatMinites(@SearchFilter.GetDeliveryTime("30", apptime))</span>
+                    <br />
+                </div>
+                <div class="popupdiv">
+                    This delivery time is estimated by
+                    <br />
+                    kitchen time: @SearchFilter.FormatMinites(30) + Trafic time: @SearchFilter.FormatSeconds(@apptime)
+                    <br />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div>Distance: your address needed</div>
+        }
+    </div>
+}
+else
+{
+    <div style="font-size:12px;">
+        <span style=" font-size:14px; color:red;">
+            <b> Pick up only</b>
+        </span>
+        <div>
+            @if (Model.BizInfo.HasDiscountCoupons || Model.BizInfo.HasFreeItemCoupons)
+            {
+                using (Ajax.BeginForm("Coupons", "Restaurants", new { id = Model.BizInfo.BizInfoId }, new AjaxOptions
+                {
+                    UpdateTargetId = "addContent",
+                    OnBegin = "onAddBegin",
+                    OnSuccess = "onAddSuccess",
+                    OnFailure = "onAddFailed"
+                }))
+                {
+                    <input type="image" src="../../Content/images/coupon.png" title="View coupon" class="couponImg" />
+
+                }
+            }
+        </div>
+        Distance: <b>
+            @SearchFilter.GetDistance(Model.History.FullAddress, Model.BizInfo, out apptime).ToString("N2")
+            mi
+        </b> to <span class="estimatetime">@Model.History.FullAddress </span>
+        <br />
+        <div class="populink">
+            Estimate time: <span class="estimatetime">30 mins</span>
+            <br />
+        </div>
+        <div class="popupdiv">
+            This pickup time is estimated by  kitchen time: 30 mins
+            <br />
+        </div>
+    </div>
+}
+<input type="hidden" id="biz-id" value="@Model.BizInfo.BizInfoId.ToString()" />

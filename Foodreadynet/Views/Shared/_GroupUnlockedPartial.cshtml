@@ -1,0 +1,24 @@
+﻿@model FoodReady.WebUI.Models.GroupInfoModel
+<div class="container toppadding">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <p>
+                @Model.Name, look like you are going to be back to @Html.ActionLink(Model.Cart.BizName, "Share", "Group", new { groupid = Model.Cart.CartKey, bizid = Model.Cart.BizId }, null).
+                Or select one of the following restaurants to change your restaurant. When you change current restaurant, your current restaurant's shopping cart will be empty and
+                your new restaurant's shopping cart will be your current shopping cart.
+            </p>
+        </div>
+    </div>
+    @foreach (var b in Model.LBizInfo)
+    {
+        <div class="row">
+            <div class="col-sm-2 col-md-2">
+                <img src="@Url.Content("~/Content/BizImages/" + b.ImageUrl)" class="bizImg boxShadow boxCorner" />
+            </div>
+            <div class="col-sm-10 col-md-10">
+                @Html.ActionLink(b.BizTitle, "Share", "Group", new { groupid = Model.Cart.CartKey, bizid = b.BizInfoId }, null)<br />
+                @Html.Raw(b.BizTwoLineAddressString)
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿@model FoodReady.WebUI.Models.CheckoutGiftModel
+<div style="margin: 30px;">
+    <center>
+        <h4>
+            Thank you for your ordering with foodready.net !</h4>
+        @TempData["OrderSummaryTitle"] ( Order Total: @Model.GCCart.Total().ToString("N2")
+        )
+    </center>
+    @if (Model.GCCart.IsDelivery)
+    {
+        <div>
+            <p>
+                You have just placed a delivery order with www.foodready.net. Normally, you will receive
+                your order within 50 minites at address:<br />
+                <br />
+                <b>
+                    @Model.GCFirstName @Model.GCLastName
+                    <br />
+                    @Model.GCAddressLine
+                    <br />
+                    @Model.GCCity, @Model.GCState @Model.GCZipCode
+                </b>
+            </p>
+            <p>
+                If you have any questions, please call at @ViewBag.servicephone .We will be happy to response
+                you as soon as possible. Thank you for your ordering!
+            </p>
+            <br />
+        </div>  
+    }
+    else
+    {
+        <div>
+            <p>
+                You have just placed a pickup order with www.foodready.net. Please arrive in 30 minutes.
+            </p>
+            <p>
+                The restaurant address is at <b>@Model.GCBizInfo.BizAddressString</b>. You can click
+                the<a class="LkProduct" onclick="@Url.Content("getDirections('" + ViewBag.maplink + "');return false;")"  href="">GET DRIVING
+                    DIRECTIONS </a> to locate us. If you have any questions, please call at @ViewBag.servicephone.
+                Thank you for your ordering!
+            </p>
+        </div>
+    }
+</div>

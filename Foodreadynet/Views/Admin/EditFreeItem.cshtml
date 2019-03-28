@@ -1,0 +1,63 @@
+﻿@model FoodReady.WebUI.Models.FreeItemModel
+@{
+    ViewBag.Title = "EditFreeItem";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/FRAdminScripts/datepickerJQ.js")" type="text/javascript"></script>
+<div class="titlebox boxShadow">
+    <center><h3> (@Model.Bizinfo.BizTitle) Edit Free Item</h3></center>
+</div>
+@ViewBag.result
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(e => e.BizInfoID)
+        @Html.HiddenFor(e => e.FreeItemID)
+        <div class="=form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </div><br />
+
+        <div class="=form-group">
+            @Html.LabelFor(m => m.Description)
+            @Html.ValidationMessageFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description, 5, 50, new { @class = "form-control boxShadow" })
+            <div class="remaining">
+                Characters remaining: <span class="count">512</span>
+                <input id="btnClear" type="button" value="Reset Text" style="margin-left: 40px;" />
+            </div>
+        </div><br />
+
+        <div class="=form-group">
+            @Html.LabelFor(m => m.UnitPrice)
+            @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.UnitPrice)
+        </div><br />
+
+        <div class="=form-group">
+            @Html.LabelFor(m => m.OrderMinimum)
+            @Html.TextBoxFor(x => x.OrderMinimum, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.OrderMinimum)
+        </div><br />
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                Start: @Html.TextBoxFor(e => e.StartDate, new { @class = "form-control boxShadow" })@Html.ValidationMessageFor(m => m.StartDate)
+            </div>
+            <div class="col-sm-6 col-md-6">
+                End: @Html.TextBoxFor(e => e.EndDate, new { @class = "form-control boxShadow" })@Html.ValidationMessageFor(m => m.EndDate)
+            </div>
+        </div><br />
+
+        <div class="=form-group pull-right">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+            <br />
+        </div><br />
+        <div class="=form-group">
+            <p>@Html.ActionLink("Back to Manage Free Items " + Model.Bizinfo.BizTitle, "ManageFreeItems", "admin", new { id = Model.BizInfoID }, null)</p>
+        </div>
+
+
+    }
+</div>

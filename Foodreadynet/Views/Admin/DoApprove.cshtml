@@ -1,0 +1,17 @@
+﻿@model FoodReady.WebUI.Models.DoApproveModel
+
+<div id="@Url.Content("item" + Model.User.Id)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoApprove", "Admin", new { id = Model.User.Id },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.User.Id),
+                            OnBegin = "onDoApproveBegin('" + Model.User.Id + "')",
+                            OnSuccess = "onDoApproveSuccess('" + Model.User.Id + "')",
+                            OnFailure = "onDoApproveFailure('" + Model.User.Id + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.User.Active ? "lock" : "unlock") + " the user: " + Model.User.UserName + " ?"
+                        }))
+    {
+                                                   
+        <input class="@Url.Content(Model.User.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.User.Active ? "To lock user" : "To unlock user")" value="" />
+                            }
+</div>

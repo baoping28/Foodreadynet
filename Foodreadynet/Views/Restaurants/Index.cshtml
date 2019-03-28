@@ -1,0 +1,363 @@
+﻿@model FoodReady.WebUI.Models.FilterViewModels
+@using FR.Services.FilterServces
+@using FoodReady.WebUI.HtmlHelpers
+@using FR.Infrastructure.Helpers
+@{
+    ViewBag.Title = "Restaurants";
+}
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/testOnly.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/hoverPopupDiv.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/JHoverMenu.js")" type="text/javascript"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKiEdbCcINToyXHXIFFkh-jf2AUe_NHz8&sensor=false"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/googleMapSearchJS.js")" type="text/javascript"></script>
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+    (function () {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>
+<div class="container-full">
+    <div class="carousel-inner">
+        <img src="@Url.Content("~/Images/fr-3.png")" alt="First slide" class="img-responsive" style="width:100%;height:300px;">
+        <div class="container">
+            <div class="carousel-caption">
+                <center>
+                    <div>
+                        @Html.Partial("_GoogleSearchPartial")
+                        <br />
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-full toppadding">
+    @if (ViewBag.result == "y")
+    {
+        <div class="row" style="padding-right:40px;padding-left:20px;">
+            <div class="col-sm-3 col-md-3">
+                @using (Html.BeginForm())
+                {
+                    <div id="Container0" class="filterBarEven boxShadow">
+                        <div class="filterTitle">
+                            @Html.DropDownList("schedule", Model.ScheduleAssistances, new { @class = "schedule" })<br /><br />
+                            @Html.DropDownList("timeat", Model.TimeAssistances, new { @class = "schedule" })<br />
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                    <div class="midSmall boxShadow">
+                        &nbsp;&nbsp;Filter with:
+                    </div>
+                    <div id="Container1" class="filterBarOdd boxShadow">
+                        <div class="filterCuisine">
+                            Cuisine<br />
+                            @Html.DropDownListFor(x => x.CuisineDropDown, Model.CuisineAssistances, new { @class = "cuisinedrop" })
+                        </div>
+                        <div class="filterTitle">
+                            <img class="sign" src="../../Content/Images/minusSign.png" />
+                            Feather
+                        </div>
+                        <div>
+                            @for (int i = 0; i < Model.FeatherAssistances.Count; i++)
+                            {
+                                <div>
+                                    <input type="checkbox" id="@Model.FeatherAssistances[i].GroupName" name="@Model.FeatherAssistances[i].GroupName" value="@Model.FeatherAssistances[i].Value" />
+                                    @Model.FeatherAssistances[i].Name
+                                </div>
+                            }
+                            <div id="resetBox" class="filterReset">
+                                reset
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Container2" class="filterBarEven boxShadow">
+                        <div class="filterTitle">
+                            <img class="sign" src="../../Content/Images/minusSign.png" />
+                            Delivery Minimum
+                        </div>
+                        <div class="filterContent">
+                            @for (int i = 0; i < Model.MinimumAssistances.Count; i++)
+                            {
+                                <div>
+                                    <input type="radio" id="@Model.MinimumAssistances[i].Id" name="@Model.MinimumAssistances[i].GroupName" value="@Model.MinimumAssistances[i].Value" />@Model.MinimumAssistances[i].Name
+                                </div>
+                            }
+                            <div id="resetPrice" class="filterReset">
+                                reset
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Container3" class="filterBarOdd boxShadow">
+                        <div class="filterTitle">
+                            <img class="sign" src="../../Content/Images/minusSign.png" />
+                            Distance
+                        </div>
+                        <div class="filterContent">
+                            @for (int i = 0; i < Model.DistanceAssistances.Count; i++)
+                            {
+                                <div>
+                                    <input type="radio" id="@Model.DistanceAssistances[i].Id" name="@Model.DistanceAssistances[i].GroupName" value="@Model.DistanceAssistances[i].Value" />@Model.DistanceAssistances[i].Name
+                                </div>
+                            }
+                            <div id="resetDistance" class="filterReset">
+                                reset
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Container4" class="filterBarEven boxShadow">
+                        <div class="filterTitle">
+                            <img class="sign" src="../../Content/Images/minusSign.png" />
+                            Ratings
+                        </div>
+                        <div class="filterContent">
+                            @for (int i = 0; i < Model.RatingAssistances.Count; i++)
+                            {
+                                <div>
+                                    <input type="radio" id="@Model.RatingAssistances[i].Id" name="@Model.RatingAssistances[i].GroupName" value="@Model.RatingAssistances[i].Value" />
+                                    @Html.RatingsByVote(5 - i)
+                                </div>
+                            }
+                            <div id="resetRating" class="filterReset">
+                                reset
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <center>
+                <div id="loading" class="loadDiv">
+                    <img id="loader" src="../../Content/Images/ajaxloader.gif" />
+                </div>
+            </center>
+            <div class="col-sm-9 col-md-9">
+                <div id="map_canvas1" class="boxShadow">
+                </div>
+                <div class="fb-like" data-send="false" data-layout="button_count" data-width="450"
+                     data-show-faces="false" style="float: right;">
+                </div>
+                <div style="float: right; position: relative; left: 20px;">
+                    <div class="g-plusone" data-size="medium">
+                    </div>
+                </div>
+                <div style="clear: both;">
+                </div>
+                <div id="filterBody">
+                    <div>
+                        <div class="searchTop">
+                            <div style="float: left;">
+                                @if (Model.BizInfos.Count > 0)
+                                {
+                                    <span id="bizTotal" class="midTitle">
+                                        Total
+                                        @Model.BizInfos.Count Restaurants serving:
+                                    </span> @Model.userFullAddress
+                                }
+                                @if (Model.BizOpenSet.Count > 0)
+                                {
+                                    <span id="bizOn" class="openNote">
+                                        <br />  @Model.BizOpenSet.Count
+                                        opening
+                                    </span>
+                                }
+                                @if (Model.BizCloseSet.Count > 0)
+                                {
+                                    <span id="bizOff" class="closeNote">
+                                        @Model.BizCloseSet.Count
+                                        closed
+                                    </span>
+                                }
+                            </div>
+                            <div style="clear: both;">
+                            </div>
+                        </div>
+                        @foreach (var p in Model.BizOpenSet)
+                        {
+                            <div id="tr-@p.BizInfoId" class="turnon boxCorner row">
+                                <div class="row" style="padding-left:12px;">
+                                    <div class="col-sm-12 col-md-12">
+                                        <a href="@Url.Content("~/Restaurants/Menu/" + p.BizInfoId)" title="View menu">
+                                            <span class="ontitle">
+                                                @p.BizTitle
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <div class="setLeft">
+                                        <a href="@Url.Content("~/Restaurants/Menu/" + p.BizInfoId)" title="View menu">
+                                            <img src="@Url.Content("~/Content/BizImages/" + @p.ImageUrl)" class="bizImg boxShadow boxCorner" />
+                                        </a>
+                                        <div style="clear: both;">
+                                        </div>
+                                        <p class="midSmall14">@p.AllCuisines</p>
+                                        @Html.Raw(p.BizTwoLineAddressString)<br />
+                                        @if (p.Delivery == false)
+                                        {
+                                            <span style="font-family: Miramonte, Century Gothic; font-size: 14px; font-weight: bold;
+                                    color: Red; padding-top: 6px;">Pickup Only</span>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4">
+                                    <div class="setRight">
+                                        <div class="populink">
+                                            <span class="opensign">Opening Now</span> (<span style="text-decoration:underline;color:#1E7CB8;">Online Hours</span>)
+                                        </div>
+                                        <div class="popupdiv">@Html.Partial("_BizHourPartial", p)</div>
+                                        <div style="clear: both;">
+                                        </div>
+                                        @Html.Partial("_BizInfoPartial", new FoodReady.WebUI.Models.BizDescriptionModel() { BizInfo = p, History = Model.History })
+                                        <div>Price range: <span class="midSmall14">@p.FoodCost</span></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-md-5">
+                                    <div class="setRating">
+                                        @if (string.IsNullOrEmpty(p.YelpBizId))
+                                        {
+                                            @Html.Partial("_LocalReview", p)
+                                        }
+                                        else
+                                        {
+                                            @Html.Partial("_YelpReview", YelpBizDetails.GetYelpBiz(p))
+                                        }
+                                        <p style="float: right;">
+                                            @Html.ActionLink("Add a review", "AddReview", "Reviews", new { id = p.BizInfoId }, new { @class = "reviewlink" })
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        @foreach (var b in Model.BizCloseSet)
+                        {
+                            <div id="tr-@b.BizInfoId" class="turnoff boxCorner row">
+                                <div class="row" style="padding-left:12px;">
+                                    <div class="col-sm-12 col-md-12">
+                                        <a href="@Url.Content("~/Restaurants/Menu/" + b.BizInfoId)" title="View menu">
+                                            <span class="offtitle">
+                                                @b.BizTitle
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <div class="setLeft">
+                                        <a href="@Url.Content("~/Restaurants/Menu/" + b.BizInfoId)" title="View menu">
+                                            <img src="@Url.Content("~/Content/BizImages/" + @b.ImageUrl)" class="bizImg boxShadow boxCorner" />
+                                        </a>
+                                        <div style="clear: both;">
+                                        </div>
+                                        <p class="midSmall14">@b.AllCuisines</p>
+                                        @Html.Raw(b.BizTwoLineAddressString)<br />
+                                        @if (b.Delivery == false)
+                                        {
+                                            <span style="font-family: Miramonte, Century Gothic; font-size: 14px; font-weight: bold;
+                                    color: Red; padding-top: 6px;">Pickup Only</span>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4">
+                                    <div class="setRight">
+                                        <div class="populink">
+                                            <span class="closesign">Closed Now</span> (<span style="text-decoration:underline; color:#1E7CB8;">Online Hours</span>)
+                                        </div>
+                                        <div class="popupdiv">@Html.Partial("_BizHourPartial", b)</div>
+                                        <div style="clear: both;">
+                                        </div>
+                                        @Html.Partial("_BizInfoPartial", new FoodReady.WebUI.Models.BizDescriptionModel() { BizInfo = b, History = Model.History })
+                                        <div>Price range: <span class="midSmall14">@b.FoodCost</span></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-md-5">
+                                    <div class="setRating">
+                                        @if (string.IsNullOrEmpty(b.YelpBizId))
+                                        {
+                                            @Html.Partial("_LocalReview", b)
+                                        }
+                                        else
+                                        {
+                                            @Html.Partial("_YelpReview", YelpBizDetails.GetYelpBiz(b))
+                                        }
+                                        <p style="float: right;">
+                                            @Html.ActionLink("Add a review", "AddReview", "Reviews", new { id = b.BizInfoId }, new { @class = "reviewlink" })
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div>
+                        @foreach (var h in Model.BizHiddenSet)
+                        {
+                            <div id="tr-@h.BizInfoId" class="hiddenSet boxCorner row">
+                                <div class="col-sm-3 col-md-3">
+                                    <div class="setLeft">
+                                        <span class="offtitle">@h.BizTitle</span>
+                                        <br />
+                                        <a href="@Url.Content("~/Restaurants/Menu/" + h.BizInfoId)" title="View menu">
+                                            <img src="@Url.Content("~/Content/BizImages/" + @h.ImageUrl)" class="bizImg boxShadow boxCorner" /> (<span style="text-decoration:underline;">Online Hours</span>)
+                                        </a>
+                                        <div style="clear: both;">
+                                        </div>
+                                        <p class="midSmall14">@h.AllCuisines</p>
+                                        @Html.Raw(h.BizTwoLineAddressString)<br />
+                                        @if (h.Delivery == false)
+                                        {
+                                            <span style="font-family: Miramonte, Century Gothic; font-size: 14px; font-weight: bold;
+                                    color: Red; padding-top: 6px;">Pickup Only</span>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4">
+                                    <div class="setRight">
+                                        <div class="populink">
+                                            <img src="../../Content/images/closed.png" class="opensign" title="Closed" />
+                                        </div>
+                                        <div class="popupdiv">@Html.Partial("_BizHourPartial", h)</div>
+                                        <div style="clear: both;">
+                                        </div>
+                                        @Html.Partial("_BizInfoPartial", new FoodReady.WebUI.Models.BizDescriptionModel() { BizInfo = h, History = Model.History })
+                                        <div>Price range: <span class="midSmall14">@h.FoodCost</span></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5 col-md-5">
+                                    <div class="setRating">
+                                        @if (string.IsNullOrEmpty(h.YelpBizId))
+                                        {
+                                            @Html.Partial("_LocalReview", h)
+                                        }
+                                        else
+                                        {
+                                            @Html.Partial("_YelpReview", YelpBizDetails.GetYelpBiz(h))
+                                        }
+                                        <p style="float: right;">
+                                            @Html.ActionLink("Add a review", "AddReview", "Reviews", new { id = h.BizInfoId }, new { @class = "reviewlink" })
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;">
+            </div>
+        </div>
+        @Html.Hidden("hCity", Model.city)
+        @Html.Hidden("hZip", Model.zip)
+        @Html.Hidden("hCuisine", Model.cuisine)
+        <input id="markers" type="hidden" value="@Model.MapMarkers" />
+
+
+    }
+    else
+    {
+        <div class="container">
+            <p> There is no restaurant serving @Model.userFullAddress. You may need use different location to make a new search.  </p>
+        </div>
+    }
+</div>

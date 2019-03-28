@@ -1,0 +1,243 @@
+﻿@{
+    ViewBag.Title = "Help";
+}
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/slidingUpDown.js")" type="text/javascript"></script>
+<div class="container toppadding">
+    <h3><b>HELP</b></h3>
+    <div id="divHelp" style="padding: 0px 20px 20px 20px;">
+        <div class="midTitle" style="background-color: #fafafa; text-align: center;
+        padding: 14px;">
+            <div id="q1" class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>How do I browse restaurants?</b>
+            </div>
+            <div class="slideitemList">
+                <ul>
+                    <li>
+                        <b>
+                            Find a restaurant by enter restaurant's information (eg., restaurant name, phone
+                            or address)
+                        </b><br />
+                        <p>
+                            if you know the restaurant's information (eg., restaurant name, phone or address),
+                            the most accurate and quickest way to locate restaurants is by entering the restaurant
+                            information (eg., restaurant name, phone or address) using general search box on
+                            right-bottom of header. Click on
+                            <img src="@Url.Content("~/Content/images/help1.png")" />
+                        </p>
+                    </li>
+                    <li>
+                        <b>Find restaurants by entering your address</b><br />
+                        <p>
+                            The most accurate way to locate restaurants that deliver to your specific location
+                            is by entering your address.
+                            <img src="@Url.Content("~/Content/images/help2.png")" /><br />
+                            This will display the list of restaurants around your address.
+                        </p>
+                    </li>
+                    <li>
+                        <b>Find restaurants by city, cuisine or zip code</b><br />
+                        <p>
+                            Just mouse over "BROWSE RESTAURANTS" on the header to find the restaurants by city,
+                            cuisine or zip code.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>How do I place an order?</b>
+            </div>
+            <div class="slideitemList">
+                <ul>
+                    <li>
+                        <b>STEP 1: Find restaurant</b>
+                        <p>
+                            See <a href="#q1">How do I browse restaurants?</a> to find a restaurant.
+                        </p>
+                    </li>
+                    <li>
+                        <b>TEP 2: Select a Restaurant</b>
+                        <p>
+                            Click on any open restaurant name to enter the restaurant page.
+                        </p>
+                    </li>
+                    <li>
+                        <b>STEP 3: View the restaurant informations and order from the menu</b>
+                        <p>
+                            To add an item to your order, click on that item. You can customize that item by
+                            choosing quantity, additional options and special instructions. When you are done
+                            customizing the item click the "Add To Cart" button. Once all items are added to
+                            your cart, choose pickup or delivery, select a coupon and optional to tip the driver,
+                            then click the "Checkout" button to proceed to the Checkout page.
+                        </p>
+                    </li>
+                    <li>
+                        <b>STEP 4: Checkout and place the order</b>
+                        <p>
+                            Choose either:
+                        </p>
+                        <ul>
+                            <li>
+                                Checkout with a returing customer by sign in with your local account or an existing
+                                internet account
+                            </li>
+                            <li>Or checkout with a guest without signing in</li>
+                        </ul>
+                        <br />
+                        Then select a payment type (from Credit Card Payment, PayPal Payment and Gift Card
+                        Payment)
+                        <div>
+                            <img src="@Url.Content("~/Content/images/help3.png")" />
+                        </div>
+                        You will be asked to enter your information, click on "Continue" to bring you a
+                        order confirmation page. Click on "Place Order" when you confirm the order.
+                    </li>
+                </ul>
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>How do I know that the restaurant received my order? </b>
+            </div>
+            <div class="slideitemList">
+                <p>
+                    Once you click on "Place Order", you will see the Thank You page. You can rest assured
+                    that your order has been sent electronically to the restaurant..
+                </p>
+                You can also check the your order by viewing your Order History.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>What should I do if I want change or cancel my order after I have placed it?</b>
+            </div>
+            <div class="slideitemList">
+                To change or cancel an order after you have placed it, please call the restaurant
+                directly. The restaurant's phone number can be found on your email confirmation
+                or by logging back onto our site. If your order has already be made by the restaurant,
+                order cannot be canceled...sorry! Once you have canceled or changed the order with
+                the restaurant, please notify us of the change or cancellation by responding to
+                your order email confirmation.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>Who should I call to check the status of my order? </b>
+            </div>
+            <div class="slideitemList">
+                Please contact the restaurant to find out the status of your order. The restaurant's
+                phone number is provided with your email confirmation. Of course, our customer care
+                representatives are always standing by to help by live chat and you may contact
+                them through email by replying to your order email confirmation or by calling @ViewBag.servicephone.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>What do I do if I find the food with my order is something wrong? </b>
+            </div>
+            <div class="slideitemList">
+                If you received delivery and there appears to be a problem with your order, please
+                contact the restaurant directly for an immediate resolution. The restaurant's phone
+                number is provided with your email confirmation or by logging back onto our site.
+                Of course, our customer care representatives are always standing by to help by live
+                chat and you may contact them through email by replying to your order email confirmation
+                or by calling @ViewBag.servicephone.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>How do I buy a Virtual Gift Card? </b>
+            </div>
+            <div class="slideitemList">
+                Easy! Log into your foodready.net account (or create an account if you don't already
+                have one) and fill up Virtual Gift Card Purchase form.<br />
+                Note: When purchasing a Virtual Gift Card, credit cards are the only accepted form
+                of payment.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>Can I send a Virtual Gift Card directly to someone else? </b>
+            </div>
+            <div class="slideitemList">
+                Yes, of cause! At the time of purchase, enter the recipient's email address in the
+                appropriate box. An email with the Virtual Gift Card Code will be sent to the recipient
+                from your account email address.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>Where can I use my Virtual Gift Card? </b>
+            </div>
+            <div class="slideitemList">
+                Make a payment just like Credit Card.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>How do I use my Virtual Gift Card? </b>
+            </div>
+            <div class="slideitemList">
+                When you're ready to use your Virtual Gift Card and going to make a payment, on
+                the checkout page, select Gift Card Payment tab, then following the instructions.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>What if my Virtual Gift Card does not cover the cost of my order? </b>
+            </div>
+            <div class="slideitemList">
+                No problem! You can pay the remaining balance with your credit card.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>
+                    What if my order is small? Do I have to use up the entire Virtual Gift Card?
+                </b>
+            </div>
+            <div class="slideitemList">
+                Nope! Order what you want and keep the remaining balance for future orders. Remember
+                - you only need to enter the Virtual Gift Card Code one time. You can always check
+                the remaining balance on your Virtual Gift Card.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>Does my Virtual Gift Card expire? </b>
+            </div>
+            <div class="slideitemList">
+                Yes, a Virtual Gift Card expires one year from its last use. If you purchase a Virtual
+                Gift Card and do not use it within the first year, it will also expire.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>
+                    Oops! I accidentally deleted my Virtual Gift Card. Can I get another one?
+                </b>
+            </div>
+            <div class="slideitemList">
+                Please contact us with the following information: Purchaser's logon name, purchaser's
+                account email address, Recipient's email address We'll contact you by e-mail once
+                we have cancelled the original Virtual Gift Card and issued a new one.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>I purchased a Virtual Gift Card, but never received it. Where is it? </b>
+            </div>
+            <div class="slideitemList">
+                Occasionally, our emails may be blocked by certain email providers. Just call us
+                at @ViewBag.servicephone or send us an email and we'll work with you, to help resolve the
+                problem.
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>What if my Virtual Gift Card is stolen? </b>
+            </div>
+            <div class="slideitemList">
+                Once you use the Virtual Gift Card, it will be linked to your delivery.com account
+                for only you to use. If, as the recipient of a Virtual Gift Card, you suspect foul
+                play, feel free to contact us and we will try to help. Upon receipt of the Virtual
+                Gift Card in your email inbox, please treat it like cash!
+            </div>
+            <div class="help boxShadow">
+                <img class="sign" src="../../Content/Images/PlusSign.png" />
+                <b>Other questions </b>
+            </div>
+            <div class="slideitemList">
+                If you have any other questions concerning your Virtual Gift Card, feel free to
+                contact us for additional help.
+            </div>
+        </div>
+    </div>
+</div>

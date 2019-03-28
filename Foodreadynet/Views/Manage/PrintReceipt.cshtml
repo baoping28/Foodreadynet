@@ -1,0 +1,272 @@
+﻿@model FR.Domain.Model.Entities.Order
+@{
+    Layout = null;
+}
+<script>
+    function closewindow() {
+        window.close();
+    }
+    function printpage() {
+        window.print();
+    }
+</script>
+<input type="button" value="Close" onclick="closewindow()"><input type="button" value="Print this page"
+    onclick="printpage()">
+<center>
+    <div style="width: 730px;">
+        <h2>
+            FoodReady.net</h2>
+        Phone: @ViewBag.servicephone | Fax: @ViewBag.servicefax<br />
+        www.foodready.net<br />
+        Order placed at @Model.AddedDate for <b>@Model.OrderType</b>
+        <br />
+        Order Payment Type: <b>@ViewBag.paymenttype</b> | Order Number: <b>@Model.InvioceNumber</b>
+        <br />
+        @if (Model.OrderType.ToLower() == "delivery")
+        {
+            <table style="width: 730px; border: solid 1px black;">
+                <tr>
+                    <td style="width: 350px; padding-left: 40px;">
+                        <table>
+                            <tr>
+                                <td align="left">
+                                    <b>Deliver To:</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">@Model.FirstName @Model.LastName
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">@Model.Street
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">@Model.City, @Model.State @Model.ZipCode<br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">
+                                    Cross Street:
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">
+                                    Phone: @Model.Phone
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">
+                                    <h3>@Model.ScheduleTime @Model.ScheduleDate</h3>
+                                    <br />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width: 350px; border-left: solid 1px black; padding: 10px;">
+                        <center>
+                            <b>Order Information</b></center>
+                        <table border="0">
+                            <tr>
+                                <td align="right" width="170px">
+                                    Subtotal:
+                                </td>
+                                <td align="right" width="100px">@Model.SubTotal.ToString("N2")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="170px">
+                                    Tax:
+                                </td>
+                                <td align="right" width="100px">@Model.OrderTax.ToString("N2")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="170px">
+                                    Service Charge:
+                                </td>
+                                <td align="right" width="100px">@Model.ServiceCharge.ToString("N2")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="170px">
+                                    Delivery Fee:
+                                </td>
+                                <td align="right" width="100px">@Model.DeliveryCharge.ToString("N2")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="170px">
+                                    Offer:
+                                </td>
+                                <td align="right" width="100px">@Model.DiscountAmount.ToString("N2")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="170px">
+                                    Driver Tip:
+                                </td>
+                                <td align="right" width="100px">@Model.DriverTip.ToString("N2")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="170px">
+                                    <h3>
+                                        Total:</h3>
+                                </td>
+                                <td align="right" width="100px">
+                                    <h3>@Model.OrderTotal.ToString("N2")</h3>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>   
+        }
+        else
+        {
+            <table style="width: 730px; border: solid 1px black;">
+                <tr>
+                    <td style="width: 350px; padding-left: 40px;">
+                        <table>
+                            <tr>
+                                <td align="left">
+                                    <b>Pickup by:</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">@Model.FirstName @Model.LastName
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">
+                                    Phone: @Model.Phone
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">
+                                    <h3>@Model.ScheduleTime @Model.ScheduleDate</h3>
+                                    <br />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width: 350px; border-left: solid 1px black; padding: 10px;">
+                        <center>
+                            <b>Order Information</b></center>
+                        <table border="0">
+                            <tr>
+                                <td align="right" width="170px">
+                                    Subtotal:
+                                </td>
+                                <td align="right" width="100px">@Model.SubTotal.ToString("N2")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="170px">
+                                    Tax:
+                                </td>
+                                <td align="right" width="100px">@Model.OrderTax.ToString("N2")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="170px">
+                                    Service Charge:
+                                </td>
+                                <td align="right" width="100px">@Model.ServiceCharge.ToString("N2")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="170px">
+                                    Discount:
+                                </td>
+                                <td align="right" width="100px">@Model.DiscountAmount.ToString("N2")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="170px">
+                                    Tip:
+                                </td>
+                                <td align="right" width="100px">@Model.DriverTip.ToString("N2")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" width="170px">
+                                    <h3>
+                                        Total:</h3>
+                                </td>
+                                <td align="right" width="100px">
+                                    <h3>@Model.OrderTotal.ToString("N2")</h3>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table> 
+        }
+        <h3>@Model.BizName</h3>
+        @Model.BizInfo.BizAddressString | Phone: @Model.BizInfo.ContactInfo.Phone | Fax:
+        @Model.BizInfo.Fax)
+        <table style="width: 730px; border: solid 1px black;">
+            <tr>
+                <th style="padding-left: 10px; border-right: solid 1px black; border-bottom: solid 1px black;">
+                    Qty
+                </th>
+                <th style="padding-left: 10px; border-right: solid 1px black; border-bottom: solid 1px black;">
+                    Item
+                </th>
+                <th style="padding-left: 10px; border-bottom: solid 1px black;">
+                    Price
+                </th>
+            </tr>
+            @foreach (var sci in Model.OrderItems)
+            {
+                <tr>
+                    <td style='width: 60px; border-bottom: solid 1px black; border-right: solid 1px black;
+                        padding: 10px; text-align: center;'>
+                        <b>@sci.Quantity.ToString()</b>
+                    </td>
+                    <td style='width: 400px; border-bottom: solid 1px black; border-right: solid 1px black;
+                        padding: 10px; text-align: left;'>
+                        <b>@sci.Title</b>
+                        @if (string.IsNullOrEmpty(sci.ProductSizeTitle) == false)
+                        {
+                            <span>( @sci.ProductSizeTitle )</span>
+                        }
+                        @if (string.IsNullOrEmpty(sci.GetItemNote) == false)
+                        {
+                            <p>@Html.Raw(sci.GetItemNote)</p>
+                        }
+                        @if (string.IsNullOrEmpty(sci.Instruction) == false)
+                        {
+                            <p>@sci.Instruction
+                            </p>
+                        }
+                    </td>
+                    <td style='width: 100px; border-bottom: solid 1px black; padding: 10px; text-align: right;'>
+                        $@sci.ItemTotal.ToString("N2")
+                    </td>
+                </tr>
+            }
+            @if (string.IsNullOrEmpty(Model.CouponChoice) == false && Model.DiscountAmount == 0.00m)
+            {
+                <tr>
+                    <td colspan='3' style='border-bottom: solid 1px black; padding: 10px; text-align: left;'>
+                        @Model.CouponChoice
+                    </td>
+                </tr>
+            }
+            @if (string.IsNullOrEmpty(Model.CustomerMessage) == false)
+            {
+                <tr>
+                    <td colspan='3' style='border-bottom: solid 1px black; padding: 10px; text-align: left;'>
+                        Instructions:
+                        @Model.CustomerMessage
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        <b>---------- END OF ORDER ----------</b>
+    </div>
+</center>

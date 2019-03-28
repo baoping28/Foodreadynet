@@ -1,0 +1,71 @@
+﻿@model FoodReady.WebUI.Models.SearchModel
+@using FoodReady.WebUI.HtmlHelpers
+@{
+    ViewBag.Title = "SearchList";
+}
+@Html.Partial("_SearchCuisineDivPartial")
+<div class="container toppadding">
+    <h2 style="color:#1E7CB8;">Search found <small>@ViewBag.Count restaurants with "@ViewBag.Keyword"</small></h2>
+    <hr />
+    @foreach (var b in Model.BizInfos)
+    {
+
+        <div class="row">
+            <div class="col-sm-3 col-md-3">
+                <div class="float-left" style="padding-right: 20px;">
+                    @if (b.RatingVotes > 0)
+                    {
+                        <div>
+                            @Html.Ratings(b)
+                        </div>
+                    }
+                    <img src="@Url.Content("~/Content/BizImages/" + b.ImageUrl)" class="bizImg boxShadow boxCorner" />
+                    <div style="clear: both;">
+                        @Html.Raw(b.BizTwoLineAddressString)<br />
+                        @FR.Infrastructure.Helpers.Helper.FormatPhoneNumber(b.ContactInfo.Phone)<br />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9 col-md-9">
+                <div class="midSmallLink">
+                    @Ajax.ActionLink(b.BizTitle, "CheckDeliveryOK", "Restaurants", new { id = b.BizInfoId, bizname = b.BizTitle }, new AjaxOptions
+                 {
+                     UpdateTargetId = "popupbody",
+                     OnBegin = "onPopupBegin",
+                     OnSuccess = "onPopupSuccess",
+                     OnFailure = "onPopupFailed"
+                 }, new { @class = "lineLink16", title = "View menu" })
+                </div>
+                <div><b>@b.AllCuisines</b></div>
+                @if (b.IsBizNew)
+                {
+                    <div>
+                        <span style="font-size: 14px; color: Green;"><b>New! </b></span>(@b.AddedDate.ToShortDateString())
+                    </div>
+                }
+                @if (b.Delivery)
+                {
+                    <div>
+                        Delivery Minimum:<b> $@b.DeliveryMinimum.ToString("N2") before tax</b>
+                        <br />
+                        @{ var str = b.DeliveryFee > 0.0m ? "$" + b.DeliveryFee.ToString("N2") : "Free";}
+                        Delivery Fee: <b>@str</b>
+                        <br />
+                        Offers: <b>@b.DiscountNote</b>
+                        <br />
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <span style="font-size: 14px; color: Red;"><b>Pick up only</b></span>
+                        <br />
+                        Offers: <b>@b.DiscountNote</b>
+                        <br />
+                    </div>
+                }
+            </div>
+        </div><hr />
+
+    }
+</div>

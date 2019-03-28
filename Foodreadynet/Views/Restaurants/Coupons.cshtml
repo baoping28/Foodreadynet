@@ -1,0 +1,59 @@
+﻿@model FoodReady.WebUI.Models.CouponViewModel
+<div id="popupbody1">
+    <div class="modal-header">
+        <h3 id="poptitle1" class="modal-title" style="color:black;text-align:center;">@Model.Bizinfo.BizTitle Coupons <small> One coupon per order - These coupons can only be redeemed on online orders</small></h3>
+    </div>
+    <div class="modal-body">
+        @if (Model.Discounts != null)
+        {
+            <div class="row toppadding">
+                @if (Model.Discounts.Count > 0)
+                {
+                    <h4>Discount Coupons:</h4>
+                    foreach (var d in Model.Discounts)
+                    {
+                        <div class="col-sm-6 col-md-6" style="border-top:solid 1px #cccccc;padding-top:10px;padding-bottom:10px;">
+                            <span class="couponTitle"> @d.DiscountPercentage% Off</span> with orders over $@d.OrderMinimum.ToString("N2") @d.ExpirationDateNote<br />
+                        </div>
+                    }
+                    if ((Model.Discounts.Count % 2) != 0)
+                    {
+                        <div class="col-sm-6 col-md-6" style="border-top:solid 1px #cccccc;padding-top:10px;padding-bottom:10px;">&nbsp;</div>
+                    }
+                }
+                else
+                {
+                    <div class="col-sm-12 col-md-12">
+                        <h4>No Discount Coupons </h4>
+                    </div>
+                }
+                <hr />
+            </div>
+        }
+        @if (Model.FreeItems != null)
+        {
+            <div class="row toppadding">
+                @if (Model.FreeItems.Count > 0)
+                {
+                    <h4>Free Item Coupons:</h4>
+                    foreach (var f in Model.FreeItems)
+                    {
+                        <div class="col-sm-6 col-md-6" style="border-top:solid 1px #cccccc;padding-top:10px;padding-bottom:10px;">
+                            <span class="couponTitle">@f.Title </span> with orders over $@f.OrderMinimum.ToString("N2") @f.ExpirationDateNote<br />
+                        </div>
+                    }
+                    if ((Model.FreeItems.Count % 2) != 0)
+                    {
+                        <div class="col-sm-6 col-md-6" style="border-top:solid 1px #cccccc;padding-top:10px;padding-bottom:10px;">&nbsp;</div>
+                    }
+                }
+                else
+                {
+                    <div class="col-sm-12 col-md-12">
+                        <h4>No FreeItem Coupons </h4>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

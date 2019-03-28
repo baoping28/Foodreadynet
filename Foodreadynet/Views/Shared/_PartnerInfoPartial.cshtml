@@ -1,0 +1,133 @@
+﻿@model FoodReady.WebUI.Models.RestaurantJoinModel
+@using FR.Infrastructure.Helpers
+<div id="joinForm" style="padding-left:20px;">
+    <div id="submitResult">
+        @using (Ajax.BeginForm("InfoSubmit", "Partners", FormMethod.Post, new AjaxOptions
+    {
+        UpdateTargetId = "submitResult",
+        OnBegin = "onJoinBegin",
+        OnSuccess = "onJoinSuccess",
+        OnFailure = "onJoinFailed"
+    }))
+        {
+            <h4><b>Restaurant Information</b></h4>
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div><br />
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.Address)
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Address)
+            </div><br />
+
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.City)
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.City)
+            </div><br />
+
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.State)
+                @Html.DropDownListFor(x => x.State, Helper.StateDropdownData(Model.State), "Choose a State", new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.State)
+            </div><br />
+
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.ZipCode)
+                @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.ZipCode)
+            </div><br />
+
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.Phone)
+                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Phone)
+            </div><br />
+
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.Mobile)
+                @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Mobile)
+            </div><br />
+
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.Fax)
+                @Html.TextBoxFor(m => m.Fax, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Fax)
+            </div><br />
+
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div><br />
+
+
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.Delivery)
+                @Html.DropDownListFor(x => x.Delivery, Helper.YesNoDropdown(), "Do you deliver?", new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Delivery)
+            </div><br />
+
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.Radius) (miles)
+                @Html.TextBoxFor(m => m.Radius, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Radius)
+            </div><br />
+
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.OrderMinimum) (Minimum for delivery)
+                @Html.TextBoxFor(m => m.OrderMinimum, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.OrderMinimum)
+            </div><br />
+
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.TaxPercentage) (%)
+                @Html.TextBoxFor(m => m.TaxPercentage, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.TaxPercentage)
+            </div><br />
+
+            <div class="=form-group">
+
+                @Html.LabelFor(m => m.CuisineType)
+                @Html.DropDownListFor(x => x.CuisineType, Model.CuisineAssistances, "Choose a Cuisine", new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.CuisineType)
+            </div><br />
+
+            <div class="=form-group">
+                <div class="checkoutTxtArea">
+                    <b> @Html.LabelFor(m => m.Message)</b>
+                    <div>
+                        @Html.TextAreaFor(m => m.Message, 2, 40, new { @class = "form-control boxShadow" })
+                        <div class="remaining float-left">
+                            Characters remaining: <span class="count">512</span>
+                            <input id="messageClear" type="button" value="Clean Text" class="btn btn-default btn-sm" />
+                        </div>
+                    </div>
+                </div>
+            </div><br />
+
+    <div style="clear:both"></div>
+            <div class="=form-group">
+                <br />
+                <button type="submit" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-ok"></span> &nbsp; Submit</button>
+            </div>
+
+        }
+    </div>
+</div>

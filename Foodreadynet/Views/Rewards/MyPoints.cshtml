@@ -1,0 +1,40 @@
+﻿@model FoodReady.WebUI.Models.PointSumaryModel
+@{
+    ViewBag.Title = "My Reward Points";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/RemainingCharacterCount.js")" type="text/javascript"></script>
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:white;">
+                Reward Points Sumary
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container toppadding">
+    <div class="row">
+        <p>
+            Your Total Available Points: <h5> @Model.AvailablePoints</h5>
+        </p>
+        <p>
+            Your Total Used Points: <h5>@Model.UsedPoints</h5>
+        </p>
+    </div>
+
+    <div class="row">
+        <hr />
+        @if (Model.AvailablePoints < Model.QualifiedPoints)
+        {
+            <p>
+                The minimum points to get a  gift is <h5>@Model.QualifiedPoints</h5>.
+                For the details, go to <a href="/Rewards" class="Link12">Reward Gifts</a>
+            </p>
+        }
+        else
+        {
+            @Html.Partial("_RewardPartial", Model)
+        }
+    </div>
+</div>

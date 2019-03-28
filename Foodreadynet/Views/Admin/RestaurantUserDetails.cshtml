@@ -1,0 +1,143 @@
+﻿@model FoodReady.WebUI.Models.RestaurantUserModel
+
+@{
+    ViewBag.Title = "RestaurantUserDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center><h1>@Model.User.UserName Info</h1></center>
+</div>
+@if (Model.User != null)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    User Id
+                </th>
+                <th>
+                    User Name
+                </th>
+                <th>
+                    User Password
+                </th>
+                <th>
+                    Creation Date
+                </th>
+                <th>
+                    Last Updated Date:
+                </th>
+                <th>
+                    Is Active
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>
+                    @Model.User.Id
+                </td>
+                <td>
+                    @Model.User.UserName
+                </td>
+                <td>
+                    @ViewBag.password
+                </td>
+                <td>
+                    @Model.User.AddedDate
+                </td>
+                <td>
+                    @Model.User.UpdatedDate
+                </td>
+                <td>
+                    @Model.User.Active.ToString()
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+<br /><br />
+<div class="titlebox boxShadow">
+    <center>
+        <h1>Edit Restaurant User Info</h1>
+        <span style="color:Red;">@ViewBag.result </span>
+    </center>
+</div>
+<div>
+
+    <div class="container boxShadow boxpadding">
+        <div class="row">
+            @using (Html.BeginForm("RestaurantUserDetails", "Admin"))
+            {
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(m => m.UserDetailID)
+                @Html.HiddenFor(m => m.UserID)
+                @Html.HiddenFor(m => m.AddressID)
+                @Html.HiddenFor(m => m.ContactInfoID)
+
+                <div class="col-sm-6 col-md-6" style="border-right:solid 1px #cccccc;">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FirstName)
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.FirstName)
+                    </div><br />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LastName)
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.LastName)
+                    </div><br />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.AddressLine)
+                        @Html.TextBoxFor(m => m.AddressLine, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.AddressLine)
+                    </div><br />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.AddressLine2)
+                        @Html.TextBoxFor(m => m.AddressLine2, new { @class = "form-control boxShadow" })
+                    </div><br />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CrossStreet)
+                        @Html.TextBoxFor(m => m.CrossStreet, new { @class = "form-control boxShadow" })
+                    </div><br />
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.City)
+                        @Html.TextBoxFor(m => m.City, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.City)
+                    </div><br />
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.State)
+                        @Html.DropDownListFor(x => x.State, FR.Infrastructure.Helpers.Helper.StateDropdownData(Model.State), "Choose a State", new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.State)
+                    </div><br />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ZipCode)
+                        @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.ZipCode)
+                    </div><br />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Phone)
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.Phone)
+                    </div><br />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Phone2)
+                        @Html.TextBoxFor(m => m.Phone2, new { @class = "form-control boxShadow" })
+                    </div><br />
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div><br />
+                    <div class="form-group pull-right">
+                        <br /><br /><a href="~/admin/AllRestaurantUsers" class="btn btn-primary"><span class="glyphicon glyphicon-repeat"></span> Back to List</a> &nbsp;  &nbsp;  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> &nbsp; Save</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>

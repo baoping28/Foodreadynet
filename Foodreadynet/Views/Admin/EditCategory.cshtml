@@ -1,0 +1,46 @@
+﻿@model FoodReady.WebUI.Models.CategoryModel
+
+@{
+    ViewBag.Title = "Edit Category";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center><h3>(@Model.Bizinfo.BizTitle) Edit Category <span style="font-size:12px;">(Menu Name: @Model.MenuName)</span></h3></center>
+</div>
+@ViewBag.result
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm("EditCategory", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(e => e.CategoryID)
+        @Html.HiddenFor(e => e.BizCuisineID)
+        @Html.HiddenFor(e => e.BizCuisineID)
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.Description)
+            @Html.ValidationMessageFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description, 5, 50, new { @class = "form-control boxShadow" })
+            <div class="remaining">
+                Characters remaining: <span class="count">512</span>
+                <input id="btnClear" type="button" value="Reset Text" style="margin-left: 40px;" />
+            </div>
+        </div><br />
+        <div class="form-group">
+            <img src="@Url.Content("~/Content/BizImages/" + Model.ImageUrl)" /><br />
+            <b>Upload new image(wide 70 , height 90):</b><br />
+            <input type="file" name="uploadimage" id="uploadimage" style="background-color: Khaki;" />
+        </div><br />
+
+        <div class="form-group pull-right">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+            <br />
+        </div><br />
+        <div class="form-group">
+            <p>@Html.ActionLink("Back to Manage Category " + Model.MenuName, "ManageCategories", "admin", new { id = Model.BizCuisineID }, null)</p>
+        </div>
+
+    }
+</div>

@@ -1,0 +1,88 @@
+﻿@model FoodReady.WebUI.Models.ContactModel
+@using FR.Infrastructure.Helpers
+@using Recaptcha
+@{
+    ViewBag.Title = "Contact";
+}
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/datepickerJQ.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/RemainingCharacterCount.js")" type="text/javascript"></script>
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:#ffffff;">
+                CONTACT US
+                <small style="font-size:16px;color:#dddddd;">
+                    Any problems, order issues?  We are on standby 7/24 to check your
+                    order status and contact the restaurant to resolve your issues. Just email, <button id="helpChat" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-comment"></span> &nbsp; Chat with us now</button>
+                    or call Customer Service Phone:  1-510-512-6789
+                </small>
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container toppadding boxShadow">
+    <div class="row" style="padding-bottom:40px;">
+        <b> @TempData["SentIMEALMsg"] </b>
+        @using (Html.BeginForm())
+        {
+            <div class="col-sm-1 col-md-1">&nbsp;</div>
+            <div class="col-sm-5 col-md-5" style="border-right:solid 1px maroon">
+                <div class="=form-group">
+
+                    @Html.LabelFor(m => m.ContactName)
+                    @Html.TextBoxFor(m => m.ContactName, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.ContactName)
+                </div><br />
+
+                <div class="=form-group">
+
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div><br />
+                <div class="=form-group">
+
+                    @Html.LabelFor(m => m.OrderNumber)
+                    @Html.TextBoxFor(m => m.OrderNumber, new { @class = "form-control boxShadow" })
+                </div><br />
+
+                <div class="=form-group">
+
+                    @Html.LabelFor(m => m.OrderDate)
+                    @Html.TextBoxFor(m => m.OrderDate, new { @class = "form-control boxShadow" })
+                </div><br />
+
+                <div class="=form-group">
+
+                    @Html.LabelFor(m => m.RestaurantName)
+                    @Html.TextBoxFor(m => m.RestaurantName, new { @class = "form-control boxShadow" })
+                </div>
+
+            </div>
+            <div class="col-sm-1 col-md-1">&nbsp;</div>
+            <div class="col-sm-5 col-md-5">
+                <div class="=form-group">
+                    <div class="checkoutTxtArea">
+                        <b> @Html.LabelFor(m => m.Message)</b> @Html.ValidationMessageFor(m => m.Message)
+                        @Html.TextAreaFor(m => m.Message, 2, 40, new { @class = "form-control boxShadow" })
+                        <div class="remaining float-left">
+                            Characters remaining: <span class="count">512</span>
+                            <input id="messageClear" type="button" value="Clean Text" />
+                        </div>
+                    </div>
+                </div><br />
+                <div style="clear:both"></div>
+                <div class="=form-group">
+                    <br />
+                    <b>Please type the following word in the text box:</b>
+                    @Html.Raw(Html.GenerateCaptcha())
+                    @Html.ValidationMessage("recaptcha")
+                </div><br /><br />
+                <div class="=form-group">
+                    <br />
+                    <button id="contactSubmit" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-envelope"></span> &nbsp; Send Email</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

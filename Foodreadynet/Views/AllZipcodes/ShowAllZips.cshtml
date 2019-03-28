@@ -1,0 +1,18 @@
+﻿@model FoodReady.WebUI.Models.BizInfoModel
+@using System.Data.Entity;
+<div class="container toppadding">
+    <div class="row">
+        <h3 style="color:#1E7CB8;padding-left:10px;">
+            <i class="fa fa-barcode" style="color:#1d63a7;"></i><b> Browse Delivery & Takeout Restaurants by Zip Code</b>
+        </h3>
+        <hr />
+        @Html.Raw(Model.ShowZipCodes)
+        <div style="clear: both;">
+        </div>
+        <br />
+        <br />
+        &nbsp; @Html.ActionLink("Browse All Cities", "Index", "AllCities", null, new { @class = "midLink" })
+        <div style="clear: both;">
+        </div>
+    </div>
+</div>

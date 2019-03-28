@@ -1,0 +1,77 @@
+﻿@model IEnumerable<FR.Domain.Model.Entities.Product>
+@using FR.Infrastructure.Helpers
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/slidingUpDown.js")" type="text/javascript"></script>
+<div id="menucontent" class="boxShadow">
+    <div style="padding:20px 14px 40px 14px;">
+        <div class="itemWrap">
+            <div class="ctgTitle boxShadow">
+                <img class="sign" src="../../Content/Images/minusSign.png" />
+                <b> Lunch Special</b>
+            </div>
+            <div class="itemList">
+                @foreach (var p in Model)
+                {
+                    <div class="productItem">
+                        @if (p.SmallImage.ToLower() != "imagesoon.png" && string.IsNullOrEmpty(p.SmallImage) == false)
+                        {
+
+                            using (Ajax.BeginForm("loadImage", "Cart", FormMethod.Post, new AjaxOptions
+                            {
+                                UpdateTargetId = "popupbody",
+                                OnBegin = "onPopupBegin",
+                                OnSuccess = "onPopupSuccess",
+                                OnFailure = "onPopupFailed"
+                            }))
+                            {
+                                @Html.Hidden("ProductId", p.ProductId)
+                                <input type="image" src="@Url.Content(p.SmallImagePath)" title="Add to cart" class="float-left productImg" />
+                            }
+
+                        }
+                        <div class="float-left" style="padding-left:10px; font-size:12px; font-family:Arial; color:#000;">
+                            @Ajax.ActionLink(p.MealSectionId == 3 ? "(Lunch)" + p.Title : p.Title, "AddToCart", "Cart", new { id = p.ProductId }, new AjaxOptions
+                           {
+                               UpdateTargetId = "popupbody",
+                               OnBegin = "onPopupBegin",
+                               OnSuccess = "onPopupSuccess",
+                               OnFailure = "onPopupFailed"
+                           }, new { @class = "Link16", title = "Add to cart" })
+                            @if (p.IsMostPopular)
+                            {
+                                <img src="../../Content/Images/ratingStar.png" title="Popular" class="foodtypeImg" />
+                            }
+                            @if (p.IsSpicy)
+                            {
+                                <img src="../../Content/Images/chili.png" title="Spicy" class="foodtypeImg" />
+                            }
+                            @if (p.IsVegetarian)
+                            {
+                                <img src="../../Content/Images/veg.png" title="Vegetarian" class="foodtypeImg" />
+                            }
+                        </div>
+                        <div style="clear:both;"></div>
+                        <p style="padding-left:8px;padding-top:10px; font-size:13px;">@Helper.GetReview(p.Description, 220)</p>
+                        <div class="float-right">
+                            @if (p.IsFamilyDinner)
+                            {
+                                var n = p.FinalUnitPrice * 2;
+                                <span class="badge"><b>$@n.ToString("N2")</b></span>
+                            }
+                            else if (p.HasSize)
+                            {
+                                <span class="badge" title="@Url.Content("Start at $" + p.SmallestSizePrice.ToString("N2"))"><b>$@p.SmallestSizePrice.ToString("N2") +</b></span>
+                            }
+                            else
+                            {
+                                <span class="badge"><b>$@p.FinalUnitPrice.ToString("N2")</b></span>
+                            }
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>

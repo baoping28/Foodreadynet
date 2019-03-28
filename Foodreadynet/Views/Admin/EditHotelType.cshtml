@@ -1,0 +1,34 @@
+﻿@model FoodReady.WebUI.Models.HotelTypeModel
+
+@{
+    ViewBag.Title = "EditHotelType";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center><h3>Edit Hotel Type </h3></center>
+</div>
+@ViewBag.result
+<div class="container boxShadow boxpadding">
+@using (Html.BeginForm("EditHotelType", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(e => e.HoteTypeID)
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div><br />
+        <div class="form-group">
+            <img src="@Url.Content("~/Content/HotelImages/" + Model.ImageUrl)" /><br />
+            <b>Upload new small image(wide 120 , height 90):</b><br />
+            <input type="file" name="uploadimage" id="uploadimage" style="background-color: Khaki;" />
+        </div><br />
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+            <br />
+        </div><br />
+        <div class="form-group">
+            <p>@Html.ActionLink("Back to Admin Home ", "index", "admin", null)</p>
+        </div>
+    }
+</div>

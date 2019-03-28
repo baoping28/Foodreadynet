@@ -1,0 +1,121 @@
+﻿@model FR.Domain.Model.Entities.SharedShoppingCart
+@using FR.Infrastructure.Helpers
+@using FoodReady.WebUI.HtmlHelpers
+<div style="background-color: #f6f7f8;padding-top:20px;" class="boxShadow">
+    <div style="padding-left:10px;">
+        <h2>Cart Info</h2>
+        @{var str = Model.IsPartyDelivery ? "Delivery" : "Pickup";}
+        <p class="smallTitle">
+            <b>Order Type: @str</b>
+        </p>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr class="cartListBg">
+                <th align="left">
+                    Name
+                </th>
+                <th align="left">
+                    Restaurant
+                </th>
+                <th align="right">
+                    <div style="text-align:right;">Subtotal</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="ListBody">
+            @foreach (var k in Model.PartyCart.Keys)
+            {
+                <tr>
+                    <td align="left">
+                        @Model.PartyCart[k].PersonName
+                    </td>
+                    <td align="left">
+                        <div class="itemTitle">
+                            @Model.PartyCart[k].BizName
+                        </div>
+                    </td>
+                    <td align="right">
+                        <div class="itemright">
+                            <b>
+                                <span>
+                                    @Helper.ToUSD(((Model.PartyCart[k].SubTotal()).ToString("N2")))
+                                </span>
+                            </b>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot class="cartFoot">
+            <tr>
+                <td colspan="2" align="right" style="border-top:solid 1px #888888;">
+                    Global Subtotal:
+                </td>
+                <td align="right" style="border-top:solid 1px #888888;">
+                    <div class="itemright">
+                        <span id="subtotal">@Helper.ToUSD(Model.PartySubTotal().ToString("N2"))</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    Tax (@Model.PartyTaxRate.ToString("N2")%):
+                </td>
+                <td align="right">
+                    <div class="itemright">
+                        <span id="tax">@Helper.ToUSD(Model.PartyTax().ToString("N2"))</span>
+                    </div>
+                </td>
+            </tr>
+            @{var charge = Model.IsPartyDelivery ? "Delivery Charge:" : "";
+              var fee = Model.IsPartyDelivery ? Helper.DeliveryFee(Model.PartyDeliveryFee()) : "";}
+            <tr>
+                <td colspan="2" align="right">
+                    <span id="DelCharge">@charge</span>
+                </td>
+                <td align="right">
+                    <div class="itemright">
+                        <span id="Fee">@fee</span>
+                    </div>
+                </td>
+            </tr>
+            @if (Model.PartyServiceCharge > 0.0m)
+            {
+                <tr>
+                    <td colspan="2" align="right">
+                        Service Charge:
+                    </td>
+                    <td align="right">
+                        <div class="itemright">
+                            <span id="Service">@Helper.DeliveryFee(Model.PartyServiceCharge)</span>
+                        </div>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="2" align="right" style="padding-top:16px;">
+                    Tip:
+                </td>
+                <td align="right">
+                    <span>@Helper.DeliveryFee(Model.PartyDriverTip())</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right" style="border-top:solid 2px #000000;">
+                    <div class="totalright">
+                        <span>Global Total:</span>
+                    </div>
+                </td>
+                <td align="right" style="border-top:solid 2px #000000;">
+                    <div class="totalright">
+                        <span id="cartTotal" style="color: Red">@Helper.ToUSD(Model.PartyTotal().ToString("N2"))</span>
+                    </div>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+
+

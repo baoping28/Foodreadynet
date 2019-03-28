@@ -1,0 +1,17 @@
+﻿@model FR.Domain.Model.Entities.AddSide
+<div id="@Url.Content("item" + Model.AddSideId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoAddSide", "Admin", new { id = Model.AddSideId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.AddSideId),
+                            OnBegin = "onFreeItemBegin('" + Model.AddSideId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.AddSideId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.AddSideId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the item: " + Model.Title + " ?"
+                        }))
+    {
+                                                   
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+    }
+</div>
+

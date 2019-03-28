@@ -1,0 +1,80 @@
+﻿@model FoodReady.WebUI.Models.HotelTypeModel
+
+@{
+    ViewBag.Title = "Manage HotelTypes";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center><h3>Manage Hotel Types (@Model.ListHotelTypes.Count)</h3></center>
+</div>
+@ViewBag.result
+<div id="divAllUsers" class="container">
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                Hotel Type
+            </th>
+            <th>
+                Manage Hotels
+            </th>
+            <th>
+                Active
+            </th>
+        </tr>
+        @foreach (var f in Model.ListHotelTypes)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(f.Name, "EditHotelType", "Admin", new { id = f.HotelTypeId }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Manage Hotels", "ManageHotels", "admin", new { id = f.HotelTypeId }, null) (@f.Hotels.Count)
+                </td>
+                <td>
+                    <div id="@Url.Content("item" + f.HotelTypeId)" class="deleteButtons">
+                        @using (Ajax.BeginForm("DoHotelType", "Admin", new { id = f.HotelTypeId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + f.HotelTypeId),
+                            OnBegin = "onFreeItemBegin('" + f.HotelTypeId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + f.HotelTypeId + "')",
+                            OnFailure = "onFreeItemFailure('" + f.HotelTypeId + "')",
+                            Confirm = "Do you want to " + @Url.Content(f.Active ? "lock" : "unlock") + " the Hotel Type: " + f.Name + " ?"
+                        }))
+                        {
+
+                            <input class="@Url.Content(f.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(f.Active ? "To lock item" : "To unlock item")" value="" />
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<hr />
+<div class="titlebox boxShadow">
+    <center><h3> Add a Hotel Type</h3></center>
+</div>
+
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm("ManageHotelTypes", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div><br />
+    <div class="form-group">
+        <b>Upload new small image(wide 120 , height 90):</b><br />
+        <input type="file" name="uploadimage" id="uploadimage" style="background-color: Khaki;" />
+    </div><br />
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Add</button>
+        <br />
+    </div><br />
+    <div class="form-group">
+        <p>@Html.ActionLink("Back to Admin Home ", "index", "admin", null)</p>
+    </div>
+    }
+    </div>

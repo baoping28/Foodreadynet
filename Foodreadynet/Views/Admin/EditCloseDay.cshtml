@@ -1,0 +1,41 @@
+﻿@model FoodReady.WebUI.Models.DayOfCloseModel
+
+@{
+    ViewBag.Title = "Edit Close Day";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/FRAdminScripts/datepickerJQ.js")" type="text/javascript"></script>
+<div class="titlebox boxShadow">
+    <center><h3>(@Model.Bizinfo.BizTitle) Edit Close Date</h3></center>
+</div>
+@ViewBag.result
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(e => e.BizInfoID)
+        @Html.HiddenFor(e => e.DayOfCloseID)
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.CloseDay)
+            @Html.TextBoxFor(e => e.CloseDay, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.CloseDay)
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.ZoneNameId)
+            @Html.DropDownListFor(e => e.ZoneNameId, Model.ZoneNameChoices(Model.LZoneNames), "Choose a time zone", new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.ZoneNameId)
+        </div><br />
+
+        <div class="form-group pull-right">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+            <br />
+        </div><br />
+        <div class="form-group">
+            <p>@Html.ActionLink("Back to Manage Close Days " + Model.Bizinfo.BizTitle, "ManageCloseDays", "admin", new { id = Model.BizInfoID }, null)</p>
+        </div>
+    }
+</div>

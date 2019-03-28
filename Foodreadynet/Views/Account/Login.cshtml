@@ -1,0 +1,99 @@
+﻿@model IdentitySample.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:#ffffff;"> Sign in with FoodReady.net account</h1>
+        </div>
+    </div>
+
+</div>
+<div class="container boxShadow" style="margin-bottom:20px;padding-bottom:20px;padding-top:20px;">
+    <div class="row toppadding">
+        <div class="col-sm-6 col-md-6" style="border-right:solid 1px #cccccc;padding-top:10px;">
+            <div class="smaller12"><b>@ViewBag.OwnerLogon</b></div>
+            @using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-envelope"></span> &nbsp; &nbsp; &nbsp; &nbsp; Email:
+                        </span>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>&nbsp; Password:
+                        </span>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe)
+                </div>
+                <div class="form-group">
+                   @Html.ActionLink("Forgot your password?", "ForgotPassword", null, new { @class = "smaller13" })
+                </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default btn-lg boxSmallShadow"><span class="glyphicon glyphicon-ok" style="color:#C51616;"></span> &nbsp; Sign In</button>
+        </div>
+        }
+    </div>
+
+
+        <div class="col-sm-6 col-md-6">
+            <div>
+                <h3><b>New to FoodReady.net?</b></h3>
+                <p> Being a member of FoodReady.net, you will be able to view order history, get rewards, print receipt, easy reordering, rate orders, view/write reviews and more...</p><br /><br /><br />
+                <p><a class="btn btn-default btn-lg boxSmallShadow" id="Register" , title="Create a new account" href="@Url.Content("~/Account/Register?returnUrl=" + ViewBag.ReturnUrl)"><span class="glyphicon glyphicon-user"></span> &nbsp; Create a new account</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container toppadding boxShadow" style="margin-bottom:20px;padding-bottom:40px;">
+    <div class="row toppadding">
+        @if ((string)ViewBag.Guest == "yes")
+        {
+            <div class="col-sm-6 col-md-6" style="border-right:solid 1px #cccccc;color:#1E7CB8;">
+                <h4>
+                    <span style=" color:#000000"> <b>OR</b> </span>Associate an existing internet account with us
+                    <small>Sign in using your account with</small>
+                </h4><br />
+                <section id="socialLoginForm">
+                    @Html.Partial("_ExternalLoginsListPartial", new IdentitySample.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                </section>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div>
+                    <p>Proceed to checkout, and you will have an option to create an account at the end.</p><br /><br /><br />
+                    <p>
+                        <a href="@Url.Content( (string)ViewBag.Groupcheckout=="y"?"~/GroupCheckout": "~/Checkout")" class="btn btn-success btn-lg boxSmallShadow" title="Guest checkout">
+                            <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp; Guest Checkout
+                        </a>
+                    </p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div style="text-align:center;color:#1E7CB8;">
+                <h4><span style=" color:#000000"> <b>OR</b> </span>Associate an existing internet account with us<small> Sign in using your account with</small></h4><br />
+
+                <section id="socialLoginForm">
+                    @Html.Partial("_ExternalLoginsListPartial", new IdentitySample.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                </section>
+            </div>
+        }
+    </div>
+</div>

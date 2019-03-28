@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:#ffffff;">
+                Manage Orders and Drivers
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container toppadding boxShadow">
+    <center>
+        @Html.ActionLink("Go to orders", "Orders", "FRManager", null, new { title = "Manage Orders and Drivers" })
+    </center>
+</div>

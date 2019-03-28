@@ -1,0 +1,13 @@
+﻿@model FoodReady.WebUI.Models.GroupInfoModel
+<div class="container toppadding">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <p>
+                @Model.Name, look like you are going to be back to @Html.ActionLink(Model.Cart.BizName, "Share", "Group", new { groupid = Model.Cart.CartKey, bizid = Model.Cart.BizId }, null).
+                Currently, your group shopping cart is locked by you. Click  @Html.ActionLink(Model.Cart.BizName, "Share", "Group", new { groupid = Model.Cart.CartKey, bizid = Model.Cart.BizId }, null)
+                to back to your shopping cart.
+            </p>
+        </div>
+    </div>
+</div>
+

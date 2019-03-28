@@ -1,0 +1,23 @@
+﻿@model FoodReady.WebUI.Models.AddItemModel
+@using FR.Infrastructure.Helpers
+<div id="CartContent">
+    @if (ViewBag.cando == "n")
+    {
+        <p>
+            Your group ordering has been done! Click <a href="/Home"> here </a> to exit.
+        </p>
+    <input id="r-canRemoveItem" type="hidden" value="@ViewBag.canremoveitem" />
+    }
+    else
+    {
+    @Html.Partial("_SharedCartBodyPartial", Model)
+    <input id="r-canRemoveItem" type="hidden" value="@ViewBag.canremoveitem" />
+    <input id="r-itemid" type="hidden" value="@ViewBag.itemid" />
+    <input id="r-subtotal" type="hidden" value="@ViewBag.subtotal" />
+    <input id="r-tax" type="hidden" value="@ViewBag.tax" />
+    <input id="r-drivertip" type="hidden" value="@ViewBag.drivertip" />
+    <input id="r-globalSubtotal" type="hidden" value="@ViewBag.globalsubtotal" />
+    <input id="r-globalTotal" type="hidden" value="@ViewBag.globaltotal" />
+    <input id="r-btnShow" type="hidden" value="@ViewBag.btnshow" />
+    }
+</div>

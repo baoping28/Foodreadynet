@@ -1,0 +1,72 @@
+﻿@model FoodReady.WebUI.Models.BizImageModel
+
+@{
+    ViewBag.Title = "Manage Biz Images";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center><h3>(@Model.Bizinfo.BizTitle) Manage Biz Images (@Model.BizImages.Count)</h3></center>
+</div>
+@ViewBag.result
+
+<div id="divAllUsers" class="container boxShadow boxpadding">
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                Image
+            </th>
+            <th>
+                Active
+            </th>
+        </tr>
+        @foreach (var f in Model.BizImages)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(f.SmallImageName, "EditBizImage", "Admin", new { id = f.BizImageId, bizid = Model.Bizinfo.BizInfoId }, null)
+                </td>
+                <td>
+                    <div id="@Url.Content("item" + f.BizImageId)" class="deleteButtons">
+                        @using (Ajax.BeginForm("DoBizImage", "Admin", new { id = f.BizImageId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + f.BizImageId),
+                            OnBegin = "onFreeItemBegin('" + f.BizImageId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + f.BizImageId + "')",
+                            OnFailure = "onFreeItemFailure('" + f.BizImageId + "')",
+                            Confirm = "Do you want to " + @Url.Content(f.Active ? "lock" : "unlock") + " the BizImage ?"
+                        }))
+                        {
+
+                            <input class="@Url.Content(f.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(f.Active ? "To lock item" : "To unlock item")" value="" />
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p></p>
+<div class="titlebox boxShadow">
+    <center><h3>Add a Image</h3></center>
+</div><p></p>
+@using (Html.BeginForm("ManageBizImages", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(e => e.BizInfoID)
+    @ViewBag.result
+    <div id="create" class="container boxShadow boxpadding">
+        <div class="=form-group">
+            <b>Upload new small image(wide 90 , height 70):</b><br />
+            <input type="file" name="uploadimage" id="uploadimage" style="background-color: Khaki;" />
+        </div><br />
+
+        <div class="=form-group">
+            <div class="=form-group pull-right">
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Add</button>
+            </div><br />
+        </div>
+        <div class="=form-group">
+            <p>@Html.ActionLink("Back to Manage Restaurant " + Model.Bizinfo.BizTitle, "ManageRestaurant", "admin", new { id = Model.Bizinfo.BizInfoId }, null)</p>
+        </div>
+    </div>
+}

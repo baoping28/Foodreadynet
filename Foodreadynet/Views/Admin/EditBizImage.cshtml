@@ -1,0 +1,30 @@
+﻿@model FoodReady.WebUI.Models.BizImageModel
+
+@{
+    ViewBag.Title = "Edit Biz Image";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center><h3>(@Model.Bizinfo.BizTitle) Edit Image</h3></center>
+</div><hr />
+ @ViewBag.result
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm("EditBizImage", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(e => e.BizImageID)
+        @Html.HiddenFor(e => e.BizInfoID)
+            <div class="form-group">
+                <img src="@Url.Content(Model.Bizimage.SmallImagePath)" class="img-responsive" /><br />
+                <b>Upload new small image(wide 90 , height 70):</b><br />
+                <input type="file" name="uploadimage" id="uploadimage" style="background-color: Khaki;" />
+            </div><br />
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+                <br />
+            </div><br />
+            <div class="form-group">
+                <p>@Html.ActionLink("Back to Manage Restaurant " + Model.Bizinfo.BizTitle, "ManageRestaurant", "admin", new { id = Model.Bizinfo.BizInfoId }, null)</p>
+            </div>
+    }
+</div>

@@ -1,0 +1,11 @@
+﻿@model FoodReady.WebUI.Models.SubMenuViewModel
+@using FR.Infrastructure.Helpers
+    <div id="swrap" style="float: left;">
+        <div id="snavFloating" style="position:relative;left:-154px;">
+            <div class="bubbleInfo">
+                <div class="popup">
+                    @Html.Partial("_MenuSectionPartial", Model)
+                </div>
+            </div>
+        </div>
+    </div>

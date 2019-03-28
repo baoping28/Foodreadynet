@@ -1,0 +1,32 @@
+﻿@model IdentitySample.Models.MyDetailModel
+<div id="myprofile">
+    <div style="min-height:300px;">
+        <div>
+            @if (ViewBag.ok == "yes")
+            {
+                <p><h3>Your profile has been successfully added.</h3></p>
+                <p>
+                    To view the profile, go @Html.ActionLink("Back to My Account", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" }),
+                    then click "My Profile" link.
+                </p>
+            }
+            else
+            {
+                <p>Oops! Your profile adding action failed.</p>
+                @Html.Partial("_AddDetailPartial", new IdentitySample.Models.MyDetailModel()
+   {
+       UserID = Model.UserID,
+       FirstName = Model.FirstName,
+       LastName = Model.LastName,
+       AddressLine = Model.AddressLine,
+       CrossStreet = Model.CrossStreet,
+       City = Model.City,
+       State = Model.State,
+       ZipCode = Model.ZipCode,
+       Phone = Model.Phone,
+       Email = Model.Email
+   })
+            }
+        </div>
+    </div>
+</div>+

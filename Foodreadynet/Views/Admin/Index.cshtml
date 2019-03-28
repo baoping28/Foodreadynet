@@ -1,0 +1,229 @@
+﻿@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center><h1>Administrator Manage Center</h1></center>
+</div>
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("Manage All Users", "AllUsers", "admin")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    Search and list users
+                </li>
+                <li>
+                    Lock or unlock users
+                </li>
+                <li>
+                    Monitor user activaties
+                </li>
+                <li>
+                    View user details
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("Create a Restaurant Account", "RegisterBiz", "Admin")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    Create a new account for restaurant. This is the first step to create info for a restaurant.
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("All Restaurant Users", "AllRestaurantUsers", "Admin")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    Search and list restaurant users.
+                </li>
+                <li>
+                    View restaurant user details.
+                </li>
+                <li>
+                    Lock or unlock restaurant users.
+                </li>
+                <li>
+                    Create and manage restaurant info.
+                </li>
+                <li>
+                    Create and manage (edit, lock or unlock) restaurant's free items, discount coupons, bussiness days and hours.
+                </li>
+                <li>
+                    Create and manage (edit, lock or unlock) restaurant Menus.
+                </li>
+                <li>
+                    Create and manage (edit, lock or unlock) menu's categories.
+                </li>
+                <li>
+                    Create and manage (edit, lock or unlock) category's products.
+                </li>
+                <li>
+                    Create and manage (edit, lock or unlock) product attributes ---- size, toppings, dressings, side dish choices.
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("Manage Cuisine Types", "ManageCuisineTypes", "Admin")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    Create and manage (edit, lock or unlock)  cuisines for all restaurant use
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("Manage Dressings", "ManageDressings", "Admin")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    Create and manage (edit, lock or unlock)  salad dressings for all restaurant use
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("Manage Food Types", "ManageFoodTypes", "Admin")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    Create and manage (edit, lock or unlock) food types for all restaurant use
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("Manage Meal Sections", "ManageMealSections", "Admin")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    Create and manage (edit, lock or unlock) meal sections(All time, breakfest, lunchand  dinner) for all restaurant use
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("Manage Toppings", "ManageToppings", "Admin")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    Create and manage (edit, lock or unlock) pizza toppings for all restaurant use
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("Manage Cook Methods", "ManageCookMethods", "admin")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    Create and manage (edit, lock or unlock) cooking methods  for all restaurant use
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("Manage Gift Cards", "ManageGiftCards", "Admin")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    Search and list Gift Cards.
+                </li>
+                <li>
+                    View Gift Cards details.
+                </li>
+                <li>
+                    Lock or unlock Gift Cards.
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("Manage Credit Card Types", "ManageCreditCardTypes", "Admin")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    Create and manage (edit, lock or unlock) credit card types for all restaurant use
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("Manage Orders", "ManageOrders", "Admin")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    View order history for all restaurant use
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container boxShadow boxpadding">
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1">
+            <p>@Html.ActionLink("Go to Restaurant Owners", "index", "RestaurantOwners")</p>
+            Here you can do:
+            <ul>
+                <li>
+                    You can do what restaurant owners do.
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />

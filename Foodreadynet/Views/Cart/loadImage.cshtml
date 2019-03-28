@@ -1,0 +1,26 @@
+﻿@model FR.Domain.Model.Entities.Product
+
+<div id="popupbody1">
+    <div class="modal-header">
+        <h5 id="poptitle1" class="modal-title" style="color:black;text-align:center;">@Model.Title</h5>
+    </div>
+    <div class="modal-body">
+        @using (Ajax.BeginForm("AddToCart", "Cart", new { id = Model.ProductId }, new AjaxOptions
+{
+    UpdateTargetId = "popupbody1",
+    OnBegin = "onPopup1Begin",
+    OnSuccess = "onPopup1Success",
+    OnFailure = "onPopup1Failed"
+}, new { @id = "loadimg-form" }))
+        {
+            <center>
+                <div>
+                    <img src="@Url.Content(Model.BigImagePath)" title="Add to cart" class="biggerImg img-responsive" />
+                </div>
+                <div id="divSubmit">
+                    <button type="button" onclick="$('#loadimg-form').submit();" class="btn btn-lg btn-primary" title="Add to cart">Continue &nbsp;&nbsp; <span class="glyphicon glyphicon-play"></span></button>
+                </div>
+            </center>
+        }
+       </div>
+</div>

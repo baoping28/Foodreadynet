@@ -1,0 +1,99 @@
+﻿@model PagedList.IPagedList<FR.Domain.Model.Entities.AspNetUser>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "All Of Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/FRAdminScripts/usersJS.js")" type="text/javascript"></script>
+
+<div class="titlebox boxShadow">
+    <center>
+        <h1> Manage Users</h1>
+        <p>
+            <b>
+                Number Of Users Visited: @ViewBag.WebHit.ToString()
+            </b>
+        </p>
+        <p>Number of users in the current search: @Model.Count.ToString()</p>
+    </center> 
+</div>
+<div id="divAllUsers">
+    <div class="pull-right">
+        @using (Html.BeginForm("AllOfUsers", "Admin", FormMethod.Get))
+        {
+            <p>
+                Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                <input type="submit" value="Search" />
+            </p>
+        }
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.ActionLink("User Name", "AllOfUsers", "Admin", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter }, null)
+            </th>
+            <th>
+                @Html.ActionLink("Create Date", "AllOfUsers", "Admin", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter }, null)
+            </th>
+            <th>
+                Email Confirmed
+            </th>
+            <th>
+                Lockout Enabled
+            </th>
+            <th>
+                In Roles
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(u.UserName, "UserDetails", "Admin", new { username = u.UserName }, null)
+                </td>
+                <td>
+                    @u.AddedDate
+                </td>
+                <td>
+                    @u.EmailConfirmed
+                </td>
+                <td>
+                   @u.LockoutEnabled
+                </td>
+                <td>
+                    @foreach (var r in u.AspNetRoles)
+                    {
+                        <span>@r.Name </span>
+                    }
+                </td>
+                <td>
+                    <div id="@Url.Content("item" + u.Id)" class="deleteButtons">
+                        @using (Ajax.BeginForm("DoApprove", "Admin", new { id = @u.Id },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + u.Id),
+                            OnBegin = "onDoApproveBegin('" + u.Id + "')",
+                            OnSuccess = "onDoApproveSuccess('" + u.Id + "')",
+                            OnFailure = "onDoApproveFailure('" + u.Id + "')",
+                            Confirm = "Do you want to " + Url.Content(u.Active ? "lock" : "unlock") + " the user: " + u.UserName + " ?"
+                        }))
+                        {
+
+                            <input class="@Url.Content(u.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(u.Active ? "To lock user" : "To unlock user")" value="" />
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+    <hr />
+    <div class="pull-right">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+        of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("AllOfUsers", "Admin", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+</div>

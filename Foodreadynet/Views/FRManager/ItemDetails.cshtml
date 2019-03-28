@@ -1,0 +1,246 @@
+﻿@model FR.Domain.Model.Entities.OrderItem
+<div>
+    <center><h3>Item Details</h3></center>
+</div><hr />
+
+<div id="addContent" style="background-color:White;padding:10px;">
+    <table class="table table-striped table-hover table-responsive">
+        <tr class="trBorder">
+            <th>
+                Item ID
+            </th>
+            <th>
+                Order ID
+            </th>
+            <th>
+                Product ID
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Unit Price
+            </th>
+            <th>
+                Final Price
+            </th>
+            <th>
+                Restaurant Unit Price
+            </th>
+            <th>
+                Restaurant Final Price
+            </th>
+            <th>
+                Discount Percentage
+            </th>
+        </tr>
+        <tr class="trBorder">
+            <td>
+                @Model.OrderItemId
+            </td>
+            <td>
+                @Model.OrderId
+            </td>
+            <td>
+                @Model.ProductId
+            </td>
+            <td>
+                @Model.Title
+            </td>
+            <td>
+                @Model.UnitPrice.ToString("N2")
+            </td>
+            <td>
+                @Model.FinalSalePrice.ToString("N2")
+            </td>
+            <td>
+                @Model.BizUnitPrice.ToString("N2")
+            </td>
+            <td>
+                @Model.BizFinalPrice.ToString("N2")
+            </td>
+            <td>
+                @Model.DiscountPercentage.ToString()%
+            </td>
+        </tr>
+    </table>
+    <p></p>
+    <table class="table table-striped table-hover table-responsive">
+        <tr class="trBorder">
+            <th>
+                Is Family Meal
+            </th>
+            <th>
+                Extra List Total
+            </th>
+            <th>
+                Product Size Name
+            </th>
+            <th>
+                Product Size
+            </th>
+            <th>
+                Size Price
+            </th>
+            <th>
+                Restaurant Size Price
+            </th>
+            <th>
+                How Spicy
+            </th>
+            <th>
+                Side Choice
+            </th>
+            <th>
+                Dressing Choice
+            </th>
+        </tr>
+        <tr class="trBorder">
+            <td>
+                @Model.IsFamilyMeal.ToString()
+            </td>
+            <td>
+                @Model.ExtraListTotal.ToString("N2")
+            </td>
+            <td>
+                @Model.ProductSizeTitle
+            </td>
+            <td>
+                @Model.ProductSize
+            </td>
+            <td>
+                @Model.ProductSizePrice.ToString("N2")
+            </td>
+            <td>
+                @Model.BizSizePrice.ToString("N2")
+            </td>
+            <td>
+                @Model.HowSpicy
+            </td>
+            <td>
+                @Model.SideChoice
+            </td>
+            <td>
+                @Model.DressingChoice
+            </td>
+        </tr>
+    </table><p></p>
+    <table class="table table-striped table-hover table-responsive">
+        <tr class="trBorder">
+            <th>
+                Selected Extra Toppings
+            </th>
+            <th>
+                Instruction
+            </th>
+            <th>
+                Item Total
+            </th>
+            <th>
+                Restaurant Item Totral
+            </th>
+            <th>
+                Selected AddSides
+            </th>
+            <th>
+                AddSide List Price
+            </th>
+            <th>
+                BizAddSide List Price
+            </th>
+            <th>
+                Crust Choice
+            </th>
+            <th>
+                Crust Choice Price
+            </th>
+        </tr>
+        <tr class="trBorder">
+            <td>
+                @Model.SelectedToppings
+            </td>
+            <td>
+                @Model.Instruction
+            </td>
+            <td>
+                @Model.ItemTotal.ToString("N2")
+            </td>
+            <td>
+                @Model.BizItemTotal.ToString("N2")
+            </td>
+            <td>
+                @Model.SelectedAddSides
+            </td>
+            <td>
+                @Model.AddSideListPrice.ToString("N2")
+            </td>
+            <td>
+                @Model.BizAddSideListPrice.ToString("N2")
+            </td>
+            <td>
+                @Model.CrustChoice
+            </td>
+            <td>
+                @Model.CrustChoicePrice.ToString("N2")
+            </td>
+        </tr>
+    </table>
+    <p></p>
+    <table class="table table-striped table-hover table-responsive">
+        <tr class="trBorder">
+            <th>
+                Crust Choice BizPrice
+            </th>
+            <th>
+                CheeseAmount
+            </th>
+            <th>
+                Cheese Amount Price
+            </th>
+            <th>
+                Cheese Amount BizPrice
+            </th>
+            <th>
+                Free Toppings
+            </th>
+            <th>
+                Sauce Choice
+            </th>
+            <th>
+                Active
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+        </tr>
+        <tr class="trBorder">
+            <td>
+                @Model.CrustChoiceBizPrice.ToString("N2")
+            </td>
+            <td>
+                @Model.CheeseAmount
+            </td>
+            <td>
+                @Model.cheeseAmountPrice.ToString("N2")
+            </td>
+            <td>
+                @Model.CheeseAmountBizPrice.ToString("N2")
+            </td>
+            <td>
+                @Model.SelectedFreeToppings
+            </td>
+            <td>
+                @Model.SauceChoice
+            </td>
+            <td>
+                @Model.Active
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+

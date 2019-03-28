@@ -1,0 +1,221 @@
+﻿@model FoodReady.WebUI.Models.ProductModel
+@using FR.Infrastructure.Helpers
+@{
+    ViewBag.Title = "ManageProducts";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center><h3>(@Model.Bizinfo.BizTitle) Manage Products (@Model.LProducts.Count)</h3></center>
+</div>
+@ViewBag.result
+<div id="divAllUsers">
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Size
+            </th>
+            <th>
+                Family Meal
+            </th>
+            <th>
+                Side Choice
+            </th>
+            <th>
+                Pizza Topping
+            </th>
+            <th>
+                Sauce Choice
+            </th>
+            <th>
+                Pizza Crust
+            </th>
+            <th>
+                Cheese Amount
+            </th>
+            <th>
+                Salad Dressing
+            </th>
+            <th>
+                Add Side
+            </th>
+            <th>
+                Active
+            </th>
+        </tr>
+        @foreach (var p in Model.LProducts)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(p.Title, "EditProduct", "admin", new { id = p.ProductId, bizid = Model.BizInfoID }, null)<br />
+                </td>
+                <td>
+                    @if (p.FoodTypeName == "Pizza")
+                    {
+                        @Html.ActionLink("Size", "ManageSize", "admin", new { id = p.ProductId, bizid = Model.BizInfoID }, null)<br /><text>(@p.ProductSizes.Count )</text>
+                    }
+                </td>
+                <td>
+                    @if (p.IsFamilyDinner)
+                    {
+                        @Html.ActionLink("Family Meals", "ManageFamilyMeal", "admin", new { id = p.ProductId, bizid = Model.BizInfoID }, null)<br /><text>(@p.FamilyMeals.Count )</text>
+                    }
+                </td>
+                <td>
+                    @if (p.IsFamilyDinner || p.Category.Title.ToLower().StartsWith("lunch"))
+                    {
+                        @Html.ActionLink("Side Choice", "ManageSideChoice", "admin", new { id = p.ProductId, bizid = Model.BizInfoID }, null)<br /><text>(@p.SideChoices.Count )</text>
+                    }
+                </td>
+                <td>
+                    @if (p.FoodTypeName == "Pizza")
+                    {
+                        @Html.ActionLink("Pizza Toppings", "ManageProductTopping", "admin", new { id = p.ProductId, bizid = Model.BizInfoID }, null)<br /> <text>(@p.ProductToppings.Count )</text>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Sauce", "ManageSauceChoice", "admin", new { id = p.ProductId, bizid = Model.BizInfoID }, null)<br /> <text>(@p.SauceChoices.Count )</text>
+                </td>
+                <td>
+                    @if (p.FoodTypeName == "Pizza")
+                    {
+                        @Html.ActionLink("Pizza Crust", "ManageCrustChoice", "admin", new { id = p.ProductId, bizid = Model.BizInfoID }, null)<br /> <text>(@p.CrustChoices.Count )</text>
+                    }
+                </td>
+                <td>
+                    @if (p.FoodTypeName == "Pizza")
+                    {
+                        @Html.ActionLink("Cheese Amount", "ManageCheeseAmount", "admin", new { id = p.ProductId, bizid = Model.BizInfoID }, null)<br /> <text>(@p.CheeseAmounts.Count )</text>
+                    }
+                </td>
+                <td>
+                    @if (p.FoodTypeName == "Salad")
+                    {
+                        @Html.ActionLink("Product Dressings", "ManageProductDressing", "admin", new { id = p.ProductId, bizid = Model.BizInfoID }, null)<br /> <text>(@p.ProductDressings.Count )</text>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Add Side", "ManageAddSide", "admin", new { id = p.ProductId, bizid = Model.BizInfoID }, null)<br /> (@p.AddSides.Count )
+                </td>
+                <td>
+                    <div id="@Url.Content("item" + p.ProductId)" class="deleteButtons">
+                        @using (Ajax.BeginForm("DoProduct", "Admin", new { id = p.ProductId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + p.ProductId),
+                            OnBegin = "onFreeItemBegin('" + p.ProductId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + p.ProductId + "')",
+                            OnFailure = "onFreeItemFailure('" + p.ProductId + "')",
+                            Confirm = "Do you want to " + @Url.Content(p.Active ? "lock" : "unlock") + " the product: " + p.Title + " ?"
+                        }))
+                        {
+
+                            <input class="@Url.Content(p.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(p.Active ? "To lock item" : "To unlock item")" value="" />
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<hr />
+<div class="titlebox boxShadow">
+    <center><h3>Add a Product</h3></center>
+</div>
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm("ManageProducts", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(e => e.BizInfoID)
+        @Html.HiddenFor(e => e.BizCuisineID)
+        @Html.HiddenFor(e => e.CategoryID)
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Title)
+                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.Title)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CookMethodID)
+                    @Html.DropDownListFor(e => e.CookMethodID, Model.CookMethods(Model.LCookMethods), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.CookMethodID)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FoodTypeID)
+                    @Html.DropDownListFor(e => e.FoodTypeID, Model.FoodTypes(Model.LFoodTypes), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.FoodTypeID)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MealSectionID)
+                    @Html.DropDownListFor(e => e.MealSectionID, Model.MealSections(Model.LMealSections), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.MealSectionID)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Description)
+                    @Html.ValidationMessageFor(m => m.Description)
+                    @Html.TextAreaFor(m => m.Description, 5, 50, new { @class = "form-control boxShadow" })
+                    <div class="remaining">
+                        Characters remaining: <span class="count">512</span>
+                        <input id="btnClear" type="button" value="Reset Text" style="margin-left: 40px;" />
+                    </div>
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.BizPrice)
+                    @Html.TextBoxFor(m => m.BizPrice, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.BizPrice)
+                </div><br />
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UnitPrice)
+                    @Html.TextBoxFor(m => m.UnitPrice, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.UnitPrice)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DiscountPercentage)
+                    @Html.TextBoxFor(m => m.DiscountPercentage, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.DiscountPercentage)
+                </div><br />
+                <div class="form-group">
+                    <b>Upload new image(wide 70 , height 90):</b><br />
+                    <input type="file" name="uploadimage" id="uploadimage" style="background-color: Khaki;" />
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MaxNumOfFreeTopping)
+                    @Html.TextBoxFor(m => m.MaxNumOfFreeTopping, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.MaxNumOfFreeTopping)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IsSpicy)
+                    @Html.DropDownListFor(e => e.IsSpicy, Helper.YesNoDropdown("No"), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.IsSpicy)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IsVegetarian)
+                    @Html.DropDownListFor(e => e.IsVegetarian, Helper.YesNoDropdown("No"), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.IsVegetarian)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IsMostPopular)
+                    @Html.DropDownListFor(e => e.IsMostPopular, Helper.YesNoDropdown("No"), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.IsMostPopular)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IsFamilyDinner)
+                    @Html.DropDownListFor(e => e.IsFamilyDinner, Helper.YesNoDropdown("No"), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.IsFamilyDinner)
+                </div><br />
+                <div class="form-group pull-right">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Add</button>
+                    </div>
+                </div><br />
+                <div class="form-group">
+                        <p>@Html.ActionLink("Back to Manage Categories " + Model.Bizinfo.BizTitle, "ManageCategories", "admin", new { id = Model.BizCuisineID }, null)</p>
+                </div><br />
+            </div>
+        </div><br />
+    }
+</div>

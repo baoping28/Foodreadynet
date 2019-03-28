@@ -1,0 +1,16 @@
+﻿@model FR.Domain.Model.Entities.DayOfClose
+<div id="@Url.Content("item" + Model.DayOfCloseId)" class="deleteButtons">
+                        @using (Ajax.BeginForm("DoDayOfClose", "Admin", new { id = Model.DayOfCloseId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.DayOfCloseId),
+                            OnBegin = "onFreeItemBegin('" + Model.DayOfCloseId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.DayOfCloseId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.DayOfCloseId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the Close Day: " + Model.Title + " ?"
+                        }))
+                        {
+                                                   
+                            <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+                        }
+                    </div>

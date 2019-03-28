@@ -1,0 +1,83 @@
+﻿@model FoodReady.WebUI.Models.SubMenuViewModel
+@using FR.Infrastructure.Helpers
+@if (IsAjax)
+{
+    <script src="@Url.Content("~/Scripts/FRJqueryScripts/hoverPopupDiv.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/FRJqueryScripts/slidingUpDown.js")" type="text/javascript"></script>
+}
+<div id="menucontent" class="boxShadow">
+    <div style="padding: 20px 10px 30px 10px;">
+        @foreach (var c in Model.CategoryList)
+        {
+            <div class="itemWrap">
+                <div id="@Url.Content("ctg" + c.CategoryId)" class="ctgTitle boxShadow">
+                    <img class="sign" src="../../Content/Images/minusSign.png" />
+                    <b>@c.Title </b>
+                </div>
+                <div class="itemList">
+                    @foreach (var p in c.Products.Where(e => (Model.sortParameter == "" ? true : Model.sortParameter == "spicy" ? e.IsSpicy : Model.sortParameter == "veg" ? e.IsVegetarian : Model.sortParameter == "pop" ? e.IsMostPopular : true) && e.Active == true))
+                    {
+                        <div class="productItem">
+                           @if (string.IsNullOrEmpty(p.SmallImage) == false && p.SmallImage.ToLower().StartsWith("imagesoon") == false)
+                           {
+
+                               using (Ajax.BeginForm("loadImage", "Group", FormMethod.Post, new AjaxOptions
+                               {
+                                   UpdateTargetId = "popupbody1",
+                                   OnBegin = "onPopup1Begin",
+                                   OnSuccess = "onPopup1Success",
+                                   OnFailure = "onPopup1Failed"
+                               }))
+                               {
+                                    @Html.Hidden("ProductId", p.ProductId)
+                                    <input type="image" style="margin-right:16px;" src="@Url.Content(p.SmallImagePath) " title=" add to cart" class="float-left productImg boxShadow boxCorner img-responsive" />
+                                }
+
+                            }
+                            <div style="padding-left:10px; font-size:12px; font-family:Arial; color:#000;">
+                                @Ajax.ActionLink(p.MealSectionId == 3 ? "(Lunch)" + p.Title : p.Title, "AddToSharedCart", "Group", new { id = p.ProductId }, new AjaxOptions
+                               {
+                                   UpdateTargetId = "popupbody1",
+                                   OnBegin = "onPopup1Begin",
+                                   OnSuccess = "onPopup1Success",
+                                   OnFailure = "onPopup1Failed"
+                               }, new { @class = "Link16", title = "Add to cart" })
+                                @if (p.IsMostPopular)
+                                {
+                                    <img src="../../Content/Images/ratingStar.png" title="Popular" class="foodtypeImg" />
+                                }
+                                @if (p.IsSpicy)
+                                {
+                                    <img src="../../Content/Images/chili.png" title="Spicy" class="foodtypeImg" />
+                                }
+                                @if (p.IsVegetarian)
+                                {
+                                    <img src="../../Content/Images/veg.png" title="Vegetarian" class="foodtypeImg" />
+                                }
+                                <p style="padding-top:10px; font-size:13px;">@Helper.GetReview(p.Description, 220)</p>
+                            </div>
+                            <div style="clear:both;"></div>
+                            <div class="float-right">
+                                @if (p.IsFamilyDinner)
+                                {
+                                    var n = p.FinalUnitPrice * 2;
+                                    <span class="badge"><b>$@n.ToString("N2")  +</b></span>
+                                }
+                                else if (p.HasSize)
+                                {
+                                    <span class="badge" title="@Url.Content("Start at $" + p.SmallestSizePrice.ToString("N2"))"><b>$@p.SmallestSizePrice.ToString("N2") +</b></span>
+                                }
+                                else
+                                {
+                                    <span class="badge"><b>$@p.FinalUnitPrice.ToString("N2")</b></span>
+                                }
+                            </div>
+                            <div style="clear: both;">
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

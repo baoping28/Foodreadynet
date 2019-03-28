@@ -1,0 +1,25 @@
+﻿
+@if (ViewBag.CardStatus == 3)
+{
+     <p class="gifttitle">@ViewBag.StatusNote</p>
+     @Html.Partial("_LockGiftCodeTry")
+}
+else if (ViewBag.CardStatus == 0)
+{
+     <p class="gifttitle">@ViewBag.StatusNote</p>
+      @Html.Partial("_CodeCheckPartial")
+}
+else if (ViewBag.CardStatus == 1)
+{
+         <p class="gifttitle">
+        @ViewBag.StatusNote<br />
+        Note: This Delivery Gift Card will expire one year from its last use. If
+        it is not used within the first year, it will also expire.
+    </p>
+    @Html.Partial("_CodeCheckPartial")
+}
+else if (ViewBag.CardStatus == 2)
+{
+     <p class="gifttitle">@ViewBag.StatusNote</p>
+   @Html.Partial("_CodeCheckPartial")
+}

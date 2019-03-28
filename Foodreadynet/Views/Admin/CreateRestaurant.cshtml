@@ -1,0 +1,422 @@
+﻿@model FoodReady.WebUI.Models.RestaurantModel
+@using FR.Infrastructure.Helpers
+@{
+    ViewBag.Title = "Create Restaurant";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/copyAddressJS.js")" type="text/javascript"></script>
+<div class="titlebox boxShadow">
+    <center><h3> Create a Restaurant for user "@ViewBag.username"</h3></center>
+</div>
+
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm("CreateRestaurant", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(e => e.UserDetailId)
+        <p> @ViewBag.createMsg</p>
+        <div class="form-group">
+            @Html.LabelFor(m => m.BizTitle)
+            @Html.TextBoxFor(m => m.BizTitle, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.BizTitle)
+        </div><br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.YelpBizID)
+            @Html.TextBoxFor(m => m.YelpBizID, new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.YelpBizID)<br />
+            <a href="@ViewBag.findYelpId" target="_blank">Find Yelp ID</a>
+        </div><br />
+
+        <div class="form-group">
+            <div class="checkoutTxtArea">
+                <b> @Html.LabelFor(m => m.Description)</b>
+                <div>
+                    @Html.TextAreaFor(m => m.Description, 8, 50, new { @class = "form-control boxShadow" })
+                    <div class="remaining float-left">
+                        Characters remaining: <span class="count">1024</span>
+                        <input id="btnClear" type="button" value="Reset Text" class="btn btn-default btn-sm" />
+                    </div>
+                </div>
+            </div>
+        </div><br />
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.ZoneNameId)
+            @Html.DropDownListFor(e => e.ZoneNameId, Model.ZoneNameChoices(Model.LZoneNames, "3"), new { @class = "form-control boxShadow" })
+            @Html.ValidationMessageFor(m => m.ZoneNameId)
+        </div><br />
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LMonStart)
+                    @Html.DropDownListFor(e => e.LMonStart, Helper.TimeDropdown(), "Choose a time", new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LMonStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LMonClose)
+                    @Html.DropDownListFor(e => e.LMonClose, Helper.TimeDropdown(), "Choose a time", new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LMonClose)
+                </div>
+            </div>
+        </div><br />
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    <div style="width: 190px; padding: 8px; border: solid 1px Green;">
+                        <input name="sameAsLStart" id="sameAsLStart" type="checkbox" value="sameAsLStart" />
+                        <label for="sameAsLStart">
+                            Set all lunch start time same as the Monday lunch start time
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    <div style="width: 190px; padding: 8px; border: solid 1px Green;">
+                        <input name="sameAsLClose" id="sameAsLClose" type="checkbox" value="sameAsLClose" />
+                        <label for="sameAsLClose">
+                            Set all lunch close time same as the Monday lunch close time
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div><br />
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LTueStart)
+                    @Html.DropDownListFor(e => e.LTueStart, Helper.TimeDropdown(), "Choose a time", new { @class = "lstart form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LTueStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LTueClose)
+                    @Html.DropDownListFor(e => e.LTueClose, Helper.TimeDropdown(), "Choose a time", new { @class = "lclose form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LTueClose)
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LWedStart)
+                    @Html.DropDownListFor(e => e.LWedStart, Helper.TimeDropdown(), "Choose a time", new { @class = "lstart form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LWedStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LWedClose)
+                    @Html.DropDownListFor(e => e.LWedClose, Helper.TimeDropdown(), "Choose a time", new { @class = "lclose form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.WedClose)
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LThuStart)
+                    @Html.DropDownListFor(e => e.LThuStart, Helper.TimeDropdown(), "Choose a time", new { @class = "lstart form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LThuStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LThuClose)
+                    @Html.DropDownListFor(e => e.LThuClose, Helper.TimeDropdown(), "Choose a time", new { @class = "lclose form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LThuClose)
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LFriStart)
+                    @Html.DropDownListFor(e => e.LFriStart, Helper.TimeDropdown(), "Choose a time", new { @class = "lstart form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LFriStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LFriClose)
+                    @Html.DropDownListFor(e => e.LFriClose, Helper.TimeDropdown(), "Choose a time", new { @class = "lclose form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LFriClose)
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LSatStart)
+                    @Html.DropDownListFor(e => e.LSatStart, Helper.TimeDropdown(), "Choose a time", new { @class = "lstart form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LSatStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LSatClose)
+                    @Html.DropDownListFor(e => e.LSatClose, Helper.TimeDropdown(), "Choose a time", new { @class = "lclose form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LSatClose)
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LSunStart)
+                    @Html.DropDownListFor(e => e.LSunStart, Helper.TimeDropdown(), "Choose a time", new { @class = "lstart form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LSunStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LSunClose)
+                    @Html.DropDownListFor(e => e.LSunClose, Helper.TimeDropdown(), "Choose a time", new { @class = "lclose form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LSunClose)
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MonStart)
+                    @Html.DropDownListFor(e => e.MonStart, Helper.TimeDropdown(), "Choose a time", new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.MonStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MonClose)
+                    @Html.DropDownListFor(e => e.MonClose, Helper.TimeDropdown(), "Choose a time", new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.MonClose)
+                </div>
+            </div>
+        </div><br />
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    <div style="width: 190px; padding: 8px; border: solid 1px Green;">
+                        <input name="sameAsDStart" id="sameAsDStart" type="checkbox" value="sameAsDStart" />
+                        <label for="sameAsDStart">
+                            Set all dinner start time same as the Monday dinner start time
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    <div style="width: 190px; padding: 8px; border: solid 1px Green;">
+                        <input name="sameAsDClose" id="sameAsDClose" type="checkbox" value="sameAsDClose" />
+                        <label for="sameAsDClose">
+                            Set all dinner close time same as the Monday dinner close time
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div><br />
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.TueStart)
+                    @Html.DropDownListFor(e => e.TueStart, Helper.TimeDropdown(), "Choose a time", new { @class = "dstart form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.TueStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.TueClose)
+                    @Html.DropDownListFor(e => e.TueClose, Helper.TimeDropdown(), "Choose a time", new { @class = "dclose form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.TueClose)
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.WedStart)
+                    @Html.DropDownListFor(e => e.WedStart, Helper.TimeDropdown(), "Choose a time", new { @class = "dstart form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.WedStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.WedClose)
+                    @Html.DropDownListFor(e => e.WedClose, Helper.TimeDropdown(), "Choose a time", new { @class = "dclose form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.WedClose)
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ThuStart)
+                    @Html.DropDownListFor(e => e.ThuStart, Helper.TimeDropdown(), "Choose a time", new { @class = "dstart form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.ThuStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ThuClose)
+                    @Html.DropDownListFor(e => e.ThuClose, Helper.TimeDropdown(), "Choose a time", new { @class = "dclose form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.ThuClose)
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FriStart)
+                    @Html.DropDownListFor(e => e.FriStart, Helper.TimeDropdown(), "Choose a time", new { @class = "dstart form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.FriStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FriClose)
+                    @Html.DropDownListFor(e => e.FriClose, Helper.TimeDropdown(), "Choose a time", new { @class = "dclose form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.FriClose)
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SatStart)
+                    @Html.DropDownListFor(e => e.SatStart, Helper.TimeDropdown(), "Choose a time", new { @class = "dstart form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.SatStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SatClose)
+                    @Html.DropDownListFor(e => e.SatClose, Helper.TimeDropdown(), "Choose a time", new { @class = "dclose form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.SatClose)
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SunStart)
+                    @Html.DropDownListFor(e => e.SunStart, Helper.TimeDropdown(), "Choose a time", new { @class = "dstart form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.SunStart)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SunClose)
+                    @Html.DropDownListFor(e => e.SunClose, Helper.TimeDropdown(), "Choose a time", new { @class = "dclose form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.SunClose)
+                </div>
+            </div>
+        </div><br />
+
+        <div class="row">
+            <div class="form-group">
+                <b>Upload new small image(wide 70 , height 90):</b><br />
+                <input type="file" name="uploadimage" id="uploadimage" style="background-color: Khaki;" />
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Fax)
+                @Html.TextBoxFor(m => m.Fax, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Fax)
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.FoodCost)
+                @Html.DropDownListFor(e => e.FoodCost, Helper.RestaurantPriceDropdown("$$"), new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.FoodCost)
+            </div><br />
+            <div class="form-group">
+                @Html.LabelFor(m => m.HasDiscountCoupons)
+                @Html.DropDownListFor(e => e.HasDiscountCoupons, Helper.YesNoDropdown("No"), new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.HasDiscountCoupons)
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.HasFreeItemCoupons)
+                @Html.DropDownListFor(e => e.HasFreeItemCoupons, Helper.YesNoDropdown("No"), new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.HasFreeItemCoupons)
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.HasBreakfast)
+                @Html.DropDownListFor(e => e.HasBreakfast, Helper.YesNoDropdown("No"), new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.HasBreakfast)
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.HasLunchSpecial)
+                @Html.DropDownListFor(e => e.HasLunchSpecial, Helper.YesNoDropdown("Yes"), new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.HasLunchSpecial)
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.CanOrderForNextday)
+                @Html.DropDownListFor(e => e.CanOrderForNextday, Helper.YesNoDropdown("Yes"), new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.CanOrderForNextday)
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Website)
+                @Html.TextBoxFor(m => m.Website, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Website)
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Delivery)
+                @Html.DropDownListFor(e => e.Delivery, Helper.YesNoDropdown("Yes"), new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Delivery)
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Radius)
+                @Html.TextBoxFor(m => m.Radius, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.Radius)
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.DeliveryFee)
+                @Html.TextBoxFor(m => m.DeliveryFee, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.DeliveryFee)
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.OrderMinimum)
+                @Html.TextBoxFor(m => m.OrderMinimum, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.OrderMinimum)
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(m => m.TaxPercentageRate)
+                @Html.TextBoxFor(m => m.TaxPercentageRate, new { @class = "form-control boxShadow" })
+                @Html.ValidationMessageFor(m => m.TaxPercentageRate)
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group pull-right">
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Create</button>
+            </div>
+        </div><br />
+    }
+</div>
+

@@ -1,0 +1,16 @@
+﻿@model FR.Domain.Model.Entities.BizImage
+<div id="@Url.Content("item" + Model.BizImageId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoBizImage", "Admin", new { id = Model.BizImageId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.BizImageId),
+                            OnBegin = "onFreeItemBegin('" + Model.BizImageId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.BizImageId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.BizImageId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the BizImage ?"
+                        }))
+    {
+                                                   
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+    }
+</div>

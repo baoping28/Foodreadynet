@@ -1,0 +1,36 @@
+﻿@model IEnumerable<FR.Domain.Model.Entities.Vote>
+@{
+    ViewBag.Title = "My Reviews";
+}
+<div class="container-full  titlepadding">
+    <div class="container">
+        <div class="row">
+            <h2 style="color:white;">
+                @User.Identity.Name' Reviews
+            </h2>
+        </div>
+    </div>
+</div>
+<div class="container toppadding">
+    @if (Model.Count() > 0)
+    {
+        foreach (var rv in Model)
+        {
+            <div class="row shadowbox boxShadow">
+                <div class="col-sm-12 col-md-12">
+                    @Html.Partial("_MyReview", rv)
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="shadowbox boxShadow">
+            <center>
+                <h3>
+                    No reviews
+                </h3>
+            </center>
+        </div>
+    }
+</div>

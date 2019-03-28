@@ -1,0 +1,603 @@
+﻿@model FoodReady.WebUI.Models.AddItemModel
+@using FR.Infrastructure.Helpers
+<div id="CartContent">
+    <div id="locktitle" class="boxShadow midTitle" style="color: Red;">
+        <span style="font-size: 12px;">Shared cart is</span> locked <span style="font-size: 12px;">
+            by @Model.SharedCart.PartyBossName for checking out!</span> <span style="font-size: 12px;
+                font-weight: normal; color: Black;">This means that no one will be able to add or
+                change to his items till @Model.SharedCart.PartyBossName unlocks the cart.</span></div>
+    @if (Model.SharedCart.PartyTotalItems == 0 || Model.SharedCart.PartySubTotal() <= 0.0m)
+    {
+        <div>
+            Your shopping bag is currently empty.</div>
+    }
+    <table  class="table table-striped">
+        <thead>
+            <tr class="cartListBg">
+                <th align="center">
+                    Qty
+                </th>
+                <th align="center">
+                    Item
+                </th>
+                <th align="center">
+                    Price
+                </th>
+                <th align="center">
+                    Rmv
+                </th>
+                <th align="center">
+                    Subtotal
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <td colspan="4">
+                <span id="myname" class="midTitle">@Model.Cart.PersonName</span>
+                @if (Model.Cart.PersonName == Model.SharedCart.PartyBossName)
+                {
+                    <span class="smallTitle">(BOSS)</span>
+                }
+                else
+                {
+                    <span class="smallTitle">(Me)</span>
+                }
+            </td>
+            <td align="right">
+                @if (Model.SharedCart.PartyCart[Model.Cart.PersonName].IsFinishedShareOrdering)
+                {
+                    <span style="color: Red;">Done!</span>
+                }
+                else
+                {
+                    <span style="color: Green;">Ordering</span>
+                }
+            </td>
+        </tr>
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr id="tr-@line.ID">
+                <td align="left">
+                    @line.Quantity
+                </td>
+                <td align="left">
+                    <div class="itemTitle">
+                        @line.Title
+                        @if (string.IsNullOrEmpty(line.ProductSizeTitle) == false)
+                        {
+                            <span>(@line.ProductSizeTitle)</span>
+                        }
+                    </div>
+                </td>
+                <td align="right">
+                    <div class="itemPrice">
+                        @Helper.ToUSD(line.FinalPrice.ToString("N2"))
+                    </div>
+                </td>
+                <td align="center">
+                    &nbsp;
+                </td>
+                <td align="right">
+                    <div class="itemright">
+                        <b>
+                            <span id='proSubt-@line.ItemId'>
+                                @Helper.ToUSD(((line.ItemTotal).ToString("N2")))
+                            </span>
+                        </b>
+                    </div>
+                </td>
+            </tr>
+            if (string.IsNullOrEmpty(line.DressingChoice) == false)
+            {
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="itemnote">
+                            Selected dressing: @line.DressingChoice
+                        </div>
+                    </td>
+                </tr>
+            }
+            if (string.IsNullOrEmpty(line.SelectedFreeToppings) == false)
+            {
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="itemnote">
+                            Free toppings:<br />
+                            @line.SelectedFreeToppings
+                        </div>
+                    </td>
+                </tr>
+            }
+            if (line.IsReorderItem && string.IsNullOrEmpty(line.ReSelectedToppings) == false)
+            {
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="itemnote">
+                            Extra toppings for each item:<br />
+                            @Html.Raw(line.ToppingListNote)
+                        </div>
+                    </td>
+                </tr>
+            }
+            else if (line.ToppingList.Count > 0)
+            {
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="itemnote">
+                            Extra toppings for each item:<br />
+                            @Html.Raw(line.ToppingListNote)
+                        </div>
+                    </td>
+                </tr>
+            }
+            if (line.IsSpicy && string.IsNullOrEmpty(line.HowSpicy) == false)
+            {
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="itemnote">
+                            Spicy choice: @line.HowSpicy
+                        </div>
+                    </td>
+                </tr>
+            }
+            if (string.IsNullOrEmpty(line.SideChoice) == false)
+            {
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="itemnote">
+                            Side choice: @line.SideChoice
+                        </div>
+                    </td>
+                </tr>
+            }
+            if (string.IsNullOrEmpty(line.SauceChoice) == false)
+            {
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="itemnote">
+                            Sauce choice: @line.SauceChoice
+                        </div>
+                    </td>
+                </tr>
+            }
+            if (string.IsNullOrEmpty(line.CrustChoice) == false)
+            {
+                var cc = line.CrustChoicePrice == 0.0m ? string.Empty : "($" + line.CrustChoicePrice.ToString("N2") + " extra)";
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="itemnote">
+                            Crust choice: @line.CrustChoice @cc
+                        </div>
+                    </td>
+                </tr>
+            }
+            if (string.IsNullOrEmpty(line.CheeseChoice) == false)
+            {
+                var cc = line.CheeseChoicePrice == 0.0m ? string.Empty : "($" + line.CheeseChoicePrice.ToString("N2") + " extra)";
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="itemnote">
+                            Cheese Amount: @line.CheeseChoice @cc
+                        </div>
+                    </td>
+                </tr>
+            }
+            if ((line.IsReorderItem && string.IsNullOrEmpty(line.ReSelectedAddSides) == false) || line.AddSideList.Count > 0)
+            {
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="itemnote">
+                            For each item:<br />
+                            @Html.Raw(line.AddSideListNote)
+                        </div>
+                    </td>
+                </tr>
+            }
+            if (string.IsNullOrEmpty(line.Instruction) == false)
+            {
+                <tr>
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <div class="itemnote">
+                            Instructions: @line.Instruction
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+        <tr>
+            <td colspan="4" align="right" style="border-bottom: solid 2px Maroon; padding-bottom: 4px;">
+                <b>Subtotal:</b>
+            </td>
+            <td align="right" style="border-bottom: solid 2px Maroon; padding-bottom: 4px;">
+                <div class="itemright">
+                    <b><span id="subtotal">@Helper.ToUSD(Model.Cart.SubTotal().ToString("N2"))</span></b>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table table-striped">
+        <tr>
+            <td colspan="5">
+                <div id="divothers">
+                    <div id="otherstitle">
+                        @Ajax.ActionLink("Other People", "FreshCart", "Share", new { }, new AjaxOptions
+                   {
+                       UpdateTargetId = "CartContent",
+                       OnBegin = "onFreshBegin",
+                       OnSuccess = "onFreshSuccess",
+                       OnFailure = "onFreshFailed"
+                   }, new { @class = "midTitle" })
+                    </div>
+                    <div id="otherscart">
+                        <table class="carttable">
+                            @foreach (var c in Model.SharedCart.PartyCart.Keys)
+                            {
+                                if (c != Model.Cart.PersonName)
+                                {
+                                    <tr>
+                                        @if (Model.Cart.PersonName == Model.SharedCart.PartyBossName)
+                                        {
+                                            <td colspan="4">
+                                                <span class="midTitle">@c</span>
+                                                @if (c == Model.SharedCart.PartyBossName)
+                                                {
+                                                    <span class="smallTitle">(BOSS)</span>
+                                                }
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td colspan="4">
+                                                <span class="midTitle">@c</span>
+                                            </td>
+                                        }
+                                        <td>
+                                            @if (Model.SharedCart.PartyCart[c].IsFinishedShareOrdering)
+                                            {
+                                                <span style="color: Red;">Done!</span>
+                                            }
+                                            else
+                                            {
+                                                <span style="color: Green;">Ordering</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                    foreach (var line in Model.SharedCart.PartyCart[c].Lines)
+                                    {
+                                        <tr>
+                                            <td align="left">
+                                                <span>@line.Quantity.ToString()</span>
+                                            </td>
+                                            <td align="left">
+                                                <div class="itemTitle">
+                                                    @line.Title
+                                                    @if (string.IsNullOrEmpty(line.ProductSizeTitle) == false)
+                                                    {
+                                                        <span>(@line.ProductSizeTitle)</span>
+                                                    }
+                                                </div>
+                                            </td>
+                                            <td align="right">
+                                                <div class="itemPrice">
+                                                    @Helper.ToUSD(line.FinalPrice.ToString("N2"))
+                                                </div>
+                                            </td>
+                                            <td align="center">
+                                                &nbsp;
+                                            </td>
+                                            <td align="right">
+                                                <div class="itemright">
+                                                    <b>
+                                                        <span>
+                                                            @Helper.ToUSD(((line.ItemTotal).ToString("N2")))
+                                                        </span>
+                                                    </b>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        if (string.IsNullOrEmpty(line.DressingChoice) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="itemnote">
+                                                        Selected dressing: @line.DressingChoice
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (string.IsNullOrEmpty(line.SelectedFreeToppings) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="itemnote">
+                                                        Free toppings:<br />
+                                                        @line.SelectedFreeToppings
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (line.IsReorderItem && string.IsNullOrEmpty(line.ReSelectedToppings) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="itemnote">
+                                                        Extra toppings for each item:<br />
+                                                        @Html.Raw(line.ToppingListNote)
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        else if (line.ToppingList.Count > 0)
+                                        {
+                                            <tr>
+                                                <td colspan="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="itemnote">
+                                                        Extra toppings for each item:<br />
+                                                        @Html.Raw(line.ToppingListNote)
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (line.IsSpicy && string.IsNullOrEmpty(line.HowSpicy) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="itemnote">
+                                                        Spicy choice: @line.HowSpicy
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (string.IsNullOrEmpty(line.SideChoice) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="itemnote">
+                                                        Side choice: @line.SideChoice
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (string.IsNullOrEmpty(line.SauceChoice) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="itemnote">
+                                                        Sauce choice: @line.SauceChoice
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (string.IsNullOrEmpty(line.CrustChoice) == false)
+                                        {
+                                            var cc = line.CrustChoicePrice == 0.0m ? string.Empty : "($" + line.CrustChoicePrice.ToString("N2") + " extra)";
+                                            <tr>
+                                                <td colspan="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="itemnote">
+                                                        Crust choice: @line.CrustChoice @cc
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (string.IsNullOrEmpty(line.CheeseChoice) == false)
+                                        {
+                                            var cc = line.CheeseChoicePrice == 0.0m ? string.Empty : "($" + line.CheeseChoicePrice.ToString("N2") + " extra)";
+                                            <tr>
+                                                <td colspan="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="itemnote">
+                                                        Cheese Amount: @line.CheeseChoice @cc
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if ((line.IsReorderItem && string.IsNullOrEmpty(line.ReSelectedAddSides) == false) || line.AddSideList.Count > 0)
+                                        {
+                                            <tr>
+                                                <td colspan="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="itemnote">
+                                                        For each item:<br />
+                                                        @Html.Raw(line.AddSideListNote)
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                        if (string.IsNullOrEmpty(line.Instruction) == false)
+                                        {
+                                            <tr>
+                                                <td colspan="5"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5">
+                                                    <div class="itemnote">
+                                                        Instructions: @line.Instruction
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    <tr>
+                                        <td colspan="4" align="right" style="border-bottom: solid 2px Maroon; padding-bottom: 4px;">
+                                            <b>Subtotal:</b>
+                                        </td>
+                                        <td align="right" style="border-bottom: solid 2px Maroon; padding-bottom: 4px;">
+                                            <div class="itemright">
+                                                <b><span>@Helper.ToUSD(Model.SharedCart.PartyCart[c].SubTotal().ToString("N2"))</span></b>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </table>
+                    </div>
+                    <table class="table table-striped">
+                        <tr>
+                            <td colspan="4" align="right">
+                                <b>Global Subtotal:</b>
+                            </td>
+                            <td align="right">
+                                <div class="itemright">
+                                    <b><span id="globalsubtotal">@Helper.ToUSD(Model.SharedCart.PartySubTotal().ToString("N2"))</span></b>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" align="right">
+                                @if (string.IsNullOrEmpty(Model.SharedCart.PartyCouponChoice) == false)
+                                {
+                                    <span style="color: Green;">@Helper.CouponNote(Model.SharedCart.PartyDiscountPercentage, Model.SharedCart.PartyFreeItem, Model.SharedCart.PartySubTotal())&nbsp;</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" align="right">
+                                Tax (@Model.SharedCart.PartyTaxRate.ToString("N2")%):
+                            </td>
+                            <td align="right">
+                                <div class="itemright">
+                                    <span id="tax">@Helper.ToUSD(Model.SharedCart.PartyTax().ToString("N2"))</span>
+                                </div>
+                            </td>
+                        </tr>
+                        @{var charge = Model.SharedCart.IsPartyDelivery ? "Delivery Charge:" : "";
+                        var fee = Model.SharedCart.IsPartyDelivery ? Helper.DeliveryFee(Model.SharedCart.PartyDeliveryFee()) : "";}
+                        <tr>
+                            <td colspan="4" align="right">
+                                <span id="DelCharge">@charge</span>
+                            </td>
+                            <td align="right">
+                                <div class="itemright">
+                                    <span id="Fee">@fee</span>
+                                </div>
+                            </td>
+                        </tr>
+                        @if (Model.SharedCart.PartyServiceCharge > 0.0m)
+                        {
+                            <tr>
+                                <td colspan="4" align="right">
+                                    Service Charge:
+                                </td>
+                                <td align="right">
+                                    <div class="itemright">
+                                        <span id="Service">@Helper.DeliveryFee(Model.SharedCart.PartyServiceCharge)</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td colspan="4" align="right">
+                                <b>Tip:</b>
+                            </td>
+                            <td align="right">
+                                $@Model.SharedCart.PartyDriverTip().ToString("N2")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" align="right"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" align="right">
+                                <div class="totalright">
+                                    <span><b>Total:</b></span>
+                                </div>
+                            </td>
+                            <td align="right">
+                                <div class="totalright">
+                                    <b>
+                                        <span id="cartTotal" style="color: Red">
+
+                                            @if (Model.SharedCart.PartySubTotal() > 0.0m)
+                                            {
+                                                @Helper.ToUSD(Model.SharedCart.PartyTotal().ToString("N2"))
+                                            }
+                                            else
+                                            {
+                                                <text>$0.00</text>
+                                            }
+                                        </span>
+                                        @Html.Hidden("totalItems", Model.SharedCart.PartyTotal().ToString("N2"))
+                                    </b>
+                                </div>
+                        </tr>
+                    </table>
+
+                    @if (Model.Cart.PersonName == Model.SharedCart.PartyBossName)
+                    {
+                        <div align="right" class="actionButtons">
+                            @Ajax.ActionLink("Unlock the Cart", "UnlockCart", "Share",new {}, new AjaxOptions
+                       {
+                           UpdateTargetId = "CartContent",
+                           OnBegin = "onFreshBegin",
+                           OnSuccess = "onFreshSuccess",
+                           OnFailure = "onFreshFailed"
+                       }, new { @class = "btn btn-primary" })
+                        </div>
+                    }
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,89 @@
+﻿@model FoodReady.WebUI.Models.BizInfoModel
+@using System.Data.Entity;
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <h3>
+            <i class="fa fa-building-o" style="color:#1d63a7;"></i>
+            <b>Browse restaurants by city </b> <small> in California East Bay area</small>
+        </h3>
+    </div>
+</div>
+<div class="row toppadding">
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCities/City/Concord">
+            <img src="../../Content/images/concord.png" title="Concord, CA" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCities/City/Walnut-Creek">
+            <img src="../../Content/images/walnutcreek.png" title="Walnut Creek, CA" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCities/City/Pleasant-Hill">
+            <img src="../../Content/images/pleasanthill.png" title="Pleasant Hill, CA" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCities/City/Lafayette">
+            <img src="../../Content/images/lafayette.png" title="Lafayette, CA" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div style="clear: both;">
+    </div>
+    <br />
+</div>
+<div class="row">
+    @Html.Raw(Model.ShowMostPopularCities)
+    <div style="clear: both;">
+    </div>
+    <br />
+    <div class="col-xs-12 col-sm-12">
+        @Html.ActionLink("Browse All Cities in US & Canada", "Index", "AllCities", null, new { @class = "midLink" })
+    </div><br />
+        <hr />
+    </div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <h3>
+            <i class="fa fa-cutlery" style="color:#1d63a7;"></i>
+            <b>Browse restaurants by cuisine </b> <small> Most popular cuisines</small>
+        </h3>
+    </div>
+</div>
+<div class="row toppadding">
+    <div class="col-sm-3 col-md-3">
+        <a href="/AllCuisines/Cuisine/Chinese">
+            <img src="../../Content/images/ch.png" title="Chinese Food" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <a href="AllCuisines/Cuisine/Pizza">
+            <img src="../../Content/images/pz.png" title="Pizza" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <a href="AllCuisines/Cuisine/Italian">
+            <img src="../../Content/images/it.png" title="Italian Food" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div class="col-sm-3 col-md-3">
+        <a href="AllCuisines/Cuisine/Japanese">
+            <img src="../../Content/images/jp.png" title="Japanese Food" class="imgBox boxShadow boxCorner img-responsive" />
+        </a>
+    </div>
+    <div style="clear: both;">
+    </div>
+    <br />
+</div>
+<div class="row">
+    @Html.Raw(Model.ShowMostPopularCuisines)
+    <div style="clear: both;">
+    </div>
+    <br />
+    <div class="col-xs-12 col-sm-12">
+        @Html.ActionLink("Browse All Cuisines", "Index", "AllCuisines", null, new { @class = "midLink" })
+    </div>
+</div>

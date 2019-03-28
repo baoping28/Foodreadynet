@@ -1,0 +1,61 @@
+﻿@model FoodReady.WebUI.Models.GroupInfoModel
+
+@{
+    ViewBag.Title = "Group Ordering";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:#ffffff;">GROUP ORDERING <small style="color:#ffffff;"> The best way to order as a group</small></h1>
+        </div>
+
+        </div>
+    </div>
+
+@switch ((int)ViewBag.status)
+    {
+        case 1:
+         @Html.Partial("_GroupUnlockedPartial", Model)
+            break;
+        case 11:
+            @Html.Partial("_LockedWithBossPartial", Model)
+            break;
+        case 12:
+        @Html.Partial("_LockedWithGuestPartial", Model)
+            break;
+        default:
+        <div class="container">
+            <div class="row boxShadow"style="padding:20px 10px 20px 10px;margin-bottom:20px;">
+                <div class="col-sm-12 col-md-12">
+                    <h3>Our group ordering service provides the following capabilities:</h3>
+                    <ul>
+                        <li>
+                            Our group ordering service allows each individual person in a group to share
+                            the same shopping cart, so that food can be ordered together from multiple persons
+                            at different computers and only one (who starts a new group order) is specified to do
+                            checkout process.
+                        </li>
+                        <li>
+                            Each one in the group orders food in their way, and add their own items to the shared
+                            cart. The shared shopping cart's contents are showed together with their own cart,
+                            so that they can view every one's ordering process.
+                        </li>
+                        <li>
+                            Every one the group can communicate each other during combined ordering, so that
+                            the order process can be handled within group.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6" style="border-right:solid 1px #cccccc;padding-top:10px;">
+                    @Html.Partial("_GroupNewPartial", Model)
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    @Html.Partial("_GroupGuestPartial", new FoodReady.WebUI.Models.GroupGuestModel())
+                </div>
+            </div>
+        </div>
+            break;
+    }

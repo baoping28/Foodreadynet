@@ -1,0 +1,87 @@
+﻿@model FoodReady.WebUI.Models.SideChoiceModel
+@using FR.Infrastructure.Helpers
+
+@{
+    ViewBag.Title = "Manage Side Choice";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="checkoutTitle bigTitle boxShadow">
+    (@Model.Bizinfo.BizTitle) Manage Side Choice for @Model.Product.Title (@Model.LSideChoice.Count)
+</div>
+@ViewBag.result
+<div id="divAllUsers" class="boxShadow">
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>
+                Side Title
+            </th>
+            <th>
+                Active
+            </th>
+        </tr>
+        @foreach (var p in Model.LSideChoice)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(p.Title, "EditSideChoice", "admin", new { id = p.SideChoiceId, bizid = Model.BizInfoID }, null)<br />
+                </td>
+                <td>
+                    <div id="@Url.Content("item" + p.SideChoiceId)" class="deleteButtons">
+                        @using (Ajax.BeginForm("DoSideChoice", "Admin", new { id = p.SideChoiceId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + p.SideChoiceId),
+                            OnBegin = "onFreeItemBegin('" + p.SideChoiceId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + p.SideChoiceId + "')",
+                            OnFailure = "onFreeItemFailure('" + p.SideChoiceId + "')",
+                            Confirm = "Do you want to " + @Url.Content(p.Active ? "lock" : "unlock") + " the side choice: " + p.Title + " ?"
+                        }))
+                        {
+                                                   
+                            <input class="@Url.Content(p.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(p.Active ? "To lock item" : "To unlock item")" value="" />
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+<p>
+</p>
+
+<div class="checkoutTitle bigTitle boxShadow">
+    Copy SauceChoices to @Model.Product.Title<br />
+    @if (Model.SideChoiceProducts != null && Model.SideChoiceProducts.Count > 0)
+    {
+        using (Html.BeginForm("CopySideChoices", "Admin", new { idto = Model.ProductID, bizid = Model.BizInfoID }))
+        {
+        @Html.DropDownList("idfrom", Model.SideChoiceProducts)
+        <input type="submit" value="Copy SideChoices" />
+        }
+    }
+</div>
+<p>
+</p>
+    @using (Html.BeginForm())
+    {
+    @Html.HiddenFor(e => e.BizInfoID)
+    @Html.HiddenFor(e => e.ProductID)
+    <div class="checkoutTitle bigTitle boxShadow">
+        Add a side choice to "@Model.Product.Title"
+    </div>
+    @ViewBag.result
+    <div id="create" class="boxShadow">
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Title)
+                @Html.ValidationMessageFor(m => m.Title)<br />
+            </li>
+        </ol>
+    </div>
+
+    <p>
+        <input type="submit" value="Add" />   @Html.ActionLink("Back to Manage Products " + Model.Bizinfo.BizTitle, "ManageProducts", "admin", new {id=Model.Product.CategoryId, bizid = Model.BizInfoID }, null)</p>   
+    }

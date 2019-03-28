@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Transaction failed";
+}
+<div class="container">
+@if (string.IsNullOrEmpty(ViewBag.ValidateAddress) == false)
+{
+    <div style="padding: 20px; font-weight: bold;">
+        <p>
+            @ViewBag.ValidateAddress</p>
+        <p>
+            @Html.ActionLink("Back to Checkout", "Index", "Checkout", null, new { @class = "link16" })</p>
+    </div>
+}
+else
+{
+    <p>
+        Sorry, The transction and payment you have just made failed. No charge is made.
+        This could be many reasons including expired card, mismatch of credit card numbers,
+        CSC numbers, card holder name, billing address. Please <a href="/Checkout/Index">
+            try again </a>and make sure all required information are correct.
+    </p>
+    <p>
+        If you have any questions, please call at 510-512-6789. Thank you for your ordering
+        with www.foodready.net.
+    </p>
+    <p>
+        <a class="btn btn-primary" id="CheckoutBtn" href="/Home">
+            <span class="glyphicon glyphicon-home"></span>  &nbsp; &nbsp;  <b>Home</b>
+        </a>
+    </p>
+}
+</div>

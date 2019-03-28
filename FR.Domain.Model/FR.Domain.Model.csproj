@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F329DC4D-FFED-4248-BEBA-1E83C38D64F3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FR.Domain.Model</RootNamespace>
+    <AssemblyName>FR.Domain.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IBaseEntity.cs" />
+    <Compile Include="Entities\Address.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AddSide.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AspNetRole.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AspNetUser.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AspNetUserClaim.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AspNetUserLogin.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BizCuisine.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BizFoodType.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BizHour.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BizImage.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BizInfo.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BizRVInfo.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BrowseHistory.cs" />
+    <Compile Include="Entities\Category.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CheeseAmount.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ContactInfo.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ConvertedPoint.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CookMethod.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CreditCard.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CreditCardType.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CrustChoice.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CuisineType.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\C__MigrationHistory.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DayOfClose.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DiscountCoupon.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Dressing.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Driver.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\FamilyMeal.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\FavorRestaurant.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\FoodType.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\FreeItemCoupon.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\FRShoppingModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FRShoppingModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\FRShoppingModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\FRShoppingModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FRShoppingModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\GiftCard.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Hotel.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\HotelType.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MealSection.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Order.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OrderItem.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OrderStatus.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Product.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductDressing.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductSize.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ProductTopping.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Reservation.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\RewardVoucher.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SauceChoice.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ShoppingCart.cs" />
+    <Compile Include="Entities\SideChoice.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Topping.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserDetail.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Vote.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ZoneName.cs">
+      <DependentUpon>FRShoppingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="extention\Address.cs" />
+    <Compile Include="extention\AddSide.cs" />
+    <Compile Include="extention\AspNetRole.cs" />
+    <Compile Include="extention\AspNetUser.cs" />
+    <Compile Include="extention\AspNetUserClaim.cs" />
+    <Compile Include="extention\AspNetUserLogin.cs" />
+    <Compile Include="extention\BizCuisine.cs" />
+    <Compile Include="extention\BizFoodType.cs" />
+    <Compile Include="extention\BizHour.cs" />
+    <Compile Include="extention\BizImage.cs" />
+    <Compile Include="extention\BizInfo.cs" />
+    <Compile Include="extention\BizRVInfo.cs" />
+    <Compile Include="extention\Category.cs" />
+    <Compile Include="extention\CheeseAmount.cs" />
+    <Compile Include="extention\ContactInfo.cs" />
+    <Compile Include="extention\ConvertedPoint.cs" />
+    <Compile Include="extention\CookMethod.cs" />
+    <Compile Include="extention\CreditCard.cs" />
+    <Compile Include="extention\CreditCardType.cs" />
+    <Compile Include="extention\CrustChoice.cs" />
+    <Compile Include="extention\CuisineType.cs" />
+    <Compile Include="extention\DayOfClose.cs" />
+    <Compile Include="extention\DiscountCoupon.cs" />
+    <Compile Include="extention\Dressing.cs" />
+    <Compile Include="extention\Driver.cs" />
+    <Compile Include="extention\FamilyMeal.cs" />
+    <Compile Include="extention\FavorRestaurant.cs" />
+    <Compile Include="extention\FoodType.cs" />
+    <Compile Include="extention\FreeItemCoupon.cs" />
+    <Compile Include="extention\GiftCard.cs" />
+    <Compile Include="extention\Hotel.cs" />
+    <Compile Include="extention\HotelType.cs" />
+    <Compile Include="extention\MealSection.cs" />
+    <Compile Include="extention\Order.cs" />
+    <Compile Include="extention\OrderItem.cs" />
+    <Compile Include="extention\OrderStatus.cs" />
+    <Compile Include="extention\Product.cs" />
+    <Compile Include="extention\ProductDressing.cs" />
+    <Compile Include="extention\ProductSize.cs" />
+    <Compile Include="extention\ProductTopping.cs" />
+    <Compile Include="extention\Reservation.cs" />
+    <Compile Include="extention\RewardVoucher.cs" />
+    <Compile Include="extention\SauceChoice.cs" />
+    <Compile Include="extention\SideChoice.cs" />
+    <Compile Include="extention\Topping.cs" />
+    <Compile Include="extention\UserDetail.cs" />
+    <Compile Include="extention\Vote.cs" />
+    <Compile Include="extention\ZoneName.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Entities\FRShoppingModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FRShoppingModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="Entities\FRShoppingModel.edmx.diagram">
+      <DependentUpon>FRShoppingModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FR.Infrastructure\FR.Infrastructure.csproj">
+      <Project>{ebb56586-03d4-494d-97f4-98b2f0e18a19}</Project>
+      <Name>FR.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\FRShoppingModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FRShoppingModel.edmx</DependentUpon>
+      <LastGenOutput>FRShoppingModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\FRShoppingModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FRShoppingModel.edmx</DependentUpon>
+      <LastGenOutput>FRShoppingModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

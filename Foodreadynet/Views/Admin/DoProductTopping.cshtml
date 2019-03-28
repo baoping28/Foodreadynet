@@ -1,0 +1,16 @@
+﻿@model FR.Domain.Model.Entities.ProductTopping
+<div id="@Url.Content("item" + Model.ProductToppingId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoProductTopping", "Admin", new { id = Model.ProductToppingId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.ProductToppingId),
+                            OnBegin = "onFreeItemBegin('" + Model.ProductToppingId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.ProductToppingId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.ProductToppingId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the product Topping: " + Model.ToppingTitle + " ?"
+                        }))
+    {
+                                                   
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+    }
+</div>

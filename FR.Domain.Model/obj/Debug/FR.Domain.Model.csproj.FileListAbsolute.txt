@@ -1,0 +1,43 @@
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\bin\Debug\FR.Domain.Model.dll.config
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\bin\Debug\FR.Domain.Model.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\bin\Debug\FR.Domain.Model.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\bin\Debug\EntityFramework.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\bin\Debug\EntityFramework.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\obj\Debug\FR.Domain.Model.csprojResolveAssemblyReference.cache
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\obj\Debug\FR.Domain.Model.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\obj\Debug\FR.Domain.Model.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\bin\Debug\FR.Infrastructure.dll
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\bin\Debug\FR.Infrastructure.pdb
+C:\Users\charlotte\documents\visual studio 2013\Projects\Foodreadynet\FR.Domain.Model\bin\Debug\paypal_base.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\FR.Domain.Model.dll.config
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\FR.Domain.Model.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\FR.Domain.Model.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\EntityFramework.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\FR.Infrastructure.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\paypal_base.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\FR.Infrastructure.pdb
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\EntityFramework.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\obj\Debug\FR.Domain.Model.csprojResolveAssemblyReference.cache
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\obj\Debug\FR.Domain.Model.dll
+C:\Users\charlotte\Documents\Visual Studio 2013\Projects\Foodreadynet-slidecart\FR.Domain.Model\obj\Debug\FR.Domain.Model.pdb
+D:\Foodreadynet-slidecart\FR.Domain.Model\obj\Debug\FR.Domain.Model.csprojAssemblyReference.cache
+D:\Foodreadynet-slidecart\FR.Domain.Model\obj\Debug\FR.Domain.Model.csproj.CoreCompileInputs.cache
+D:\Foodreadynet-slidecart\FR.Domain.Model\obj\Debug\FR.Domain.Model.dll
+D:\Foodreadynet-slidecart\FR.Domain.Model\obj\Debug\FR.Domain.Model.pdb
+D:\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\FR.Domain.Model.dll.config
+D:\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\FR.Domain.Model.dll
+D:\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\FR.Domain.Model.pdb
+D:\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\EntityFramework.dll
+D:\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\FR.Infrastructure.dll
+D:\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\paypal_base.dll
+D:\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\System.Web.Mvc.dll
+D:\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\FR.Infrastructure.pdb
+D:\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\EntityFramework.xml
+D:\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Foodreadynet-slidecart\FR.Domain.Model\bin\Debug\System.Web.Mvc.xml
+D:\Foodreadynet-slidecart\FR.Domain.Model\obj\Debug\FR.Domain.Model.csproj.CopyComplete

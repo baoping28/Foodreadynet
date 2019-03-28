@@ -1,0 +1,29 @@
+﻿@model FoodReady.WebUI.Models.SideChoiceModel
+
+@{
+    ViewBag.Title = "Edit Side Choice";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="checkoutTitle bigTitle boxShadow">
+    (@Model.Bizinfo.BizTitle) Edit side choice <span style="font-size: 12px;">(product: @Model.Product.Title)</span>
+</div>
+@ViewBag.result
+<div class="boxShadow">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(e => e.ProductID)
+        @Html.HiddenFor(e => e.SideChoiceID)
+        @Html.HiddenFor(e => e.BizInfoID) 
+    
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Title)
+                @Html.TextBoxFor(m => m.Title)
+                @Html.ValidationMessageFor(m => m.Title)
+            </li>
+        </ol>
+        <p>
+            <input type="submit" value="Update" />
+            @Html.ActionLink("Back to Manage Side Choice " + Model.Product.Title, "ManageSideChoice", "admin", new { id = Model.ProductID, bizid = Model.BizInfoID }, null)</p>   
+    }
+</div>

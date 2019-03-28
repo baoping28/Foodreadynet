@@ -1,0 +1,17 @@
+﻿@model FR.Domain.Model.Entities.BizInfo
+<div id="@Url.Content("item" + Model.BizInfoId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoBizInfo", "Admin", new { id = Model.BizInfoId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.BizInfoId),
+                            OnBegin = "onFreeItemBegin('" + Model.BizInfoId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.BizInfoId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.BizInfoId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the restaurant: " + Model.BizTitle + " ?"
+                        }))
+    {
+
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+    }
+</div>
+

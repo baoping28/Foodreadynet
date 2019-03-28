@@ -1,0 +1,191 @@
+﻿@model FR.Domain.Model.Entities.Order
+<div class="container">
+    @{var num = 0;}
+    <div>
+        <center>
+            <h4>Order Items (Order ID: @Model.OrderId)</h4>
+        </center>
+    </div><hr />
+    <div class="row toppadding">
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <th>
+                    Item Number
+                </th>
+                <th>
+                    Item Name
+                </th>
+                <th>
+                    Unite Price
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Discount Percentage
+                </th>
+                <th>
+                    Selected Extra Toppings
+                </th>
+                <th>
+                    Selected Crust
+                </th>
+                <th>
+                    Cheese Amount
+                </th>
+                <th>
+                    Item Total
+                </th>
+            </tr>
+            @foreach (var oi in Model.OrderItems)
+            {
+                num++;
+                <tr>
+                    <td>
+                        @num
+                    </td>
+                    <td>
+                        @oi.Product.Title
+                    </td>
+                    <td>
+                        @oi.FinalSalePrice.ToString("N2")
+                    </td>
+                    <td>
+                        @oi.Quantity.ToString()
+                    </td>
+                    <td>
+                        @oi.DiscountPercentage.ToString()%
+                    </td>
+                    <td>
+                        @if (string.IsNullOrEmpty(oi.SelectedToppings))
+                        {
+                            <div>None</div>
+                        }
+                        else
+                        {
+                            <div>
+                                @oi.SelectedToppings<br /> $@oi.ExtraListTotal.ToString("N2")
+                            </div>
+                        }
+                    </td>
+                    <td>
+                        @if (string.IsNullOrEmpty(oi.CrustChoice))
+                        {
+                            <div>None</div>
+                        }
+                        else
+                        {
+                            <div>
+                                @oi.CrustChoice ($@oi.CrustChoicePrice.ToString("N2"))
+                            </div>
+                        }
+
+                    </td>
+                    <td>
+                        @if (string.IsNullOrEmpty(oi.CheeseAmount))
+                        {
+                            <div>None</div>
+                        }
+                        else
+                        {
+                            <div>
+                                @oi.CheeseAmount ($@oi.cheeseAmountPrice.ToString("N2"))
+                            </div>
+                        }
+                    <td>
+                        @oi.ItemTotal.ToString("N2")
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+    @{num = 0;}
+    <div class="row toppadding">
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <th>
+                    Item Number
+                </th>
+                <th>
+                    Item Size Name
+                </th>
+                <th>
+                    Item Size (inches)
+                </th>
+                <th>
+                    How Spicy
+                </th>
+                <th>
+                    Is Family Meal
+                </th>
+                <th>
+                    Side Choice
+                </th>
+                <th>
+                    Add Sides
+                </th>
+                <th>
+                    Others
+                </th>
+                <th>
+                    Instruction
+                </th>
+            </tr>
+            @{string fm = "";}
+            @foreach (var oi in Model.OrderItems)
+            {
+                num++;
+                fm = oi.IsFamilyMeal ? "yes" : "no";
+                <tr>
+                    <td>
+                        @num
+                    </td>
+                    <td>
+                        @oi.ProductSizeTitle
+                    </td>
+                    <td>
+                        @oi.ProductSize
+                    </td>
+                    <td>
+                        @oi.HowSpicy
+                    </td>
+                    <td>
+                        @fm
+                    </td>
+                    <td>
+                        @oi.SideChoice
+                    </td>
+                    <td>
+                        $@oi.AddSideListPrice.ToString("N2")<br />
+                        @oi.SelectedAddSides
+                    </td>
+                    <td>
+                        @if (string.IsNullOrEmpty(oi.DressingChoice) == false)
+                        {
+                            <div>
+                                Dressing:<br /> @oi.DressingChoice
+                            </div>
+                        }
+                        @if (string.IsNullOrEmpty(oi.SelectedFreeToppings) == false)
+                        {
+                            <div>
+                                Free Toppings:<br /> @oi.SelectedFreeToppings
+                            </div>
+                        }
+                        @if (string.IsNullOrEmpty(oi.SauceChoice) == false)
+                        {
+                            <div>
+                                Sauce: @oi.SauceChoice
+                            </div>
+                        }
+                    </td>
+                    <td>
+                        @oi.Instruction
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>

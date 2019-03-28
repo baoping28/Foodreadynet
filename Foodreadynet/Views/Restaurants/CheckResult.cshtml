@@ -1,0 +1,38 @@
+﻿@model FoodReady.WebUI.Models.DeliveryCheckModel
+<div id="popupbody">
+    <div class="modal-header">
+        <h5 id="poptitle" class="modal-title" style="color:black;text-align:center;">Let's see if <span class="midTitle">@Model.BizName</span> delivers to your location.</h5>
+    </div>
+    <div class="modal-body">
+        <div class="searchContent">
+            <p style="color:#21609c;text-align:center;">
+                @ViewBag.ValidateAddress
+            </p>
+            @using (Ajax.BeginForm("CheckResult", "Restaurants", FormMethod.Post, new AjaxOptions
+    {
+        UpdateTargetId = "popupbody",
+        OnBegin = "onRepopupBegin",
+        OnSuccess = "onRepopupSuccess",
+        OnFailure = "onRepopupFailed"
+    }, new { @id = "checkdelvery1-form" }))
+            {
+                @Html.Hidden("BizInfoId", @Model.BizInfoId)
+                @Html.Hidden("BizName", @Model.BizName)
+                <center>
+                    <div class="form-group">
+                        Address: @Html.TextBoxFor(m => m.Address, new { @class = "boxShadow", @value = @Model.Address })
+                        @Html.ValidationMessageFor(m => m.Address)
+                    </div>
+                    <div class="form-group">
+                        Zipcode: @Html.TextBoxFor(m => m.ZipCode, new { @class = "boxShadow", @value = @Model.ZipCode })
+                        @Html.ValidationMessageFor(m => m.ZipCode)
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" onclick="$('#checkdelvery1-form').submit();" class="btn btn-primary btn-sm" title="Check if the restaurant delivers to you">Check if the restaurant delivers to you &nbsp;&nbsp; <span class="glyphicon glyphicon-ok"></span></button>
+                    </div>
+                </center>
+            }
+        </div>
+    </div>
+</div>

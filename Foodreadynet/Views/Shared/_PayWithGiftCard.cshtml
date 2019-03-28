@@ -1,0 +1,28 @@
+﻿<div>
+    @using (Ajax.BeginForm("ValidateGiftCard", "Checkout", new AjaxOptions
+    {
+        UpdateTargetId = "giftcard",
+        OnBegin = "onGiftBegin",
+        OnSuccess = "onGiftSuccess",
+        OnFailure = "onGiftFailed"
+    }, new { @id = "gift-form" }))
+    {
+        <div>
+            Enter your gift card code:<br />
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-barcode"></span>
+                    </span>
+                @Html.TextBox("txtGC", "", new { @class = "form-control boxShadow" })
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="$('#gift-form').submit();" class="btn btn-lg btn-primary" title="Validate gift card">Validate gift card &nbsp;&nbsp; <span class="glyphicon glyphicon-ok"></span></button>
+             </div>
+            <div id="GCloading" class="loadCheck">
+                <img id="GCloader" class="loadCheck" src="@Url.Content("~/Content/Images/ajax-loaderPng4.gif")" />
+            </div>
+        </div>
+    }
+</div>

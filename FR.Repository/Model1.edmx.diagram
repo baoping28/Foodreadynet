@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ffae7058da6d4901983484a4d636b144" Name="Diagram1">
+        <EntityTypeShape EntityType="foodreadyModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.AspNetRole" Width="1.5" PointX="0.75" PointY="40.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="33.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.AspNetUser" Width="1.5" PointX="3" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_Address" Width="1.5" PointX="3" PointY="54.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_AddSides" Width="1.5" PointX="17.25" PointY="44.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_BizCuisines" Width="1.5" PointX="10.5" PointY="47.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_BizFoodTypes" Width="1.5" PointX="7.5" PointY="45" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_BizHours" Width="1.5" PointX="3" PointY="45.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_BizImages" Width="1.5" PointX="7.5" PointY="48.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_BizInfos" Width="1.5" PointX="5.25" PointY="44.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_BizRVInfos" Width="1.5" PointX="7.5" PointY="51.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_Categories" Width="1.5" PointX="12.75" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_CheeseAmounts" Width="1.5" PointX="17.25" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_ContactInfos" Width="1.5" PointX="3" PointY="59.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_ConvertedPoints" Width="1.5" PointX="8.25" PointY="35.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_CookMethods" Width="1.5" PointX="12.75" PointY="60.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_CreditCards" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_CreditCardTypes" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_CrustChoices" Width="1.5" PointX="17.25" PointY="52.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_CuisineTypes" Width="1.5" PointX="8.25" PointY="58.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_DayOfCloses" Width="1.5" PointX="10.5" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_DiscountCoupons" Width="1.5" PointX="7.5" PointY="61.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_Dressings" Width="1.5" PointX="18" PointY="65.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_Drivers" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_FamilyMeals" Width="1.5" PointX="17.25" PointY="56.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_FavorRestaurants" Width="1.5" PointX="12.5" PointY="52" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_FoodTypes" Width="1.5" PointX="5.25" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_FreeItemCoupons" Width="1.5" PointX="7.5" PointY="69.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_GiftCards" Width="1.5" PointX="5.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_Hotel" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_HotelTypes" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_MealSections" Width="1.5" PointX="12.75" PointY="63.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_OrderItems" Width="1.5" PointX="20.25" PointY="47.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_Orders" Width="1.5" PointX="13.5" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_OrderStatuses" Width="1.5" PointX="11.25" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_ProductDressings" Width="1.5" PointX="20.25" PointY="56.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_Products" Width="1.5" PointX="15" PointY="53.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_ProductSizes" Width="1.5" PointX="17.25" PointY="74" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_ProductToppings" Width="1.5" PointX="17.25" PointY="60.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_Reservations" Width="1.5" PointX="9.75" PointY="52.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_RewardVouchers" Width="1.5" PointX="6" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_SauceChoices" Width="1.5" PointX="17.25" PointY="82.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_SideChoices" Width="1.5" PointX="17.25" PointY="85.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_Toppings" Width="1.5" PointX="15" PointY="62.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_UserDetails" Width="1.5" PointX="5.25" PointY="55.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_Votes" Width="1.5" PointX="7.5" PointY="39.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="foodreadyModel.fr_ZoneNames" Width="1.5" PointX="0.75" PointY="48.125" IsExpanded="true" />
+        <AssociationConnector Association="foodreadyModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_BizInfos_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_ConvertedPoints_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_FavorRestaurants_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_GiftCards_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_UserDetails_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_Votes_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_Address_fr_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_BizInfos_fr_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_UserDetails_fr_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_AddSides_fr_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_BizCuisines_fr_BizInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_BizCuisines_fr_CuisineTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_Categories_fr_BizCuisines" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_BizFoodTypes_fr_BizInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_BizFoodTypes_fr_FoodTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_BizHours_fr_ZoneNames" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_BizInfos_fr_BizHours" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_BizImages_fr_BizInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_BizInfos_fr_ContactInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_BizRVInfos_fr_BizInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_DayOfCloses_fr_BizInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_DiscountCoupons_fr_BizInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_FavorRestaurants_fr_BizInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_FreeItemCoupons_fr_BizInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_Orders_fr_BizInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_Votes_fr_BizInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_Reservations_fr_BizRVInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_Products_fr_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_CheeseAmounts_fr_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_UserDetails_fr_ContactInfos" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_ConvertedPoints_fr_RewardVouchers" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_Products_fr_CookMethods" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_CreditCards_fr_CreditCardTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_GiftCards_fr_CreditCards" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_CrustChoices_fr_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_DayOfCloses_fr_ZoneNames" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_ProductDressings_fr_Dressings" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_FamilyMeals_fr_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_Products_fr_FoodTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_Hotel_fr_HotelTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_Products_fr_MealSections" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_OrderItems_fr_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_OrderItems_fr_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_Orders_fr_OrderStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_ProductDressings_fr_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_ProductSizes_fr_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_ProductToppings_fr_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_SauceChoices_fr_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_SideChoices_fr_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.FK_fr_ProductToppings_fr_Toppings" ManuallyRouted="false" />
+        <AssociationConnector Association="foodreadyModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

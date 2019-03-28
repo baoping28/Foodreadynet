@@ -1,0 +1,66 @@
+﻿@if (IsAjax)
+{
+    <script src="@Url.Content("~/Scripts/FRJqueryScripts/mainMenuJS.js")" type="text/javascript"></script>
+}
+<div id="inner">
+    <div id="container" class="container">
+        <div id="inner1">
+            <div class="row">
+                <div class="col-sm-3 col-md-3">
+                </div>
+                <div id="popupinner" class="col-sm-6 col-md-6 boxShadow boxCorner">
+                    <div id="bizname" class="midTitle float-left">
+                    </div>
+                    <div id="viewCartCancel">
+                        <input type="button" value="" id="slideClose" title="Close" />
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="col-sm-6 col-md-6" style="text-align:left;">
+                        <a id="bizlink" href="#" title="Cart Details / Edit Cart">
+                            <img id="bizimage" src="" class="bizImg img-responsive" />
+                        </a>
+                        <div style="clear: both;">
+                        </div>
+                        <div id="bizaddress" style="font-size:10px;"></div>
+                    </div>
+                    <div class="col-sm-6 col-md-6" style="text-align:left;">
+                        <div id="ordertype">
+                            Delivery
+                        </div>
+                        <div id="cartitems">
+                            0
+                        </div>
+                        <div id="ordermin"></div>
+                        <div id="cartsubtotal" style="font-weight:bold;">
+                            $0.00
+                        </div>
+                        <div>
+                            <a class="cartlinks" id="cartdetails" href="#">Cart Details/Edit Cart</a>
+                        </div>
+                        <div>
+                            <a class="cartlinks" id="btnCheckout" href="@Url.Action("Login", "Account", routeValues: new { returnUrl = "/Checkout/Index", backFromCheckout = true })">
+                                Go To Check Out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                </div>
+            </div>
+        </div>
+        <div id="inner2">
+            <div class="row">
+                <div class="col-sm-3 col-md-3">
+                </div>
+                <div id="popupinner1" class="col-sm-6 col-md-6 boxShadow boxCorner">
+                    <div id="viewCart1Cancel">
+                        <input type="button" value="" id="slide1Close" title="Close" />
+                    </div>
+                    <b>Your shopping bag is currently empty.</b>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

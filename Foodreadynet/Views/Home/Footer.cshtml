@@ -1,0 +1,103 @@
+﻿@model FoodReady.WebUI.Models.FooterModel
+<div class="container-full" style="padding:0px 40px 0px 40px; color:#5a5a5a;font-size:12px; font-weight:bold; font-family:Ebrima;">
+    @{var i = 1;}
+    <div class="row">
+        <div class="col-sm-5 col-md-5">
+            <p style ="color:#fff;font-size:12px; font-weight:bold; font-family:Ebrima;">
+                CITIES<br />
+                @foreach (var c in Model.PopularCities)
+                {
+                    if (i != 1)
+                    {
+                        <span> . </span> @Html.ActionLink(c, "city", "AllCities", new { id = c },null)
+                    }
+                    else
+                    {
+                        @Html.ActionLink(c, "city", "AllCities", new { id = c },null)
+                    }
+                    i++;
+                }
+                . @Html.ActionLink("All Cities", "Index", "AllCities")
+            </p>
+        </div>
+
+        <div class="col-sm-2 col-md-2">
+            <p style="color:#fff;font-size:12px; font-weight:bold; font-family:Ebrima;">
+                @{i = 1;}
+                CUISINES<br />
+                @foreach (var c in Model.PopularCuisines)
+                {
+                    if (i != 1)
+                    {
+                        <span> . </span> @Html.ActionLink(c, "Cuisine", "AllCuisines", new { id = c },null)
+                    }
+                    else
+                    {
+                        @Html.ActionLink(c, "Cuisine", "AllCuisines", new { id = c },null)
+                    }
+                    i++;
+
+                }
+                .  @Html.ActionLink("All Cuisines", "Index", "AllCuisines")
+
+            </p>
+        </div>
+        <div class="col-sm-5 col-md-5">
+            <p style="color:#fff;font-size:12px; font-weight:bold; font-family:Ebrima;">
+                SITE<br />
+                @Html.ActionLink("CONTACT US", "Contact", "Home", null, new {title = "Contact us" }) .
+                @Html.ActionLink("ABOUT US", "About", "Home", null, new {title = "About us" }) .
+                @Html.ActionLink("REGISTER", "Register", "Account", null, new {title = "Register" }) .
+                @Html.ActionLink("RESTAURANT PARTNERS", "Index", "Partners", null, new {title = "Restaurant owners" }) .
+                @Html.ActionLink("DRIVER", "Index", "Driver", null, new {title = "Driver" }) .
+                @Html.ActionLink("REFER A RESTAURANT", "ReferRestaurant", "Restaurants", null, new {title = "Refer a restaurant" }) .
+                @Ajax.ActionLink("HOTEL", "HotelType", "Home", null, new AjaxOptions
+                {
+                    UpdateTargetId = "popupbody1",
+                    OnBegin = "onPopup1Begin",
+                    OnSuccess = "onPopup1Success",
+                    OnFailure = "onPopup1Failed"
+                }, null) .
+                @Ajax.ActionLink("RESTAURANT OFFERS", "Discount", "Restaurants", null, new AjaxOptions
+                {
+                    UpdateTargetId = "popupbody1",
+                    OnBegin = "onPopup1Begin",
+                    OnSuccess = "onPopup1Success",
+                    OnFailure = "onPopup1Failed"
+                }, new {id="r-offer" }) .
+                @Html.ActionLink("GIFT CARD", "GiftCard", "Home", null, new {title = "Gift card" }) .
+                @Html.ActionLink("GROUP ORDREING", "Index", "Group", null, new { title = "Group Ordering" }) .
+                @Html.ActionLink("REWARDS", "Index", "Rewards", null, new {title = "Rewards to you" }) .
+                @Html.ActionLink("RESERVATION", "Index", "Reservation", null, new {title = "Make reservation" }) .
+                @Html.ActionLink("My ZONE", "Manage", "Account", routeValues: null, htmlAttributes: new {title = "Manage My Account" }) .
+                @Html.ActionLink("HELP", "Help", routeValues: null, htmlAttributes: new {title = "Help" }) .
+                <a id="helpChat" href="#" title="Live Chat">CHAT SUPPORT</a> .
+                @Html.ActionLink("TERMS OF USE", "TermsOfUse", "Home")
+                • @Html.ActionLink("PRIVACY POLICY", "PrivacyPolicy", "Home")
+                •  @Html.ActionLink("SITEMAP", "Index", "AllCities")
+            </p>
+        </div>
+    </div><br />
+    <hr /><br />
+    <div class="row" style="padding-left:10px;font-weight:normal;font-size:11px;color:#fff;">
+        <a title="Follow us via Facebook"
+           target="_blank" href="http://www.facebook.com/pages/Walnut-Creek-CA/The-Law-Office-of-Roni-Rotholz/170672829625696#!/pages/Walnut-Creek-CA/The-Law-Office-of-Roni-Rotholz/170672829625696?v=wall">
+            <img id="Img4" style="width:30px;height:30px;" class="noborder" src="@Url.Content("~/Images/facebook.png")" alt="Follow us via Facebook" />
+        </a>&nbsp;&nbsp;<a title="Follow us via twitte"
+                           target="_blank" href="#">
+            <img id="Img5" style="width:30px;height:30px;" class="noborder" server" src="@Url.Content("~/Images/twitte.png")" alt="Follow us via twitte" />
+        </a>
+        &nbsp;&nbsp; ©
+        @if (int.Parse(DateTime.Now.Year.ToString()) > 2018)
+        {
+            <text> 2018 -- </text> @DateTime.Now.Year.ToString();
+        }
+        else
+        {
+            <text>2018</text>
+        }
+        all rights reserved by foodready.net
+    </div>
+
+</div>
+

@@ -1,0 +1,45 @@
+﻿<script src="@Url.Content("~/Scripts/FRJqueryScripts/ppChanel.js")" type="text/javascript"></script>
+<div class="container toppadding">
+    <h3>Thank you for your ordering with foodready.net !</h3>
+    @TempData["OrderSummaryTitle"] ( Order Total: $@ViewBag.total )
+    <hr />
+    <div class="row">
+        @if ((bool)ViewBag.isDelivery)
+        {
+            <div>
+                <p>
+                    You have just placed a delivery order with www.foodready.net. Normally,
+                    you will receive your order within 50 minites at address:<br />
+                    <br /><b>
+                        @Html.Raw(TempData["DeliveryAddress"])
+                    </b>
+                </p>
+                <p>
+                    If you have any questions, please call at @ViewBag.servicephone .We will be happy to response you as soon as possible.
+                    Thank you for your ordering!
+                </p>
+                <br />
+            </div>
+        }
+        else
+        {
+            <div>
+                <p>
+                    You have just placed a pickup order with www.foodready.net. Please arrive
+                    in 30 minutes.
+                </p>
+                <p>
+                    The restaurant address is at <b>@Html.Raw(TempData["BizAddress"])</b>. You can click the
+                    <a class="LkProduct" onclick="@Url.Content("getDirections('" + ViewBag.maplink + "');return false;")" href="">
+                        GET DRIVING DIRECTIONS
+                    </a> to locate us. If you have any questions, please call at @ViewBag.servicephone. Thank
+                    you for your ordering!
+                </p>
+            </div>
+        }
+    </div>
+</div>
+<input id="p-username" type="hidden" value="@ViewBag.username" />
+<input id="p-biztitle" type="hidden" value="@ViewBag.biztitle" />
+<input id="p-orderid" type="hidden" value="@ViewBag.orderid" />
+<input id="p-orderlist" type="hidden" value="@ViewBag.orderlist" />

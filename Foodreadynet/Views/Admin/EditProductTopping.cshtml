@@ -1,0 +1,38 @@
+﻿@model FoodReady.WebUI.Models.ProductToppingModel
+
+@{
+    ViewBag.Title = "Edit Product Topping";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center><h3>(@Model.Bizinfo.BizTitle) Edit Product Topping @Model.ToppingTitle</h3></center>
+</div>
+@ViewBag.result
+
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(e => e.BizInfoID)
+        @Html.HiddenFor(e => e.ProductID)
+        @Html.HiddenFor(e => e.ProductToppingID)
+        @Html.HiddenFor(e => e.ToppingID)
+        @Html.HiddenFor(e => e.ToppingTitle)
+    <div class="form-group">
+        @Html.LabelFor(m => m.ExtraPrice)
+        @Html.TextBoxFor(x => x.ExtraPrice, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.ExtraPrice)
+    </div><br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Increment)
+        @Html.TextBoxFor(x => x.Increment, new { @class = "form-control boxShadow" })
+        @Html.ValidationMessageFor(m => m.Increment)
+    </div><br />
+
+    <div class="form-group pull-right">
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+    </div><br />
+    <div class="form-group">
+        <p>@Html.ActionLink("Back to Manage Product Topping ", "ManageProductTopping", "admin", new { id = Model.ProductID, bizid = Model.BizInfoID }, null)</p>
+    </div><br />
+    }
+</div>

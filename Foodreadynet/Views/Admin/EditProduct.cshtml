@@ -1,0 +1,107 @@
+﻿@model FoodReady.WebUI.Models.ProductModel
+@using FR.Infrastructure.Helpers
+
+@{
+    ViewBag.Title = "Edit Product";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center><h3>(@Model.Bizinfo.BizTitle) Edit Product <span style="font-size:12px;">(Category: @Model.Product.CategoryName)</span></h3></center>
+</div>
+@ViewBag.result
+
+<div class="container boxShadow boxpadding">
+    @using (Html.BeginForm("EditProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(e => e.ProductId)
+        @Html.HiddenFor(e => e.CategoryID)
+        @Html.HiddenFor(e => e.BizCuisineID)
+        @Html.HiddenFor(e => e.BizInfoID)
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Title)
+                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.Title)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CookMethodID)
+                    @Html.DropDownListFor(e => e.CookMethodID, Model.CookMethods(Model.LCookMethods), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.CookMethodID)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FoodTypeID)
+                    @Html.DropDownListFor(e => e.FoodTypeID, Model.FoodTypes(Model.LFoodTypes), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.FoodTypeID)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MealSectionID)
+                    @Html.DropDownListFor(e => e.MealSectionID, Model.MealSections(Model.LMealSections), new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.MealSectionID)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Description)
+                    @Html.ValidationMessageFor(m => m.Description)
+                    @Html.TextAreaFor(m => m.Description, 5, 50, new { @class = "form-control boxShadow" })
+                    <div class="remaining">
+                        Characters remaining: <span class="count">512</span>
+                        <input id="btnClear" type="button" value="Reset Text" style="margin-left: 40px;" />
+                    </div>
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.BizPrice)
+                    @Html.TextBoxFor(m => m.BizPrice, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.BizPrice)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UnitPrice)
+                    @Html.TextBoxFor(m => m.UnitPrice, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.UnitPrice)
+                </div><br />
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DiscountPercentage)
+                    @Html.TextBoxFor(m => m.DiscountPercentage, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.DiscountPercentage)
+                </div><br />
+                <div class="form-group">
+                    <img src="@Url.Content(Model.Product.SmallImagePath)" /><br />
+                    <b>Upload new image(wide 70 , height 90):</b><br />
+                    <input type="file" name="uploadimage" id="uploadimage" style="background-color: Khaki;" />
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MaxNumOfFreeTopping)
+                    @Html.TextBoxFor(m => m.MaxNumOfFreeTopping, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.MaxNumOfFreeTopping)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IsSpicy)
+                    @Html.DropDownListFor(e => e.IsSpicy, Helper.YesNoDropdown(Model.IsSpicy), "Is spicy?", new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.IsSpicy)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IsVegetarian)
+                    @Html.DropDownListFor(e => e.IsVegetarian, Helper.YesNoDropdown(Model.IsVegetarian), "Is vegetarian?", new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.IsVegetarian)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IsMostPopular)
+                    @Html.DropDownListFor(e => e.IsMostPopular, Helper.YesNoDropdown(Model.IsMostPopular), "Is most popular?", new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.IsMostPopular)
+                </div><br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IsFamilyDinner)
+                    @Html.DropDownListFor(e => e.IsFamilyDinner, Helper.YesNoDropdown(Model.IsFamilyDinner), "Is family dinner?", new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.IsFamilyDinner)
+                </div><br /><br />
+                <div class="form-group pull-right">
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Update</button>
+                </div><br />
+                <div class="form-group">
+                        <p>@Html.ActionLink("Back to Manage Products " + Model.Product.CategoryName, "ManageProducts", "admin", new { id = Model.CategoryID, bizid = Model.BizInfoID }, null)</p>
+                </div><br />
+            </div>
+        </div><br />
+    }
+</div>

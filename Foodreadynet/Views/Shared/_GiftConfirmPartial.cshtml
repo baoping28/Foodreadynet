@@ -1,0 +1,148 @@
+﻿@model FoodReady.WebUI.Models.CheckoutGiftModel
+@using FR.Infrastructure.Helpers
+@{var str = Model.GCCart.IsDelivery ? "Delivery" : "Pickup";
+var charge = Model.GCCart.IsDelivery ? "Delivery Charge:" : "";
+var fee = Model.GCCart.IsDelivery ? Helper.DeliveryFee(Model.GCCart.DeliveryFee) : "";
+var d = Model.GCCart.Total() - Model.GCBalance;}
+<div class="row">
+    <div class="col-sm-6 col-md-6" style="border-right:solid 1px lightblue;">
+        <table class="table table-striped">
+            <tr>
+                <td> Order Type:</td>
+                <td>@str</td>
+            </tr>
+            <tr>
+                @if (Model.GCCart.IsDelivery)
+                {
+                    <td>
+                        Delivery to:
+                    </td>
+                    <td>
+                        @Model.GCFirstName @Model.GCLastName<br />
+                        @if (string.IsNullOrEmpty(Model.GCRoomNumber)==false) {
+                        <text>#@Model.GCRoomNumber</text>  <br />
+                        }
+                        @Model.GCAddressLine<br />
+                        @Model.GCCity, @Model.GCState @Model.GCZipCode
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Pickup by:
+                    </td>
+                    <td>
+                        @Model.GCFirstName  @Model.GCLastName
+                    </td>
+                }
+            </tr>
+            <tr>
+                <td>
+                    Billing to:
+                </td>
+                <td>@Model.GCBillFirstName @Model.GCBillLastName</td>
+            </tr>
+            <tr>
+                <td>Card Type:</td>
+                <td>@Helper.GetCardNameByTypeValue(Model.GCCardType)</td>
+            </tr>
+            <tr>
+                <td>Card Number:</td>
+                <td>@Model.GCCardNumber</td>
+            </tr>
+            <tr>
+                <td>Security Code:</td>
+                <td>@Model.GCSecurityCode</td>
+            </tr>
+            <tr>
+                <td>Expire:</td>
+                <td>@Model.GCExpirationMonth / @Model.GCExpirationYear</td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>@Model.GCPhone</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>@Model.GCEmail</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-sm-6 col-md-6">
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    Scheduled Time:
+                </td>
+                <td>
+                    @Model.GCScheduleTime,  @Helper.GetScheduleDate(Model.GCScheduleDate)
+                </td>
+            </tr>
+            <tr>
+                <td>Subtotal:</td>
+                <td>$@Model.GCCart.SubTotal().ToString("N2")</td>
+            </tr>
+            <tr>
+                @if (string.IsNullOrEmpty(Model.GCCart.CouponChoice) == false)
+                {
+                    <td> Offer:</td>
+                    <td><span style="color: Green;">@Helper.CouponNote(Model.GCCart.DiscountPercentage, Model.GCCart.FreeItem, Model.GCCart.SubTotal())&nbsp;</span></td>
+                }
+                else
+                {
+                    <td> Offer:</td>
+                    <td>Not available</td>
+                }
+            </tr>
+            <tr>
+                <td>Tax (@Model.GCCart.TaxRate.ToString("N2")%):</td>
+                <td><span id="tax">@Helper.ToUSD(Model.GCCart.Tax().ToString("N2"))</span></td>
+            </tr>
+            <tr>
+                <td>@charge</td>
+                <td>@fee</td>
+            </tr>
+            <tr>
+                @if (Model.GCCart.serviceCharge > 0.0m)
+                {
+                    <td>Service Charge:</td>
+                    <td><span id="Service">@Helper.DeliveryFee(Model.GCCart.serviceCharge)</span></td>
+                }
+                else
+                {
+                    <td>Service Charge:</td>
+                    <td>$0.00</td>
+                }
+            </tr>
+            <tr>
+                @if (Model.GCCart.DriverTip > 0.0m)
+                {
+                    <td>Tip:</td>
+                    <td>$@Model.GCCart.DriverTip.ToString("N2")</td>
+                }
+                else
+                {
+                    <td>Tip:</td>
+                    <td>$0.00</td>
+                }
+            </tr>
+            <tr>
+                <td>Instructions:</td>
+                <td>@Model.GCInstructions</td>
+            </tr>
+            <tr>
+                <td><b>Order Total:</b></td>
+                <td><span id="cartTotal" style="color: Red;font-weight:bold;">@Helper.ToUSD(Model.GCCart.Total().ToString("N2"))</span></td>
+            </tr>
+            <tr>
+                <td><b>Pay with Gift Card:</b></td>
+                <td><span id="giftTotal" style="color: Red;font-weight:bold;">$@Model.GCBalance.ToString("N2") </span></td>
+            </tr>
+            <tr>
+                <td><b>Pay with Credit Card:</b></td>
+                <td><span id="CreditTotal" style="color: Red;font-weight:bold;">$@d.ToString("N2") </span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<hr />

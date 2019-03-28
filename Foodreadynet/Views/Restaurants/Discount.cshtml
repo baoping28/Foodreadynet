@@ -1,0 +1,31 @@
+﻿@model FoodReady.WebUI.Models.DeliveryCheckModel
+<div id="popupbody1">
+    <div class="modal-header">
+        <h4 id="poptitle" class="modal-title" style="color:black;text-align:center;">Tell us your location, we find restaurants with discount offers.</h4>
+    </div>
+    <div class="modal-body">
+        @using (Ajax.BeginForm("DiscountResult", "Restaurants", FormMethod.Post, new AjaxOptions
+    {
+        UpdateTargetId = "popupbody1",
+        OnBegin = "onPopup1Begin",
+        OnSuccess = "onPopup1Success",
+        OnFailure = "onPopup1Failed"
+    }, new { @id = "winpopup1-form" }))
+        {
+            <center>
+                <div class="form-group">
+                    Address: @Html.TextBoxFor(m => m.Address, new { @class = "boxShadow", @value = @Model.Address })
+                    @Html.ValidationMessageFor(m => m.Address)
+                </div>
+                <div class="form-group">
+                    Zipcode: @Html.TextBoxFor(m => m.ZipCode, new { @class = "boxShadow", @value = @Model.ZipCode })
+                    @Html.ValidationMessageFor(m => m.ZipCode)
+                </div>
+
+                <div class="form-group">
+                    <button type="button" onclick="$('#winpopup1-form').submit();" class="btn btn-primary btn-sm" title="Get restaurants with discount offers">Get restaurants with discount offers &nbsp;&nbsp; <span class="glyphicon glyphicon-ok"></span></button>
+                  </div>
+            </center>
+        }
+    </div>
+</div>

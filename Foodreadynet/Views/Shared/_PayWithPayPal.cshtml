@@ -1,0 +1,54 @@
+﻿@model FoodReady.WebUI.Models.CheckoutPayPalModel
+@using FR.Infrastructure.Helpers
+@using FoodReady.WebUI.HtmlHelpers
+<div id="paypaypal">
+    @using (Html.BeginForm("PayWithPayPal", "Checkout",FormMethod.Post, new { @id = "paypal-form" }))
+    {
+        <div>
+            <p>
+                When you click "Checkout with PayPal", you'll be temporarily redirected to the PayPal site
+                to log in and confirm your payment. You'll then be returned to www.foodready.net to complete
+                your order. You can also cancel the payment at PayPal site, then back to www.foodready.net
+            </p>
+            @Html.Partial("_PPShippingInfo", Model)
+            @Html.Partial("_PPContactInfo", Model)
+            <div id="PPorderSchedule" style="display: none;">
+            </div>
+            <div class="form-group">
+                <b>Order scheduled for</b>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </span>
+                    @Html.DropDownListFor(e => e.PPScheduleDate, Model.PPScheduleAssistances, new { @class = "form-control boxShadow" })
+                </div>
+            </div>
+            <div class="form-group">
+                <b>At time</b>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                    @Html.DropDownListFor(e => e.PPScheduleTime, Model.PPTimeAssistances, new { @class = "form-control boxShadow" })
+                </div>
+            </div>
+            <div style="clear: both;">
+            </div>
+            <div class="form-group">
+                <b>Special Instructions</b> (Example: less salt, etc. Additional charges may apply.)
+                <div class="float-left">
+                    @Html.TextAreaFor(m => m.PPInstructions, 2, 40, new { @class = "form-control boxShadow" })
+                    <div class="remaining">
+                        Characters remaining: <span class="count">512</span>
+                        <input id="btnClear" type="button" value="Clean Text" />
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;">
+            </div><br />
+            <div class="form-group">
+                <button type="button" onclick="$('#paypal-form').submit();" class="btn btn-lg btn-primary" title="Checkout with PayPal">Checkout with PayPal &nbsp;&nbsp;<i class="fa fa-paypal"></i></button>
+             </div>
+        </div>
+    }
+</div>

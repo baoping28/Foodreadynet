@@ -1,0 +1,143 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<style type="text/css">
+    .navbar-custom {
+        border-bottom: 0;
+        letter-spacing: 1px;opacity:0.8;
+        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+</style>
+
+<script type="text/javascript">
+        $(function () {
+            $('#myCarousel').carousel({ interval: 10000 });
+        });
+</script>
+<div style="position:relative;top:-40px;">
+    <div id="myCarousel" class="carousel slide carousel-slide" data-interval="10000"> <!-- class="carousel slide carousel-fade" -->
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+
+            <div class="item active">
+                <img src="~/Images/fr2.png" style="width:100%;height:730px;" alt="First slide" class="img-responsive">
+                <div class="container">
+                    <div class="carousel-caption text-center">
+                        <div style="padding-bottom:200px;">
+                            <h1 style="font-size:50px;font-weight:bold;">WE DELIVER, YOU ENJOY!</h1>
+                            <br /><br />
+                        </div>
+                        <a href="#start" class="btn btn-circle btn-default page-scroll" style="margin-bottom:20px">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="~/Images/fr3.png" style="width:100%;height:730px;" alt="Second slide" class="img-responsive">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <div style="padding-bottom:200px">
+                            <h1>Rewards</h1>
+                            <p>Another way to express our thanks</p>
+                            <p><a class="btn btn-sm btn-primary" href="~/rewards" role="button"><span class="glyphicon glyphicon-gift"></span>&nbsp;&nbsp; Read more</a></p>
+                        </div>
+                        <a href="#start" class="btn btn-circle btn-default page-scroll" style="margin-bottom:20px">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="~/Images/fr4.png" style="width:100%;height:730px;" alt="Third slide" class="img-responsive">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <div style="padding-bottom:200px">
+                            <h1>FoodReady .net virtual gift card</h1>
+                            <p>A suppressing gift for your family and friends</p>
+                            <p><a class="btn btn-sm btn-primary" href="~/home/giftcard" role="button"><span class="glyphicon glyphicon-barcode"></span>&nbsp;&nbsp; More details</a></p>
+                        </div>
+                        <a href="#start" class="btn btn-circle btn-default page-scroll" style="margin-bottom:20px">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="~/Images/fr5.png" style="width:100%;height:730px;" alt="Third slide" class="img-responsive">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <div style="padding-bottom:200px">
+                            <h1>Online group ordering</h1>
+                            <p>The best way to order as a group </p>
+                            <p><a id="grouplink" class="btn btn-sm btn-primary" href="~/Group" role="button"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;&nbsp; Learn more</a></p>
+                        </div>
+                        <a href="#start" class="btn btn-circle btn-default page-scroll" style="margin-bottom:20px">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+    <!--
+    <div class="container toppadding">
+        <center>
+            <h2 style="color:#1E7CB8;"><b>Web site is coming soon!</b></h2>
+        </center>
+    </div><hr />
+    -->
+    <div id="start" class="container" style="padding-top:60px;">
+        <div class="text-center boxShadow boxCorner boxpadding" style="background-color:#1E7CB8;color:white;">@Html.Partial("_GoogleSearchPartial")</div>
+        <hr />
+        @{Html.RenderAction("MainContent", "Home");}
+    </div>
+    </div>
+
+
+
+<div class="container-full bottomblock">
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            <div class="boxShadow1 homefooter">
+                <h3><i class="fa fa-gift fa-2x" aria-hidden="true"></i> Get Rewards</h3>
+                <p>Earn points every time you place an order online! Points never expire!</p>
+                <p><br /><a class="btn btn-sm btn-primary" href="~/Rewards" role="button"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;&nbsp; Learn more</a></p>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-3">
+            <div class="boxShadow1 homefooter">
+                <h3><i class="fa fa-money fa-2x" aria-hidden="true"></i> Get Discounts</h3>
+                <p>Get exclusive discount and free item offers from your local restaurants .</p>
+                <p><br /><a id="r-discount" class="btn btn-sm btn-primary" href=" " role="button"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;&nbsp; Get deals</a></p>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-3">
+            <div class="boxShadow1 homefooter">
+                <h3><i class="fa fa-users fa-2x" aria-hidden="true"></i> Join Our Network</h3>
+                <p>Foodready.net can help restaurant to increase food sales and market online. </p>
+                <p><br /><a class="btn btn-sm btn-primary" href="~/Partners" role="button"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;&nbsp; Learn more</a></p>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-3">
+            <div class="boxShadow1 homefooter">
+                <h3><i class="fa fa-2x fa-headphones" aria-hidden="true"></i> Get Help</h3>
+                <p>Questions? Live Chat with one of our representatives, all time support.</p>
+                <p><br /><a id="btn-chat" class="btn btn-sm btn-primary" href=" " role="button"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;&nbsp; Chat support</a></p>
+            </div>
+        </div>
+    </div>
+</div>

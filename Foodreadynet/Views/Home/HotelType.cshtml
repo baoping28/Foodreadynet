@@ -1,0 +1,27 @@
+﻿@model FoodReady.WebUI.Models.HotelModel
+
+<div id="popupbody1">
+    <div class="modal-header">
+        <h4 id="poptitle" class="modal-title" style="color:black;text-align:center;"><b>Select a hotel</b><small style="font-size:16px;"> tell us your hotel, we'll find restaurants near you.</small></h4>
+    </div>
+    <div class="modal-body">
+        <div class="row"style="padding-left:10px;">
+            @foreach (var h in Model.LHotelType)
+            {
+                <div class="col-sm-3 col-md-3">
+
+                    @using (Ajax.BeginForm("Hotel", "Home", new { id = h.HotelTypeId, name = h.Name }, new AjaxOptions
+                {
+                    UpdateTargetId = "popupbody1",
+                    OnBegin = "onPopup1Begin",
+                    OnSuccess = "onPopup1Success",
+                    OnFailure = "onPopup1Failed"
+                }))
+                    {
+                        <input type="image" src="@Url.Content(h.ImagePath)" title="Select a hotel" class="hotelImg img-circle img-responsive" style="clear:both;" /><b>@h.Name</b><br /><br />
+                    }
+                </div>
+            }
+        </div>
+        </div>
+</div>

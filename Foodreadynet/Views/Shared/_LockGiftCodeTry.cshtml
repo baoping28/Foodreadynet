@@ -1,0 +1,20 @@
+﻿<script src="@Url.Content("~/Scripts/FRJqueryScripts/slidingUpDown.js")" type="text/javascript"></script>
+<p>
+    You already tried 5 times. Please come back in 10 minites for gift card payment.</p>
+<div class="giftHelp">
+    <img class="sign" src="../../Content/Images/minusSign.png" />
+    <b>What happened ?</b>
+</div>
+<div class="slideitemList">
+    <p>Because you already tried 5 times with fail, for the security reason, we delay your next try for 10 minites.
+       </p>
+</div>
+<div class="giftHelp">
+    <img class="sign" src="../../Content/Images/minusSign.png" />
+    <b>What should I do?</b>
+</div>
+<div class="slideitemList">
+    <p>If you can not recall your gift card code, go to @Html.ActionLink("My ZONE", "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "reviewlink", title = "Manage My Account" }) , then "My Gift Card" to check your gift card code or 
+    contact us with live chat or call at: @ViewBag.servicephone.
+       </p>
+</div>

@@ -1,0 +1,16 @@
+﻿@model FR.Domain.Model.Entities.GiftCard
+<div id="@Url.Content("item" + Model.GiftCardId)" class="deleteButtons">
+    @using (Ajax.BeginForm("DoGiftCard", "Admin", new { id = Model.GiftCardId },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = @Url.Content("item" + Model.GiftCardId),
+                            OnBegin = "onFreeItemBegin('" + Model.GiftCardId + "')",
+                            OnSuccess = "onFreeItemSuccess('" + Model.GiftCardId + "')",
+                            OnFailure = "onFreeItemFailure('" + Model.GiftCardId + "')",
+                            Confirm = "Do you want to " + @Url.Content(Model.Active ? "lock" : "unlock") + " the gift card: ID=" + Model.GiftCardId + " ?"
+                        }))
+    {
+                                                   
+        <input class="@Url.Content(Model.Active ? "deactiveButtons" : "activeButtons")" type="submit" title="@Url.Content(Model.Active ? "To lock item" : "To unlock item")" value="" />
+    }
+</div>

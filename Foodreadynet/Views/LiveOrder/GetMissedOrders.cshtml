@@ -1,0 +1,106 @@
+﻿@model IEnumerable<FR.Domain.Model.Entities.Order>
+<div id="missedorder">
+    @if (Model.Count() > 0)
+    {
+        <ul>
+            @foreach (var o in Model)
+            {
+                <li class="liveorder">
+                    <span style="cursor:pointer;color:maroon;" onclick="doslideupdown(this);">
+                        <b> @o.BizName </b> &nbsp; &nbsp;
+                    </span>
+                    <button class="btn btn-primary" onclick="doremove(this, @o.OrderId,1);">Done and Remove</button>
+                    <div class="itemList">
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3">
+                                @{var str = 800000000 + o.OrderId;}
+                                Order Number: <b>@str</b>
+                            </div>
+                            <div class="col-sm-3 col-md-3">
+                                Order Time: <b>@o.AddedDate.ToShortTimeString()  @o.AddedDate.ToShortDateString()</b>
+                            </div>
+                            <div class="col-sm-3 col-md-3">
+                                Order Type: <b>@o.OrderType</b>
+                            </div>
+                            <div class="col-sm-3 col-md-3">
+                                Scheduled Time: <b>@o.ScheduleTime @o.ScheduleDate</b>
+                            </div>
+                        </div><hr />
+                        @foreach (var item in o.OrderItems)
+                        {
+                            <div class='row'>
+                                <div class='col-sm-2 col-md-2'>
+                                    <b>@item.Quantity.ToString()</b>
+                                </div>
+                                <div class='col-sm-10 col-md-10'>
+                                    <b>@item.Title</b>
+                                    @if (string.IsNullOrEmpty(item.ProductSizeTitle) == false)
+                                    {
+                                        <span>( @item.ProductSizeTitle )</span>
+                                    }
+                                    @if (string.IsNullOrEmpty(item.DressingChoice) == false)
+                                    {
+                                        <p>Dressing: @item.DressingChoice</p>
+                                    }
+                                    @if (string.IsNullOrEmpty(item.SelectedFreeToppings) == false)
+                                    {
+                                        <p>Free toppings: @item.SelectedFreeToppings</p>
+                                    }
+                                    @if (string.IsNullOrEmpty(item.SelectedToppings) == false)
+                                    {
+                                        <p>Extra toppings for each:: @item.SelectedToppings</p>
+                                    }
+                                    @if (string.IsNullOrEmpty(item.HowSpicy) == false)
+                                    {
+                                        <p>Spicy: @item.HowSpicy</p>
+                                    }
+                                    @if (string.IsNullOrEmpty(item.SideChoice) == false)
+                                    {
+                                        <p>Side choice: @item.SideChoice</p>
+                                    }
+                                    @if (string.IsNullOrEmpty(item.SauceChoice) == false)
+                                    {
+                                        <p>Sauce choice: @item.SauceChoice</p>
+                                    }
+                                    @if (string.IsNullOrEmpty(item.CrustChoice) == false)
+                                    {
+                                        <p>Crust choice: @item.CrustChoice</p>
+                                    }
+                                    @if (string.IsNullOrEmpty(item.CheeseAmount) == false)
+                                    {
+                                        <p>Cheese Amount: @item.CheeseAmount</p>
+                                    }
+                                    @if (string.IsNullOrEmpty(item.SelectedAddSides) == false)
+                                    {
+                                        <p>Add: @item.SelectedAddSides</p>
+                                    }
+                                    @if (string.IsNullOrEmpty(item.Instruction) == false)
+                                    {
+                                        <p>Instructions: @item.Instruction</p>
+                                    }
+                                </div>
+                            </div><hr />
+                        }
+                        @if (string.IsNullOrEmpty(o.CouponChoice) == false)
+                        {
+                            <div class='row'>
+                                <div class='col-sm-12 col-md-12'>
+                                    @o.CouponChoice
+                                </div>
+                            </div><hr />
+                        }
+                        @if (string.IsNullOrEmpty(o.CustomerMessage) == false)
+                        {
+                            <div class='row'>
+                                <div class='col-sm-12 col-md-12'>
+                                    @o.CustomerMessage
+                                </div>
+                            </div><hr />
+                        }
+                    </div>
+                </li>
+            }
+        </ul>
+    <input id="getcount" type="hidden" value="@Model.Count().ToString()" />
+    }
+</div>

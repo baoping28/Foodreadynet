@@ -1,0 +1,97 @@
+﻿@model FoodReady.WebUI.Models.MenuViewModel
+@using FR.Services.FilterServces
+@using FR.Infrastructure.Helpers
+@using FoodReady.WebUI.HtmlHelpers
+<div class="menuturnon boxShadow">
+    <div class="row" style="padding-right:20px;">
+        <div class="fb-like" data-send="false" data-layout="button_count" data-width="450"
+             data-show-faces="false" style="float: right;">
+        </div>
+        <div style="float: right; position: relative; left: 20px;">
+            <div class="g-plusone" data-size="medium">
+            </div>
+        </div>
+        <div style="clear: both;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-md-4">
+            @if (Model.BizInfo.RatingVotes > 0)
+            {
+                <div>
+                    @Html.Ratings(Model.BizInfo)
+                </div>
+            }
+            <img src="@Url.Content("~/Content/BizImages/" + Model.BizInfo.ImageUrl)" class="bizImg boxShadow boxCorner" />
+            <div style="clear: both;">
+            </div>
+            <p> @Html.Raw(Model.BizInfo.BizTwoLineAddressString) </p>
+            <p>
+                @Helper.FormatPhoneNumber(Model.BizInfo.ContactInfo.Phone)
+            </p>
+            @if (Model.BizInfo.Delivery == false)
+            {
+                <span class="pickup">Pickup Only</span>
+            }
+            <p>
+                <a class="Link12" onclick="@Url.Content("getDirections('" + Model.Maplink + "');return false;")" href="">Get directions</a>
+            </p>
+            <p>@Html.ActionLink("Add to my favorites", "AddRestaurant", "Restaurants", new { bizid = Model.BizInfo.BizInfoId, returnUrl = ViewBag.rurl }, new { title = "Add to my favorite restaurants", @class = "Link12" })</p>
+
+        </div>
+        <div class="col-sm-8 col-md-8">
+            <div>
+                <span class="@Url.Content(Model.BizInfo.IsOpenNow ? "ontitle" : "offtitle")">@Model.BizInfo.BizTitle</span>
+            </div>
+            <div class="midSmall14">
+                <b>@Model.BizInfo.FoodCost</b> @Html.Partial("_YelpRating", YelpBizDetails.GetYelpBiz(Model.BizInfo))
+            </div>
+            <div>
+                <div class="populink">
+                    @if (Model.BizInfo.IsOpenNow)
+                    {
+                        <span class="opensign">Opening Now</span>
+                    }
+                    else
+                    {
+                        <span class="closesign">Closed Now</span>
+                    }
+                    (<span style="text-decoration:underline; color:#1E7CB8;font-size:12px;">Online Hours</span>)
+                </div>
+                <div class="popupdiv">@Html.Partial("_BizHourPartial", Model.BizInfo)</div><br />
+                @Html.Partial("_BizInfoPartial", new FoodReady.WebUI.Models.BizDescriptionModel() { BizInfo = Model.BizInfo, History = Model.History })
+
+                <p>
+                    @using (Ajax.BeginForm("MakeReservation", "Reservation", FormMethod.Post, new AjaxOptions
+                                {
+                                    UpdateTargetId = "popupbody1",
+                                    OnBegin = "onPopup1Begin",
+                                    OnSuccess = "onPopup1Success",
+                                    OnFailure = "onPopup1Failed"
+                                }, new { @id = "reservation-form" }))
+                    {
+                        @Html.Hidden("id", Model.BizInfo.BizInfoId)
+                        <button type="button" onclick="$('#reservation-form').submit();" class="btn btn-primary btn-sm" title="Make a reservation">
+                            <span class="glyphicon glyphicon-glass"></span> &nbsp;Make a reservation &nbsp;
+                        </button>
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;">
+    </div>
+    <div class="row">
+
+        <div class="col-sm-4 col-md-4">
+            <p>
+                <a href="@Url.Content(Model.ReturnUrl)" class="btn btn-primary btn-sm">
+                    <span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp; Go back
+                </a>
+            </p>
+        </div>
+        <div class="col-sm-8 col-md-8">
+            <a href="~/Group" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-asterisk"></span> Start group ordering</a>
+        </div>
+    </div>
+</div>

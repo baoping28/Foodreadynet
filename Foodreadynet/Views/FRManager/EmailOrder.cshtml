@@ -1,0 +1,6 @@
+﻿@model FoodReady.WebUI.Models.OrderDriversModel
+@ViewBag.msg <br />
+<b> @Model.Order.BizName</b><br />
+@Model.Order.BizInfo.BizAddressString <br />
+Driver: @Model.Driver.FirstName  @Model.Driver.LastName<br />
+Email time: @DateTime.Now.ToString()

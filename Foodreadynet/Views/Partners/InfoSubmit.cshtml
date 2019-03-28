@@ -1,0 +1,32 @@
+﻿@model FoodReady.WebUI.Models.RestaurantJoinModel
+<div>
+     <b>@TempData["SentIMEALMsg"]</b><br />
+     @if ((bool)ViewBag.SendingSuccess)
+     {
+    <p>
+        Thank you for your interesting in join us. you will receive a fax number and email
+        address where you can send us a copy of your restaurant menu and We will get back to
+        you as soon as possible!
+    </p>
+    <p>
+         By joining the foodready.net restaurant network,
+        you'll give millions of people the ability to order delivery or pickup from your
+        restaurant online.
+        </p>
+    <p>
+        We help restaurants reach more hungry people than ever before while generating more
+        orders, larger orders and increasingly loyal customers.
+    </p>
+    <p>
+        Our system allows your customers to place their orders ONLINE, issue the orders
+        directly to your restaurant and confirms the orders. All you need to do is deliver
+        and provide good food and great customer service!
+    </p>
+     }
+     else
+     {
+         <p>
+         @Html.ActionLink("Please try again","Index","Partners")
+         </p>
+     }
+</div>

@@ -1,0 +1,913 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FRShoppingModelStoreContainer" CdmEntityContainer="FRShoppingEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="FRShoppingModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="FRShoppingModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="FRShoppingModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="FRShoppingModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="FRShoppingModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="FRShoppingModel.Address">
+        <MappingFragment StoreEntitySet="fr_Address">
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="CrossStreet" ColumnName="CrossStreet" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddSides">
+      <EntityTypeMapping TypeName="FRShoppingModel.AddSide">
+        <MappingFragment StoreEntitySet="fr_AddSides">
+          <ScalarProperty Name="AddSideId" ColumnName="AddSideId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="BizPrice" ColumnName="BizPrice" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BizCuisines">
+      <EntityTypeMapping TypeName="FRShoppingModel.BizCuisine">
+        <MappingFragment StoreEntitySet="fr_BizCuisines">
+          <ScalarProperty Name="BizCuisineId" ColumnName="BizCuisineId" />
+          <ScalarProperty Name="BizInfoId" ColumnName="BizInfoId" />
+          <ScalarProperty Name="CuisineTypeId" ColumnName="CuisineTypeId" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BizFoodTypes">
+      <EntityTypeMapping TypeName="FRShoppingModel.BizFoodType">
+        <MappingFragment StoreEntitySet="fr_BizFoodTypes">
+          <ScalarProperty Name="BizFoodTypeId" ColumnName="BizFoodTypeId" />
+          <ScalarProperty Name="BizInfoId" ColumnName="BizInfoId" />
+          <ScalarProperty Name="FoodTypeId" ColumnName="FoodTypeId" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BizHours">
+      <EntityTypeMapping TypeName="FRShoppingModel.BizHour">
+        <MappingFragment StoreEntitySet="fr_BizHours">
+          <ScalarProperty Name="BizHourId" ColumnName="BizHourId" />
+          <ScalarProperty Name="LMonStart" ColumnName="LMonStart" />
+          <ScalarProperty Name="LMonClose" ColumnName="LMonClose" />
+          <ScalarProperty Name="LTueStart" ColumnName="LTueStart" />
+          <ScalarProperty Name="LTueClose" ColumnName="LTueClose" />
+          <ScalarProperty Name="LWedStart" ColumnName="LWedStart" />
+          <ScalarProperty Name="LWedClose" ColumnName="LWedClose" />
+          <ScalarProperty Name="LThuStart" ColumnName="LThuStart" />
+          <ScalarProperty Name="LThuClose" ColumnName="LThuClose" />
+          <ScalarProperty Name="LFriStart" ColumnName="LFriStart" />
+          <ScalarProperty Name="LFriClose" ColumnName="LFriClose" />
+          <ScalarProperty Name="LSatStart" ColumnName="LSatStart" />
+          <ScalarProperty Name="LSatClose" ColumnName="LSatClose" />
+          <ScalarProperty Name="LSunStart" ColumnName="LSunStart" />
+          <ScalarProperty Name="LSunClose" ColumnName="LSunClose" />
+          <ScalarProperty Name="MonStart" ColumnName="MonStart" />
+          <ScalarProperty Name="MonClose" ColumnName="MonClose" />
+          <ScalarProperty Name="TueStart" ColumnName="TueStart" />
+          <ScalarProperty Name="TueClose" ColumnName="TueClose" />
+          <ScalarProperty Name="WedStart" ColumnName="WedStart" />
+          <ScalarProperty Name="WedClose" ColumnName="WedClose" />
+          <ScalarProperty Name="ThuStart" ColumnName="ThuStart" />
+          <ScalarProperty Name="ThuClose" ColumnName="ThuClose" />
+          <ScalarProperty Name="FriStart" ColumnName="FriStart" />
+          <ScalarProperty Name="FriClose" ColumnName="FriClose" />
+          <ScalarProperty Name="SatStart" ColumnName="SatStart" />
+          <ScalarProperty Name="SatClose" ColumnName="SatClose" />
+          <ScalarProperty Name="SunStart" ColumnName="SunStart" />
+          <ScalarProperty Name="SunColse" ColumnName="SunColse" />
+          <ScalarProperty Name="ZoneNameId" ColumnName="ZoneNameId" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BizImages">
+      <EntityTypeMapping TypeName="FRShoppingModel.BizImage">
+        <MappingFragment StoreEntitySet="fr_BizImages">
+          <ScalarProperty Name="BizImageId" ColumnName="BizImageId" />
+          <ScalarProperty Name="BizInfoId" ColumnName="BizInfoId" />
+          <ScalarProperty Name="SmallImageName" ColumnName="SmallImageName" />
+          <ScalarProperty Name="BigImageName" ColumnName="BigImageName" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BizInfos">
+      <EntityTypeMapping TypeName="FRShoppingModel.BizInfo">
+        <MappingFragment StoreEntitySet="fr_BizInfos">
+          <ScalarProperty Name="BizInfoId" ColumnName="BizInfoId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BizTitle" ColumnName="BizTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="YelpBizId" ColumnName="YelpBizId" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
+          <ScalarProperty Name="BizHourId" ColumnName="BizHourId" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="FoodCost" ColumnName="FoodCost" />
+          <ScalarProperty Name="HasDiscountCoupons" ColumnName="HasDiscountCoupons" />
+          <ScalarProperty Name="HasFreeItemCoupons" ColumnName="HasFreeItemCoupons" />
+          <ScalarProperty Name="HasBreakfast" ColumnName="HasBreakfast" />
+          <ScalarProperty Name="HasLunchSpecial" ColumnName="HasLunchSpecial" />
+          <ScalarProperty Name="CanOrderForNextday" ColumnName="CanOrderForNextday" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+          <ScalarProperty Name="DeliveryRadius" ColumnName="DeliveryRadius" />
+          <ScalarProperty Name="DeliveryFee" ColumnName="DeliveryFee" />
+          <ScalarProperty Name="DeliveryMinimum" ColumnName="DeliveryMinimum" />
+          <ScalarProperty Name="TaxPercentageRate" ColumnName="TaxPercentageRate" />
+          <ScalarProperty Name="RatingVotes" ColumnName="RatingVotes" />
+          <ScalarProperty Name="TotalRating" ColumnName="TotalRating" />
+          <ScalarProperty Name="FiveStarVotes" ColumnName="FiveStarVotes" />
+          <ScalarProperty Name="FourStarVotes" ColumnName="FourStarVotes" />
+          <ScalarProperty Name="ThreeStarVotes" ColumnName="ThreeStarVotes" />
+          <ScalarProperty Name="TwoStarVotes" ColumnName="TwoStarVotes" />
+          <ScalarProperty Name="OneStarVotes" ColumnName="OneStarVotes" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BizRVInfos">
+      <EntityTypeMapping TypeName="FRShoppingModel.BizRVInfo">
+        <MappingFragment StoreEntitySet="fr_BizRVInfos">
+          <ScalarProperty Name="BizRVInfoId" ColumnName="BizRVInfoId" />
+          <ScalarProperty Name="BizInfoId" ColumnName="BizInfoId" />
+          <ScalarProperty Name="BizPrice" ColumnName="BizPrice" />
+          <ScalarProperty Name="StandingCapacity" ColumnName="StandingCapacity" />
+          <ScalarProperty Name="SeatedCapacity" ColumnName="SeatedCapacity" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="DiningStyle" ColumnName="DiningStyle" />
+          <ScalarProperty Name="PaymentOptions" ColumnName="PaymentOptions" />
+          <ScalarProperty Name="AcceptWalkIn" ColumnName="AcceptWalkIn" />
+          <ScalarProperty Name="ExecutiveChef" ColumnName="ExecutiveChef" />
+          <ScalarProperty Name="PrivatePartyFacilities" ColumnName="PrivatePartyFacilities" />
+          <ScalarProperty Name="SpecialEvents" ColumnName="SpecialEvents" />
+          <ScalarProperty Name="Parking" ColumnName="Parking" />
+          <ScalarProperty Name="AdditionalDetails" ColumnName="AdditionalDetails" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="FRShoppingModel.Category">
+        <MappingFragment StoreEntitySet="fr_Categories">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="BizCuisineId" ColumnName="BizCuisineId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CheeseAmounts">
+      <EntityTypeMapping TypeName="FRShoppingModel.CheeseAmount">
+        <MappingFragment StoreEntitySet="fr_CheeseAmounts">
+          <ScalarProperty Name="CheeseAmountId" ColumnName="CheeseAmountId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="BizPrice" ColumnName="BizPrice" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactInfos">
+      <EntityTypeMapping TypeName="FRShoppingModel.ContactInfo">
+        <MappingFragment StoreEntitySet="fr_ContactInfos">
+          <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConvertedPoints">
+      <EntityTypeMapping TypeName="FRShoppingModel.ConvertedPoint">
+        <MappingFragment StoreEntitySet="fr_ConvertedPoints">
+          <ScalarProperty Name="ConvertedPointId" ColumnName="ConvertedPointId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RewardVoucherId" ColumnName="RewardVoucherId" />
+          <ScalarProperty Name="ConvertedPoints" ColumnName="ConvertedPoints" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CookMethods">
+      <EntityTypeMapping TypeName="FRShoppingModel.CookMethod">
+        <MappingFragment StoreEntitySet="fr_CookMethods">
+          <ScalarProperty Name="CookMethodId" ColumnName="CookMethodId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreditCards">
+      <EntityTypeMapping TypeName="FRShoppingModel.CreditCard">
+        <MappingFragment StoreEntitySet="fr_CreditCards">
+          <ScalarProperty Name="CreditCardId" ColumnName="CreditCardId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreditCardTypeId" ColumnName="CreditCardTypeId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+          <ScalarProperty Name="ExpirationMonth" ColumnName="ExpirationMonth" />
+          <ScalarProperty Name="ExpirationYear" ColumnName="ExpirationYear" />
+          <ScalarProperty Name="SecurityCode" ColumnName="SecurityCode" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreditCardTypes">
+      <EntityTypeMapping TypeName="FRShoppingModel.CreditCardType">
+        <MappingFragment StoreEntitySet="fr_CreditCardTypes">
+          <ScalarProperty Name="CreditCardTypeId" ColumnName="CreditCardTypeId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CrustChoices">
+      <EntityTypeMapping TypeName="FRShoppingModel.CrustChoice">
+        <MappingFragment StoreEntitySet="fr_CrustChoices">
+          <ScalarProperty Name="CrustChoiceId" ColumnName="CrustChoiceId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="BizPrice" ColumnName="BizPrice" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CuisineTypes">
+      <EntityTypeMapping TypeName="FRShoppingModel.CuisineType">
+        <MappingFragment StoreEntitySet="fr_CuisineTypes">
+          <ScalarProperty Name="CuisineTypeId" ColumnName="CuisineTypeId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DayOfCloses">
+      <EntityTypeMapping TypeName="FRShoppingModel.DayOfClose">
+        <MappingFragment StoreEntitySet="fr_DayOfCloses">
+          <ScalarProperty Name="DayOfCloseId" ColumnName="DayOfCloseId" />
+          <ScalarProperty Name="BizInfoId" ColumnName="BizInfoId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CloseDay" ColumnName="CloseDay" />
+          <ScalarProperty Name="ZoneNameId" ColumnName="ZoneNameId" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiscountCoupons">
+      <EntityTypeMapping TypeName="FRShoppingModel.DiscountCoupon">
+        <MappingFragment StoreEntitySet="fr_DiscountCoupons">
+          <ScalarProperty Name="DiscountCouponId" ColumnName="DiscountCouponId" />
+          <ScalarProperty Name="BizInfoId" ColumnName="BizInfoId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+          <ScalarProperty Name="OrderMinimum" ColumnName="OrderMinimum" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dressings">
+      <EntityTypeMapping TypeName="FRShoppingModel.Dressing">
+        <MappingFragment StoreEntitySet="fr_Dressings">
+          <ScalarProperty Name="DressingId" ColumnName="DressingId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="FRShoppingModel.Driver">
+        <MappingFragment StoreEntitySet="fr_Drivers">
+          <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="SigninName" ColumnName="SigninName" />
+          <ScalarProperty Name="SigninPassword" ColumnName="SigninPassword" />
+          <ScalarProperty Name="Stayin" ColumnName="Stayin" />
+          <ScalarProperty Name="WorkArea" ColumnName="WorkArea" />
+          <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FamilyMeals">
+      <EntityTypeMapping TypeName="FRShoppingModel.FamilyMeal">
+        <MappingFragment StoreEntitySet="fr_FamilyMeals">
+          <ScalarProperty Name="FamilyMealId" ColumnName="FamilyMealId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="NumberOfPeople" ColumnName="NumberOfPeople" />
+          <ScalarProperty Name="MealToAdd" ColumnName="MealToAdd" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FavorRestaurants">
+      <EntityTypeMapping TypeName="FRShoppingModel.FavorRestaurant">
+        <MappingFragment StoreEntitySet="fr_FavorRestaurants">
+          <ScalarProperty Name="FavorRestaurantId" ColumnName="FavorRestaurantId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BizInfoId" ColumnName="BizInfoId" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FoodTypes">
+      <EntityTypeMapping TypeName="FRShoppingModel.FoodType">
+        <MappingFragment StoreEntitySet="fr_FoodTypes">
+          <ScalarProperty Name="FoodTypeId" ColumnName="FoodTypeId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FreeItemCoupons">
+      <EntityTypeMapping TypeName="FRShoppingModel.FreeItemCoupon">
+        <MappingFragment StoreEntitySet="fr_FreeItemCoupons">
+          <ScalarProperty Name="FreeItemId" ColumnName="FreeItemId" />
+          <ScalarProperty Name="BizInfoId" ColumnName="BizInfoId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="OrderMinimum" ColumnName="OrderMinimum" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GiftCards">
+      <EntityTypeMapping TypeName="FRShoppingModel.GiftCard">
+        <MappingFragment StoreEntitySet="fr_GiftCards">
+          <ScalarProperty Name="GiftCardId" ColumnName="GiftCardId" />
+          <ScalarProperty Name="GiftCardCode" ColumnName="GiftCardCode" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreditCardId" ColumnName="CreditCardId" />
+          <ScalarProperty Name="LastPayBizInfoId" ColumnName="LastPayBizInfoId" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="RecipientEmail" ColumnName="RecipientEmail" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="LastTimeUse" ColumnName="LastTimeUse" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="LastPayAmount" ColumnName="LastPayAmount" />
+          <ScalarProperty Name="LastOrderTotal" ColumnName="LastOrderTotal" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hotels">
+      <EntityTypeMapping TypeName="FRShoppingModel.Hotel">
+        <MappingFragment StoreEntitySet="fr_Hotel">
+          <ScalarProperty Name="HotelId" ColumnName="HotelId" />
+          <ScalarProperty Name="HotelTypeId" ColumnName="HotelTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotelTypes">
+      <EntityTypeMapping TypeName="FRShoppingModel.HotelType">
+        <MappingFragment StoreEntitySet="fr_HotelTypes">
+          <ScalarProperty Name="HotelTypeId" ColumnName="HotelTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MealSections">
+      <EntityTypeMapping TypeName="FRShoppingModel.MealSection">
+        <MappingFragment StoreEntitySet="fr_MealSections">
+          <ScalarProperty Name="MealSectionId" ColumnName="MealSectionId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderItems">
+      <EntityTypeMapping TypeName="FRShoppingModel.OrderItem">
+        <MappingFragment StoreEntitySet="fr_OrderItems">
+          <ScalarProperty Name="OrderItemId" ColumnName="OrderItemId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="IsFamilyMeal" ColumnName="IsFamilyMeal" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="FinalSalePrice" ColumnName="FinalSalePrice" />
+          <ScalarProperty Name="BizUnitPrice" ColumnName="BizUnitPrice" />
+          <ScalarProperty Name="BizFinalPrice" ColumnName="BizFinalPrice" />
+          <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ExtraListTotal" ColumnName="ExtraListTotal" />
+          <ScalarProperty Name="ProductSizeTitle" ColumnName="ProductSizeTitle" />
+          <ScalarProperty Name="ProductSize" ColumnName="ProductSize" />
+          <ScalarProperty Name="ProductSizePrice" ColumnName="ProductSizePrice" />
+          <ScalarProperty Name="BizSizePrice" ColumnName="BizSizePrice" />
+          <ScalarProperty Name="HowSpicy" ColumnName="HowSpicy" />
+          <ScalarProperty Name="SideChoice" ColumnName="SideChoice" />
+          <ScalarProperty Name="SauceChoice" ColumnName="SauceChoice" />
+          <ScalarProperty Name="SelectedFreeToppings" ColumnName="SelectedFreeToppings" />
+          <ScalarProperty Name="DressingChoice" ColumnName="DressingChoice" />
+          <ScalarProperty Name="SelectedToppings" ColumnName="SelectedToppings" />
+          <ScalarProperty Name="SelectedAddSides" ColumnName="SelectedAddSides" />
+          <ScalarProperty Name="AddSideListPrice" ColumnName="AddSideListPrice" />
+          <ScalarProperty Name="BizAddSideListPrice" ColumnName="BizAddSideListPrice" />
+          <ScalarProperty Name="CrustChoice" ColumnName="CrustChoice" />
+          <ScalarProperty Name="CrustChoicePrice" ColumnName="CrustChoicePrice" />
+          <ScalarProperty Name="CrustChoiceBizPrice" ColumnName="CrustChoiceBizPrice" />
+          <ScalarProperty Name="CheeseAmount" ColumnName="CheeseAmount" />
+          <ScalarProperty Name="cheeseAmountPrice" ColumnName="cheeseAmountPrice" />
+          <ScalarProperty Name="CheeseAmountBizPrice" ColumnName="CheeseAmountBizPrice" />
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="BizItemTotal" ColumnName="BizItemTotal" />
+          <ScalarProperty Name="ItemTotal" ColumnName="ItemTotal" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="FRShoppingModel.Order">
+        <MappingFragment StoreEntitySet="fr_Orders">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="LogonName" ColumnName="LogonName" />
+          <ScalarProperty Name="BizInfoId" ColumnName="BizInfoId" />
+          <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+          <ScalarProperty Name="CreditCardId" ColumnName="CreditCardId" />
+          <ScalarProperty Name="IsLoggedUser" ColumnName="IsLoggedUser" />
+          <ScalarProperty Name="IsPayPalPayment" ColumnName="IsPayPalPayment" />
+          <ScalarProperty Name="IsGiftCardPayment" ColumnName="IsGiftCardPayment" />
+          <ScalarProperty Name="GiftCardId" ColumnName="GiftCardId" />
+          <ScalarProperty Name="GiftCardAmountPay" ColumnName="GiftCardAmountPay" />
+          <ScalarProperty Name="CustomerMessage" ColumnName="CustomerMessage" />
+          <ScalarProperty Name="ScheduleDate" ColumnName="ScheduleDate" />
+          <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+          <ScalarProperty Name="CouponChoice" ColumnName="CouponChoice" />
+          <ScalarProperty Name="IsDelivery" ColumnName="IsDelivery" />
+          <ScalarProperty Name="DeliveryCharge" ColumnName="DeliveryCharge" />
+          <ScalarProperty Name="BizDiscountAmount" ColumnName="BizDiscountAmount" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="BizSubTotal" ColumnName="BizSubTotal" />
+          <ScalarProperty Name="OrderTax" ColumnName="OrderTax" />
+          <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+          <ScalarProperty Name="BizOrderTotal" ColumnName="BizOrderTotal" />
+          <ScalarProperty Name="ServiceCharge" ColumnName="ServiceCharge" />
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+          <ScalarProperty Name="DriverTip" ColumnName="DriverTip" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderStatuses">
+      <EntityTypeMapping TypeName="FRShoppingModel.OrderStatus">
+        <MappingFragment StoreEntitySet="fr_OrderStatuses">
+          <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductDressings">
+      <EntityTypeMapping TypeName="FRShoppingModel.ProductDressing">
+        <MappingFragment StoreEntitySet="fr_ProductDressings">
+          <ScalarProperty Name="ProductDressingId" ColumnName="ProductDressingId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="DressingId" ColumnName="DressingId" />
+          <ScalarProperty Name="DressingTitle" ColumnName="DressingTitle" />
+          <ScalarProperty Name="ExtraDressingPrice" ColumnName="ExtraDressingPrice" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="FRShoppingModel.Product">
+        <MappingFragment StoreEntitySet="fr_Products">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CookMethodId" ColumnName="CookMethodId" />
+          <ScalarProperty Name="FoodTypeId" ColumnName="FoodTypeId" />
+          <ScalarProperty Name="MealSectionId" ColumnName="MealSectionId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="BizPrice" ColumnName="BizPrice" />
+          <ScalarProperty Name="DiscountPercentage" ColumnName="DiscountPercentage" />
+          <ScalarProperty Name="SmallImage" ColumnName="SmallImage" />
+          <ScalarProperty Name="BigImage" ColumnName="BigImage" />
+          <ScalarProperty Name="MaxNumOfFreeTopping" ColumnName="MaxNumOfFreeTopping" />
+          <ScalarProperty Name="IsSpicy" ColumnName="IsSpicy" />
+          <ScalarProperty Name="IsVegetarian" ColumnName="IsVegetarian" />
+          <ScalarProperty Name="IsMostPopular" ColumnName="IsMostPopular" />
+          <ScalarProperty Name="IsFamilyDinner" ColumnName="IsFamilyDinner" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductSizes">
+      <EntityTypeMapping TypeName="FRShoppingModel.ProductSize">
+        <MappingFragment StoreEntitySet="fr_ProductSizes">
+          <ScalarProperty Name="ProductSizeId" ColumnName="ProductSizeId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="BizPrice" ColumnName="BizPrice" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductToppings">
+      <EntityTypeMapping TypeName="FRShoppingModel.ProductTopping">
+        <MappingFragment StoreEntitySet="fr_ProductToppings">
+          <ScalarProperty Name="ProductToppingId" ColumnName="ProductToppingId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ToppingId" ColumnName="ToppingId" />
+          <ScalarProperty Name="ToppingTitle" ColumnName="ToppingTitle" />
+          <ScalarProperty Name="ExtraToppingPrice" ColumnName="ExtraToppingPrice" />
+          <ScalarProperty Name="Increment" ColumnName="Increment" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="FRShoppingModel.Reservation">
+        <MappingFragment StoreEntitySet="fr_Reservations">
+          <ScalarProperty Name="ReservationId" ColumnName="ReservationId" />
+          <ScalarProperty Name="BizRVInfoId" ColumnName="BizRVInfoId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="RVDate" ColumnName="RVDate" />
+          <ScalarProperty Name="RVTime" ColumnName="RVTime" />
+          <ScalarProperty Name="PartySize" ColumnName="PartySize" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RewardVouchers">
+      <EntityTypeMapping TypeName="FRShoppingModel.RewardVoucher">
+        <MappingFragment StoreEntitySet="fr_RewardVouchers">
+          <ScalarProperty Name="RewardVoucherId" ColumnName="RewardVoucherId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SauceChoices">
+      <EntityTypeMapping TypeName="FRShoppingModel.SauceChoice">
+        <MappingFragment StoreEntitySet="fr_SauceChoices">
+          <ScalarProperty Name="SauceChoiceId" ColumnName="SauceChoiceId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SideChoices">
+      <EntityTypeMapping TypeName="FRShoppingModel.SideChoice">
+        <MappingFragment StoreEntitySet="fr_SideChoices">
+          <ScalarProperty Name="SideChoiceId" ColumnName="SideChoiceId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Toppings">
+      <EntityTypeMapping TypeName="FRShoppingModel.Topping">
+        <MappingFragment StoreEntitySet="fr_Toppings">
+          <ScalarProperty Name="ToppingId" ColumnName="ToppingId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDetails">
+      <EntityTypeMapping TypeName="FRShoppingModel.UserDetail">
+        <MappingFragment StoreEntitySet="fr_UserDetails">
+          <ScalarProperty Name="UserDetailId" ColumnName="UserDetailId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+          <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Votes">
+      <EntityTypeMapping TypeName="FRShoppingModel.Vote">
+        <MappingFragment StoreEntitySet="fr_Votes">
+          <ScalarProperty Name="VoteId" ColumnName="VoteId" />
+          <ScalarProperty Name="BizInfoId" ColumnName="BizInfoId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="PenName" ColumnName="PenName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RatingVote" ColumnName="RatingVote" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZoneNames">
+      <EntityTypeMapping TypeName="FRShoppingModel.ZoneName">
+        <MappingFragment StoreEntitySet="fr_ZoneNames">
+          <ScalarProperty Name="ZoneNameId" ColumnName="ZoneNameId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+          <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="FRShoppingModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MvcCheckBoxList</id>
+    <version>1.4.3.0</version>
+    <title>@Html.CheckBoxList(...) custom extension</title>
+    <authors>Mikhail Tsennykh</authors>
+    <owners>Mikhail Tsennykh</owners>
+    <licenseUrl>http://www.codeproject.com/info/cpol10.aspx</licenseUrl>
+    <projectUrl>http://www.codeproject.com/Articles/292050/MVC3-Html-CheckBoxList-custom-extension</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An extension for MVC HtmlHelper class to create POSTable checkbox list on a view, based on the data passed from the view model, or defined locally.</description>
+    <summary>Creates POSTable checkbox list on a MVC view:
+
+@Html.CheckBoxList(For)( ... )</summary>
+    <releaseNotes>Added support for right-to-left languages, removed model-independent functionality.</releaseNotes>
+    <tags>MVC CheckBoxList HtmlHelper Extension Razor View Check Box List</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Web" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Web.Mvc" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Web.WebPages" targetFramework="" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

@@ -1,0 +1,132 @@
+﻿@model IdentitySample.Models.RegisterViewModel
+@using FR.Infrastructure.Helpers
+@using Recaptcha
+@{
+    ViewBag.Title = "Register";
+}
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:#ffffff;">
+                Create a new account<small style="font-size:16px;color:#dddddd;">
+                    By creating account you will enjoy the benefits of: viewing past orders, easy reordering,
+                    receiving deals and Coupons on your e-mail, rating orders, writing reviews, getting
+                    cash coupon, save credit cards and much more...
+                </small>
+            </h1>
+        </div>
+    </div>
+
+</div>
+<div class="container toppadding boxShadow">
+    <div class="row">
+        @using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="col-sm-6 col-md-6" style="border-right:solid 1px #cccccc;">
+                <h4><b>Contact Form</b></h4>
+
+                <div class="=form-group">
+                    @Html.LabelFor(m => m.FirstName)
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.FirstName)
+                </div>
+                <br />
+                <div class="=form-group">
+                    @Html.LabelFor(m => m.LastName)
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.LastName)
+                </div>
+                <br />
+                <div class="=form-group">
+                    @Html.LabelFor(m => m.AddressLine)
+                    @Html.TextBoxFor(m => m.AddressLine, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.AddressLine)
+                </div>
+                <br />
+                <div class="=form-group">
+                    @Html.LabelFor(m => m.City)
+                    @Html.TextBoxFor(m => m.City, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.City)
+                </div>
+                <br />
+                <div class="=form-group">
+                    @Html.LabelFor(m => m.State)
+                    @Html.DropDownListFor(x => x.State, Helper.StateDropdownData(null), "Choose a State", new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.State)
+                </div>
+                <br />
+                <div class="=form-group">
+                    @Html.LabelFor(m => m.ZipCode)
+                    @Html.TextBoxFor(m => m.ZipCode, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.ZipCode)
+                </div>
+                <br />
+                <div class="=form-group">
+                    @Html.LabelFor(m => m.Phone)
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control boxShadow" })
+                    @Html.ValidationMessageFor(m => m.Phone)
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <h4><b>Login Form</b></h4>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email)
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </span>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+                <br />
+                <div class="=form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword)
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-control boxShadow" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                    </div>
+                </div>
+                <br />
+                <div class="=form-group">
+                    <br /><br />
+                    <b>Please type the following word in the text box:</b>
+                    @Html.Raw(Html.GenerateCaptcha())
+                    @Html.ValidationMessage("recaptcha")
+                </div>
+                <br />
+                <div class="=form-group">
+                    By registering, I agree to the
+                    @Html.ActionLink("terms of use.", "TermsOfUse", "Home")
+                    <br />
+                </div>
+                <br />
+                <div class="=form-group">
+                    <br /><br /><button type="submit" class="btn btn-default btn-lg boxSmallShadow"><span class="glyphicon glyphicon-pencil"></span> &nbsp; Register Now</button>
+                </div>
+            </div>
+        }
+    </div>
+    <br /><br />
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

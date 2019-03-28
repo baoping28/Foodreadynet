@@ -1,0 +1,94 @@
+﻿@model FoodReady.WebUI.Models.RatingViewModel
+@using FoodReady.WebUI.HtmlHelpers
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/StarRating.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FRJqueryScripts/RemainingCharacterCount.js")" type="text/javascript"></script>
+<div class="container-full titlepadding">
+    <div class="container">
+        <div class="row">
+            <h1 style="color:#ffffff;">
+                Create a review For "@Model.BizInfo.BizTitle"
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container toppadding">
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <div>
+                <b>Enter your pen name:</b>
+            </div>
+            <div>
+                <input type="text" id="txtPenname" /><span></span>
+            </div>
+            <p>
+            </p>
+            <div>
+                <b>Enter a review title:</b>
+            </div>
+            <div>
+                <input type="text" id="txtTitle" /><span></span>
+            </div>
+            <p>
+            </p>
+            <div>
+                <b>Enter your comment:</b>
+            </div>
+            <div>
+                <textarea id="txtaBody" rows="10" cols="50" style="width:300px; height:80px;"></textarea>
+                <div class="remaining">
+                    Characters remaining: <span class="count">600</span><span id="areatext"></span><br />
+                    <input id="reviewClear" type="button" value="Reset Comment" />
+                </div>
+            </div>
+            <p>
+            </p>
+            <div>
+                <b>Select a star you want to rate to submit your review:</b> @Html.Ratings(Model.BizInfo)
+            </div>
+            <div id="result">
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6" style="border-left:solid 1px #808080;">
+            <p style="padding: 10px 0px 10px 10px;">
+                @Html.ActionLink(Model.BizInfo.BizTitle, "Menu", "Restaurants", new { id = Model.BizInfo.BizInfoId }, new { @class = "guestlink" })
+            </p>
+            <div>
+                    <div>
+                        <img src="@Url.Action("ShowThemeChart", "Reviews", new { id = Model.BizInfo.BizInfoId })" alt="Review Chart" />
+                    </div>
+                    <div id="divRatings" style="float: left;">
+                        <ul>
+                            <li>
+                                <b>Average Rating:</b> @Model.BizInfo.AverageRating.ToString() out of 5 Stars
+                            </li>
+                            <li><b>Reviews:</b> @Model.BizInfo.RatingVotes.ToString() Customer(s) </li>
+                            <li>
+                                <b>5 Star Votes:</b> @Model.BizInfo.FiveStarVotes.ToString()
+                            </li>
+                            <li>
+                                <b>4 Star Votes:</b> @Model.BizInfo.FourStarVotes.ToString()
+                            </li>
+                            <li>
+                                <b>3 Star Votes:</b> @Model.BizInfo.ThreeStarVotes.ToString()
+                            </li>
+                            <li>
+                                <b>2 Star Votes:</b> @Model.BizInfo.TwoStarVotes.ToString()
+                            </li>
+                            <li>
+                                <b>1 Star Votes:</b> @Model.BizInfo.OneStarVotes.ToString()
+                            </li>
+                            <!--   <li>
+                            @Html.ActionLink("See all customer reviews", "CustomerReviews", "Reviews", new { id = Model.BizInfo.BizInfoId }, null)
+                         </li>
+                         -->
+                        </ul>
+                    </div>
+            </div>
+        </div>
+        <a href="@Url.Content(Model.ReturnUrl)" class="btn btn-primary btn-lg">
+            <span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp; Go back
+        </a>
+    </div>
+</div>
+

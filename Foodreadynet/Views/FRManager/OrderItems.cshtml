@@ -1,0 +1,90 @@
+﻿@model FR.Domain.Model.Entities.Order
+
+@{
+    ViewBag.Title = "Order Items";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="titlebox boxShadow">
+    <center>
+        <h1> Order Items (Order ID: @Model.OrderId)</h1>
+    </center>
+</div>
+<div class="divOrders">
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                Item ID
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Unit Price
+            </th>
+            <th>
+                Final Price
+            </th>
+            <th>
+                Restaurant Unit Price
+            </th>
+            <th>
+                Restaurant Final Price
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Item Total
+            </th>
+            <th>
+                Details
+            </th>
+        </tr>
+        @foreach (var oi in Model.OrderItems)
+        {
+            <tr>
+                <td>
+                    @oi.OrderItemId.ToString()
+                </td>
+                <td>
+                    @oi.Product.Title
+                </td>
+                <td>
+                    @oi.UnitPrice.ToString("N2")
+                </td>
+                <td>
+                    @oi.FinalSalePrice.ToString("N2")
+                </td>
+                <td>
+                    @oi.BizUnitPrice.ToString("N2")
+                </td>
+                <td>
+                    @oi.BizUnitPrice.ToString("N2")
+                </td>
+                <td>
+                    @oi.Quantity.ToString()
+                </td>
+                <td>
+                    @oi.ItemTotal.ToString("N2")
+                </td>
+                <td>
+                    @using (Ajax.BeginForm("ItemDetails", "FRManager", new { id = oi.OrderItemId }, new AjaxOptions
+                                            {
+                                                UpdateTargetId = "hotelContent",
+                                                OnBegin = "onHotelBegin",
+                                                OnSuccess = "onHotelSuccess",
+                                                OnFailure = "onHotelFailed"
+                                            }))
+                    {
+                        <input type="submit" value="Details" title="Item Details" class="float-left btn btn-default btn-sm" />
+
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+
+    <p class="pull-right">
+        @Html.ActionLink("Back to  Orders ", "Orders", "FRManager", new { id = Model.BizInfoId }, null)
+    </p>
+</div>
